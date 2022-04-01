@@ -55,6 +55,8 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
 
     public static final String START_ENUMS_WITH_UNKNOWN = "startEnumsWithUnknown";
 
+    public static final String FIELD_NAMES_IN_SNAKE_CASE = "fieldNamesInSnakeCase";
+
     private final Logger LOGGER = LoggerFactory.getLogger(ProtobufSchemaCodegen.class);
 
     protected String packageName = "openapitools";
@@ -62,6 +64,8 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
     private boolean numberedFieldNumberList = false;
 
     private boolean startEnumsWithUnknown = false;
+    
+    private boolean fieldNamesInSnakeCase = false;
 
     @Override
     public CodegenType getTag() {
@@ -159,6 +163,7 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
 
         addSwitch(NUMBERED_FIELD_NUMBER_LIST, "Field numbers in order.", numberedFieldNumberList);
         addSwitch(START_ENUMS_WITH_UNKNOWN, "Introduces \"UNKNOWN\" as the first element of enumerations.", startEnumsWithUnknown);
+        addSwitch(FIELD_NAMES_IN_SNAKE_CASE, "Field names in snake_case.", fieldNamesInSnakeCase);
     }
 
     @Override
@@ -192,6 +197,10 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
 
         if (additionalProperties.containsKey(this.START_ENUMS_WITH_UNKNOWN)) {
             this.startEnumsWithUnknown = convertPropertyToBooleanAndWriteBack(START_ENUMS_WITH_UNKNOWN);
+        }
+        
+        if (additionalProperties.containsKey(this.FIELD_NAMES_IN_SNAKE_CASE)) {
+            this.fieldNamesInSnakeCase = convertPropertyToBooleanAndWriteBack(FIELD_NAMES_IN_SNAKE_CASE);
         }
 
         supportingFiles.add(new SupportingFile("README.mustache", "", "README.md"));
@@ -293,9 +302,11 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
                     addEnumIndexes(enumVars);
                 }
             }
-            
+
             //to keep track of the indexes used, prevent duplicate indexes
             Set<Integer> usedIndexes = new HashSet<Integer>();
+            // store names used to prevent from duplicate names
+            Set<String> usedNames = new HashSet<String>();
             for (CodegenProperty var : cm.vars) {
                 // add x-protobuf-type: repeated if it's an array
                 if (Boolean.TRUE.equals(var.isArray)) {
@@ -314,7 +325,19 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
                         var.vendorExtensions.put("x-protobuf-data-type", var.dataType);
                     }
                 }
-
+                
+                // add x-protobuf-name
+                String fieldName = getProtobufName(var.vendorExtensions, var.getName());
+                if (!usedNames.contains(fieldName)) {
+                    //add protobuf-name and update usedNames set
+                    var.vendorExtensions.put("x-protobuf-name", fieldName);
+                    usedNames.add(fieldName);
+                }
+                else {
+                    LOGGER.error("Field name '" + fieldName + "' already used");
+                    throw new RuntimeException("A same field name is used multiple times");
+                }                
+                
                 if (var.isEnum) {
                     addUnknownToAllowableValues(var.allowableValues);
                     addEnumValuesPrefix(var.allowableValues, var.getEnumName());
@@ -424,6 +447,25 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
             }
         }
         return objs;
+    }
+
+    // return the field name to use
+    private String getProtobufName(Map<String, Object> vendorExtensions, String defaultName) {
+        String fieldName = "";
+        if (vendorExtensions.containsKey("x-protobuf-name")) {
+            fieldName = (String) vendorExtensions.get("x-protobuf-name");
+        }
+        else if (vendorExtensions.containsKey("x-protobuf-field-name")) {
+            fieldName = (String) vendorExtensions.get("x-protobuf-field-name");
+        }
+        else {
+            fieldName = defaultName;
+        }
+        if (fieldNamesInSnakeCase) {
+            fieldName = underscore(fieldName);
+        }
+
+        return fieldName;
     }
 
     public void addImport(Map<String, ModelsMap> objs, CodegenModel cm, String importValue) {
@@ -605,6 +647,8 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
         for (CodegenOperation op : operationList) {
             //to keep track of the indexes used, prevent duplicate indexes
             Set<Integer> usedIndexes = new HashSet<Integer>();
+            // store names used to prevent from duplicate names
+            Set<String> usedNames = new HashSet<String>();
             for (CodegenParameter p : op.allParams) {
                 // add x-protobuf-type: repeated if it's an array
                 
@@ -627,6 +671,18 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
                         p.vendorExtensions.put("x-protobuf-data-type", p.dataType);
                     }
                 }
+
+                // add x-protobuf-name
+                String fieldName = getProtobufName(p.vendorExtensions, p.paramName);
+                if (!usedNames.contains(fieldName)) {
+                    //add protobuf-name and update usedNames set
+                    p.vendorExtensions.put("x-protobuf-name", fieldName);
+                    usedNames.add(fieldName);
+                }
+                else {
+                    LOGGER.error("Field name " + fieldName + " already used");
+                    throw new RuntimeException("A same field name is used multiple times");
+                }               
 
                 //add x-protobuf-index
                 int protobufIndex = 0;
