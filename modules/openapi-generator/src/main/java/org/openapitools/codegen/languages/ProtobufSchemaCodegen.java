@@ -55,6 +55,8 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
 
     public static final String START_ENUMS_WITH_UNKNOWN = "startEnumsWithUnknown";
 
+    public static final String FIELD_NAMES_IN_SNAKE_CASE = "fieldNamesInSnakeCase";
+
     private final Logger LOGGER = LoggerFactory.getLogger(ProtobufSchemaCodegen.class);
 
     protected String packageName = "openapitools";
@@ -62,6 +64,8 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
     private boolean numberedFieldNumberList = false;
 
     private boolean startEnumsWithUnknown = false;
+
+    private boolean fieldNamesInSnakeCase = false;
 
     @Override
     public CodegenType getTag() {
@@ -159,6 +163,7 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
 
         addSwitch(NUMBERED_FIELD_NUMBER_LIST, "Field numbers in order.", numberedFieldNumberList);
         addSwitch(START_ENUMS_WITH_UNKNOWN, "Introduces \"UNKNOWN\" as the first element of enumerations.", startEnumsWithUnknown);
+        addSwitch(FIELD_NAMES_IN_SNAKE_CASE, "Field names in snake_case.", fieldNamesInSnakeCase);
     }
 
     @Override
@@ -192,6 +197,10 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
 
         if (additionalProperties.containsKey(this.START_ENUMS_WITH_UNKNOWN)) {
             this.startEnumsWithUnknown = convertPropertyToBooleanAndWriteBack(START_ENUMS_WITH_UNKNOWN);
+        }
+
+        if (additionalProperties.containsKey(this.FIELD_NAMES_IN_SNAKE_CASE)) {
+            this.fieldNamesInSnakeCase = convertPropertyToBooleanAndWriteBack(FIELD_NAMES_IN_SNAKE_CASE);
         }
 
         supportingFiles.add(new SupportingFile("README.mustache", "", "README.md"));
@@ -294,7 +303,8 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
                 }
             }
 
-            int index = 1;
+            //to keep track of the indexes used, prevent duplicate indexes
+            Set<Integer> usedIndexes = new HashSet<Integer>();
             for (CodegenProperty var : cm.vars) {
                 // add x-protobuf-type: repeated if it's an array
                 if (Boolean.TRUE.equals(var.isArray)) {
@@ -324,17 +334,49 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
                     }
                 }
 
-                // Add x-protobuf-index, unless already specified
-                if(this.numberedFieldNumberList) {
-                    var.vendorExtensions.putIfAbsent("x-protobuf-index", index);
-                    index++;
+                if (fieldNamesInSnakeCase) {
+                    var.name = underscore(var.getName());
                 }
-                else {
-                    try {
-                        var.vendorExtensions.putIfAbsent("x-protobuf-index", generateFieldNumberFromString(var.getName()));
-                    } catch (ProtoBufIndexComputationException e) {
-                        LOGGER.error("Exception when assigning a index to a protobuf field", e);
-                        var.vendorExtensions.putIfAbsent("x-protobuf-index", "Generated field number is in reserved range (19000, 19999)");
+
+                //check x-protobuf-index
+                if (var.vendorExtensions.containsKey("x-protobuf-index")) {
+                    int protobufIndex = (int) var.vendorExtensions.get("x-protobuf-index");
+                    checkIndex(protobufIndex, usedIndexes);                    
+                }
+                else if (var.vendorExtensions.containsKey("x-protobuf-field-number")) {
+                    int protobufIndex = (int) var.vendorExtensions.get("x-protobuf-field-number");
+                    checkIndex(protobufIndex, usedIndexes);
+                    var.vendorExtensions.put("x-protobuf-index", protobufIndex);
+                }
+            }
+            //automatic index generation when index not specified using extensions
+            int index = 1;
+            for (CodegenProperty var : cm.vars) {
+                if (!var.vendorExtensions.containsKey("x-protobuf-index")) {
+                    if (this.numberedFieldNumberList) {
+                        //prevent from using index already used
+                        while (usedIndexes.contains(index)) {
+                            index++;
+                        }
+                        usedIndexes.add(index);
+                        var.vendorExtensions.put("x-protobuf-index", index);
+                    }
+                    else {
+                        try {
+                            int protobufIndex = generateFieldNumberFromString(var.getName());
+                            if (!usedIndexes.contains(protobufIndex)) {
+                                //update usedIndexes list and add x-protobuf-index
+                                usedIndexes.add(protobufIndex);
+                                var.vendorExtensions.put("x-protobuf-index", protobufIndex);
+                            }
+                            else {
+                                LOGGER.error("Field number " + protobufIndex + " already used");
+                                throw new RuntimeException("A same field number is used multiple times");
+                            }
+                        } catch (ProtoBufIndexComputationException e) {
+                            LOGGER.error("Exception when assigning a index to a protobuf field", e);
+                            var.vendorExtensions.put("x-protobuf-index", "Generated field number is in reserved range (19000, 19999)");
+                        }
                     }
                 }
             }
@@ -547,7 +589,8 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
         OperationMap operations = objs.getOperations();
         List<CodegenOperation> operationList = operations.getOperation();
         for (CodegenOperation op : operationList) {
-            int index = 1;
+            //to keep track of the indexes used, prevent duplicate indexes
+            Set<Integer> usedIndexes = new HashSet<Integer>();
             for (CodegenParameter p : op.allParams) {
                 // add x-protobuf-type: repeated if it's an array
                 
@@ -571,8 +614,32 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
                     }
                 }
 
-                p.vendorExtensions.putIfAbsent("x-protobuf-index", index);
-                index++;
+                if (fieldNamesInSnakeCase) {
+                    p.paramName = underscore(p.paramName);
+                }
+
+                //check x-protobuf-index
+                if (p.vendorExtensions.containsKey("x-protobuf-index")) {
+                    int protobufIndex = (int) p.vendorExtensions.get("x-protobuf-index");
+                    checkIndex(protobufIndex, usedIndexes);
+                }
+                else if (p.vendorExtensions.containsKey("x-protobuf-field-number")) {
+                    int protobufIndex = (int) p.vendorExtensions.get("x-protobuf-field-number");
+                    checkIndex(protobufIndex, usedIndexes);
+                    p.vendorExtensions.put("x-protobuf-index", protobufIndex);
+                }
+            }
+            //automatic index generation when index not specified using extensions
+            int index = 1;
+            for (CodegenParameter p : op.allParams) {
+                if (!p.vendorExtensions.containsKey("x-protobuf-index")) {
+                    //prevent from using index already used
+                    while (usedIndexes.contains(index)) {
+                        index++;
+                    }
+                    usedIndexes.add(index);
+                    p.vendorExtensions.put("x-protobuf-index", index);
+                }                
             }
 
             if (StringUtils.isEmpty(op.returnType)) {
@@ -594,6 +661,23 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
         }
 
         return objs;
+    }
+
+    private void checkIndex(int protobufIndex, Set<Integer> usedIndexes) {
+        if (protobufIndex > 0) {
+            if (!usedIndexes.contains(protobufIndex)) {
+                //update usedIndexes list
+                usedIndexes.add(protobufIndex);
+            }
+            else {
+                LOGGER.error("Field number " + protobufIndex + " already used");
+                throw new RuntimeException("A same field number is used multiple times");
+            }
+        }
+        else {
+            LOGGER.error("Field number " + protobufIndex + " not strictly positive");
+            throw new RuntimeException("Only strictly positive field numbers are allowed");
+        }
     }
 
     @Override
