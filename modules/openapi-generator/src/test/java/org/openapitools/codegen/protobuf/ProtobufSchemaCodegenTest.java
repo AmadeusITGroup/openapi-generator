@@ -162,6 +162,22 @@ public class ProtobufSchemaCodegenTest {
         TestUtils.ensureContainsFile(files, output, "models/order.proto");
         Path path = Paths.get(output + "/models/order.proto");
         assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/order.proto"));
+    }
+
+    @Test
+    public void testCodeGenWithWrapperTypes() throws IOException {
+        Map<String, Object> properties = new HashMap<>();
+        properties.put("useWrapperTypes", true);
+        Map<String, String> globalProperties = new HashMap<>();
+        globalProperties.put("models", "User");
+        // set line break to \n across all platforms
+        System.setProperty("line.separator", "\n");
+
+        File output = Files.createTempDirectory("test").toFile();
+        List<File> files = generate(output, properties, globalProperties, "src/test/resources/3_0/petstore.yaml");
+        TestUtils.ensureContainsFile(files, output, "models/user.proto");
+        Path path = Paths.get(output + "/models/user.proto");
+        assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/user-with-wrapper-types.proto"));
 
         output.delete();
     }

@@ -58,6 +58,8 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
     public static final String START_ENUMS_WITH_UNSPECIFIED = "startEnumsWithUnspecified";
     
     public static final String FIELD_NAMES_IN_SNAKE_CASE = "fieldNamesInSnakeCase";
+    
+    public static final String USE_WRAPPER_TYPES = "useWrapperTypes";
 
     private final Logger LOGGER = LoggerFactory.getLogger(ProtobufSchemaCodegen.class);
 
@@ -70,6 +72,10 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
     private boolean startEnumsWithUnspecified = false;
     
     private boolean fieldNamesInSnakeCase = false;
+    
+    private boolean useWrapperTypes = false;
+
+    private Map<String, String> protoWrapperTypesMapping = new HashMap<>();
 
     @Override
     public CodegenType getTag() {
@@ -112,51 +118,19 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
                         "array")
         );
 
-        languageSpecificPrimitives = new HashSet<>(
-                Arrays.asList(
-                        "map",
-                        "array",
-                        "bool",
-                        "bytes",
-                        "string",
-                        "int32",
-                        "int64",
-                        "uint32",
-                        "uint64",
-                        "sint32",
-                        "sint64",
-                        "fixed32",
-                        "fixed64",
-                        "sfixed32",
-                        "sfixed64",
-                        "float",
-                        "double")
-        );
+        // https://developers.google.com/protocol-buffers/docs/reference/google.protobuf
+        protoWrapperTypesMapping.put("bool", "google.protobuf.BoolValue");
+        protoWrapperTypesMapping.put("bytes", "google.protobuf.BytesValue");
+        protoWrapperTypesMapping.put("string", "google.protobuf.StringValue");
+        protoWrapperTypesMapping.put("uint32", "google.protobuf.UInt32Value");
+        protoWrapperTypesMapping.put("uint64", "google.protobuf.UInt64Value");
+        protoWrapperTypesMapping.put("int64", "google.protobuf.Int64Value");
+        protoWrapperTypesMapping.put("int32", "google.protobuf.Int32Value");
+        protoWrapperTypesMapping.put("float", "google.protobuf.FloatValue");
+        protoWrapperTypesMapping.put("double", "google.protobuf.DoubleValue");
 
         instantiationTypes.clear();
         instantiationTypes.put("array", "repeat");
-
-        // ref: https://developers.google.com/protocol-buffers/docs/proto
-        typeMapping.clear();
-        typeMapping.put("array", "array");
-        typeMapping.put("map", "map");
-        typeMapping.put("integer", "int32");
-        typeMapping.put("long", "int64");
-        typeMapping.put("number", "float");
-        typeMapping.put("float", "float");
-        typeMapping.put("double", "double");
-        typeMapping.put("boolean", "bool");
-        typeMapping.put("string", "string");
-        typeMapping.put("UUID", "string");
-        typeMapping.put("URI", "string");
-        typeMapping.put("date", "string");
-        typeMapping.put("DateTime", "string");
-        typeMapping.put("password", "string");
-        // TODO fix file mapping
-        typeMapping.put("file", "string");
-        typeMapping.put("binary", "string");
-        typeMapping.put("ByteArray", "bytes");
-        typeMapping.put("object", "TODO_OBJECT_MAPPING");
 
         importMapping.clear();
 
@@ -169,6 +143,7 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
         addSwitch(START_ENUMS_WITH_UNKNOWN, "Introduces \"UNKNOWN\" as the first element of enumerations.", startEnumsWithUnknown);
         addSwitch(START_ENUMS_WITH_UNSPECIFIED, "Introduces \"UNSPECIFIED\" as the first element of enumerations.", startEnumsWithUnspecified);
         addSwitch(FIELD_NAMES_IN_SNAKE_CASE, "Field names in snake_case.", fieldNamesInSnakeCase);
+        addSwitch(USE_WRAPPER_TYPES, "Use primitive well-known wrappers types.", useWrapperTypes);
     }
 
     @Override
@@ -211,8 +186,60 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
         if (additionalProperties.containsKey(this.FIELD_NAMES_IN_SNAKE_CASE)) {
             this.fieldNamesInSnakeCase = convertPropertyToBooleanAndWriteBack(FIELD_NAMES_IN_SNAKE_CASE);
         }
+        if (additionalProperties.containsKey(ProtobufSchemaCodegen.USE_WRAPPER_TYPES)) {
+            this.useWrapperTypes = convertPropertyToBooleanAndWriteBack(USE_WRAPPER_TYPES);
+        }
+        configureTypeMapping();
 
         supportingFiles.add(new SupportingFile("README.mustache", "", "README.md"));
+    }
+
+    private void configureTypeMapping() {
+        languageSpecificPrimitives = new HashSet<>(
+                Arrays.asList(
+                        "map",
+                        "array",
+                        "sint32",
+                        "sint64",
+                        "fixed32",
+                        "fixed64",
+                        "sfixed32",
+                        "sfixed64"));
+        if(useWrapperTypes) {
+            languageSpecificPrimitives.addAll(protoWrapperTypesMapping.values());
+        } else {
+            languageSpecificPrimitives.addAll(protoWrapperTypesMapping.keySet());
+        }
+
+        // ref: https://developers.google.com/protocol-buffers/docs/proto
+        typeMapping.clear();
+        typeMapping.put("array", "array");
+        typeMapping.put("map", "map");
+        typeMapping.put("integer", protobufType("int32"));
+        typeMapping.put("long", protobufType("int64"));
+        typeMapping.put("number", protobufType("float"));
+        typeMapping.put("float", protobufType("float"));
+        typeMapping.put("double", protobufType("double"));
+        typeMapping.put("boolean", protobufType("bool"));
+        typeMapping.put("string", protobufType("string"));
+        typeMapping.put("UUID", protobufType("string"));
+        typeMapping.put("URI", protobufType("string"));
+        typeMapping.put("date", protobufType("string"));
+        typeMapping.put("DateTime", protobufType("string"));
+        typeMapping.put("password", protobufType("string"));
+        // TODO fix file mapping
+        typeMapping.put("file", protobufType("string"));
+        typeMapping.put("binary", protobufType("string"));
+        typeMapping.put("ByteArray", protobufType("bytes"));
+        typeMapping.put("object", "TODO_OBJECT_MAPPING");
+    }
+
+    private String protobufType(String primitiveType) {
+        if(useWrapperTypes && protoWrapperTypesMapping.containsKey(primitiveType)) {
+            return protoWrapperTypesMapping.get(primitiveType);
+        } else {
+            return primitiveType;
+        }
     }
 
     @Override

@@ -22,6 +22,7 @@ These options may be applied as additional-properties (cli) or configOptions (pl
 |startEnumsWithUnknown|Introduces &quot;UNKNOWN&quot; as the first element of enumerations.| |false|
 |startEnumsWithUnspecified|Introduces &quot;UNSPECIFIED&quot; as the first element of enumerations.| |false|
 |fieldNamesInSnakeCase|Field names in snake_case.| |false|
+|useWrapperTypes|Use primitive well-known wrappers types.| |false|
 
 ## IMPORT MAPPING
 
