@@ -28,10 +28,10 @@ public class {{classname}} {{#parent}}extends {{{.}}}{{/parent}} {{#vendorExtens
   {{/vendorExtensions.x-field-extra-annotation}}
   private {{#useBeanValidation}}@Valid {{/useBeanValidation}}{{{datatypeWithEnum}}} {{name}}{{#defaultValue}} = {{{.}}}{{/defaultValue}};{{/vars}}{{#generateBuilders}}{{^additionalProperties}}
 
-  {{#parentModel.discriminator}}public {{classname}}() {
+  {{#hasDiscriminatorUpward}}public {{classname}}() {
     super();
-    this.{{propertyBaseName}}("{{{name}}}");
-  }{{/parentModel.discriminator}}
+    this.{{upwardDiscriminatorPropertyBaseName}}("{{{name}}}");
+  }{{/hasDiscriminatorUpward}}
 
   protected {{classname}}({{classname}}Builder<?, ?> b) {
   {{#parent}}super(b);
@@ -51,7 +51,7 @@ public class {{classname}} {{#parent}}extends {{{.}}}{{/parent}} {{#vendorExtens
    * maximum: {{.}}
    {{/maximum}}
    **/
-  {{#jackson}}{{#isDiscriminator}}protected {{/isDiscriminator}}{{^isDiscriminator}}public {{/isDiscriminator}}{{/jackson}}{{^jackson}}public {{/jackson}}{{classname}} {{name}}({{{datatypeWithEnum}}} {{name}}) {
+  {{#isDiscriminator}}protected {{/isDiscriminator}}{{^isDiscriminator}}public {{/isDiscriminator}}{{classname}} {{name}}({{{datatypeWithEnum}}} {{name}}) {
     this.{{name}} = {{name}};
     return this;
   }
@@ -66,7 +66,7 @@ public class {{classname}} {{#parent}}extends {{{.}}}{{/parent}} {{#vendorExtens
 
   @JsonProperty("{{baseName}}")
   {{#vendorExtensions.x-setter-extra-annotation}}{{{vendorExtensions.x-setter-extra-annotation}}}
-  {{/vendorExtensions.x-setter-extra-annotation}}{{#jackson}}{{#isDiscriminator}}protected{{/isDiscriminator}}{{^isDiscriminator}}public {{/isDiscriminator}}{{/jackson}}{{^jackson}}public {{/jackson}} void {{setter}}({{{datatypeWithEnum}}} {{name}}) {
+  {{/vendorExtensions.x-setter-extra-annotation}}{{#isDiscriminator}}protected{{/isDiscriminator}}{{^isDiscriminator}}public{{/isDiscriminator}} void {{setter}}({{{datatypeWithEnum}}} {{name}}) {
     this.{{name}} = {{name}};
   }
 
