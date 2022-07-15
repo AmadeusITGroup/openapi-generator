@@ -162,8 +162,10 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
         typeMapping.put("string", "string");
         typeMapping.put("UUID", "string");
         typeMapping.put("URI", "string");
-        typeMapping.put("date", "string");
-        typeMapping.put("DateTime", "string");
+        typeMapping.put("date", "google.type.Date");
+        typeMapping.put("time", "google.type.TimeOfDay");
+        typeMapping.put("DateTime", "google.protobuf.Timestamp");
+        typeMapping.put("duration", "google.protobuf.Duration");
         typeMapping.put("password", "string");
         // TODO fix file mapping
         typeMapping.put("file", "string");
@@ -174,6 +176,10 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
 
         importMapping.clear();
         importMapping.put("google.protobuf.Any", "google/protobuf/any");
+        importMapping.put("google.type.Date", "google/type/date");
+        importMapping.put("google.type.TimeOfDay", "google/type/timeofday");
+        importMapping.put("google.protobuf.Timestamp", "google/protobuf/timestamp");
+        importMapping.put("google.protobuf.Duration", "google/protobuf/duration");
 
         modelDocTemplateFiles.put("model_doc.mustache", ".md");
         apiDocTemplateFiles.put("api_doc.mustache", ".md");
@@ -792,6 +798,14 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
                         }
                     }
                 }
+            }
+
+            // add proto definitions for date and timeofday if needed
+            if (cm.getImports().contains("google.type.Date")) {
+                supportingFiles.add(new SupportingFile("dependencies/google/type/date.proto", "google/type/date.proto"));
+            }
+            if (cm.getImports().contains("google.type.TimeOfDay")) {
+                supportingFiles.add(new SupportingFile("dependencies/google/type/timeofday.proto", "google/type/timeofday.proto"));
             }
         }
         return objs;
