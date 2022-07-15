@@ -45,23 +45,6 @@ These options may be applied as additional-properties (cli) or configOptions (pl
 ## LANGUAGE PRIMITIVES
 
 <ul class="column-ul">
-<li>array</li>
-<li>bool</li>
-<li>bytes</li>
-<li>double</li>
-<li>fixed32</li>
-<li>fixed64</li>
-<li>float</li>
-<li>int32</li>
-<li>int64</li>
-<li>map</li>
-<li>sfixed32</li>
-<li>sfixed64</li>
-<li>sint32</li>
-<li>sint64</li>
-<li>string</li>
-<li>uint32</li>
-<li>uint64</li>
 </ul>
 
 ## RESERVED WORDS
