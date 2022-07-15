@@ -28,6 +28,10 @@ These options may be applied as additional-properties (cli) or configOptions (pl
 | Type/Alias | Imports |
 | ---------- | ------- |
 |google.protobuf.Any|google/protobuf/any|
+|google.protobuf.Duration|google/protobuf/duration|
+|google.protobuf.Timestamp|google/protobuf/timestamp|
+|google.type.Date|google/type/date|
+|google.type.TimeOfDay|google/type/timeofday|
 
 
 ## INSTANTIATION TYPES
