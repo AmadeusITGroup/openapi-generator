@@ -11,7 +11,7 @@ title: Documentation for the protobuf-schema Generator
 | generator type | SCHEMA | |
 | generator language | Protocol Buffers (Protobuf) | |
 | generator default templating engine | mustache | |
-| helpTxt | Generates gRPC and protocol buffer schema files (beta) | |
+| helpTxt | Generates gRPC and protocol buffer 3 schema files (beta) | |
 
 ## CONFIG OPTIONS
 These options may be applied as additional-properties (cli) or configOptions (plugins). Refer to [configuration docs](https://openapi-generator.tech/docs/configuration) for more details.
@@ -28,6 +28,11 @@ These options may be applied as additional-properties (cli) or configOptions (pl
 
 | Type/Alias | Imports |
 | ---------- | ------- |
+|google.protobuf.Any|google/protobuf/any|
+|google.protobuf.Duration|google/protobuf/duration|
+|google.protobuf.Timestamp|google/protobuf/timestamp|
+|google.type.Date|google/type/date|
+|google.type.TimeOfDay|google/type/timeofday|
 
 
 ## INSTANTIATION TYPES
