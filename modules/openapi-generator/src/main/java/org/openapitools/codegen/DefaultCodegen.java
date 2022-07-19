@@ -159,7 +159,10 @@ public class DefaultCodegen implements CodegenConfig {
     protected Map<String, String> inlineSchemaNameMapping = new HashMap<>();
     // a map to store the inline schema naming conventions
     protected Map<String, String> inlineSchemaNameDefault = new HashMap<>();
+    //store models package path derived from extension x-package-name
+    protected Map<String, String> modelsPackage = new HashMap<>();
     protected String modelPackage = "", apiPackage = "", fileSuffix;
+    protected String customOptionsPackage = "";
     protected String modelNamePrefix = "", modelNameSuffix = "";
     protected String apiNamePrefix = "", apiNameSuffix = "Api";
     protected String testPackage = "";
@@ -169,6 +172,7 @@ public class DefaultCodegen implements CodegenConfig {
     apiTemplateFiles are for API outputs only (controllers/handlers).
     API templates may be written multiple times; APIs are grouped by tag and the file is written once per tag group.
     */
+    protected Map<String, String> customOptionsTemplateFiles = new HashMap<>();
     protected Map<String, String> apiTemplateFiles = new HashMap<>();
     protected Map<String, String> modelTemplateFiles = new HashMap<>();
     protected Map<String, String> apiTestTemplateFiles = new HashMap<>();
@@ -439,6 +443,11 @@ public class DefaultCodegen implements CodegenConfig {
         additionalProperties.put("lambda", lambdas);
     }
 
+    // override with any special processing linked to models package mapping
+    @Override
+    public void processPackageMapping(Map<String, Schema> schemas, Set<String> modelKeys) {
+    }
+
     // override with any special post-processing for all models
     @Override
     @SuppressWarnings("static-method")
@@ -452,7 +461,7 @@ public class DefaultCodegen implements CodegenConfig {
                 List<Map<String, String>> importsValue = new ArrayList<>();
                 ModelsMap objsValue = new ModelsMap();
                 objsValue.setModels(Collections.singletonList(modelMapValue));
-                objsValue.put("package", modelPackage());
+                objsValue.put("package", modelPackage(cm.classname));
                 objsValue.setImports(importsValue);
                 objsValue.put("classname", cm.classname);
                 objsValue.putAll(additionalProperties);
@@ -659,6 +668,22 @@ public class DefaultCodegen implements CodegenConfig {
             }
         }
         return false;
+    }
+
+    // override with any special post-processing
+    @Override
+    public void postProcessAllCustomOptions(List<CodegenProperty> customOptions, String customOptionsFileName) {
+    }
+
+    // override with any special post-processing
+    @Override
+    public CodegenModel postProcessCustomOptionCategory(CodegenModel optionCategory) {
+        return optionCategory;
+    }
+
+    // override with any special post-processing
+    @Override
+    public void updateCustomOptionsMapping(List<CodegenProperty> customOptions, Map<String, CodegenModel> categories) {
     }
 
     // override with any special post-processing
@@ -1078,6 +1103,11 @@ public class DefaultCodegen implements CodegenConfig {
     }
 
     @Override
+    public Map<String, String> modelsPackage() {
+        return modelsPackage;
+    }
+
+    @Override
     public String testPackage() {
         return testPackage;
     }
@@ -1085,6 +1115,18 @@ public class DefaultCodegen implements CodegenConfig {
     @Override
     public String modelPackage() {
         return modelPackage;
+    }
+
+    // use model package defined using extension x-package-name if defined (and therefore stored in the map modelsPackage), otherwise use the modelPackage defined using the additional property 'modelPackage' (or default one)
+    @Override
+    public String modelPackage(String name) {
+        String modelName = toModelName(name);
+        if (modelsPackage.containsKey(modelName)) {
+            return modelsPackage.get(modelName);
+        }
+        else {
+            return modelPackage;
+        }
     }
 
     @Override
@@ -1137,6 +1179,11 @@ public class DefaultCodegen implements CodegenConfig {
     }
 
     @Override
+    public Map<String, String> customOptionsTemplateFiles() {
+        return customOptionsTemplateFiles;
+    }
+
+    @Override
     public Map<String, String> apiTemplateFiles() {
         return apiTemplateFiles;
     }
@@ -1154,6 +1201,16 @@ public class DefaultCodegen implements CodegenConfig {
     @Override
     public String modelFileFolder() {
         return outputFolder + File.separator + modelPackage().replace('.', File.separatorChar);
+    }
+
+    @Override
+    public String customOptionsPackage() {
+        return customOptionsPackage;
+    }
+
+    @Override
+    public String customOptionsFileFolder() {
+        return outputFolder + File.separator + customOptionsPackage().replace('.', File.separatorChar);
     }
 
     @Override
@@ -1546,10 +1603,10 @@ public class DefaultCodegen implements CodegenConfig {
      */
     @Override
     public String toModelImport(String name) {
-        if ("".equals(modelPackage())) {
+        if ("".equals(modelPackage(name))) {
             return name;
         } else {
-            return modelPackage() + "." + name;
+            return modelPackage(name) + "." + name;
         }
     }
 
@@ -6126,13 +6183,46 @@ public class DefaultCodegen implements CodegenConfig {
     }
 
     protected void updateEnumVarsWithExtensions(List<Map<String, Object>> enumVars, Map<String, Object> vendorExtensions, String dataType) {
-        if (vendorExtensions != null) {
-            updateEnumVarsWithExtensions(enumVars, vendorExtensions, "x-enum-varnames", "name");
-            updateEnumVarsWithExtensions(enumVars, vendorExtensions, "x-enum-descriptions", "enumDescription");
+        if (vendorExtensions != null) {            
+            updateEnumVarsWithAmadeusExtensions(enumVars, vendorExtensions, dataType, "protobuf-enum-field-name", "name");
+            updateEnumVarsWithAmadeusExtensions(enumVars, vendorExtensions, dataType, "description", "enumDescription");
+            updateEnumVarsWithExtensions(enumVars, vendorExtensions, dataType, "x-enum-varnames", "name");
+            updateEnumVarsWithExtensions(enumVars, vendorExtensions, dataType, "x-enum-descriptions", "enumDescription");
         }
     }
 
-    private void updateEnumVarsWithExtensions(List<Map<String, Object>> enumVars, Map<String, Object> vendorExtensions, String extensionKey, String key) {
+    //amadeus enum extension handling
+    private void updateEnumVarsWithAmadeusExtensions(List<Map<String, Object>> enumVars, Map<String, Object> vendorExtensions, String dataType, String extensionKey, String key) {
+        if (vendorExtensions.containsKey("x-ama-enum") && ((LinkedHashMap) vendorExtensions.get("x-ama-enum")).containsKey("values")) {
+            //values specified in x-ama-enum
+            List<Map<String, Object>> amaEnumValues = (List<Map<String, Object>>) ((LinkedHashMap) vendorExtensions.get("x-ama-enum")).get("values");
+            for (int i = 0; i < enumVars.size(); i++) {
+                if (enumVars.get(i).containsKey("value")) {
+                    String value = (String) (enumVars.get(i).get("value"));
+                    //Search matching specified value in x-ama-enum for enum value 
+                    for(Map<String, Object> amaEnumValue : amaEnumValues) {
+                        //enum values have additional "\"" at start and end
+                        if (amaEnumValue.containsKey("value") && 
+                        toEnumValue((String) amaEnumValue.get("value"), dataType).equals(value)) {
+                            //update enum
+                            if (amaEnumValue.containsKey(extensionKey)) {
+                                String extension = (String) amaEnumValue.get(extensionKey);
+                                if ("name".equals(key)) {
+                                    enumVars.get(i).put(key, toEnumVarName(extension, dataType));
+                                }
+                                else {
+                                    enumVars.get(i).put(key, extension);
+                                }
+                            }
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    protected void updateEnumVarsWithExtensions(List<Map<String, Object>> enumVars, Map<String, Object> vendorExtensions, String dataType, String extensionKey, String key) {
         if (vendorExtensions.containsKey(extensionKey)) {
             List<String> values = (List<String>) vendorExtensions.get(extensionKey);
             int size = Math.min(enumVars.size(), values.size());

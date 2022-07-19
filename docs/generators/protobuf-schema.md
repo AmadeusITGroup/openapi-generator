@@ -11,21 +11,23 @@ title: Documentation for the protobuf-schema Generator
 | generator type | SCHEMA | |
 | generator language | Protocol Buffers (Protobuf) | |
 | generator default templating engine | mustache | |
-| helpTxt | Generates gRPC and protocol buffer schema files (beta) | |
+| helpTxt | Generates gRPC and protocol buffer 3 schema files (beta) | |
 
 ## CONFIG OPTIONS
 These options may be applied as additional-properties (cli) or configOptions (plugins). Refer to [configuration docs](https://openapi-generator.tech/docs/configuration) for more details.
 
 | Option | Description | Values | Default |
 | ------ | ----------- | ------ | ------- |
+|fieldNamesInSnakeCase|Field names in snake_case.| |false|
 |numberedFieldNumberList|Field numbers in order.| |false|
 |startEnumsWithUnknown|Introduces &quot;UNKNOWN&quot; as the first element of enumerations.| |false|
-|fieldNamesInSnakeCase|Field names in snake_case.| |false|
+|startEnumsWithUnspecified|Introduces &quot;UNSPECIFIED&quot; as the first element of enumerations.| |false|
 
 ## IMPORT MAPPING
 
 | Type/Alias | Imports |
 | ---------- | ------- |
+|google.protobuf.Any|google/protobuf/any|
 
 
 ## INSTANTIATION TYPES
