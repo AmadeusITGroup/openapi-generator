@@ -11,13 +11,14 @@ title: Documentation for the protobuf-schema Generator
 | generator type | SCHEMA | |
 | generator language | Protocol Buffers (Protobuf) | |
 | generator default templating engine | mustache | |
-| helpTxt | Generates gRPC and protocol buffer schema files (beta) | |
+| helpTxt | Generates gRPC and protocol buffer 3 schema files (beta) | |
 
 ## CONFIG OPTIONS
 These options may be applied as additional-properties (cli) or configOptions (plugins). Refer to [configuration docs](https://openapi-generator.tech/docs/configuration) for more details.
 
 | Option | Description | Values | Default |
 | ------ | ----------- | ------ | ------- |
+|fieldNamesInSnakeCase|Field names in snake_case.| |false|
 |numberedFieldNumberList|Field numbers in order.| |false|
 |startEnumsWithUnknown|Introduces &quot;UNKNOWN&quot; as the first element of enumerations.| |false|
 |startEnumsWithUnspecified|Introduces &quot;UNSPECIFIED&quot; as the first element of enumerations.| |false|
@@ -26,6 +27,7 @@ These options may be applied as additional-properties (cli) or configOptions (pl
 
 | Type/Alias | Imports |
 | ---------- | ------- |
+|google.protobuf.Any|google/protobuf/any|
 
 
 ## INSTANTIATION TYPES
@@ -33,6 +35,7 @@ These options may be applied as additional-properties (cli) or configOptions (pl
 | Type/Alias | Instantiated By |
 | ---------- | --------------- |
 |array|repeat|
+|set|repeat|
 
 
 ## LANGUAGE PRIMITIVES
@@ -48,6 +51,7 @@ These options may be applied as additional-properties (cli) or configOptions (pl
 <li>int32</li>
 <li>int64</li>
 <li>map</li>
+<li>set</li>
 <li>sfixed32</li>
 <li>sfixed64</li>
 <li>sint32</li>
