@@ -142,28 +142,6 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
         protoWrapperTypesMapping.put("float", "google.protobuf.FloatValue");
         protoWrapperTypesMapping.put("double", "google.protobuf.DoubleValue");
 
-        languageSpecificPrimitives = new HashSet<>(
-                Arrays.asList(
-                        "map",
-                        "set",
-                        "array",
-                        "bool",
-                        "bytes",
-                        "string",
-                        "int32",
-                        "int64",
-                        "uint32",
-                        "uint64",
-                        "sint32",
-                        "sint64",
-                        "fixed32",
-                        "fixed64",
-                        "sfixed32",
-                        "sfixed64",
-                        "float",
-                        "double")
-        );
-
         instantiationTypes.clear();
         instantiationTypes.put("array", "repeat");
         instantiationTypes.put("set", "repeat");
