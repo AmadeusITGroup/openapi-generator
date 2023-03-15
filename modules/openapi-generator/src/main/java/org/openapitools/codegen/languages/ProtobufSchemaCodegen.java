@@ -285,6 +285,7 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
      *
      * @param allowableValues allowable values
      * @param prefix added prefix
+     * @param dataType dataType
      */
     public void addEnumValuesPrefix(Map<String, Object> allowableValues, String prefix, String dataType){
         if(allowableValues.containsKey("enumVars")) {
@@ -303,7 +304,7 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
             for(int i = 0 ; i < values.size() ; i++) {
                 if (!values.get(i).startsWith(prefix + "_")) {
                     // replace value by value with prefix
-                    values.set(i, underscore(prefix + "_" + values.get(i)).toUpperCase());
+                    values.set(i, underscore(prefix + "_" + values.get(i)).toUpperCase(Locale.ROOT));
                 }
             }
         }
@@ -346,7 +347,7 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
         if ("number".equalsIgnoreCase(datatype) || "boolean".equalsIgnoreCase(datatype)) {
             return value;
         } else {
-            value = underscore(value).toUpperCase();
+            value = underscore(value).toUpperCase(Locale.ROOT);
             return "\"" + escapeText(value) + "\"";
         }
     }
@@ -389,6 +390,8 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
      *
      * @param enumVars list of enum vars
      * @param vendorExtensions vendor extensions
+     * @param dataType dataType
+     * @throws ProtoBufIndexComputationException exception
      */
     public void addEnumIndexes(List<Map<String, Object>> enumVars, Map<String, Object> vendorExtensions, String dataType) throws ProtoBufIndexComputationException {
         //store used indexes to prevent duplicates
