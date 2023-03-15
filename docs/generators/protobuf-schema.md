@@ -39,6 +39,7 @@ These options may be applied as additional-properties (cli) or configOptions (pl
 | Type/Alias | Instantiated By |
 | ---------- | --------------- |
 |array|repeat|
+|set|repeat|
 
 
 ## LANGUAGE PRIMITIVES
@@ -54,6 +55,7 @@ These options may be applied as additional-properties (cli) or configOptions (pl
 <li>int32</li>
 <li>int64</li>
 <li>map</li>
+<li>set</li>
 <li>sfixed32</li>
 <li>sfixed64</li>
 <li>sint32</li>
