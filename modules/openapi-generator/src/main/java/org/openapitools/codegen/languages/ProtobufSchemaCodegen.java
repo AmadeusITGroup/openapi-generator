@@ -45,8 +45,7 @@ import java.util.*;
 import java.util.Map.Entry;
 import java.util.regex.Pattern;
 
-import static org.openapitools.codegen.utils.StringUtils.camelize;
-import static org.openapitools.codegen.utils.StringUtils.underscore;
+import static org.openapitools.codegen.utils.StringUtils.*;
 
 public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConfig {
 
@@ -59,9 +58,9 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
     public static final String START_ENUMS_WITH_UNKNOWN = "startEnumsWithUnknown";
 
     public static final String START_ENUMS_WITH_UNSPECIFIED = "startEnumsWithUnspecified";
-    
+
     public static final String FIELD_NAMES_IN_SNAKE_CASE = "fieldNamesInSnakeCase";
-    
+
     public static final String USE_WRAPPER_TYPES = "useWrapperTypes";
 
     private final Logger LOGGER = LoggerFactory.getLogger(ProtobufSchemaCodegen.class);
@@ -75,9 +74,9 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
     private boolean startEnumsWithUnknown = false;
 
     private boolean startEnumsWithUnspecified = false;
-    
+
     private boolean fieldNamesInSnakeCase = false;
-    
+
     private boolean useWrapperTypes = false;
 
     private Map<String, String> protoWrapperTypesMapping = new HashMap<>();
@@ -128,6 +127,7 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
         defaultIncludes = new HashSet<>(
                 Arrays.asList(
                         "map",
+                        "set",
                         "array")
         );
 
@@ -142,8 +142,56 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
         protoWrapperTypesMapping.put("float", "google.protobuf.FloatValue");
         protoWrapperTypesMapping.put("double", "google.protobuf.DoubleValue");
 
+        languageSpecificPrimitives = new HashSet<>(
+                Arrays.asList(
+                        "map",
+                        "set",
+                        "array",
+                        "bool",
+                        "bytes",
+                        "string",
+                        "int32",
+                        "int64",
+                        "uint32",
+                        "uint64",
+                        "sint32",
+                        "sint64",
+                        "fixed32",
+                        "fixed64",
+                        "sfixed32",
+                        "sfixed64",
+                        "float",
+                        "double")
+        );
+
         instantiationTypes.clear();
         instantiationTypes.put("array", "repeat");
+        instantiationTypes.put("set", "repeat");
+
+
+        // ref: https://developers.google.com/protocol-buffers/docs/proto
+        typeMapping.clear();
+        typeMapping.put("set", "array");
+        typeMapping.put("array", "array");
+        typeMapping.put("map", "map");
+        typeMapping.put("integer", "int32");
+        typeMapping.put("long", "int64");
+        typeMapping.put("number", "float");
+        typeMapping.put("float", "float");
+        typeMapping.put("double", "double");
+        typeMapping.put("boolean", "bool");
+        typeMapping.put("string", "string");
+        typeMapping.put("UUID", "string");
+        typeMapping.put("URI", "string");
+        typeMapping.put("date", "string");
+        typeMapping.put("DateTime", "string");
+        typeMapping.put("password", "string");
+        // TODO fix file mapping
+        typeMapping.put("file", "string");
+        typeMapping.put("binary", "string");
+        typeMapping.put("ByteArray", "bytes");
+        typeMapping.put("object", "google.protobuf.Any");
+        typeMapping.put("AnyType", "google.protobuf.Any");
 
         importMapping.clear();
         importMapping.put("google.protobuf.Any", "google/protobuf/any");
@@ -176,8 +224,7 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
 
         if (additionalProperties.containsKey(CodegenConstants.PACKAGE_NAME)) {
             setPackageName((String) additionalProperties.get(CodegenConstants.PACKAGE_NAME));
-        }
-        else {
+        } else {
             additionalProperties.put(CodegenConstants.PACKAGE_NAME, packageName);
         }
 
@@ -200,7 +247,7 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
         if (additionalProperties.containsKey(this.START_ENUMS_WITH_UNSPECIFIED)) {
             this.startEnumsWithUnspecified = convertPropertyToBooleanAndWriteBack(START_ENUMS_WITH_UNSPECIFIED);
         }
-        
+
         if (additionalProperties.containsKey(this.FIELD_NAMES_IN_SNAKE_CASE)) {
             this.fieldNamesInSnakeCase = convertPropertyToBooleanAndWriteBack(FIELD_NAMES_IN_SNAKE_CASE);
         }
@@ -284,7 +331,7 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
      * NOTE: Enum values use C++ scoping rules, meaning that enum values are siblings of their type, not children of it. Therefore, enum value must be unique
      *
      * @param allowableValues allowable values
-     * @param prefix added prefix
+     * @param prefix          added prefix
      * @param dataType dataType
      */
     public void addEnumValuesPrefix(Map<String, Object> allowableValues, String prefix, String dataType){
@@ -334,7 +381,7 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
 
             // add unspecified only if not already present
             if(allowableValues.containsKey("values") && !((List<String>)allowableValues.get("values")).get(0).endsWith(value)) {
-                List<String> values = (List<String>)allowableValues.get("values");           
+                List<String> values = (List<String>)allowableValues.get("values");
                 values.add(0, value);
             }
         }
@@ -355,7 +402,7 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
     //override default behaviour: put variable name for enum to SNAKE_CASE and sanitize it
     // e.g. PhoneNumber.mobile => PHONE_NUMBER_MOBILE
     @Override
-    public String toEnumVarName(String value, String datatype) {       
+    public String toEnumVarName(String value, String datatype) {
         if (value.length() == 0) {
             return "EMPTY";
         }
@@ -396,7 +443,7 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
     public void addEnumIndexes(List<Map<String, Object>> enumVars, Map<String, Object> vendorExtensions, String dataType) throws ProtoBufIndexComputationException {
         //store used indexes to prevent duplicates
         Set<Integer> usedIndexes = new HashSet<Integer>();
-        if (vendorExtensions != null) { 
+        if (vendorExtensions != null) {
             String extensionKey = "x-enum-protobuf-indexes";
             if (vendorExtensions.containsKey(extensionKey)) {
                 List<Integer> indexes = (List<Integer>) vendorExtensions.get(extensionKey);
@@ -423,14 +470,14 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
                             enumVars.get(i).put("protobuf-enum-index", indexes.get(j));
                             usedIndexes.add(indexes.get(j));
                             i++;
-                            j++;      
+                            j++;
                         }
                         else {
                             LOGGER.error("There are duplicates field numbers: " + indexes.get(j));
                             throw new RuntimeException("Enum indexes must be unique");
                         }
                     }
-                }        
+                }
             }
 
             //amadeus enum extension handling
@@ -438,7 +485,7 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
             if (vendorExtensions.containsKey(extensionKey) && ((LinkedHashMap) vendorExtensions.get(extensionKey)).containsKey("values")) {
                 //values specified in x-ama-enum
                 List<Map<String, Object>> amaEnumValues = (List<Map<String, Object>>) ((LinkedHashMap) vendorExtensions.get(extensionKey)).get("values");
-                
+
                 // check duplicate values in x-ama-enum
                 Set<String> amaUniqueEnumValues = new HashSet<String>();
                 for(Map<String, Object> amaEnumValue : amaEnumValues) {
@@ -451,17 +498,17 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
                         else {
                             amaUniqueEnumValues.add(value);
                         }
-                    } 
+                    }
                 }
-                
+
                 for (int i = 0; i < enumVars.size(); i++) {
                     //add protobuf-enum-index, unless already specified
                     if (!enumVars.get(i).containsKey("protobuf-enum-index") && enumVars.get(i).containsKey("value")) {
                         String value = (String) (enumVars.get(i).get("value"));
-                        //Search matching specified value in x-ama-enum for enum value 
+                        //Search matching specified value in x-ama-enum for enum value
                         for(Map<String, Object> amaEnumValue : amaEnumValues) {
                             //enum values have additional "\"" at start and end
-                            if (amaEnumValue.containsKey("value") && 
+                            if (amaEnumValue.containsKey("value") &&
                             toEnumValue((String) amaEnumValue.get("value"), dataType).equals(value) &&
                             amaEnumValue.containsKey("protobuf-enum-field-number")) {
                                 int enumFieldNumber = (int) amaEnumValue.get("protobuf-enum-field-number");
@@ -473,7 +520,7 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
                                     if (i == 0 && enumFieldNumber != 0) {
                                         LOGGER.error("First enum value '" + enumVars.get(i).get("name") + "' must have field number zero since enum definitions must start with enum value zero");
                                         throw new RuntimeException("Enum definitions must start with enum value zero");
-                                    } 
+                                    }
                                     else if (enumFieldNumber == 0 && i != 0) {
                                         LOGGER.error("Enum value '" + enumVars.get(i).get("name") + "' must NOT have field number zero since field number zero must be only used for first enum value '" + enumVars.get(0).get("name") + "'");
                                         throw new RuntimeException("Field number zero reserved for first enum value");
@@ -534,13 +581,13 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
     // put in lower snake case with "." separations
     // e.g. MyPackage.foo => my_package.foo
     private String toPackageName(String name) {
-        // replace all "/" by "." after calling underscore and toLowerCase especially because underscore function replaces all "." by "/"        
+        // replace all "/" by "." after calling underscore and toLowerCase especially because underscore function replaces all "." by "/"
         return underscore(name).toLowerCase(Locale.ROOT).replace("/", ".");
     }
 
     // model package matches package name
     // e.g. my_package.foo => my_package/foo
-    private String toModelPackage(String packageName) {        
+    private String toModelPackage(String packageName) {
         return packageName.replace(".", "/");
     }
 
@@ -575,7 +622,7 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
                 }
                 else {
                     enumVars.get(i).put(key, values.get(i));
-                }                
+                }
             }
         }
     }
@@ -594,7 +641,7 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
             updateCodegenPropertyEnum(customOption);
 
             // add indexes
-            if(customOption.vendorExtensions != null) {                
+            if(customOption.vendorExtensions != null) {
                 customOption.vendorExtensions.put("x-protobuf-index", index);
             }
             index++;
@@ -644,7 +691,7 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
             else {
                 addCustomOptionMapping(customOption, null);
             }
-        }   
+        }
     }
 
     private void addCustomOptionMapping(CodegenProperty option, CodegenModel category) {
@@ -663,7 +710,7 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
         // e.g. category AmaRisk, option name personalDataField => x-ama-risk-personal-data-field
         String extensionName = "x-" + CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_HYPHEN, categoryClassName + name);
         CustomOptionDefinition customOptionDef = new CustomOptionDefinition(optionName, categoryGlobalName, option.baseType);
-        
+
         if (option.isEnum){
             // useful to check valid value
             customOptionDef.setEnum((List<String>) option.allowableValues.get("values"));
@@ -683,7 +730,7 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
         for (ModelMap mo : objs.getModels()) {
             CodegenModel cm = mo.getModel();
 
-            if(cm.isEnum) {
+            if (cm.isEnum) {
                 Map<String, Object> allowableValues = cm.getAllowableValues();
                 addUnknownToAllowableValues(allowableValues);
                 if (allowableValues.containsKey("enumVars")) {
@@ -703,12 +750,12 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
             processProtoTypesAndNames(cm.vars);
 
             //to keep track of the indexes used, prevent duplicate indexes
-            Set<Integer> usedIndexes = new HashSet<Integer>();             
+            Set<Integer> usedIndexes = new HashSet<Integer>();
             for (CodegenProperty var : cm.vars) {
                 //check x-protobuf-index
                 if (var.vendorExtensions.containsKey("x-protobuf-index")) {
                     int protobufIndex = (int) var.vendorExtensions.get("x-protobuf-index");
-                    checkIndex(protobufIndex, usedIndexes);                    
+                    checkIndex(protobufIndex, usedIndexes);
                 }
                 else if (var.vendorExtensions.containsKey("x-protobuf-field-number")) {
                     int protobufIndex = (int) var.vendorExtensions.get("x-protobuf-field-number");
@@ -728,13 +775,13 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
                             ((List<Map<String, String>>) objs.get(IMPORTS)).add(importItem);
                         }
 
-                        CustomOptionDefinition customOptionDef = customOptionsMapping.get(extension.getKey());                        
+                        CustomOptionDefinition customOptionDef = customOptionsMapping.get(extension.getKey());
                         Object value = extension.getValue();
 
                         // check valid value
                         try {
                             switch(customOptionDef.getBaseType()) {
-                                case "array": 
+                                case "array":
                                     value = (List<Object>) value;
                                     break;
                                 case "int32":
@@ -792,7 +839,7 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
                             }
                         }
                         else {
-                            CustomOption option = new CustomOption(customOptionDef, value);                        
+                            CustomOption option = new CustomOption(customOptionDef, value);
                             var.customOptions.add(option);
                         }
                     }
@@ -882,16 +929,16 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
                     var.vendorExtensions.put("x-protobuf-data-type", var.dataType);
                 }
             }
-            
+
             // add x-protobuf-name
-            String fieldName = getProtobufName(var.vendorExtensions, var.getName());                
+            String fieldName = getProtobufName(var.vendorExtensions, var.getName());
             //check duplicate names
             checkName(fieldName, usedNames);
-            var.vendorExtensions.put("x-protobuf-name", fieldName);             
-            
+            var.vendorExtensions.put("x-protobuf-name", fieldName);
+
             if (var.isEnum) {
                 addUnknownToAllowableValues(var.allowableValues);
-            
+
                 //add enum indexes
                 if(var.allowableValues.containsKey("enumVars")) {
                     List<Map<String, Object>> enumVars = (List<Map<String, Object>>) var.allowableValues.get("enumVars");
@@ -1073,6 +1120,11 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
     }
 
     @Override
+    public String toVarName(final String name) {
+        return name;
+    }
+
+    @Override
     public String toModelName(String name) {
         name = sanitizeName(name); // FIXME: a parameter should not be assigned. Also declare the methods parameters as 'final'.
         // remove dollar sign
@@ -1130,14 +1182,12 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
             Set<String> usedNames = new HashSet<String>();
             for (CodegenParameter p : op.allParams) {
                 // add x-protobuf-type: repeated if it's an array
-                
+
                 if (Boolean.TRUE.equals(p.isArray)) {
                     p.vendorExtensions.put("x-protobuf-type", "repeated");
-                }
-                else if (Boolean.TRUE.equals(p.isNullable &&  p.isPrimitiveType)) {
+                } else if (Boolean.TRUE.equals(p.isNullable && p.isPrimitiveType)) {
                     p.vendorExtensions.put("x-protobuf-type", "optional");
-                }
-                else if (Boolean.TRUE.equals(p.isMap)) {
+                } else if (Boolean.TRUE.equals(p.isMap)) {
                     LOGGER.warn("Map parameter (name: {}, operation ID: {}) not yet supported", p.paramName, op.operationId);
                 }
 
@@ -1178,7 +1228,7 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
                     }
                     usedIndexes.add(index);
                     p.vendorExtensions.put("x-protobuf-index", index);
-                }                
+                }
             }
 
             if (StringUtils.isEmpty(op.returnType)) {
@@ -1221,13 +1271,13 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
 
     private void checkName(String name, Set<String> usedNames) {
         if (!usedNames.contains(name)) {
-            //update usedNames set            
+            //update usedNames set
             usedNames.add(name);
         }
         else {
             LOGGER.error("Field name '" + name + "' already used");
             throw new RuntimeException("A same field name is used multiple times");
-        }   
+        }
     }
 
     @Override
@@ -1293,5 +1343,7 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
     }
 
     @Override
-    public GeneratorLanguage generatorLanguage() { return GeneratorLanguage.PROTOBUF; }
+    public GeneratorLanguage generatorLanguage() {
+        return GeneratorLanguage.PROTOBUF;
+    }
 }
