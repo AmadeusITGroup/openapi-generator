@@ -241,7 +241,7 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
         	discriminatorProperty.isString = true;
         	discriminatorProperty.setRequired(false);
         	discriminatorProperty.setName(model.getDiscriminator().getPropertyName());
-        	if (!modelContainsVar(model.getVars(), discriminatorProperty)) {
+        	if (!modelVarsContainsVar(model.getVars(), discriminatorProperty)) {
         		model.getVars().add(discriminatorProperty);
         	}
     	}
@@ -448,7 +448,7 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
             if (!cm.allOf.isEmpty() && cm.getParentModel() != null) {
                 CodegenModel parentCM = cm.getParentModel();
                 for (CodegenProperty var : cm.getVars()) {
-                    if (!modelContainsVar(parentCM.vars, var)) {
+                    if (!modelVarsContainsVar(parentCM.vars, var)) {
                         parentCM.vars.add(var);
                     }
                 }
@@ -481,7 +481,7 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
 	}
 
 	private void addVarIfNotAlreadyPresent(CodegenModel model, CodegenProperty newVar) {
-    	if (!modelContainsVar(model.getVars(), newVar)) {
+    	if (!modelVarsContainsVar(model.getVars(), newVar)) {
     		model.getVars().add(newVar);
     	}
 	}
