@@ -61,6 +61,8 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
 
     public static final String FIELD_NAMES_IN_SNAKE_CASE = "fieldNamesInSnakeCase";
 
+    public static final String USE_WRAPPER_TYPES = "useWrapperTypes";
+
     private final Logger LOGGER = LoggerFactory.getLogger(ProtobufSchemaCodegen.class);
 
     protected String packageName = "openapitools";
@@ -74,6 +76,10 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
     private boolean startEnumsWithUnspecified = false;
 
     private boolean fieldNamesInSnakeCase = false;
+
+    private boolean useWrapperTypes = false;
+
+    private Map<String, String> protoWrapperTypesMapping = new HashMap<>();
 
     // store the available custom options
     // <option name as vendor extension, CustomOptionDefinition>
@@ -125,27 +131,16 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
                         "array")
         );
 
-        languageSpecificPrimitives = new HashSet<>(
-                Arrays.asList(
-                        "map",
-                        "set",
-                        "array",
-                        "bool",
-                        "bytes",
-                        "string",
-                        "int32",
-                        "int64",
-                        "uint32",
-                        "uint64",
-                        "sint32",
-                        "sint64",
-                        "fixed32",
-                        "fixed64",
-                        "sfixed32",
-                        "sfixed64",
-                        "float",
-                        "double")
-        );
+        // https://developers.google.com/protocol-buffers/docs/reference/google.protobuf
+        protoWrapperTypesMapping.put("bool", "google.protobuf.BoolValue");
+        protoWrapperTypesMapping.put("bytes", "google.protobuf.BytesValue");
+        protoWrapperTypesMapping.put("string", "google.protobuf.StringValue");
+        protoWrapperTypesMapping.put("uint32", "google.protobuf.UInt32Value");
+        protoWrapperTypesMapping.put("uint64", "google.protobuf.UInt64Value");
+        protoWrapperTypesMapping.put("int64", "google.protobuf.Int64Value");
+        protoWrapperTypesMapping.put("int32", "google.protobuf.Int32Value");
+        protoWrapperTypesMapping.put("float", "google.protobuf.FloatValue");
+        protoWrapperTypesMapping.put("double", "google.protobuf.DoubleValue");
 
         instantiationTypes.clear();
         instantiationTypes.put("array", "repeat");
@@ -194,6 +189,7 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
         addSwitch(START_ENUMS_WITH_UNKNOWN, "Introduces \"UNKNOWN\" as the first element of enumerations.", startEnumsWithUnknown);
         addSwitch(START_ENUMS_WITH_UNSPECIFIED, "Introduces \"UNSPECIFIED\" as the first element of enumerations.", startEnumsWithUnspecified);
         addSwitch(FIELD_NAMES_IN_SNAKE_CASE, "Field names in snake_case.", fieldNamesInSnakeCase);
+        addSwitch(USE_WRAPPER_TYPES, "Use primitive well-known wrappers types.", useWrapperTypes);
     }
 
     @Override
@@ -235,8 +231,63 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
         if (additionalProperties.containsKey(this.FIELD_NAMES_IN_SNAKE_CASE)) {
             this.fieldNamesInSnakeCase = convertPropertyToBooleanAndWriteBack(FIELD_NAMES_IN_SNAKE_CASE);
         }
+        if (additionalProperties.containsKey(ProtobufSchemaCodegen.USE_WRAPPER_TYPES)) {
+            this.useWrapperTypes = convertPropertyToBooleanAndWriteBack(USE_WRAPPER_TYPES);
+        }
+        configureTypeMapping();
 
         supportingFiles.add(new SupportingFile("README.mustache", "", "README.md"));
+    }
+
+    private void configureTypeMapping() {
+        languageSpecificPrimitives = new HashSet<>(
+                Arrays.asList(
+                        "map",
+                        "array",
+                        "sint32",
+                        "sint64",
+                        "fixed32",
+                        "fixed64",
+                        "sfixed32",
+                        "sfixed64"));
+        if(useWrapperTypes) {
+            languageSpecificPrimitives.addAll(protoWrapperTypesMapping.values());
+        } else {
+            languageSpecificPrimitives.addAll(protoWrapperTypesMapping.keySet());
+        }
+
+        // ref: https://developers.google.com/protocol-buffers/docs/proto
+        typeMapping.clear();
+        typeMapping.put("array", "array");
+        typeMapping.put("map", "map");
+        typeMapping.put("integer", protobufType("int32"));
+        typeMapping.put("long", protobufType("int64"));
+        typeMapping.put("number", protobufType("float"));
+        typeMapping.put("float", protobufType("float"));
+        typeMapping.put("double", protobufType("double"));
+        typeMapping.put("boolean", protobufType("bool"));
+        typeMapping.put("string", protobufType("string"));
+        typeMapping.put("UUID", protobufType("string"));
+        typeMapping.put("URI", protobufType("string"));
+        typeMapping.put("date", "google.type.Date");
+        typeMapping.put("time", "google.type.TimeOfDay");
+        typeMapping.put("DateTime", "google.protobuf.Timestamp");
+        typeMapping.put("duration", "google.protobuf.Duration");
+        typeMapping.put("password", protobufType("string"));
+        // TODO fix file mapping
+        typeMapping.put("file", protobufType("string"));
+        typeMapping.put("binary", protobufType("string"));
+        typeMapping.put("ByteArray", protobufType("bytes"));
+        typeMapping.put("object", "google.protobuf.Any");
+        typeMapping.put("AnyType", "google.protobuf.Any");
+    }
+
+    private String protobufType(String primitiveType) {
+        if(useWrapperTypes && protoWrapperTypesMapping.containsKey(primitiveType)) {
+            return protoWrapperTypesMapping.get(primitiveType);
+        } else {
+            return primitiveType;
+        }
     }
 
     @Override
@@ -253,6 +304,23 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
         }
 
         return camelize(sanitizeName(operationId));
+    }
+
+    @Override
+    public CodegenModel fromModel(String name, Schema schema) {
+    	CodegenModel model = super.fromModel(name, schema);
+    	if (model.getDiscriminator() != null) {
+    		// Add descriminator as a var if not defined as an attribute already
+        	CodegenProperty discriminatorProperty = new CodegenProperty();
+        	discriminatorProperty.setDatatype(model.getDiscriminator().getPropertyType());
+        	discriminatorProperty.isString = true;
+        	discriminatorProperty.setRequired(false);
+        	discriminatorProperty.setName(model.getDiscriminator().getPropertyName());
+        	if (!modelVarsContainsVar(model.getVars(), discriminatorProperty)) {
+        		model.getVars().add(discriminatorProperty);
+        	}
+    	}
+    	return model;
     }
 
     /**
@@ -890,6 +958,7 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
     @Override
     public Map<String, ModelsMap> postProcessAllModels(Map<String, ModelsMap> objs) {
         super.postProcessAllModels(objs);
+        super.updateAllModels(objs);
 
         Map<String, CodegenModel> allModels = this.getAllModels(objs);
 
@@ -898,7 +967,7 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
             if (!cm.allOf.isEmpty() && cm.getParentModel() != null) {
                 CodegenModel parentCM = cm.getParentModel();
                 for (CodegenProperty var : cm.getVars()) {
-                    if (!parentVarsContainsVar(parentCM.vars, var)) {
+                    if (!modelVarsContainsVar(parentCM.vars, var)) {
                         parentCM.vars.add(var);
                     }
                 }
@@ -908,9 +977,33 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
                         .filter(importFromList -> !parentCM.getClassname().equalsIgnoreCase(importFromList) && !cm.getClassname().equalsIgnoreCase(importFromList))
                         .forEach(importFromList -> this.addImport(objs, parentCM, importFromList));
             }
+
+            if (cm.getDiscriminator() != null && cm.hasChildren) {
+                // add discriminator as a var for all children, if not already defined
+                CodegenProperty discriminatorProperty = getVarWithName(cm.getDiscriminator().getPropertyName(), cm.getVars());
+                if (discriminatorProperty != null) {
+                    cm.getChildren().stream()
+                        .forEach(child -> addVarIfNotAlreadyPresent(child, discriminatorProperty));
+                }
+            }
         }
         return objs;
     }
+
+    private CodegenProperty getVarWithName(String propertyName, List<CodegenProperty> vars) {
+		for (CodegenProperty var : vars) {
+			if (propertyName.equals(var.getName())) {
+				return var;
+			}
+		}
+		return null;
+	}
+
+	private void addVarIfNotAlreadyPresent(CodegenModel model, CodegenProperty newVar) {
+    	if (!modelVarsContainsVar(model.getVars(), newVar)) {
+    		model.getVars().add(newVar);
+    	}
+	}
 
     public void addImport(Map<String, ModelsMap> objs, CodegenModel cm, String importValue) {
         String mapping = importMapping().get(importValue);
@@ -1249,17 +1342,17 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
     }
 
     /**
-     * Checks if the var provided is already in the list of the parent's vars, matching the type and the name
+     * Checks if the var provided is already in the list of the model's vars, matching the type and the name
      *
-     * @param parentVars list of parent's vars
+     * @param modelVars list of model's vars
      * @param var        var to compare
-     * @return true if the var is already in the parent's list, false otherwise
+     * @return true if the var is already in the model's list, false otherwise
      */
-    private boolean parentVarsContainsVar(List<CodegenProperty> parentVars, CodegenProperty var) {
+    private boolean modelVarsContainsVar(List<CodegenProperty> modelVars, CodegenProperty var) {
         boolean containsVar = false;
-        for (CodegenProperty parentVar : parentVars) {
-            if (var.getDataType().equals(parentVar.getDataType())
-                    && var.getName().equals(parentVar.getName())) {
+        for (CodegenProperty modelVar : modelVars) {
+            if (var.getDataType().equals(modelVar.getDataType())
+                    && var.getName().equals(modelVar.getName())) {
                 containsVar = true;
                 break;
             }
