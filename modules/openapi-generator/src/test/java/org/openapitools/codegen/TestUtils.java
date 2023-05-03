@@ -14,6 +14,7 @@ import io.swagger.v3.oas.models.servers.Server;
 import io.swagger.v3.parser.core.models.ParseOptions;
 
 import org.apache.commons.io.IOUtils;
+import org.jetbrains.kotlin.org.jline.utils.Log;
 import org.openapitools.codegen.MockDefaultGenerator.WrittenTemplateBasedFile;
 import org.openapitools.codegen.java.assertions.JavaFileAssert;
 import org.openapitools.codegen.model.ModelMap;
@@ -116,21 +117,6 @@ public class TestUtils {
         Optional<WrittenTemplateBasedFile> optional = generator.getTemplateBasedFiles().stream().filter(f -> defaultApiFilename.equals(f.getOutputFilename())).findFirst();
         Assert.assertTrue(optional.isPresent());
         return optional.get();
-    }
-
-    /**
-     * Remove all the content from a directory then deletes it
-     *
-     * @param targetDirectory path to the directory that will be deleted
-     * @throws IOException
-     */
-    public static void deleteDirectoryWithContent(File targetDirectory) throws IOException {
-        Path targetPath = targetDirectory.toPath();
-
-        Files.walk(targetPath)
-                .sorted(Comparator.reverseOrder())
-                .map(Path::toFile)
-                .forEach(File::delete);
     }
 
     public static void assertFileEquals(Path generatedFilePath, Path expectedFilePath) throws IOException {
