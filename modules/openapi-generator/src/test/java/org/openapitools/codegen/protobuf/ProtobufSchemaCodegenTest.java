@@ -59,7 +59,7 @@ public class ProtobufSchemaCodegenTest {
             List<File> files = generate(output, properties, globalProperties, "src/test/resources/3_0/allOf_composition_discriminator.yaml");
             TestUtils.ensureContainsFile(files, output, "models/pet.proto");
             Path path = Paths.get(output + "/models/pet.proto");
-            assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/pet.proto"));
+            TestUtils.assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/pet.proto"));
         } finally {
             TestUtils.deleteDirectoryWithContent(output);
         }
@@ -74,7 +74,7 @@ public class ProtobufSchemaCodegenTest {
             List<File> files = generate(output, properties, globalProperties, "src/test/resources/3_0/protobuf-schema/extension-field-number.yaml");
             TestUtils.ensureContainsFile(files, output, "models/pet.proto");
             Path path = Paths.get(output + "/models/pet.proto");
-            assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/extension-field-number.proto"));
+            TestUtils.assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/extension-field-number.proto"));
         } finally {
             TestUtils.deleteDirectoryWithContent(output);
         }
@@ -90,7 +90,7 @@ public class ProtobufSchemaCodegenTest {
             List<File> files = generate(output, properties, globalProperties, "src/test/resources/3_0/protobuf-schema/automatic-ordered-index-generation.yaml");
             TestUtils.ensureContainsFile(files, output, "models/pet.proto");
             Path path = Paths.get(output + "/models/pet.proto");
-            assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/automatic-ordered-index-generation.proto"));
+            TestUtils.assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/automatic-ordered-index-generation.proto"));
         } finally {
             TestUtils.deleteDirectoryWithContent(output);
         }
@@ -166,7 +166,7 @@ public class ProtobufSchemaCodegenTest {
             List<File> files = generate(output, properties, globalProperties, "src/test/resources/3_0/protobuf-schema/enum.yaml");
             TestUtils.ensureContainsFile(files, output, "models/status.proto");
             Path path = Paths.get(output + "/models/status.proto");
-            assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/enum.proto"));
+            TestUtils.assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/enum.proto"));
         } finally {
             TestUtils.deleteDirectoryWithContent(output);
         }
@@ -182,7 +182,7 @@ public class ProtobufSchemaCodegenTest {
             List<File> files = generate(output, properties, globalProperties, "src/test/resources/3_0/protobuf-schema/name-snakecase.yaml");
             TestUtils.ensureContainsFile(files, output, "models/pet.proto");
             Path path = Paths.get(output + "/models/pet.proto");
-            assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/name-snakecase.proto"));
+            TestUtils.assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/name-snakecase.proto"));
         } finally {
             TestUtils.deleteDirectoryWithContent(output);
         }       
@@ -197,7 +197,7 @@ public class ProtobufSchemaCodegenTest {
             List<File> files = generate(output, properties, globalProperties, "src/test/resources/3_0/protobuf-schema/extension-name.yaml");
             TestUtils.ensureContainsFile(files, output, "models/pet.proto");
             Path path = Paths.get(output + "/models/pet.proto");
-            assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/extension-name.proto"));
+            TestUtils.assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/extension-name.proto"));
         } finally {
             TestUtils.deleteDirectoryWithContent(output);
         }       
@@ -212,7 +212,7 @@ public class ProtobufSchemaCodegenTest {
             List<File> files = generate(output, properties, globalProperties, "src/test/resources/3_0/protobuf-schema/extension-field-name.yaml");
             TestUtils.ensureContainsFile(files, output, "models/pet.proto");
             Path path = Paths.get(output + "/models/pet.proto");
-            assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/extension-field-name.proto"));
+            TestUtils.assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/extension-field-name.proto"));
         } finally {
             TestUtils.deleteDirectoryWithContent(output);
         }       
@@ -243,7 +243,7 @@ public class ProtobufSchemaCodegenTest {
             List<File> files = generate(output, properties, globalProperties, "src/test/resources/3_0/protobuf-schema/extension-enum-indexes.yaml");
             TestUtils.ensureContainsFile(files, output, "models/pet.proto");
             Path path = Paths.get(output + "/models/pet.proto");
-            assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/extension-enum-indexes.proto"));
+            TestUtils.assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/extension-enum-indexes.proto"));
         } finally {
             TestUtils.deleteDirectoryWithContent(output);
         }
@@ -258,7 +258,7 @@ public class ProtobufSchemaCodegenTest {
             List<File> files = generate(output, properties, globalProperties, "src/test/resources/3_0/protobuf-schema/extension-enum-missing-index.yaml");
             TestUtils.ensureContainsFile(files, output, "models/pet.proto");
             Path path = Paths.get(output + "/models/pet.proto");
-            assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/extension-enum-missing-index.proto"));
+            TestUtils.assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/extension-enum-missing-index.proto"));
         } finally {
             TestUtils.deleteDirectoryWithContent(output);
         }
@@ -354,8 +354,7 @@ public class ProtobufSchemaCodegenTest {
             List<File> files = generate(output, properties, globalProperties, "src/test/resources/3_0/protobuf-schema/extension-enum-descriptions.yaml");
             TestUtils.ensureContainsFile(files, output, "models/pet.proto");
             Path path = Paths.get(output + "/models/pet.proto");
-            assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/extension-enum-descriptions.proto"));
-
+            TestUtils.assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/extension-enum-descriptions.proto"));
         } finally {
             TestUtils.deleteDirectoryWithContent(output);
         }
@@ -386,8 +385,7 @@ public class ProtobufSchemaCodegenTest {
             List<File> files = generate(output, properties, globalProperties, "src/test/resources/3_0/protobuf-schema/extension-ama-enum.yaml");
             TestUtils.ensureContainsFile(files, output, "models/pet.proto");
             Path path = Paths.get(output + "/models/pet.proto");
-            assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/extension-ama-enum.proto"));
-
+            TestUtils.assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/extension-ama-enum.proto"));
         } finally {
             TestUtils.deleteDirectoryWithContent(output);
         }
@@ -402,8 +400,7 @@ public class ProtobufSchemaCodegenTest {
             List<File> files = generate(output, properties, globalProperties, "src/test/resources/3_0/protobuf-schema/extension-ama-enum-non-matching-item.yaml");
             TestUtils.ensureContainsFile(files, output, "models/pet.proto");
             Path path = Paths.get(output + "/models/pet.proto");
-            assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/extension-ama-enum-non-matching-item.proto"));
-
+            TestUtils.assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/extension-ama-enum-non-matching-item.proto"));
         } finally {
             TestUtils.deleteDirectoryWithContent(output);
         }
@@ -429,14 +426,12 @@ public class ProtobufSchemaCodegenTest {
     public void testPropertyAnyType1() throws IOException {
         Map<String, Object> properties = new HashMap<>();
         Map<String, String> globalProperties = new HashMap<>();
-
         File output = Files.createTempDirectory("test").toFile();
         try {
             List<File> files = generate(output, properties, globalProperties, "src/test/resources/3_0/protobuf-schema/property-any-type-1.yaml");
             TestUtils.ensureContainsFile(files, output, "models/pet.proto");
             Path path = Paths.get(output + "/models/pet.proto");
-            assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/property-any-type.proto"));
-
+            TestUtils.assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/property-any-type.proto"));
         } finally {
             TestUtils.deleteDirectoryWithContent(output);
         }
@@ -446,14 +441,12 @@ public class ProtobufSchemaCodegenTest {
     public void testPropertyAnyType2() throws IOException {
         Map<String, Object> properties = new HashMap<>();
         Map<String, String> globalProperties = new HashMap<>();
-
         File output = Files.createTempDirectory("test").toFile();
         try {
             List<File> files = generate(output, properties, globalProperties, "src/test/resources/3_0/protobuf-schema/property-any-type-2.yaml");
             TestUtils.ensureContainsFile(files, output, "models/pet.proto");
             Path path = Paths.get(output + "/models/pet.proto");
-            assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/property-any-type.proto"));
-
+            TestUtils.assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/property-any-type.proto"));
         } finally {
             TestUtils.deleteDirectoryWithContent(output);
         }
@@ -463,14 +456,12 @@ public class ProtobufSchemaCodegenTest {
     public void testOperationAnyType() throws IOException {
         Map<String, Object> properties = new HashMap<>();
         Map<String, String> globalProperties = new HashMap<>();
-
         File output = Files.createTempDirectory("test").toFile();
         try {
             List<File> files = generate(output, properties, globalProperties, "src/test/resources/3_0/protobuf-schema/operation-any-type.yaml");
             TestUtils.ensureContainsFile(files, output, "services/default_service.proto");
             Path path = Paths.get(output + "/services/default_service.proto");
-            assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/operation-any-type.proto"));
-
+            TestUtils.assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/operation-any-type.proto"));
         } finally {
             TestUtils.deleteDirectoryWithContent(output);
         }
@@ -481,14 +472,12 @@ public class ProtobufSchemaCodegenTest {
         Map<String, Object> properties = new HashMap<>();
         properties.put("startEnumsWithUnknown", true);
         Map<String, String> globalProperties = new HashMap<>();
-
         File output = Files.createTempDirectory("test").toFile();
         try {
             List<File> files = generate(output, properties, globalProperties, "src/test/resources/3_0/protobuf-schema/no-duplicate-enum-unknown-value-allOf.yaml");
             TestUtils.ensureContainsFile(files, output, "models/cat.proto");
             Path path = Paths.get(output + "/models/cat.proto");
-            assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/no-duplicate-enum-unknown-value-allOf.proto"));
-
+            TestUtils.assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/no-duplicate-enum-unknown-value-allOf.proto"));
         } finally {
             TestUtils.deleteDirectoryWithContent(output);
         }
@@ -503,16 +492,15 @@ public class ProtobufSchemaCodegenTest {
         properties.put("startEnumsWithUnspecified", true);
         properties.put("removeEnumValuePrefix", false);
         Map<String, String> globalProperties = new HashMap<>();
-
         File output = Files.createTempDirectory("test").toFile();
         try {
             List<File> files = generate(output, properties, globalProperties, "src/test/resources/3_0/protobuf-schema/custom-options.yaml");
             TestUtils.ensureContainsFile(files, output, "models/pet.proto");
             TestUtils.ensureContainsFile(files, output, "custom_options/ama_custom_options.proto");
             Path path = Paths.get(output + "/models/pet.proto");
-            assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/custom-options.proto"));
+            TestUtils.assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/custom-options.proto"));
             path = Paths.get(output + "/custom_options/ama_custom_options.proto");
-            assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/ama_custom_options.proto"));
+            TestUtils.assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/ama_custom_options.proto"));
         } finally {
             TestUtils.deleteDirectoryWithContent(output);
         }
@@ -527,14 +515,12 @@ public class ProtobufSchemaCodegenTest {
         properties.put("startEnumsWithUnspecified", true);
         properties.put("removeEnumValuePrefix", false);
         Map<String, String> globalProperties = new HashMap<>();
-
         File output = Files.createTempDirectory("test").toFile();
         try {
             List<File> files = generate(output, properties, globalProperties, "src/test/resources/3_0/protobuf-schema/custom-option-array.yaml");
             TestUtils.ensureContainsFile(files, output, "models/pet.proto");
             Path path = Paths.get(output + "/models/pet.proto");
-            assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/custom-option-array.proto"));
-
+            TestUtils.assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/custom-option-array.proto"));
         } finally {
             TestUtils.deleteDirectoryWithContent(output);
         }
@@ -549,13 +535,12 @@ public class ProtobufSchemaCodegenTest {
         properties.put("startEnumsWithUnspecified", true);
         properties.put("removeEnumValuePrefix", false);
         Map<String, String> globalProperties = new HashMap<>();
-
         File output = Files.createTempDirectory("test").toFile();
         try {
                 List<File> files = generate(output, properties, globalProperties, "src/test/resources/3_0/protobuf-schema/custom-option-no-category.yaml");
                 TestUtils.ensureContainsFile(files, output, "models/pet.proto");
                 Path path = Paths.get(output + "/models/pet.proto");
-                assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/custom-option-no-category.proto"));
+                TestUtils.assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/custom-option-no-category.proto"));
         } finally {
             TestUtils.deleteDirectoryWithContent(output);
         }
@@ -585,22 +570,20 @@ public class ProtobufSchemaCodegenTest {
     public void testExtensionModelPackage() throws IOException {
         Map<String, Object> properties = new HashMap<>();
         Map<String, String> globalProperties = new HashMap<>();
-
         File output = Files.createTempDirectory("test").toFile();
         try {
             List<File> files = generate(output, properties, globalProperties, "src/test/resources/3_0/package_structure/my_package/foo/extension-package-name.yaml");
-        // generation in different folders according to x-package-name
+            // generation in different folders according to x-package-name
             TestUtils.ensureContainsFile(files, output, "my_package/foo/pet.proto");
             TestUtils.ensureContainsFile(files, output, "my_package/bar/photo.proto");
             TestUtils.ensureContainsFile(files, output, "models/tag.proto");
         
             Path path = Paths.get(output + "/my_package/foo/pet.proto");
-            assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/package_structure/my_package/foo/pet.proto"));
-        path = Paths.get(output + "/my_package/bar/photo.proto");
-            assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/package_structure/my_package/bar/photo.proto"));
-        path = Paths.get(output + "/models/tag.proto");
-            assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/package_structure/models/tag.proto"));
-
+            TestUtils.assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/package_structure/my_package/foo/pet.proto"));
+            path = Paths.get(output + "/my_package/bar/photo.proto");
+            TestUtils.assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/package_structure/my_package/bar/photo.proto"));
+            path = Paths.get(output + "/models/tag.proto");
+            TestUtils.assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/package_structure/models/tag.proto"));
         } finally {
             TestUtils.deleteDirectoryWithContent(output);
         }
@@ -610,7 +593,6 @@ public class ProtobufSchemaCodegenTest {
     public void testTimeTypes() throws IOException {
         Map<String, Object> properties = new HashMap<>();
         Map<String, String> globalProperties = new HashMap<>();
-
         File output = Files.createTempDirectory("test").toFile();
         try {
             List<File> files = generate(output, properties, globalProperties, "src/test/resources/3_0/protobuf-schema/time-types.yaml");
@@ -618,8 +600,7 @@ public class ProtobufSchemaCodegenTest {
             TestUtils.ensureContainsFile(files, output, "google/type/date.proto");
             TestUtils.ensureContainsFile(files, output, "google/type/timeofday.proto");
             Path path = Paths.get(output + "/models/pet.proto");
-            assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/time-types.proto"));
-
+            TestUtils.assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/time-types.proto"));
         } finally {
             TestUtils.deleteDirectoryWithContent(output);
         }
@@ -637,20 +618,10 @@ public class ProtobufSchemaCodegenTest {
             List<File> files = generate(output, properties, globalProperties, "src/test/resources/3_0/protobuf-schema/google-wrapper-types.yaml");
             TestUtils.ensureContainsFile(files, output, "models/var1.proto");
             Path path = Paths.get(output + "/models/var1.proto");
-            assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/google-wrapper-types.proto"));
-
+            TestUtils.assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/google-wrapper-types.proto"));
         } finally {
             TestUtils.deleteDirectoryWithContent(output);
         }
-    }
-
-    private void assertFileEquals(Path generatedFilePath, Path expectedFilePath) throws IOException {
-        String generatedFile = new String(Files.readAllBytes(generatedFilePath), StandardCharsets.UTF_8)
-            .replace("\n", "").replace("\r", "");
-        String expectedFile = new String(Files.readAllBytes(expectedFilePath), StandardCharsets.UTF_8)
-            .replace("\n", "").replace("\r", "");
-
-        assertEquals(generatedFile, expectedFile);
     }
 
     private List<File> generate(File output, Map<String, Object> properties, Map<String, String> globalProperties, String inputFile) {        

@@ -1,10 +1,5 @@
 package org.openapitools.codegen;
 
-import static org.testng.Assert.assertNotNull;
-import static org.testng.Assert.fail;
-import static org.testng.Assert.assertTrue;
-import static org.testng.Assert.assertFalse;
-
 import com.github.javaparser.JavaParser;
 import com.github.javaparser.ParserConfiguration;
 import com.github.javaparser.ParseResult;
@@ -37,6 +32,8 @@ import java.nio.file.Path;
 import java.util.*;
 
 import com.google.common.collect.ImmutableMap;
+
+import static org.testng.Assert.*;
 
 public class TestUtils {
 
@@ -134,6 +131,15 @@ public class TestUtils {
                 .sorted(Comparator.reverseOrder())
                 .map(Path::toFile)
                 .forEach(File::delete);
+    }
+
+    public static void assertFileEquals(Path generatedFilePath, Path expectedFilePath) throws IOException {
+        String generatedFile = new String(Files.readAllBytes(generatedFilePath), StandardCharsets.UTF_8)
+                .replace("\n", "").replace("\r", "");
+        String expectedFile = new String(Files.readAllBytes(expectedFilePath), StandardCharsets.UTF_8)
+                .replace("\n", "").replace("\r", "");
+
+        assertEquals(generatedFile, expectedFile);
     }
 
     public static void ensureContainsFile(List<File> generatedFiles, File root, String filename) {
