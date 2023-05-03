@@ -34,11 +34,7 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 import com.google.common.collect.ImmutableMap;
 
@@ -123,6 +119,21 @@ public class TestUtils {
         Optional<WrittenTemplateBasedFile> optional = generator.getTemplateBasedFiles().stream().filter(f -> defaultApiFilename.equals(f.getOutputFilename())).findFirst();
         Assert.assertTrue(optional.isPresent());
         return optional.get();
+    }
+
+    /**
+     * Remove all the content from a directory then deletes it
+     *
+     * @param targetDirectory path to the directory that will be deleted
+     * @throws IOException
+     */
+    public static void deleteDirectoryWithContent(File targetDirectory) throws IOException {
+        Path targetPath = targetDirectory.toPath();
+
+        Files.walk(targetPath)
+                .sorted(Comparator.reverseOrder())
+                .map(Path::toFile)
+                .forEach(File::delete);
     }
 
     public static void ensureContainsFile(List<File> generatedFiles, File root, String filename) {
