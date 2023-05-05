@@ -604,6 +604,7 @@ public class InlineModelResolver {
         List<String> modelNames = new ArrayList<String>(models.keySet());
         for (String modelName : modelNames) {
             Schema model = models.get(modelName);
+            model.setName(modelName);
             if (ModelUtils.isComposedSchema(model)) {
                 ComposedSchema m = (ComposedSchema) model;
                 // inline child schemas
@@ -733,6 +734,7 @@ public class InlineModelResolver {
                 ObjectSchema op = (ObjectSchema) property;
                 String modelName = resolveModelName(op.getTitle(), path + "_" + key);
                 Schema model = modelFromProperty(openAPI, op, modelName);
+                model.setName(key);
                 String existing = matchGenerated(model);
                 if (existing != null) {
                     Schema schema = new Schema().$ref(existing);

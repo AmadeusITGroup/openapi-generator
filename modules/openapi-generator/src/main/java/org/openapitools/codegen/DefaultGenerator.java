@@ -274,6 +274,8 @@ public class DefaultGenerator implements Generator {
 
         config.preprocessOpenAPI(openAPI);
 
+        checkSchemas(openAPI.getComponents().getSchemas());
+
         // set OpenAPI to make these available to all methods
         config.setOpenAPI(openAPI);
 
@@ -297,6 +299,61 @@ public class DefaultGenerator implements Generator {
         } else {
             basePath = removeTrailingSlash(config.escapeText(URLPathUtils.getHost(openAPI, config.serverVariableOverrides())));
         }
+    }
+
+    private void checkSchemas(Map<String, Schema> schemas) {
+        for (Map.Entry<String, Schema> schema : schemas.entrySet()) {
+            Set<String> duplicateSchemas = findDuplicates(schema, schemas);
+            if (duplicateSchemas != null && !duplicateSchemas.isEmpty() && isConflictingProperties(duplicateSchemas, schemas)) {
+                LOGGER.error("At least components '" + StringUtils.join(duplicateSchemas, ", ") + "' are duplicated with differences. Maybe not listed components are duplicated too.");
+                throw new RuntimeException("At least components '" + StringUtils.join(duplicateSchemas, ", ") + "' are duplicated with differences. Maybe not listed components are duplicated too.");
+            }
+        }
+    }
+
+    private boolean isConflictingProperties(Set<String> duplicateSchemas, Map<String, Schema> schemas) {
+        StringBuilder reference = new StringBuilder();
+        for (String schemaName : duplicateSchemas) {
+            Schema schema = schemas.get(schemaName);
+
+            Map<String, Schema> properties = schema.getProperties();
+
+            if (reference.length() == 0) {
+                for (Map.Entry<String, Schema> property : properties.entrySet()) {
+                    reference.append(property.getKey()).append(property.getValue().getType());
+                }
+                continue;
+            }
+
+            StringBuilder currentType = new StringBuilder();
+            for (Map.Entry<String, Schema> property : properties.entrySet()) {
+                currentType.append(property.getKey()).append(property.getValue().getType());
+            }
+
+            if (!reference.toString().equals(currentType.toString())) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private Set findDuplicates(Map.Entry<String, Schema> refSchema, Map<String, Schema> schemas) {
+        Set<String> duplicateSchemas = new HashSet<>();
+        String schemaKey = refSchema.getKey();
+
+        for (Map.Entry<String, Schema> schema : schemas.entrySet()) {
+            if (refSchema.getValue().getName() != null && schema.getValue().getName() != null) {
+                if (!schema.getKey().equals(schemaKey)
+                        && !duplicateSchemas.contains(schemaKey)
+                        && refSchema.getValue().getName().equals(schema.getValue().getName())) {
+                    duplicateSchemas.add(schemaKey);
+                    duplicateSchemas.add(schema.getKey());
+                }
+            }
+        }
+
+        return duplicateSchemas;
     }
 
     private void configureOpenAPIInfo() {
