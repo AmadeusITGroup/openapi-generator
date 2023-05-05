@@ -544,6 +544,18 @@ public class ProtobufSchemaCodegenTest {
         FileUtils.deleteDirectory(output);
     }
 
+    @Test
+    public void testRefError() throws IOException {
+        Map<String, Object> properties = new HashMap<>();
+        Map<String, String> globalProperties = new HashMap<>();
+        File output = Files.createTempDirectory("test").toFile();
+        List<File> files = generate(output, properties, globalProperties, "src/test/resources/3_0/protobuf-schema/test-ref.yaml");
+        TestUtils.ensureContainsFile(files, output, "models/var1.proto");
+        Path path = Paths.get(output + "/models/var1.proto");
+        TestUtils.assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/test-ref.proto"));
+        FileUtils.deleteDirectory(output);
+    }
+
     private List<File> generate(File output, Map<String, Object> properties, Map<String, String> globalProperties, String inputFile) {        
         final CodegenConfigurator configurator = new CodegenConfigurator()
                 .setGeneratorName("protobuf-schema")
