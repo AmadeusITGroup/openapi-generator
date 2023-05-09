@@ -27,6 +27,7 @@ import org.openapitools.codegen.meta.features.WireFormatFeature;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.testng.Assert.*;
 
 import java.io.File;
@@ -46,6 +47,76 @@ public class ProtobufSchemaCodegenTest {
         FeatureSet featureSet = codegen.getGeneratorMetadata().getFeatureSet();
         Assert.assertTrue(featureSet.getWireFormatFeatures().contains(WireFormatFeature.PROTOBUF));
         Assert.assertEquals(featureSet.getWireFormatFeatures().size(), 1);
+    }
+
+    @Test
+    public void testCodeGenWithConflictingPropertiesName() throws IOException {
+        Map<String, Object> properties = new HashMap<>();
+        Map<String, String> globalProperties = new HashMap<>();
+        // set line break to \n across all platforms
+        System.setProperty("line.separator", "\n");
+
+        properties.put("checkPropertiesDuplication", true);
+
+        File output = Files.createTempDirectory("test").toFile();
+        assertThatThrownBy(() ->
+                generate(output, properties, globalProperties, "src/test/resources/3_0/protobuf-schema/conflictPropertiesName.yaml"))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessage("Property 'var12' is duplicated with same protobuf index value");
+    }
+
+    @Test
+    public void testCodeGenWithConflictingPropertiesNameWithInheritance() throws IOException {
+        Map<String, Object> properties = new HashMap<>();
+        Map<String, String> globalProperties = new HashMap<>();
+        // set line break to \n across all platforms
+        System.setProperty("line.separator", "\n");
+
+        properties.put("checkPropertiesDuplication", true);
+
+        File output = Files.createTempDirectory("test").toFile();
+        List<File> files = generate(output, properties, globalProperties, "src/test/resources/3_0/protobuf-schema/conflictPropertiesNameWithInheritance.yaml");
+
+        // TODO : Verify with Fabrice that is indeed the goal of this test
+        TestUtils.ensureContainsFile(files, output, "models/pet.proto");
+        Path path = Paths.get(output + "/models/pet.proto");
+        TestUtils.assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/conflictPropertiesNameWithInheritancePet.proto"));
+        TestUtils.ensureContainsFile(files, output, "models/cat.proto");
+        path = Paths.get(output + "/models/cat.proto");
+        TestUtils.assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/conflictPropertiesNameWithInheritanceCat.proto"));
+        TestUtils.ensureContainsFile(files, output, "models/dog.proto");
+        path = Paths.get(output + "/models/dog.proto");
+        TestUtils.assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/conflictPropertiesNameWithInheritanceDog.proto"));
+
+        FileUtils.deleteDirectory(output);
+    }
+
+    @Test
+    public void testCodeGenWithConflictingPropertiesNumber() throws IOException {
+        Map<String, Object> properties = new HashMap<>();
+        Map<String, String> globalProperties = new HashMap<>();
+        // set line break to \n across all platforms
+        System.setProperty("line.separator", "\n");
+
+        File output = Files.createTempDirectory("test").toFile();
+        assertThatThrownBy(() ->
+                generate(output, properties, globalProperties, "src/test/resources/3_0/protobuf-schema/conflictPropertiesNumber.yaml"))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessage("At least components 'offerPayload_allOf_offerData_offerSet, travelOfferPayload_allOf_offerData_offerSet' are duplicated with differences. Maybe not listed components are duplicated too.");
+    }
+
+    @Test
+    public void testCodeGenWithConflictingPropertiesType() throws IOException {
+        Map<String, Object> properties = new HashMap<>();
+        Map<String, String> globalProperties = new HashMap<>();
+        // set line break to \n across all platforms
+        System.setProperty("line.separator", "\n");
+
+        File output = Files.createTempDirectory("test").toFile();
+        assertThatThrownBy(() ->
+                generate(output, properties, globalProperties, "src/test/resources/3_0/protobuf-schema/conflictPropertiesType.yaml"))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessage("At least components 'offerPayload_allOf_offerData_offerSet, travelOfferPayload_allOf_offerData_offerSet' are duplicated with differences. Maybe not listed components are duplicated too.");
     }
 
     @Test
@@ -166,7 +237,7 @@ public class ProtobufSchemaCodegenTest {
         TestUtils.ensureContainsFile(files, output, "models/pet.proto");
         Path path = Paths.get(output + "/models/pet.proto");
         TestUtils.assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/name-snakecase.proto"));
-        FileUtils.deleteDirectory(output);       
+        FileUtils.deleteDirectory(output);
     }
 
     @Test
@@ -178,7 +249,7 @@ public class ProtobufSchemaCodegenTest {
         TestUtils.ensureContainsFile(files, output, "models/pet.proto");
         Path path = Paths.get(output + "/models/pet.proto");
         TestUtils.assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/extension-name.proto"));
-        FileUtils.deleteDirectory(output);       
+        FileUtils.deleteDirectory(output);
     }
 
     @Test
@@ -190,7 +261,7 @@ public class ProtobufSchemaCodegenTest {
         TestUtils.ensureContainsFile(files, output, "models/pet.proto");
         Path path = Paths.get(output + "/models/pet.proto");
         TestUtils.assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/extension-field-name.proto"));
-        FileUtils.deleteDirectory(output);       
+        FileUtils.deleteDirectory(output);
     }
 
     @Test
@@ -417,12 +488,12 @@ public class ProtobufSchemaCodegenTest {
         properties.put("startEnumsWithUnknown", true);
         Map<String, String> globalProperties = new HashMap<>();
         File output = Files.createTempDirectory("test").toFile();
-        
+
         List<File> files = generate(output, properties, globalProperties, "src/test/resources/3_0/protobuf-schema/no-duplicate-enum-unknown-value-allOf.yaml");
         TestUtils.ensureContainsFile(files, output, "models/cat.proto");
         Path path = Paths.get(output + "/models/cat.proto");
         TestUtils.assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/no-duplicate-enum-unknown-value-allOf.proto"));
-        
+
     }
 
     @Test
