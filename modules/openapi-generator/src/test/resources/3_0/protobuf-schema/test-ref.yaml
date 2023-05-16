@@ -20,8 +20,12 @@ components:
           $ref: "#/components/schemas/test"
           x-protobuf-index: 3
         anotherTest:
-          $ref: "#/components/schemas/test"
+          $ref: "#/components/schemas/anotherTest"
           x-protobuf-index: 2
+        workingIndex:
+          allOf:
+            - $ref: "#/components/schemas/test"
+          x-protobuf-index: 1
     test:
       type: object
       properties:

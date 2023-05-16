@@ -12,10 +12,16 @@ syntax = "proto3";
 
 package openapitools;
 
-import "models/test.proto";
+import "models/var1_another_test.proto";
+import "models/var1_test.proto";
+import "models/var1_working_index.proto";
 
 message Var1 {
 
-  openapitools.Test test = 3556498;
+  openapitools.Var1Test test = 3;
+
+  openapitools.Var1AnotherTest anotherTest = 2;
+
+  openapitools.Var1WorkingIndex workingIndex = 1;
 
 }

@@ -39,8 +39,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static org.apache.commons.lang3.StringUtils.isEmpty;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
@@ -586,6 +592,11 @@ public class CodegenConfigurator {
         final List<AuthorizationValue> authorizationValues = AuthParser.parse(this.auth);
         ParseOptions options = new ParseOptions();
         options.setResolve(true);
+        try {
+            updateInputSpecReference();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         SwaggerParseResult result = new OpenAPIParser().readLocation(inputSpec, authorizationValues, options);
 
         // TODO: Move custom validations to a separate type as part of a "Workflow"
@@ -641,6 +652,33 @@ public class CodegenConfigurator {
         }
 
         return new Context<>(specification, generatorSettings, workflowSettings);
+    }
+
+    /*
+     * ODI-41 : Fix usage of x-protobuf-index for $ref fields
+     * This function automatically detect $ref that aren't part of an allOf and turn them into an allOf pattern
+     */
+    private void updateInputSpecReference() throws IOException {
+        String fileContent = new String(Files.readAllBytes(Paths.get(this.inputSpec)));
+        Pattern pattern = Pattern.compile("\\s*(?<!-\\s?)\\$ref\\s?:.*\\n");
+        Matcher matcher = pattern.matcher(fileContent);
+
+        if (matcher.find()) {
+            File newInputSpec = File.createTempFile("temp","spec");
+            StringBuffer sb = new StringBuffer();
+            do {
+                int location = matcher.group().indexOf("$");
+                String replacement = matcher.group().substring(0, location) + "allOf:" + matcher.group().substring(0,location) + " - \\" + matcher.group().substring(location);
+                matcher.appendReplacement(sb, replacement);
+            } while (matcher.find());
+            matcher.appendTail(sb);
+
+            FileWriter fw = new FileWriter(newInputSpec);
+            fw.write(sb.toString());
+            fw.close();
+
+            this.inputSpec = newInputSpec.getPath();
+        }
     }
 
     public ClientOptInput toClientOptInput() {
