@@ -592,11 +592,7 @@ public class CodegenConfigurator {
         final List<AuthorizationValue> authorizationValues = AuthParser.parse(this.auth);
         ParseOptions options = new ParseOptions();
         options.setResolve(true);
-        try {
-            updateInputSpecReference();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        updateInputSpecReference();
         SwaggerParseResult result = new OpenAPIParser().readLocation(inputSpec, authorizationValues, options);
 
         // TODO: Move custom validations to a separate type as part of a "Workflow"
@@ -658,26 +654,31 @@ public class CodegenConfigurator {
      * ODI-41 : Fix usage of x-protobuf-index for $ref fields
      * This function automatically detect $ref that aren't part of an allOf and turn them into an allOf pattern
      */
-    private void updateInputSpecReference() throws IOException {
-        String fileContent = new String(Files.readAllBytes(Paths.get(this.inputSpec)));
-        Pattern pattern = Pattern.compile("\\s*(?<!-\\s?)\\$ref\\s?:.*\\n");
-        Matcher matcher = pattern.matcher(fileContent);
+    private void updateInputSpecReference() {
+        try {
+            String fileContent = new String(Files.readAllBytes(Paths.get(this.inputSpec)));
+            Pattern pattern = Pattern.compile("\\n\\s*(?<!-\\s?)\\$ref\\s?:.*\\n(?![\\s\\S]*components:)");
+            Matcher matcher = pattern.matcher(fileContent);
 
-        if (matcher.find()) {
-            File newInputSpec = File.createTempFile("temp","spec");
-            StringBuffer sb = new StringBuffer();
-            do {
-                int location = matcher.group().indexOf("$");
-                String replacement = matcher.group().substring(0, location) + "allOf:" + matcher.group().substring(0,location) + " - \\" + matcher.group().substring(location);
-                matcher.appendReplacement(sb, replacement);
-            } while (matcher.find());
-            matcher.appendTail(sb);
+            // Check if there's any $ref first
+            if (matcher.find()) {
+                File newInputSpec = new File("src/main/resources/codegen/temporaryInputSpec.yaml");
+                StringBuffer sb = new StringBuffer();
+                do {
+                    int location = matcher.group().indexOf("$");
+                    String replacement = matcher.group().substring(0, location) + "allOf:" + matcher.group().substring(0, location) + " - \\" + matcher.group().substring(location);
+                    matcher.appendReplacement(sb, replacement);
+                } while (matcher.find());
+                matcher.appendTail(sb);
 
-            FileWriter fw = new FileWriter(newInputSpec);
-            fw.write(sb.toString());
-            fw.close();
+                FileWriter fw = new FileWriter(newInputSpec);
+                fw.write(sb.toString());
+                fw.close();
 
-            this.inputSpec = newInputSpec.getPath();
+                this.inputSpec = newInputSpec.getPath();
+            }
+        } catch (IOException e) {
+            throw(new RuntimeException("Error reading or writing the updated inputSpec error cause is : " + e.getCause()));
         }
     }
 
