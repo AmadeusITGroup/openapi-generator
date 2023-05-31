@@ -63,6 +63,8 @@ public class CodegenConfigurator {
 
     public static final Logger LOGGER = LoggerFactory.getLogger(CodegenConfigurator.class);
 
+    private static final String FIX_REFERENCE_FIELD_PROPERTY = "FixReferenceFieldProperty";
+
     private GeneratorSettings.Builder generatorSettingsBuilder = GeneratorSettings.newBuilder();
     private WorkflowSettings.Builder workflowSettingsBuilder = WorkflowSettings.newBuilder();
 
@@ -592,7 +594,9 @@ public class CodegenConfigurator {
         final List<AuthorizationValue> authorizationValues = AuthParser.parse(this.auth);
         ParseOptions options = new ParseOptions();
         options.setResolve(true);
-        updateInputSpecReference();
+        if (additionalProperties.containsKey(FIX_REFERENCE_FIELD_PROPERTY)) {
+            updateInputSpecReference();
+        }
         SwaggerParseResult result = new OpenAPIParser().readLocation(inputSpec, authorizationValues, options);
 
         // TODO: Move custom validations to a separate type as part of a "Workflow"
