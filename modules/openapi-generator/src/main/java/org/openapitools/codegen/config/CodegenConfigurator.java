@@ -63,7 +63,7 @@ public class CodegenConfigurator {
 
     public static final Logger LOGGER = LoggerFactory.getLogger(CodegenConfigurator.class);
 
-    private static final String FIX_REFERENCE_FIELD_PROPERTY = "FixReferenceFieldProperty";
+    private static final String UPDATE_REF_FIELD_PROPERTY_PARSING = "updateRefFieldPropertyParsing";
 
     private GeneratorSettings.Builder generatorSettingsBuilder = GeneratorSettings.newBuilder();
     private WorkflowSettings.Builder workflowSettingsBuilder = WorkflowSettings.newBuilder();
@@ -594,7 +594,7 @@ public class CodegenConfigurator {
         final List<AuthorizationValue> authorizationValues = AuthParser.parse(this.auth);
         ParseOptions options = new ParseOptions();
         options.setResolve(true);
-        if (additionalProperties.containsKey(FIX_REFERENCE_FIELD_PROPERTY)) {
+        if (additionalProperties.containsKey(UPDATE_REF_FIELD_PROPERTY_PARSING)) {
             updateInputSpecReference();
         }
         SwaggerParseResult result = new OpenAPIParser().readLocation(inputSpec, authorizationValues, options);

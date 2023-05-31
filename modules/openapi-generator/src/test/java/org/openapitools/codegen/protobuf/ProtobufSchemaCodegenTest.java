@@ -619,7 +619,7 @@ public class ProtobufSchemaCodegenTest {
     public void testRefError() throws IOException {
         Map<String, Object> properties = new HashMap<>();
         Map<String, String> globalProperties = new HashMap<>();
-        properties.put("FixReferenceFieldProperty", "true");
+        properties.put("updateRefFieldPropertyParsing", "true");
         File output = Files.createTempDirectory("test").toFile();
         List<File> files = generate(output, properties, globalProperties, "src/test/resources/3_0/protobuf-schema/test-ref.yaml");
         TestUtils.ensureContainsFile(files, output, "models/var1.proto");
