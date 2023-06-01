@@ -594,10 +594,17 @@ public class CodegenConfigurator {
         final List<AuthorizationValue> authorizationValues = AuthParser.parse(this.auth);
         ParseOptions options = new ParseOptions();
         options.setResolve(true);
+        String entrySpec = this.inputSpec;
         if (additionalProperties.containsKey(UPDATE_REF_FIELD_PROPERTY_PARSING)) {
-            updateInputSpecReference();
+            // May not create a temporary spec file
+            entrySpec = updateInputSpecReference();
         }
-        SwaggerParseResult result = new OpenAPIParser().readLocation(inputSpec, authorizationValues, options);
+        SwaggerParseResult result = new OpenAPIParser().readLocation(entrySpec, authorizationValues, options);
+
+        // Delete temporary spec file if created
+        if (!entrySpec.equals(this.inputSpec)) {
+            new File(entrySpec).delete();
+        }
 
         // TODO: Move custom validations to a separate type as part of a "Workflow"
         Set<String> validationMessages = new HashSet<>(null != result.getMessages() ? result.getMessages() : new ArrayList<>());
@@ -656,9 +663,10 @@ public class CodegenConfigurator {
 
     /*
      * ODI-41 : Fix usage of x-protobuf-index for $ref fields
-     * This function automatically detect $ref that aren't part of an allOf and turn them into an allOf pattern
+     * This method automatically detect $ref that aren't part of an allOf and turn them into an allOf pattern
+     * If the pattern match, the method returns a string path to the temporary modified inputSpec. It has to be deleted afterward.
      */
-    private void updateInputSpecReference() {
+    private String updateInputSpecReference() {
         try {
             String fileContent = new String(Files.readAllBytes(Paths.get(this.inputSpec)));
             Pattern pattern = Pattern.compile("\\n\\s*(?<!-\\s?)\\$ref\\s?:.*\\n(?![\\s\\S]*components:)");
@@ -666,7 +674,7 @@ public class CodegenConfigurator {
 
             // Check if there's any $ref first
             if (matcher.find()) {
-                File newInputSpec = new File("src/main/resources/codegen/temporaryInputSpec.yaml");
+                File newInputSpec = Files.createTempFile("temporaryInputSpec", ".yaml").toFile();
                 StringBuffer sb = new StringBuffer();
                 do {
                     int location = matcher.group().indexOf("$");
@@ -679,8 +687,11 @@ public class CodegenConfigurator {
                 fw.write(sb.toString());
                 fw.close();
 
-                this.inputSpec = newInputSpec.getPath();
+                return newInputSpec.getPath();
             }
+            // if no match
+            return this.inputSpec;
+
         } catch (IOException e) {
             throw(new RuntimeException("Error reading or writing the updated inputSpec error cause is : " + e.getCause()));
         }

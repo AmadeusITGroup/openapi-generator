@@ -473,6 +473,7 @@ public class ProtobufSchemaCodegenTest {
     public void testOperationAnyType() throws IOException {
         Map<String, Object> properties = new HashMap<>();
         Map<String, String> globalProperties = new HashMap<>();
+        properties.put("updateRefFieldPropertyParsing", "true");
         File output = Files.createTempDirectory("test").toFile();
 
         List<File> files = generate(output, properties, globalProperties, "src/test/resources/3_0/protobuf-schema/operation-any-type.yaml");
