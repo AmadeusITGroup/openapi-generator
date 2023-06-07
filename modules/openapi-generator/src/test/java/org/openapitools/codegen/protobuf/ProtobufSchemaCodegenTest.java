@@ -473,7 +473,6 @@ public class ProtobufSchemaCodegenTest {
     public void testOperationAnyType() throws IOException {
         Map<String, Object> properties = new HashMap<>();
         Map<String, String> globalProperties = new HashMap<>();
-        properties.put("updateRefFieldPropertyParsing", "true");
         File output = Files.createTempDirectory("test").toFile();
 
         List<File> files = generate(output, properties, globalProperties, "src/test/resources/3_0/protobuf-schema/operation-any-type.yaml");
@@ -617,7 +616,7 @@ public class ProtobufSchemaCodegenTest {
     }
 
     @Test
-    public void testRefError() throws IOException {
+    public void testReferenceFieldFix() throws IOException {
         Map<String, Object> properties = new HashMap<>();
         Map<String, String> globalProperties = new HashMap<>();
         properties.put("updateRefFieldPropertyParsing", "true");
@@ -626,6 +625,21 @@ public class ProtobufSchemaCodegenTest {
         TestUtils.ensureContainsFile(files, output, "models/var1.proto");
         Path path = Paths.get(output + "/models/var1.proto");
         TestUtils.assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/test-ref.proto"));
+        FileUtils.deleteDirectory(output);
+    }
+
+    // This test uses the same input and output as testOperationAnyType because the $ref shouldn't be replaced by the fix
+    @Test
+    public void testReferenceFieldFixNoReplace() throws IOException {
+        Map<String, Object> properties = new HashMap<>();
+        Map<String, String> globalProperties = new HashMap<>();
+        File output = Files.createTempDirectory("test").toFile();
+        properties.put("updateRefFieldPropertyParsing", "true");
+
+        List<File> files = generate(output, properties, globalProperties, "src/test/resources/3_0/protobuf-schema/operation-any-type.yaml");
+        TestUtils.ensureContainsFile(files, output, "services/default_service.proto");
+        Path path = Paths.get(output + "/services/default_service.proto");
+        TestUtils.assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/operation-any-type.proto"));
         FileUtils.deleteDirectory(output);
     }
 

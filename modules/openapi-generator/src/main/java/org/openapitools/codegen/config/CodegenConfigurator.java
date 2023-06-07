@@ -30,6 +30,7 @@ import io.swagger.v3.parser.core.models.SwaggerParseResult;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Validate;
+import org.commonmark.node.Link;
 import org.openapitools.codegen.*;
 import org.openapitools.codegen.api.TemplateDefinition;
 import org.openapitools.codegen.api.TemplatingEngineAdapter;
@@ -37,10 +38,12 @@ import org.openapitools.codegen.auth.AuthParser;
 import org.openapitools.codegen.utils.ModelUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.yaml.snakeyaml.LoaderOptions;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -64,7 +67,7 @@ public class CodegenConfigurator {
     public static final Logger LOGGER = LoggerFactory.getLogger(CodegenConfigurator.class);
 
     private static final String UPDATE_REF_FIELD_PROPERTY_PARSING = "updateRefFieldPropertyParsing";
-
+    private static final String[] KEYS_EXCLUDED_FROM_RECURSIVE_REFERENCE_SEARCH = {"requestBodies"};
     private GeneratorSettings.Builder generatorSettingsBuilder = GeneratorSettings.newBuilder();
     private WorkflowSettings.Builder workflowSettingsBuilder = WorkflowSettings.newBuilder();
 
@@ -84,7 +87,6 @@ public class CodegenConfigurator {
     private Map<String, String> reservedWordsMappings = new HashMap<>();
     private Map<String, String> serverVariables = new HashMap<>();
     private String auth;
-
     private List<TemplateDefinition> userDefinedTemplates = new ArrayList<>();
 
     public CodegenConfigurator() {
@@ -596,7 +598,6 @@ public class CodegenConfigurator {
         options.setResolve(true);
         String entrySpec = this.inputSpec;
         if (additionalProperties.containsKey(UPDATE_REF_FIELD_PROPERTY_PARSING)) {
-            // May not create a temporary spec file
             entrySpec = updateInputSpecReference();
         }
         SwaggerParseResult result = new OpenAPIParser().readLocation(entrySpec, authorizationValues, options);
@@ -663,34 +664,53 @@ public class CodegenConfigurator {
 
     /*
      * ODI-41 : Fix usage of x-protobuf-index for $ref fields
-     * This method automatically detect $ref that aren't part of an allOf and turn them into an allOf pattern
-     * If the pattern match, the method returns a string path to the temporary modified inputSpec. It has to be deleted afterward.
+     * this recursive method searches through a LinkedHashMap generated using snakeyaml.
+     * Once a $ref key is found this method apply the fix. It can also avoid searching in specific fields using the
+     * constant KEYS_EXCLUDED_FROM_RECURSIVE_REFERENCE_SEARCH
+     */
+    private void findAndReplaceReference(LinkedHashMap<String, LinkedHashMap> currentMap, boolean firstRun) {
+        for (String inputKey : currentMap.keySet() ) {
+            if (firstRun) {
+                if (inputKey.equals("components")) {
+                    findAndReplaceReference(currentMap.get(inputKey), false);
+                }
+            } else if (currentMap.get(inputKey) instanceof LinkedHashMap) {
+                if (currentMap.get(inputKey).keySet().contains("$ref")) {
+                    ArrayList allOfList = new ArrayList<>();
+                    LinkedHashMap<String, String> allOfMap = new LinkedHashMap<>();
+
+                    // Always a String
+                    allOfMap.put("$ref", (String) currentMap.get(inputKey).get("$ref"));
+                    allOfList.add(allOfMap);
+
+                    currentMap.get(inputKey).remove("$ref");
+                    currentMap.get(inputKey).put("allOf", allOfList);
+                } else if (!Arrays.asList(KEYS_EXCLUDED_FROM_RECURSIVE_REFERENCE_SEARCH).contains(inputKey)) {
+                    findAndReplaceReference(currentMap.get(inputKey), false);
+                }
+            }
+        }
+    }
+
+    /*
+     * ODI-41 : Fix usage of x-protobuf-index for $ref fields
+     * this method create a temporary file and write the updated inputSpec inside.
+     * it calls the recursive findAndReplaceReference method that applies the fix to $ref fields when required.
      */
     private String updateInputSpecReference() {
         try {
-            String fileContent = new String(Files.readAllBytes(Paths.get(this.inputSpec)));
-            Pattern pattern = Pattern.compile("\\n\\s*(?<!-\\s?)\\$ref\\s?:.*\\n(?![\\s\\S]*components:)");
-            Matcher matcher = pattern.matcher(fileContent);
-
-            // Check if there's any $ref first
-            if (matcher.find()) {
                 File newInputSpec = Files.createTempFile("temporaryInputSpec", ".yaml").toFile();
-                StringBuffer sb = new StringBuffer();
-                do {
-                    int location = matcher.group().indexOf("$");
-                    String replacement = matcher.group().substring(0, location) + "allOf:" + matcher.group().substring(0, location) + " - \\" + matcher.group().substring(location);
-                    matcher.appendReplacement(sb, replacement);
-                } while (matcher.find());
-                matcher.appendTail(sb);
+
+                LoaderOptions options = new LoaderOptions();
+                org.yaml.snakeyaml.Yaml yaml = new org.yaml.snakeyaml.Yaml(options);
+                LinkedHashMap inputSpecMap = yaml.load(Files.newInputStream(Paths.get(this.inputSpec)));
+                findAndReplaceReference(inputSpecMap, true);
 
                 FileWriter fw = new FileWriter(newInputSpec);
-                fw.write(sb.toString());
+                yaml.dump(inputSpecMap, fw);
                 fw.close();
 
                 return newInputSpec.getPath();
-            }
-            // if no match
-            return this.inputSpec;
 
         } catch (IOException e) {
             throw(new RuntimeException("Error reading or writing the updated inputSpec error cause is : " + e.getCause()));
