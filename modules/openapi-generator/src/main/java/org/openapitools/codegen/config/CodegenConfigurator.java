@@ -668,25 +668,25 @@ public class CodegenConfigurator {
      * Once a $ref key is found this method apply the fix. It can also avoid searching in specific fields using the
      * constant KEYS_EXCLUDED_FROM_RECURSIVE_REFERENCE_SEARCH
      */
-    private void findAndReplaceReference(LinkedHashMap<String, LinkedHashMap> currentMap, boolean firstRun) {
-        for (String inputKey : currentMap.keySet() ) {
+    private void findAndReplaceReferenceInYamlMap(LinkedHashMap<String, LinkedHashMap> currentMap, boolean firstRun) {
+        for (String key : currentMap.keySet() ) {
             if (firstRun) {
-                if (inputKey.equals("components")) {
-                    findAndReplaceReference(currentMap.get(inputKey), false);
+                if (key.equals("components")) {
+                    findAndReplaceReferenceInYamlMap(currentMap.get(key), false);
                 }
-            } else if (currentMap.get(inputKey) instanceof LinkedHashMap) {
-                if (currentMap.get(inputKey).keySet().contains("$ref")) {
+            } else if (currentMap.get(key) instanceof LinkedHashMap) {
+                if (currentMap.get(key).keySet().contains("$ref")) {
                     ArrayList allOfList = new ArrayList<>();
                     LinkedHashMap<String, String> allOfMap = new LinkedHashMap<>();
 
                     // Always a String
-                    allOfMap.put("$ref", (String) currentMap.get(inputKey).get("$ref"));
+                    allOfMap.put("$ref", (String) currentMap.get(key).get("$ref"));
                     allOfList.add(allOfMap);
 
-                    currentMap.get(inputKey).remove("$ref");
-                    currentMap.get(inputKey).put("allOf", allOfList);
-                } else if (!Arrays.asList(KEYS_EXCLUDED_FROM_RECURSIVE_REFERENCE_SEARCH).contains(inputKey)) {
-                    findAndReplaceReference(currentMap.get(inputKey), false);
+                    currentMap.get(key).remove("$ref");
+                    currentMap.get(key).put("allOf", allOfList);
+                } else if (!Arrays.asList(KEYS_EXCLUDED_FROM_RECURSIVE_REFERENCE_SEARCH).contains(key)) {
+                    findAndReplaceReferenceInYamlMap(currentMap.get(key), false);
                 }
             }
         }
@@ -695,7 +695,7 @@ public class CodegenConfigurator {
     /*
      * ODI-41 : Fix usage of x-protobuf-index for $ref fields
      * this method create a temporary file and write the updated inputSpec inside.
-     * it calls the recursive findAndReplaceReference method that applies the fix to $ref fields when required.
+     * it calls the recursive findAndReplaceReferenceInYamlMap method that applies the fix to $ref fields when required.
      */
     private String updateInputSpecReference() {
         try {
@@ -704,7 +704,7 @@ public class CodegenConfigurator {
                 LoaderOptions options = new LoaderOptions();
                 org.yaml.snakeyaml.Yaml yaml = new org.yaml.snakeyaml.Yaml(options);
                 LinkedHashMap inputSpecMap = yaml.load(Files.newInputStream(Paths.get(this.inputSpec)));
-                findAndReplaceReference(inputSpecMap, true);
+                findAndReplaceReferenceInYamlMap(inputSpecMap, true);
 
                 FileWriter fw = new FileWriter(newInputSpec);
                 yaml.dump(inputSpecMap, fw);
