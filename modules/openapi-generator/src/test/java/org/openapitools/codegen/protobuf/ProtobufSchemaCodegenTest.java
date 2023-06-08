@@ -77,6 +77,17 @@ public class ProtobufSchemaCodegenTest {
         File output = Files.createTempDirectory("test").toFile();
         List<File> files = generate(output, properties, globalProperties, "src/test/resources/3_0/protobuf-schema/conflictPropertiesNameWithInheritance.yaml");
 
+        // TODO : Verify with Fabrice that is indeed the goal of this test
+        TestUtils.ensureContainsFile(files, output, "models/pet.proto");
+        Path path = Paths.get(output + "/models/pet.proto");
+        TestUtils.assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/conflictPropertiesNameWithInheritancePet.proto"));
+        TestUtils.ensureContainsFile(files, output, "models/cat.proto");
+        path = Paths.get(output + "/models/cat.proto");
+        TestUtils.assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/conflictPropertiesNameWithInheritanceCat.proto"));
+        TestUtils.ensureContainsFile(files, output, "models/dog.proto");
+        path = Paths.get(output + "/models/dog.proto");
+        TestUtils.assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/conflictPropertiesNameWithInheritanceDog.proto"));
+
         FileUtils.deleteDirectory(output);
     }
 
@@ -226,7 +237,7 @@ public class ProtobufSchemaCodegenTest {
         TestUtils.ensureContainsFile(files, output, "models/pet.proto");
         Path path = Paths.get(output + "/models/pet.proto");
         TestUtils.assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/name-snakecase.proto"));
-        FileUtils.deleteDirectory(output);       
+        FileUtils.deleteDirectory(output);
     }
 
     @Test
@@ -238,7 +249,7 @@ public class ProtobufSchemaCodegenTest {
         TestUtils.ensureContainsFile(files, output, "models/pet.proto");
         Path path = Paths.get(output + "/models/pet.proto");
         TestUtils.assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/extension-name.proto"));
-        FileUtils.deleteDirectory(output);       
+        FileUtils.deleteDirectory(output);
     }
 
     @Test
@@ -250,7 +261,7 @@ public class ProtobufSchemaCodegenTest {
         TestUtils.ensureContainsFile(files, output, "models/pet.proto");
         Path path = Paths.get(output + "/models/pet.proto");
         TestUtils.assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/extension-field-name.proto"));
-        FileUtils.deleteDirectory(output);       
+        FileUtils.deleteDirectory(output);
     }
 
     @Test
@@ -477,12 +488,12 @@ public class ProtobufSchemaCodegenTest {
         properties.put("startEnumsWithUnknown", true);
         Map<String, String> globalProperties = new HashMap<>();
         File output = Files.createTempDirectory("test").toFile();
-        
+
         List<File> files = generate(output, properties, globalProperties, "src/test/resources/3_0/protobuf-schema/no-duplicate-enum-unknown-value-allOf.yaml");
         TestUtils.ensureContainsFile(files, output, "models/cat.proto");
         Path path = Paths.get(output + "/models/cat.proto");
         TestUtils.assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/no-duplicate-enum-unknown-value-allOf.proto"));
-        
+
     }
 
     @Test
@@ -601,6 +612,34 @@ public class ProtobufSchemaCodegenTest {
         TestUtils.ensureContainsFile(files, output, "models/var1.proto");
         Path path = Paths.get(output + "/models/var1.proto");
         TestUtils.assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/google-wrapper-types.proto"));
+        FileUtils.deleteDirectory(output);
+    }
+
+    @Test
+    public void testReferenceFieldFix() throws IOException {
+        Map<String, Object> properties = new HashMap<>();
+        Map<String, String> globalProperties = new HashMap<>();
+        properties.put("updateRefFieldPropertyParsing", "true");
+        File output = Files.createTempDirectory("test").toFile();
+        List<File> files = generate(output, properties, globalProperties, "src/test/resources/3_0/protobuf-schema/test-ref.yaml");
+        TestUtils.ensureContainsFile(files, output, "models/var1.proto");
+        Path path = Paths.get(output + "/models/var1.proto");
+        TestUtils.assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/test-ref.proto"));
+        FileUtils.deleteDirectory(output);
+    }
+
+    // This test uses the same input and output as testOperationAnyType because the $ref shouldn't be replaced by the fix
+    @Test
+    public void testReferenceFieldFixNoReplace() throws IOException {
+        Map<String, Object> properties = new HashMap<>();
+        Map<String, String> globalProperties = new HashMap<>();
+        File output = Files.createTempDirectory("test").toFile();
+        properties.put("updateRefFieldPropertyParsing", "true");
+
+        List<File> files = generate(output, properties, globalProperties, "src/test/resources/3_0/protobuf-schema/operation-any-type.yaml");
+        TestUtils.ensureContainsFile(files, output, "services/default_service.proto");
+        Path path = Paths.get(output + "/services/default_service.proto");
+        TestUtils.assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/operation-any-type.proto"));
         FileUtils.deleteDirectory(output);
     }
 
