@@ -670,23 +670,26 @@ public class CodegenConfigurator {
      */
     private void findAndReplaceReferenceInYamlMap(LinkedHashMap<String, LinkedHashMap> currentMap, boolean firstRun) {
         for (String key : currentMap.keySet() ) {
-            if (firstRun) {
-                if (key.equals("components")) {
-                    findAndReplaceReferenceInYamlMap(currentMap.get(key), false);
-                }
-            } else if (currentMap.get(key) instanceof LinkedHashMap) {
-                if (currentMap.get(key).keySet().contains("$ref")) {
-                    ArrayList allOfList = new ArrayList<>();
-                    LinkedHashMap<String, String> allOfMap = new LinkedHashMap<>();
+            if (currentMap.get(key) instanceof LinkedHashMap) {
+                LinkedHashMap value = currentMap.get(key);
+                if (firstRun) {
+                    if (("components").equals(key)) {
+                        findAndReplaceReferenceInYamlMap(value, false);
+                    }
+                } else {
+                    if (value.keySet().contains("$ref")) {
+                        ArrayList allOfList = new ArrayList<>();
+                        LinkedHashMap<String, String> allOfMap = new LinkedHashMap<>();
 
-                    // Always a String
-                    allOfMap.put("$ref", (String) currentMap.get(key).get("$ref"));
-                    allOfList.add(allOfMap);
+                        // Always a String
+                        allOfMap.put("$ref", (String) value.get("$ref"));
+                        allOfList.add(allOfMap);
 
-                    currentMap.get(key).remove("$ref");
-                    currentMap.get(key).put("allOf", allOfList);
-                } else if (!Arrays.asList(KEYS_EXCLUDED_FROM_RECURSIVE_REFERENCE_SEARCH).contains(key)) {
-                    findAndReplaceReferenceInYamlMap(currentMap.get(key), false);
+                        value.remove("$ref");
+                        value.put("allOf", allOfList);
+                    } else if (!Arrays.asList(KEYS_EXCLUDED_FROM_RECURSIVE_REFERENCE_SEARCH).contains(key)) {
+                        findAndReplaceReferenceInYamlMap(value, false);
+                    }
                 }
             }
         }
