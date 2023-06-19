@@ -664,6 +664,7 @@ public class DefaultGenerator implements Generator {
         for (String modelName : allProcessedModels.keySet()) {
             ModelsMap models = allProcessedModels.get(modelName);
             models.put("modelPackage", config.modelPackage(modelName));
+            models.put("generationVersion", ImplementationVersion.read());
             try {
                 //don't generate models that have a schema mapping
                 if (config.schemaMapping().containsKey(modelName)) {
@@ -1688,4 +1689,8 @@ public class DefaultGenerator implements Generator {
         return StringUtils.removeEnd(value, "/");
     }
 
+    private String getGeneratorVersion() {
+        Package mainPackage = this.getClass().getPackage();
+        return mainPackage.getImplementationVersion();
+    }
 }
