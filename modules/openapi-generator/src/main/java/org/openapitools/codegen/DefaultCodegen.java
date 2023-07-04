@@ -2282,6 +2282,7 @@ public class DefaultCodegen implements CodegenConfig {
     @SuppressWarnings("static-method")
     public String getSchemaType(Schema schema) {
         if (schema instanceof ComposedSchema) { // composed schema
+            // TODO : Dans le cas ShapeSpecialization on arrive ici
             ComposedSchema cs = (ComposedSchema) schema;
             // Get the interfaces, i.e. the set of elements under 'allOf', 'anyOf' or 'oneOf'.
             List<Schema> schemas = ModelUtils.getInterfaces(cs);
@@ -2670,6 +2671,7 @@ public class DefaultCodegen implements CodegenConfig {
 
     Map<NamedSchema, CodegenProperty> schemaCodegenPropertyCache = new HashMap<>();
 
+    // TODO : PARTIE UTILISEE POUR LES ALLOF ET ONEOF
     protected void updateModelForComposedSchema(CodegenModel m, Schema schema, Map<String, Schema> allDefinitions) {
         final ComposedSchema composed = (ComposedSchema) schema;
         Map<String, Schema> properties = new LinkedHashMap<>();
@@ -2790,7 +2792,7 @@ public class DefaultCodegen implements CodegenConfig {
                         addProperties(allProperties, allRequired, refSchema, new HashSet<>());
                     }
                 }
-
+                // TODO : ICI
                 if (composed.getAnyOf() != null) {
                     m.anyOf.add(modelName);
                 } else if (composed.getOneOf() != null) {
@@ -2832,12 +2834,13 @@ public class DefaultCodegen implements CodegenConfig {
                 break; // at most one child only
             }
         }
-
+        // TODO : Je crois que l'on ne rentre pas là-dedans et que l'on devrait
         if (composed.getRequired() != null) {
             required.addAll(composed.getRequired());
             allRequired.addAll(composed.getRequired());
         }
-
+// TODO : Après avoir fait le tour et générer les schémas e nprenant en compte le oneOf on arrive la
+        // TODO : CE TRUC FAIT L'IMPORT
         addVars(m, unaliasPropertySchema(properties), required, unaliasPropertySchema(allProperties), allRequired);
 
         // Per OAS specification, composed schemas may use the 'additionalProperties' keyword.
@@ -3609,6 +3612,7 @@ public class DefaultCodegen implements CodegenConfig {
      * @param schema         schema in which the properties will be added to the lists
      * @param visitedSchemas circuit-breaker - the schemas with which the method was called before for recursive structures
      */
+    // TODO : CA FAIT BEAUCOUP LA NON
     protected void addProperties(Map<String, Schema> properties, List<String> required, Schema schema, Set<Schema> visitedSchemas) {
         if (!visitedSchemas.add(schema)) {
             return;
@@ -3852,6 +3856,8 @@ public class DefaultCodegen implements CodegenConfig {
         property.name = toVarName(name);
         property.baseName = name;
         if (p.getType() == null) {
+            //TODO : On récupère le openApiType depuis ici
+            // TODO : TESTER UNIQUEMENT QUAND nalme = "ShapeSpecialisation"
             property.openApiType = getSchemaType(p);
         } else {
             property.openApiType = p.getType();
@@ -3871,7 +3877,7 @@ public class DefaultCodegen implements CodegenConfig {
             LOGGER.debug("Exception from toExampleValue: {}", e.getMessage());
             property.example = "ERROR_TO_EXAMPLE_VALUE";
         }
-
+        // TODO : Création schéma JSON
         property.jsonSchema = Json.pretty(p);
 
         if (p.getDeprecated() != null) {
@@ -4019,6 +4025,7 @@ public class DefaultCodegen implements CodegenConfig {
              * so primitive schemas int, str, number, referenced schemas, AnyType schemas with properties, enums, or composition
              */
             String type = getSchemaType(p);
+            // TODO : Set le complexType qui sera ajouté ensuite par l'important. ComplexType = type
             setNonArrayMapProperty(property, type);
             property.isModel = (ModelUtils.isComposedSchema(referencedSchema) || ModelUtils.isObjectSchema(referencedSchema)) && ModelUtils.isModel(referencedSchema);
         }
@@ -5657,7 +5664,8 @@ public class DefaultCodegen implements CodegenConfig {
 
         return properties;
     }
-
+    // TODO : QUAND ON RENTRE ICI ON A allProperties et properties qui contiennent shapeType et shapeSpecialisation mais
+    // ce n'est pas le cas pour required et allRequired ?
     protected void addVars(CodegenModel m, Map<String, Schema> properties, List<String> required,
                            Map<String, Schema> allProperties, List<String> allRequired) {
 
@@ -5712,6 +5720,8 @@ public class DefaultCodegen implements CodegenConfig {
      * @param properties a map of properties (schema)
      * @param mandatory  a set of required properties' name
      */
+
+    //TODO : Version différent de l'autre addVar
     protected void addVars(IJsonSchemaValidationProperties m, List<CodegenProperty> vars, Map<String, Schema> properties, Set<String> mandatory) {
         if (properties == null) {
             return;
@@ -5773,6 +5783,8 @@ public class DefaultCodegen implements CodegenConfig {
                     cm.hasOnlyReadOnly = false;
                 }
                 if (!addSchemaImportsFromV3SpecLocations) {
+                    // TODO : PROPERTIES AJOUTEE ICI
+                    // TODO : Il semblerais que la variable CP contient dans sa propriété jsonSchema le nom de fichier généré ajouté en import
                     addImportsForPropertyType(cm, cp);
                 }
 

@@ -1436,6 +1436,7 @@ public class DefaultGenerator implements Generator {
         return optionCategory;
     }
 
+
     private ModelsMap processModels(CodegenConfig config, Map<String, Schema> definitions) {
         ModelsMap objs = new ModelsMap();
         Map<String, Object> vendorExtensions = new HashMap<>();

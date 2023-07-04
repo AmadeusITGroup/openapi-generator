@@ -1224,6 +1224,7 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
 
     @Override
     public String getSchemaType(Schema p) {
+        // TODO : Génération du openApiType
         String schemaType = super.getSchemaType(p);
         String type = null;
         if (typeMapping.containsKey(schemaType)) {

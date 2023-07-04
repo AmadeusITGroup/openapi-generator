@@ -658,6 +658,20 @@ public class ProtobufSchemaCodegenTest {
         FileUtils.deleteDirectory(output);
     }
 
+    @Test
+    public void testFixOneOfNested() throws IOException {
+        Map<String, Object> properties = new HashMap<>();
+        Map<String, String> globalProperties = new HashMap<>();
+        File output = Files.createTempDirectory("test").toFile();
+
+        List<File> files = generate(output, properties, globalProperties, "src/test/resources/3_0/protobuf-schema/shape3.yaml");
+        TestUtils.ensureContainsFile(files, output, "models/shape.proto");
+        Path path = Paths.get(output + "/models/shape.proto");
+        TestUtils.assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/shape.proto"));
+        TestUtils.ensureContainsFile(files, output, "models/one_of_triangle_rectangle_square.proto");
+        FileUtils.deleteDirectory(output);
+    }
+
     private List<File> generate(File output, Map<String, Object> properties, Map<String, String> globalProperties, String inputFile) {        
         final CodegenConfigurator configurator = new CodegenConfigurator()
                 .setGeneratorName("protobuf-schema")
