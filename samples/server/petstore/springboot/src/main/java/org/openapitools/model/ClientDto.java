@@ -24,7 +24,6 @@ import javax.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class ClientDto {
 
-  @JsonProperty("client")
   private String client;
 
   public ClientDto client(String client) {
@@ -37,7 +36,12 @@ public class ClientDto {
    * @return client
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/Client.java
+  @Schema(name = "client", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
   @ApiModelProperty(value = "")
+  @JsonProperty("client")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot/src/main/java/org/openapitools/model/ClientDto.java
   public String getClient() {
     return client;
   }

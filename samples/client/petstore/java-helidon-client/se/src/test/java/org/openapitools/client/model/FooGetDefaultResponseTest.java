@@ -1,6 +1,6 @@
 /**
  * OpenAPI Petstore
- * This spec is mainly for testing Petstore server and contains fake endpoints, models. Please do not use this for any other purpose. Special characters: \" \\
+ * This is a sample server Petstore server. For this sample, you can use the api key `special-key` to test the authorization filters.
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -18,12 +18,30 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+<<<<<<<< HEAD:samples/openapi3/client/petstore/java/jersey2-java8-swagger1/src/test/java/org/openapitools/client/model/ModelApiResponseTest.java
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+========
 import org.openapitools.client.model.Foo;
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/java-helidon-client/se/src/test/java/org/openapitools/client/model/FooGetDefaultResponseTest.java
 
 import org.junit.jupiter.api.Test;
 
 
 /**
+<<<<<<<< HEAD:samples/openapi3/client/petstore/java/jersey2-java8-swagger1/src/test/java/org/openapitools/client/model/ModelApiResponseTest.java
+ * Model tests for ModelApiResponse
+ */
+public class ModelApiResponseTest {
+    private final ModelApiResponse model = new ModelApiResponse();
+
+    /**
+     * Model tests for ModelApiResponse
+     */
+    @Test
+    public void testModelApiResponse() {
+        // TODO: test ModelApiResponse
+========
  * Model tests for FooGetDefaultResponse
  */
 public class FooGetDefaultResponseTest {
@@ -35,14 +53,31 @@ public class FooGetDefaultResponseTest {
     @Test
     public void testFooGetDefaultResponse() {
         // TODO: test FooGetDefaultResponse
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/java-helidon-client/se/src/test/java/org/openapitools/client/model/FooGetDefaultResponseTest.java
     }
 
     /**
-     * Test the property 'string'
+     * Test the property 'code'
      */
     @Test
-    public void stringTest() {
-        // TODO: test string
+    public void codeTest() {
+        // TODO: test code
+    }
+
+    /**
+     * Test the property 'type'
+     */
+    @Test
+    public void typeTest() {
+        // TODO: test type
+    }
+
+    /**
+     * Test the property 'message'
+     */
+    @Test
+    public void messageTest() {
+        // TODO: test message
     }
 
 }

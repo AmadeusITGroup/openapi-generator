@@ -27,17 +27,14 @@ import javax.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class ArrayTestDto {
 
-  @JsonProperty("array_of_string")
   @Valid
-  private List<String> arrayOfString = null;
+  private List<String> arrayOfString;
 
-  @JsonProperty("array_array_of_integer")
   @Valid
-  private List<List<Long>> arrayArrayOfInteger = null;
+  private List<List<Long>> arrayArrayOfInteger;
 
-  @JsonProperty("array_array_of_model")
   @Valid
-  private List<List<ReadOnlyFirstDto>> arrayArrayOfModel = null;
+  private List<List<ReadOnlyFirstDto>> arrayArrayOfModel;
 
   public ArrayTestDto arrayOfString(List<String> arrayOfString) {
     this.arrayOfString = arrayOfString;
@@ -57,7 +54,12 @@ public class ArrayTestDto {
    * @return arrayOfString
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/ArrayTest.java
+  @Schema(name = "array_of_string", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
   @ApiModelProperty(value = "")
+  @JsonProperty("array_of_string")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot/src/main/java/org/openapitools/model/ArrayTestDto.java
   public List<String> getArrayOfString() {
     return arrayOfString;
   }
@@ -84,7 +86,12 @@ public class ArrayTestDto {
    * @return arrayArrayOfInteger
   */
   @Valid 
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/ArrayTest.java
+  @Schema(name = "array_array_of_integer", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
   @ApiModelProperty(value = "")
+  @JsonProperty("array_array_of_integer")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot/src/main/java/org/openapitools/model/ArrayTestDto.java
   public List<List<Long>> getArrayArrayOfInteger() {
     return arrayArrayOfInteger;
   }
@@ -98,7 +105,7 @@ public class ArrayTestDto {
     return this;
   }
 
-  public ArrayTestDto addArrayArrayOfModelItem(List<ReadOnlyFirstDto> arrayArrayOfModelItem) {
+  public ArrayTestDto addArrayArrayOfModelItem(List<@Valid ReadOnlyFirstDto> arrayArrayOfModelItem) {
     if (this.arrayArrayOfModel == null) {
       this.arrayArrayOfModel = new ArrayList<>();
     }
@@ -111,8 +118,14 @@ public class ArrayTestDto {
    * @return arrayArrayOfModel
   */
   @Valid 
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/ArrayTest.java
+  @Schema(name = "array_array_of_model", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  public List<List<ReadOnlyFirst>> getArrayArrayOfModel() {
+========
   @ApiModelProperty(value = "")
+  @JsonProperty("array_array_of_model")
   public List<List<ReadOnlyFirstDto>> getArrayArrayOfModel() {
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot/src/main/java/org/openapitools/model/ArrayTestDto.java
     return arrayArrayOfModel;
   }
 

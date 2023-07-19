@@ -22,24 +22,39 @@ import jakarta.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class TypeHolderExample {
 
-  @JsonProperty("string_item")
   private String stringItem;
 
-  @JsonProperty("number_item")
   private BigDecimal numberItem;
 
-  @JsonProperty("float_item")
   private Float floatItem;
 
-  @JsonProperty("integer_item")
   private Integer integerItem;
 
-  @JsonProperty("bool_item")
   private Boolean boolItem;
 
-  @JsonProperty("array_item")
   
   private List<Integer> arrayItem = new ArrayList<>();
+
+  /**
+   * Default constructor
+   * @deprecated Use {@link TypeHolderExample#TypeHolderExample(String, BigDecimal, Float, Integer, Boolean, List<Integer>)}
+   */
+  @Deprecated
+  public TypeHolderExample() {
+    super();
+  }
+
+  /**
+   * Constructor with only required parameters
+   */
+  public TypeHolderExample(String stringItem, BigDecimal numberItem, Float floatItem, Integer integerItem, Boolean boolItem, List<Integer> arrayItem) {
+    this.stringItem = stringItem;
+    this.numberItem = numberItem;
+    this.floatItem = floatItem;
+    this.integerItem = integerItem;
+    this.boolItem = boolItem;
+    this.arrayItem = arrayItem;
+  }
 
   public TypeHolderExample stringItem(String stringItem) {
     this.stringItem = stringItem;
@@ -50,7 +65,13 @@ public class TypeHolderExample {
    * Get stringItem
    * @return stringItem
   */
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-beanvalidation-no-nullable/src/main/java/org/openapitools/model/TypeHolderExample.java
+  @NotNull 
+  @Schema(name = "string_item", example = "what", requiredMode = Schema.RequiredMode.REQUIRED)
+========
   @NotNull
+  @JsonProperty("string_item")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface-reactive/src/main/java/org/openapitools/model/TypeHolderExample.java
   public String getStringItem() {
     return stringItem;
   }
@@ -68,7 +89,13 @@ public class TypeHolderExample {
    * Get numberItem
    * @return numberItem
   */
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-beanvalidation-no-nullable/src/main/java/org/openapitools/model/TypeHolderExample.java
+  @NotNull @Valid 
+  @Schema(name = "number_item", example = "1.234", requiredMode = Schema.RequiredMode.REQUIRED)
+========
   @NotNull
+  @JsonProperty("number_item")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface-reactive/src/main/java/org/openapitools/model/TypeHolderExample.java
   public BigDecimal getNumberItem() {
     return numberItem;
   }
@@ -86,7 +113,13 @@ public class TypeHolderExample {
    * Get floatItem
    * @return floatItem
   */
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-beanvalidation-no-nullable/src/main/java/org/openapitools/model/TypeHolderExample.java
+  @NotNull 
+  @Schema(name = "float_item", example = "1.234", requiredMode = Schema.RequiredMode.REQUIRED)
+========
   @NotNull
+  @JsonProperty("float_item")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface-reactive/src/main/java/org/openapitools/model/TypeHolderExample.java
   public Float getFloatItem() {
     return floatItem;
   }
@@ -104,7 +137,13 @@ public class TypeHolderExample {
    * Get integerItem
    * @return integerItem
   */
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-beanvalidation-no-nullable/src/main/java/org/openapitools/model/TypeHolderExample.java
+  @NotNull 
+  @Schema(name = "integer_item", example = "-2", requiredMode = Schema.RequiredMode.REQUIRED)
+========
   @NotNull
+  @JsonProperty("integer_item")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface-reactive/src/main/java/org/openapitools/model/TypeHolderExample.java
   public Integer getIntegerItem() {
     return integerItem;
   }
@@ -122,7 +161,13 @@ public class TypeHolderExample {
    * Get boolItem
    * @return boolItem
   */
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-beanvalidation-no-nullable/src/main/java/org/openapitools/model/TypeHolderExample.java
+  @NotNull 
+  @Schema(name = "bool_item", example = "true", requiredMode = Schema.RequiredMode.REQUIRED)
+========
   @NotNull
+  @JsonProperty("bool_item")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface-reactive/src/main/java/org/openapitools/model/TypeHolderExample.java
   public Boolean getBoolItem() {
     return boolItem;
   }
@@ -137,6 +182,9 @@ public class TypeHolderExample {
   }
 
   public TypeHolderExample addArrayItemItem(Integer arrayItemItem) {
+    if (this.arrayItem == null) {
+      this.arrayItem = new ArrayList<>();
+    }
     this.arrayItem.add(arrayItemItem);
     return this;
   }
@@ -145,7 +193,13 @@ public class TypeHolderExample {
    * Get arrayItem
    * @return arrayItem
   */
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-beanvalidation-no-nullable/src/main/java/org/openapitools/model/TypeHolderExample.java
+  @NotNull 
+  @Schema(name = "array_item", example = "[0, 1, 2, 3]", requiredMode = Schema.RequiredMode.REQUIRED)
+========
   @NotNull
+  @JsonProperty("array_item")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface-reactive/src/main/java/org/openapitools/model/TypeHolderExample.java
   public List<Integer> getArrayItem() {
     return arrayItem;
   }

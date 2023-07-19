@@ -24,10 +24,8 @@ import javax.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class ReadOnlyFirstDto {
 
-  @JsonProperty("bar")
   private String bar;
 
-  @JsonProperty("baz")
   private String baz;
 
   public ReadOnlyFirstDto bar(String bar) {
@@ -40,7 +38,12 @@ public class ReadOnlyFirstDto {
    * @return bar
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/ReadOnlyFirst.java
+  @Schema(name = "bar", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
   @ApiModelProperty(readOnly = true, value = "")
+  @JsonProperty("bar")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot/src/main/java/org/openapitools/model/ReadOnlyFirstDto.java
   public String getBar() {
     return bar;
   }
@@ -59,7 +62,12 @@ public class ReadOnlyFirstDto {
    * @return baz
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/ReadOnlyFirst.java
+  @Schema(name = "baz", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
   @ApiModelProperty(value = "")
+  @JsonProperty("baz")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot/src/main/java/org/openapitools/model/ReadOnlyFirstDto.java
   public String getBaz() {
     return baz;
   }

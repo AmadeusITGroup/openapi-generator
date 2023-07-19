@@ -25,7 +25,6 @@ import javax.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class FileDto {
 
-  @JsonProperty("sourceURI")
   private String sourceURI;
 
   public FileDto sourceURI(String sourceURI) {
@@ -38,7 +37,12 @@ public class FileDto {
    * @return sourceURI
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-useoptional/src/main/java/org/openapitools/model/File.java
+  @Schema(name = "sourceURI", description = "Test capitalization", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
   @ApiModelProperty(value = "Test capitalization")
+  @JsonProperty("sourceURI")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot/src/main/java/org/openapitools/model/FileDto.java
   public String getSourceURI() {
     return sourceURI;
   }

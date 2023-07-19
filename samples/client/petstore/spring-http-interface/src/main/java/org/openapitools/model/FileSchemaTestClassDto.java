@@ -24,12 +24,10 @@ import jakarta.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class FileSchemaTestClassDto {
 
-  @JsonProperty("file")
   private FileDto file;
 
-  @JsonProperty("files")
   
-  private List<FileDto> files = null;
+  private List<FileDto> files;
 
   public FileSchemaTestClassDto file(FileDto file) {
     this.file = file;
@@ -40,8 +38,15 @@ public class FileSchemaTestClassDto {
    * Get file
    * @return file
   */
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-useoptional/src/main/java/org/openapitools/model/FileSchemaTestClass.java
+  @Valid 
+  @Schema(name = "file", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  public File getFile() {
+========
   
+  @JsonProperty("file")
   public FileDto getFile() {
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface/src/main/java/org/openapitools/model/FileSchemaTestClassDto.java
     return file;
   }
 
@@ -66,8 +71,15 @@ public class FileSchemaTestClassDto {
    * Get files
    * @return files
   */
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-useoptional/src/main/java/org/openapitools/model/FileSchemaTestClass.java
+  @Valid 
+  @Schema(name = "files", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  public List<File> getFiles() {
+========
   
+  @JsonProperty("files")
   public List<FileDto> getFiles() {
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface/src/main/java/org/openapitools/model/FileSchemaTestClassDto.java
     return files;
   }
 

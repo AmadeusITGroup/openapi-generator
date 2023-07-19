@@ -21,7 +21,6 @@ import jakarta.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class CatAllOfDto {
 
-  @JsonProperty("declawed")
   private Boolean declawed;
 
   public CatAllOfDto declawed(Boolean declawed) {
@@ -34,6 +33,11 @@ public class CatAllOfDto {
    * @return declawed
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-beanvalidation-no-nullable/src/main/java/org/openapitools/model/CatAllOf.java
+  @Schema(name = "declawed", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("declawed")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface/src/main/java/org/openapitools/model/CatAllOfDto.java
   public Boolean getDeclawed() {
     return declawed;
   }

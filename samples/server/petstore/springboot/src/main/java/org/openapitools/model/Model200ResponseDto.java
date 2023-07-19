@@ -25,10 +25,8 @@ import javax.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class Model200ResponseDto {
 
-  @JsonProperty("name")
   private Integer name;
 
-  @JsonProperty("class")
   private String propertyClass;
 
   public Model200ResponseDto name(Integer name) {
@@ -41,7 +39,12 @@ public class Model200ResponseDto {
    * @return name
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-useoptional/src/main/java/org/openapitools/model/Model200Response.java
+  @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
   @ApiModelProperty(value = "")
+  @JsonProperty("name")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot/src/main/java/org/openapitools/model/Model200ResponseDto.java
   public Integer getName() {
     return name;
   }
@@ -60,7 +63,12 @@ public class Model200ResponseDto {
    * @return propertyClass
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-useoptional/src/main/java/org/openapitools/model/Model200Response.java
+  @Schema(name = "class", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
   @ApiModelProperty(value = "")
+  @JsonProperty("class")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot/src/main/java/org/openapitools/model/Model200ResponseDto.java
   public String getPropertyClass() {
     return propertyClass;
   }

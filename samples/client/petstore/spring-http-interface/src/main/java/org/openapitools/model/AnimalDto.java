@@ -8,9 +8,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
-import org.openapitools.model.BigCatDto;
-import org.openapitools.model.CatDto;
-import org.openapitools.model.DogDto;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import jakarta.validation.constraints.NotNull;
@@ -37,10 +34,8 @@ import jakarta.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class AnimalDto {
 
-  @JsonProperty("className")
   private String className;
 
-  @JsonProperty("color")
   private String color = "red";
 
   public AnimalDto className(String className) {
@@ -52,7 +47,13 @@ public class AnimalDto {
    * Get className
    * @return className
   */
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-useoptional/src/main/java/org/openapitools/model/Animal.java
+  @NotNull 
+  @Schema(name = "className", requiredMode = Schema.RequiredMode.REQUIRED)
+========
   @NotNull
+  @JsonProperty("className")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface/src/main/java/org/openapitools/model/AnimalDto.java
   public String getClassName() {
     return className;
   }
@@ -71,6 +72,11 @@ public class AnimalDto {
    * @return color
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-useoptional/src/main/java/org/openapitools/model/Animal.java
+  @Schema(name = "color", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("color")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface/src/main/java/org/openapitools/model/AnimalDto.java
   public String getColor() {
     return color;
   }

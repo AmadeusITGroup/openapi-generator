@@ -26,7 +26,6 @@ import javax.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class AdditionalPropertiesIntegerDto extends HashMap<String, Integer> {
 
-  @JsonProperty("name")
   private String name;
 
   public AdditionalPropertiesIntegerDto name(String name) {
@@ -39,7 +38,12 @@ public class AdditionalPropertiesIntegerDto extends HashMap<String, Integer> {
    * @return name
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-beanvalidation-no-nullable/src/main/java/org/openapitools/model/AdditionalPropertiesInteger.java
+  @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
   @ApiModelProperty(value = "")
+  @JsonProperty("name")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot/src/main/java/org/openapitools/model/AdditionalPropertiesIntegerDto.java
   public String getName() {
     return name;
   }

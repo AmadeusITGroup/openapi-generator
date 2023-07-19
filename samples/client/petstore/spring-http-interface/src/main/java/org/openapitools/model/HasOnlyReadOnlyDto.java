@@ -21,10 +21,8 @@ import jakarta.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class HasOnlyReadOnlyDto {
 
-  @JsonProperty("bar")
   private String bar;
 
-  @JsonProperty("foo")
   private String foo;
 
   public HasOnlyReadOnlyDto bar(String bar) {
@@ -37,6 +35,11 @@ public class HasOnlyReadOnlyDto {
    * @return bar
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-beanvalidation-no-nullable/src/main/java/org/openapitools/model/HasOnlyReadOnly.java
+  @Schema(name = "bar", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("bar")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface/src/main/java/org/openapitools/model/HasOnlyReadOnlyDto.java
   public String getBar() {
     return bar;
   }
@@ -55,6 +58,11 @@ public class HasOnlyReadOnlyDto {
    * @return foo
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-beanvalidation-no-nullable/src/main/java/org/openapitools/model/HasOnlyReadOnly.java
+  @Schema(name = "foo", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("foo")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface/src/main/java/org/openapitools/model/HasOnlyReadOnlyDto.java
   public String getFoo() {
     return foo;
   }

@@ -10,7 +10,11 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+<<<<<<<< HEAD:samples/server/petstore/springboot/src/main/java/org/openapitools/model/Dog.java
+import org.openapitools.model.Animal;
+========
 import org.openapitools.model.AnimalDto;
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot/src/main/java/org/openapitools/model/DogDto.java
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -29,8 +33,23 @@ import javax.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class DogDto extends AnimalDto {
 
-  @JsonProperty("breed")
   private String breed;
+
+  /**
+   * Default constructor
+   * @deprecated Use {@link DogDto#DogDto(String)}
+   */
+  @Deprecated
+  public DogDto() {
+    super();
+  }
+
+  /**
+   * Constructor with only required parameters
+   */
+  public DogDto(String className) {
+    super(className);
+  }
 
   public DogDto breed(String breed) {
     this.breed = breed;
@@ -43,6 +62,7 @@ public class DogDto extends AnimalDto {
   */
   
   @ApiModelProperty(value = "")
+  @JsonProperty("breed")
   public String getBreed() {
     return breed;
   }

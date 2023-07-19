@@ -19,10 +19,8 @@ import jakarta.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class ReadOnlyFirst {
 
-  @JsonProperty("bar")
   private String bar;
 
-  @JsonProperty("baz")
   private String baz;
 
   public ReadOnlyFirst bar(String bar) {
@@ -35,6 +33,11 @@ public class ReadOnlyFirst {
    * @return bar
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-useoptional/src/main/java/org/openapitools/model/ReadOnlyFirst.java
+  @Schema(name = "bar", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("bar")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface-reactive/src/main/java/org/openapitools/model/ReadOnlyFirst.java
   public String getBar() {
     return bar;
   }
@@ -53,6 +56,11 @@ public class ReadOnlyFirst {
    * @return baz
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-useoptional/src/main/java/org/openapitools/model/ReadOnlyFirst.java
+  @Schema(name = "baz", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("baz")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface-reactive/src/main/java/org/openapitools/model/ReadOnlyFirst.java
   public String getBaz() {
     return baz;
   }

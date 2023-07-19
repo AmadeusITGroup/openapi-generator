@@ -20,10 +20,8 @@ import javax.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class Category {
 
-  @JsonProperty("id")
   private Long id;
 
-  @JsonProperty("name")
   private String name;
 
   public Category id(Long id) {
@@ -36,6 +34,11 @@ public class Category {
    * @return id
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-useoptional/src/main/java/org/openapitools/model/Category.java
+  @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("id")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot-implicitHeaders-annotationLibrary/src/main/java/org/openapitools/model/Category.java
   public Long getId() {
     return id;
   }
@@ -53,7 +56,13 @@ public class Category {
    * Get name
    * @return name
   */
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-useoptional/src/main/java/org/openapitools/model/Category.java
+  @NotNull 
+  @Schema(name = "name", requiredMode = Schema.RequiredMode.REQUIRED)
+========
   @Pattern(regexp = "^[a-zA-Z0-9]+[a-zA-Z0-9\\.\\-_]*[a-zA-Z0-9]+$") 
+  @JsonProperty("name")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot-implicitHeaders-annotationLibrary/src/main/java/org/openapitools/model/Category.java
   public String getName() {
     return name;
   }

@@ -27,6 +27,18 @@ using OpenAPIClientUtils = Org.OpenAPITools.Client.ClientUtils;
 namespace Org.OpenAPITools.Model
 {
     /// <summary>
+<<<<<<<< HEAD:samples/client/petstore/csharp-netcore/OpenAPIClient-net48/src/Org.OpenAPITools/Model/File.cs
+    /// Must be named &#x60;File&#x60; for test.
+    /// </summary>
+    [DataContract(Name = "File")]
+    public partial class File : IEquatable<File>, IValidatableObject
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="File" /> class.
+        /// </summary>
+        /// <param name="sourceURI">Test capitalization.</param>
+        public File(string sourceURI = default(string))
+========
     /// FooGetDefaultResponse
     /// </summary>
     [DataContract(Name = "_foo_get_default_response")]
@@ -37,16 +49,18 @@ namespace Org.OpenAPITools.Model
         /// </summary>
         /// <param name="_string">_string.</param>
         public FooGetDefaultResponse(Foo _string = default(Foo))
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/csharp-netcore/OpenAPIClient-net48/src/Org.OpenAPITools/Model/FooGetDefaultResponse.cs
         {
-            this.String = _string;
+            this.SourceURI = sourceURI;
             this.AdditionalProperties = new Dictionary<string, object>();
         }
 
         /// <summary>
-        /// Gets or Sets String
+        /// Test capitalization
         /// </summary>
-        [DataMember(Name = "string", EmitDefaultValue = false)]
-        public Foo String { get; set; }
+        /// <value>Test capitalization</value>
+        [DataMember(Name = "sourceURI", EmitDefaultValue = false)]
+        public string SourceURI { get; set; }
 
         /// <summary>
         /// Gets or Sets additional properties
@@ -61,8 +75,13 @@ namespace Org.OpenAPITools.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
+<<<<<<<< HEAD:samples/client/petstore/csharp-netcore/OpenAPIClient-net48/src/Org.OpenAPITools/Model/File.cs
+            sb.Append("class File {\n");
+            sb.Append("  SourceURI: ").Append(SourceURI).Append("\n");
+========
             sb.Append("class FooGetDefaultResponse {\n");
             sb.Append("  String: ").Append(String).Append("\n");
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/csharp-netcore/OpenAPIClient-net48/src/Org.OpenAPITools/Model/FooGetDefaultResponse.cs
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -84,6 +103,17 @@ namespace Org.OpenAPITools.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
+<<<<<<<< HEAD:samples/client/petstore/csharp-netcore/OpenAPIClient-net48/src/Org.OpenAPITools/Model/File.cs
+            return OpenAPIClientUtils.compareLogic.Compare(this, input as File).AreEqual;
+        }
+
+        /// <summary>
+        /// Returns true if File instances are equal
+        /// </summary>
+        /// <param name="input">Instance of File to be compared</param>
+        /// <returns>Boolean</returns>
+        public bool Equals(File input)
+========
             return OpenAPIClientUtils.compareLogic.Compare(this, input as FooGetDefaultResponse).AreEqual;
         }
 
@@ -93,6 +123,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="input">Instance of FooGetDefaultResponse to be compared</param>
         /// <returns>Boolean</returns>
         public bool Equals(FooGetDefaultResponse input)
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/csharp-netcore/OpenAPIClient-net48/src/Org.OpenAPITools/Model/FooGetDefaultResponse.cs
         {
             return OpenAPIClientUtils.compareLogic.Compare(this, input).AreEqual;
         }
@@ -106,9 +137,9 @@ namespace Org.OpenAPITools.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.String != null)
+                if (this.SourceURI != null)
                 {
-                    hashCode = (hashCode * 59) + this.String.GetHashCode();
+                    hashCode = (hashCode * 59) + this.SourceURI.GetHashCode();
                 }
                 if (this.AdditionalProperties != null)
                 {
@@ -123,7 +154,7 @@ namespace Org.OpenAPITools.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

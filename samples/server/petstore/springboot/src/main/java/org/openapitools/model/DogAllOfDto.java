@@ -24,7 +24,6 @@ import javax.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class DogAllOfDto {
 
-  @JsonProperty("breed")
   private String breed;
 
   public DogAllOfDto breed(String breed) {
@@ -37,7 +36,12 @@ public class DogAllOfDto {
    * @return breed
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/DogAllOf.java
+  @Schema(name = "breed", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
   @ApiModelProperty(value = "")
+  @JsonProperty("breed")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot/src/main/java/org/openapitools/model/DogAllOfDto.java
   public String getBreed() {
     return breed;
   }

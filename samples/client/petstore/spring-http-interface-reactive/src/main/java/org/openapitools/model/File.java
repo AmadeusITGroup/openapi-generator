@@ -19,7 +19,6 @@ import jakarta.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class File {
 
-  @JsonProperty("sourceURI")
   private String sourceURI;
 
   public File sourceURI(String sourceURI) {
@@ -32,6 +31,11 @@ public class File {
    * @return sourceURI
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/File.java
+  @Schema(name = "sourceURI", description = "Test capitalization", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("sourceURI")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface-reactive/src/main/java/org/openapitools/model/File.java
   public String getSourceURI() {
     return sourceURI;
   }

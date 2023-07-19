@@ -22,9 +22,8 @@ import jakarta.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class ArrayOfNumberOnly {
 
-  @JsonProperty("ArrayNumber")
   
-  private List<BigDecimal> arrayNumber = null;
+  private List<BigDecimal> arrayNumber;
 
   public ArrayOfNumberOnly arrayNumber(List<BigDecimal> arrayNumber) {
     this.arrayNumber = arrayNumber;
@@ -43,7 +42,13 @@ public class ArrayOfNumberOnly {
    * Get arrayNumber
    * @return arrayNumber
   */
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-useoptional/src/main/java/org/openapitools/model/ArrayOfNumberOnly.java
+  @Valid 
+  @Schema(name = "ArrayNumber", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
   
+  @JsonProperty("ArrayNumber")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface-reactive/src/main/java/org/openapitools/model/ArrayOfNumberOnly.java
   public List<BigDecimal> getArrayNumber() {
     return arrayNumber;
   }

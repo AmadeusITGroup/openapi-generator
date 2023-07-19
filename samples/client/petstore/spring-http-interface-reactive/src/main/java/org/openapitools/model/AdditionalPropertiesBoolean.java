@@ -21,7 +21,6 @@ import jakarta.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class AdditionalPropertiesBoolean extends HashMap<String, Boolean> {
 
-  @JsonProperty("name")
   private String name;
 
   public AdditionalPropertiesBoolean name(String name) {
@@ -34,6 +33,11 @@ public class AdditionalPropertiesBoolean extends HashMap<String, Boolean> {
    * @return name
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/AdditionalPropertiesBoolean.java
+  @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("name")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface-reactive/src/main/java/org/openapitools/model/AdditionalPropertiesBoolean.java
   public String getName() {
     return name;
   }

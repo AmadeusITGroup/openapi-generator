@@ -22,12 +22,10 @@ import jakarta.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class FileSchemaTestClass {
 
-  @JsonProperty("file")
   private File file;
 
-  @JsonProperty("files")
   
-  private List<File> files = null;
+  private List<File> files;
 
   public FileSchemaTestClass file(File file) {
     this.file = file;
@@ -38,7 +36,13 @@ public class FileSchemaTestClass {
    * Get file
    * @return file
   */
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/FileSchemaTestClass.java
+  @Valid 
+  @Schema(name = "file", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
   
+  @JsonProperty("file")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface-reactive/src/main/java/org/openapitools/model/FileSchemaTestClass.java
   public File getFile() {
     return file;
   }
@@ -64,7 +68,13 @@ public class FileSchemaTestClass {
    * Get files
    * @return files
   */
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/FileSchemaTestClass.java
+  @Valid 
+  @Schema(name = "files", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
   
+  @JsonProperty("files")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface-reactive/src/main/java/org/openapitools/model/FileSchemaTestClass.java
   public List<File> getFiles() {
     return files;
   }

@@ -30,49 +30,54 @@ import javax.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class FormatTestDto {
 
-  @JsonProperty("integer")
   private Integer integer;
 
-  @JsonProperty("int32")
   private Integer int32;
 
-  @JsonProperty("int64")
   private Long int64;
 
-  @JsonProperty("number")
   private BigDecimal number;
 
-  @JsonProperty("float")
   private Float _float;
 
-  @JsonProperty("double")
   private Double _double;
 
-  @JsonProperty("string")
   private String string;
 
-  @JsonProperty("byte")
   private byte[] _byte;
 
-  @JsonProperty("binary")
   private org.springframework.core.io.Resource binary;
 
-  @JsonProperty("date")
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
   private LocalDate date;
 
-  @JsonProperty("dateTime")
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private OffsetDateTime dateTime;
 
-  @JsonProperty("uuid")
   private UUID uuid;
 
-  @JsonProperty("password")
   private String password;
 
-  @JsonProperty("BigDecimal")
   private BigDecimal bigDecimal;
+
+  /**
+   * Default constructor
+   * @deprecated Use {@link FormatTestDto#FormatTestDto(BigDecimal, byte[], LocalDate, String)}
+   */
+  @Deprecated
+  public FormatTestDto() {
+    super();
+  }
+
+  /**
+   * Constructor with only required parameters
+   */
+  public FormatTestDto(BigDecimal number, byte[] _byte, LocalDate date, String password) {
+    this.number = number;
+    this._byte = _byte;
+    this.date = date;
+    this.password = password;
+  }
 
   public FormatTestDto integer(Integer integer) {
     this.integer = integer;
@@ -86,7 +91,12 @@ public class FormatTestDto {
    * @return integer
   */
   @Min(10) @Max(100) 
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/FormatTest.java
+  @Schema(name = "integer", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
   @ApiModelProperty(value = "")
+  @JsonProperty("integer")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot/src/main/java/org/openapitools/model/FormatTestDto.java
   public Integer getInteger() {
     return integer;
   }
@@ -107,7 +117,12 @@ public class FormatTestDto {
    * @return int32
   */
   @Min(20) @Max(200) 
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/FormatTest.java
+  @Schema(name = "int32", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
   @ApiModelProperty(value = "")
+  @JsonProperty("int32")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot/src/main/java/org/openapitools/model/FormatTestDto.java
   public Integer getInt32() {
     return int32;
   }
@@ -126,7 +141,12 @@ public class FormatTestDto {
    * @return int64
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/FormatTest.java
+  @Schema(name = "int64", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
   @ApiModelProperty(value = "")
+  @JsonProperty("int64")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot/src/main/java/org/openapitools/model/FormatTestDto.java
   public Long getInt64() {
     return int64;
   }
@@ -147,7 +167,12 @@ public class FormatTestDto {
    * @return number
   */
   @NotNull @Valid @DecimalMin("32.1") @DecimalMax("543.2") 
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/FormatTest.java
+  @Schema(name = "number", requiredMode = Schema.RequiredMode.REQUIRED)
+========
   @ApiModelProperty(required = true, value = "")
+  @JsonProperty("number")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot/src/main/java/org/openapitools/model/FormatTestDto.java
   public BigDecimal getNumber() {
     return number;
   }
@@ -168,7 +193,12 @@ public class FormatTestDto {
    * @return _float
   */
   @DecimalMin("54.3") @DecimalMax("987.6") 
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/FormatTest.java
+  @Schema(name = "float", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
   @ApiModelProperty(value = "")
+  @JsonProperty("float")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot/src/main/java/org/openapitools/model/FormatTestDto.java
   public Float getFloat() {
     return _float;
   }
@@ -189,7 +219,12 @@ public class FormatTestDto {
    * @return _double
   */
   @DecimalMin("67.8") @DecimalMax("123.4") 
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/FormatTest.java
+  @Schema(name = "double", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
   @ApiModelProperty(value = "")
+  @JsonProperty("double")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot/src/main/java/org/openapitools/model/FormatTestDto.java
   public Double getDouble() {
     return _double;
   }
@@ -208,7 +243,12 @@ public class FormatTestDto {
    * @return string
   */
   @Pattern(regexp = "/[a-z]/i") 
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/FormatTest.java
+  @Schema(name = "string", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
   @ApiModelProperty(value = "")
+  @JsonProperty("string")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot/src/main/java/org/openapitools/model/FormatTestDto.java
   public String getString() {
     return string;
   }
@@ -227,7 +267,12 @@ public class FormatTestDto {
    * @return _byte
   */
   @NotNull 
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/FormatTest.java
+  @Schema(name = "byte", requiredMode = Schema.RequiredMode.REQUIRED)
+========
   @ApiModelProperty(required = true, value = "")
+  @JsonProperty("byte")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot/src/main/java/org/openapitools/model/FormatTestDto.java
   public byte[] getByte() {
     return _byte;
   }
@@ -246,7 +291,12 @@ public class FormatTestDto {
    * @return binary
   */
   @Valid 
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/FormatTest.java
+  @Schema(name = "binary", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
   @ApiModelProperty(value = "")
+  @JsonProperty("binary")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot/src/main/java/org/openapitools/model/FormatTestDto.java
   public org.springframework.core.io.Resource getBinary() {
     return binary;
   }
@@ -265,7 +315,12 @@ public class FormatTestDto {
    * @return date
   */
   @NotNull @Valid 
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/FormatTest.java
+  @Schema(name = "date", requiredMode = Schema.RequiredMode.REQUIRED)
+========
   @ApiModelProperty(required = true, value = "")
+  @JsonProperty("date")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot/src/main/java/org/openapitools/model/FormatTestDto.java
   public LocalDate getDate() {
     return date;
   }
@@ -284,7 +339,12 @@ public class FormatTestDto {
    * @return dateTime
   */
   @Valid 
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/FormatTest.java
+  @Schema(name = "dateTime", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
   @ApiModelProperty(value = "")
+  @JsonProperty("dateTime")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot/src/main/java/org/openapitools/model/FormatTestDto.java
   public OffsetDateTime getDateTime() {
     return dateTime;
   }
@@ -303,7 +363,12 @@ public class FormatTestDto {
    * @return uuid
   */
   @Valid 
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/FormatTest.java
+  @Schema(name = "uuid", example = "72f98069-206d-4f12-9f12-3d1e525a8e84", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
   @ApiModelProperty(example = "72f98069-206d-4f12-9f12-3d1e525a8e84", value = "")
+  @JsonProperty("uuid")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot/src/main/java/org/openapitools/model/FormatTestDto.java
   public UUID getUuid() {
     return uuid;
   }
@@ -322,7 +387,12 @@ public class FormatTestDto {
    * @return password
   */
   @NotNull @Size(min = 10, max = 64) 
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/FormatTest.java
+  @Schema(name = "password", requiredMode = Schema.RequiredMode.REQUIRED)
+========
   @ApiModelProperty(required = true, value = "")
+  @JsonProperty("password")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot/src/main/java/org/openapitools/model/FormatTestDto.java
   public String getPassword() {
     return password;
   }
@@ -341,7 +411,12 @@ public class FormatTestDto {
    * @return bigDecimal
   */
   @Valid 
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/FormatTest.java
+  @Schema(name = "BigDecimal", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
   @ApiModelProperty(value = "")
+  @JsonProperty("BigDecimal")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot/src/main/java/org/openapitools/model/FormatTestDto.java
   public BigDecimal getBigDecimal() {
     return bigDecimal;
   }

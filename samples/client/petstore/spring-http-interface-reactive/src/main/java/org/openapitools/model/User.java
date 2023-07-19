@@ -19,28 +19,20 @@ import jakarta.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class User {
 
-  @JsonProperty("id")
   private Long id;
 
-  @JsonProperty("username")
   private String username;
 
-  @JsonProperty("firstName")
   private String firstName;
 
-  @JsonProperty("lastName")
   private String lastName;
 
-  @JsonProperty("email")
   private String email;
 
-  @JsonProperty("password")
   private String password;
 
-  @JsonProperty("phone")
   private String phone;
 
-  @JsonProperty("userStatus")
   private Integer userStatus;
 
   public User id(Long id) {
@@ -53,6 +45,11 @@ public class User {
    * @return id
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-beanvalidation-no-nullable/src/main/java/org/openapitools/model/User.java
+  @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("id")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface-reactive/src/main/java/org/openapitools/model/User.java
   public Long getId() {
     return id;
   }
@@ -71,6 +68,11 @@ public class User {
    * @return username
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-beanvalidation-no-nullable/src/main/java/org/openapitools/model/User.java
+  @Schema(name = "username", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("username")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface-reactive/src/main/java/org/openapitools/model/User.java
   public String getUsername() {
     return username;
   }
@@ -89,6 +91,11 @@ public class User {
    * @return firstName
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-beanvalidation-no-nullable/src/main/java/org/openapitools/model/User.java
+  @Schema(name = "firstName", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("firstName")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface-reactive/src/main/java/org/openapitools/model/User.java
   public String getFirstName() {
     return firstName;
   }
@@ -107,6 +114,11 @@ public class User {
    * @return lastName
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-beanvalidation-no-nullable/src/main/java/org/openapitools/model/User.java
+  @Schema(name = "lastName", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("lastName")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface-reactive/src/main/java/org/openapitools/model/User.java
   public String getLastName() {
     return lastName;
   }
@@ -125,6 +137,11 @@ public class User {
    * @return email
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-beanvalidation-no-nullable/src/main/java/org/openapitools/model/User.java
+  @Schema(name = "email", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("email")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface-reactive/src/main/java/org/openapitools/model/User.java
   public String getEmail() {
     return email;
   }
@@ -143,6 +160,11 @@ public class User {
    * @return password
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-beanvalidation-no-nullable/src/main/java/org/openapitools/model/User.java
+  @Schema(name = "password", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("password")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface-reactive/src/main/java/org/openapitools/model/User.java
   public String getPassword() {
     return password;
   }
@@ -161,6 +183,11 @@ public class User {
    * @return phone
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-beanvalidation-no-nullable/src/main/java/org/openapitools/model/User.java
+  @Schema(name = "phone", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("phone")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface-reactive/src/main/java/org/openapitools/model/User.java
   public String getPhone() {
     return phone;
   }
@@ -179,6 +206,11 @@ public class User {
    * @return userStatus
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-beanvalidation-no-nullable/src/main/java/org/openapitools/model/User.java
+  @Schema(name = "userStatus", description = "User Status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("userStatus")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface-reactive/src/main/java/org/openapitools/model/User.java
   public Integer getUserStatus() {
     return userStatus;
   }

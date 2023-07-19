@@ -40,12 +40,15 @@ Then import the package:
 import petstore_api
 ```
 
+### Tests
+
+Execute `pytest` to run the tests.
+
 ## Getting Started
 
 Please follow the [installation procedure](#installation--usage) and then run the following:
 
 ```python
-from __future__ import print_function
 import datetime
 import time
 import petstore_api
@@ -84,6 +87,8 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AnotherFakeApi* | [**call_123_test_special_tags**](docs/AnotherFakeApi.md#call_123_test_special_tags) | **PATCH** /another-fake/dummy | To test special tags
 *DefaultApi* | [**foo_get**](docs/DefaultApi.md#foo_get) | **GET** /foo | 
+*FakeApi* | [**fake_any_type_request_body**](docs/FakeApi.md#fake_any_type_request_body) | **POST** /fake/any_type_body | test any type request body
+*FakeApi* | [**fake_enum_ref_query_parameter**](docs/FakeApi.md#fake_enum_ref_query_parameter) | **GET** /fake/enum_ref_query_parameter | test enum reference query parameter
 *FakeApi* | [**fake_health_get**](docs/FakeApi.md#fake_health_get) | **GET** /fake/health | Health check endpoint
 *FakeApi* | [**fake_http_signature_test**](docs/FakeApi.md#fake_http_signature_test) | **GET** /fake/http-signature-test | test http signature authentication
 *FakeApi* | [**fake_outer_boolean_serialize**](docs/FakeApi.md#fake_outer_boolean_serialize) | **POST** /fake/outer/boolean | 
@@ -141,6 +146,7 @@ Class | Method | HTTP request | Description
  - [Cat](docs/Cat.md)
  - [CatAllOf](docs/CatAllOf.md)
  - [Category](docs/Category.md)
+ - [CircularReferenceModel](docs/CircularReferenceModel.md)
  - [ClassModel](docs/ClassModel.md)
  - [Client](docs/Client.md)
  - [Color](docs/Color.md)
@@ -151,14 +157,19 @@ Class | Method | HTTP request | Description
  - [DummyModel](docs/DummyModel.md)
  - [EnumArrays](docs/EnumArrays.md)
  - [EnumClass](docs/EnumClass.md)
+ - [EnumString1](docs/EnumString1.md)
+ - [EnumString2](docs/EnumString2.md)
  - [EnumTest](docs/EnumTest.md)
  - [File](docs/File.md)
  - [FileSchemaTestClass](docs/FileSchemaTestClass.md)
+ - [FirstRef](docs/FirstRef.md)
  - [Foo](docs/Foo.md)
  - [FooGetDefaultResponse](docs/FooGetDefaultResponse.md)
  - [FormatTest](docs/FormatTest.md)
  - [HasOnlyReadOnly](docs/HasOnlyReadOnly.md)
  - [HealthCheckResult](docs/HealthCheckResult.md)
+ - [InnerDictWithProperty](docs/InnerDictWithProperty.md)
+ - [IntOrString](docs/IntOrString.md)
  - [List](docs/List.md)
  - [MapTest](docs/MapTest.md)
  - [MixedPropertiesAndAdditionalPropertiesClass](docs/MixedPropertiesAndAdditionalPropertiesClass.md)
@@ -168,6 +179,7 @@ Class | Method | HTTP request | Description
  - [NullableClass](docs/NullableClass.md)
  - [NumberOnly](docs/NumberOnly.md)
  - [ObjectWithDeprecatedFields](docs/ObjectWithDeprecatedFields.md)
+ - [OneOfEnumString](docs/OneOfEnumString.md)
  - [Order](docs/Order.md)
  - [OuterComposite](docs/OuterComposite.md)
  - [OuterEnum](docs/OuterEnum.md)
@@ -175,11 +187,15 @@ Class | Method | HTTP request | Description
  - [OuterEnumInteger](docs/OuterEnumInteger.md)
  - [OuterEnumIntegerDefaultValue](docs/OuterEnumIntegerDefaultValue.md)
  - [OuterObjectWithEnumProperty](docs/OuterObjectWithEnumProperty.md)
+ - [Parent](docs/Parent.md)
+ - [ParentWithOptionalDict](docs/ParentWithOptionalDict.md)
  - [Pet](docs/Pet.md)
  - [Pig](docs/Pig.md)
  - [ReadOnlyFirst](docs/ReadOnlyFirst.md)
+ - [SecondRef](docs/SecondRef.md)
  - [SelfReferenceModel](docs/SelfReferenceModel.md)
  - [SingleRefType](docs/SingleRefType.md)
+ - [SpecialCharacterEnum](docs/SpecialCharacterEnum.md)
  - [SpecialModelName](docs/SpecialModelName.md)
  - [SpecialName](docs/SpecialName.md)
  - [Tag](docs/Tag.md)
@@ -187,10 +203,13 @@ Class | Method | HTTP request | Description
  - [WithNestedOneOf](docs/WithNestedOneOf.md)
 
 
+<a id="documentation-for-authorization"></a>
 ## Documentation For Authorization
 
 
-## petstore_auth
+Authentication schemes defined for the API:
+<a id="petstore_auth"></a>
+### petstore_auth
 
 - **Type**: OAuth
 - **Flow**: implicit
@@ -199,32 +218,32 @@ Class | Method | HTTP request | Description
  - **write:pets**: modify pets in your account
  - **read:pets**: read your pets
 
-
-## api_key
+<a id="api_key"></a>
+### api_key
 
 - **Type**: API key
 - **API key parameter name**: api_key
 - **Location**: HTTP header
 
-
-## api_key_query
+<a id="api_key_query"></a>
+### api_key_query
 
 - **Type**: API key
 - **API key parameter name**: api_key_query
 - **Location**: URL query string
 
-
-## http_basic_test
+<a id="http_basic_test"></a>
+### http_basic_test
 
 - **Type**: HTTP basic authentication
 
-
-## bearer_test
+<a id="bearer_test"></a>
+### bearer_test
 
 - **Type**: Bearer authentication (JWT)
 
-
-## http_signature_test
+<a id="http_signature_test"></a>
+### http_signature_test
 
 
 

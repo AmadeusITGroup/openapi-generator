@@ -25,17 +25,29 @@ import javax.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class NameDto {
 
-  @JsonProperty("name")
   private Integer name;
 
-  @JsonProperty("snake_case")
   private Integer snakeCase;
 
-  @JsonProperty("property")
   private String property;
 
-  @JsonProperty("123Number")
   private Integer _123Number;
+
+  /**
+   * Default constructor
+   * @deprecated Use {@link NameDto#NameDto(Integer)}
+   */
+  @Deprecated
+  public NameDto() {
+    super();
+  }
+
+  /**
+   * Constructor with only required parameters
+   */
+  public NameDto(Integer name) {
+    this.name = name;
+  }
 
   public NameDto name(Integer name) {
     this.name = name;
@@ -47,7 +59,12 @@ public class NameDto {
    * @return name
   */
   @NotNull 
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/Name.java
+  @Schema(name = "name", requiredMode = Schema.RequiredMode.REQUIRED)
+========
   @ApiModelProperty(required = true, value = "")
+  @JsonProperty("name")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot/src/main/java/org/openapitools/model/NameDto.java
   public Integer getName() {
     return name;
   }
@@ -66,7 +83,12 @@ public class NameDto {
    * @return snakeCase
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/Name.java
+  @Schema(name = "snake_case", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
   @ApiModelProperty(readOnly = true, value = "")
+  @JsonProperty("snake_case")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot/src/main/java/org/openapitools/model/NameDto.java
   public Integer getSnakeCase() {
     return snakeCase;
   }
@@ -85,7 +107,12 @@ public class NameDto {
    * @return property
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/Name.java
+  @Schema(name = "property", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
   @ApiModelProperty(value = "")
+  @JsonProperty("property")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot/src/main/java/org/openapitools/model/NameDto.java
   public String getProperty() {
     return property;
   }
@@ -104,9 +131,16 @@ public class NameDto {
    * @return _123Number
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/Name.java
+  @Schema(name = "123Number", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  public Integer get123number() {
+    return _123number;
+========
   @ApiModelProperty(readOnly = true, value = "")
+  @JsonProperty("123Number")
   public Integer get123Number() {
     return _123Number;
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot/src/main/java/org/openapitools/model/NameDto.java
   }
 
   public void set123Number(Integer _123Number) {

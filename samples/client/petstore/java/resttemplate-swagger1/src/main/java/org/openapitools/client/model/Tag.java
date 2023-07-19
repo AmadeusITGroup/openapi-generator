@@ -1,3 +1,6 @@
+<<<<<<<< HEAD:samples/server/petstore/jaxrs-spec-jakarta/src/gen/java/org/openapitools/model/AdditionalPropertiesAnyType.java
+package org.openapitools.model;
+========
 /*
  * OpenAPI Petstore
  * This is a sample server Petstore server. For this sample, you can use the api key `special-key` to test the authorization filters.
@@ -9,19 +12,35 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/java/resttemplate-swagger1/src/main/java/org/openapitools/client/model/Tag.java
 
-
-package org.openapitools.client.model;
-
-import java.util.Objects;
-import java.util.Arrays;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
-import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+<<<<<<<< HEAD:samples/server/petstore/jaxrs-spec-jakarta/src/gen/java/org/openapitools/model/AdditionalPropertiesAnyType.java
+import java.util.HashMap;
+import java.util.Map;
+import java.io.Serializable;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
+
+import io.swagger.annotations.*;
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+
+
+
+@JsonTypeName("AdditionalPropertiesAnyType")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
+public class AdditionalPropertiesAnyType extends HashMap<String, Object> implements Serializable {
+  private @Valid String name;
+
+  /**
+   **/
+  public AdditionalPropertiesAnyType name(String name) {
+========
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
@@ -73,30 +92,22 @@ public class Tag {
 
   public Tag name(String name) {
     
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/java/resttemplate-swagger1/src/main/java/org/openapitools/client/model/Tag.java
     this.name = name;
     return this;
   }
 
-   /**
-   * Get name
-   * @return name
-  **/
-  @javax.annotation.Nullable
+  
   @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
+  @JsonProperty("name")
   public String getName() {
     return name;
   }
 
-
-  @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonProperty("name")
   public void setName(String name) {
     this.name = name;
   }
-
 
   @Override
   public boolean equals(Object o) {
@@ -136,6 +147,7 @@ public class Tag {
     }
     return o.toString().replace("\n", "\n    ");
   }
+
 
 }
 

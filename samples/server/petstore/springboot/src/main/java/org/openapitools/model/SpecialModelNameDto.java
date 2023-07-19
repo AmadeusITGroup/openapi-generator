@@ -20,14 +20,20 @@ import javax.annotation.Generated;
  * SpecialModelNameDto
  */
 
-@JsonTypeName("$special[model.name]")
+@JsonTypeName("_special_model.name_")
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class SpecialModelNameDto {
 
+<<<<<<<< HEAD:samples/server/petstore/springboot/src/main/java/org/openapitools/model/SpecialModelName.java
   @JsonProperty("$special[property.name]")
   private Long $SpecialPropertyName;
 
+  public SpecialModelName $SpecialPropertyName(Long $SpecialPropertyName) {
+========
+  private Long $SpecialPropertyName;
+
   public SpecialModelNameDto $SpecialPropertyName(Long $SpecialPropertyName) {
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot/src/main/java/org/openapitools/model/SpecialModelNameDto.java
     this.$SpecialPropertyName = $SpecialPropertyName;
     return this;
   }
@@ -38,6 +44,7 @@ public class SpecialModelNameDto {
   */
   
   @ApiModelProperty(value = "")
+  @JsonProperty("$special[property.name]")
   public Long get$SpecialPropertyName() {
     return $SpecialPropertyName;
   }
@@ -54,8 +61,13 @@ public class SpecialModelNameDto {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SpecialModelNameDto $SpecialModelName = (SpecialModelNameDto) o;
+<<<<<<<< HEAD:samples/server/petstore/springboot/src/main/java/org/openapitools/model/SpecialModelName.java
+    SpecialModelName $SpecialModelName = (SpecialModelName) o;
     return Objects.equals(this.$SpecialPropertyName, $SpecialModelName.$SpecialPropertyName);
+========
+    SpecialModelNameDto specialModelName = (SpecialModelNameDto) o;
+    return Objects.equals(this.$SpecialPropertyName, specialModelName.$SpecialPropertyName);
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot/src/main/java/org/openapitools/model/SpecialModelNameDto.java
   }
 
   @Override
@@ -66,7 +78,11 @@ public class SpecialModelNameDto {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
+<<<<<<<< HEAD:samples/server/petstore/springboot/src/main/java/org/openapitools/model/SpecialModelName.java
+    sb.append("class SpecialModelName {\n");
+========
     sb.append("class SpecialModelNameDto {\n");
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot/src/main/java/org/openapitools/model/SpecialModelNameDto.java
     sb.append("    $SpecialPropertyName: ").append(toIndentedString($SpecialPropertyName)).append("\n");
     sb.append("}");
     return sb.toString();

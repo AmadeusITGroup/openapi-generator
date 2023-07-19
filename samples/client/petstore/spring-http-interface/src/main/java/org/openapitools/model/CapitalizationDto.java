@@ -21,22 +21,16 @@ import jakarta.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class CapitalizationDto {
 
-  @JsonProperty("smallCamel")
   private String smallCamel;
 
-  @JsonProperty("CapitalCamel")
   private String capitalCamel;
 
-  @JsonProperty("small_Snake")
   private String smallSnake;
 
-  @JsonProperty("Capital_Snake")
   private String capitalSnake;
 
-  @JsonProperty("SCA_ETH_Flow_Points")
   private String scAETHFlowPoints;
 
-  @JsonProperty("ATT_NAME")
   private String ATT_NAME;
 
   public CapitalizationDto smallCamel(String smallCamel) {
@@ -49,6 +43,11 @@ public class CapitalizationDto {
    * @return smallCamel
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-beanvalidation-no-nullable/src/main/java/org/openapitools/model/Capitalization.java
+  @Schema(name = "smallCamel", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("smallCamel")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface/src/main/java/org/openapitools/model/CapitalizationDto.java
   public String getSmallCamel() {
     return smallCamel;
   }
@@ -67,6 +66,11 @@ public class CapitalizationDto {
    * @return capitalCamel
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-beanvalidation-no-nullable/src/main/java/org/openapitools/model/Capitalization.java
+  @Schema(name = "CapitalCamel", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("CapitalCamel")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface/src/main/java/org/openapitools/model/CapitalizationDto.java
   public String getCapitalCamel() {
     return capitalCamel;
   }
@@ -85,6 +89,11 @@ public class CapitalizationDto {
    * @return smallSnake
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-beanvalidation-no-nullable/src/main/java/org/openapitools/model/Capitalization.java
+  @Schema(name = "small_Snake", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("small_Snake")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface/src/main/java/org/openapitools/model/CapitalizationDto.java
   public String getSmallSnake() {
     return smallSnake;
   }
@@ -103,6 +112,11 @@ public class CapitalizationDto {
    * @return capitalSnake
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-beanvalidation-no-nullable/src/main/java/org/openapitools/model/Capitalization.java
+  @Schema(name = "Capital_Snake", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("Capital_Snake")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface/src/main/java/org/openapitools/model/CapitalizationDto.java
   public String getCapitalSnake() {
     return capitalSnake;
   }
@@ -121,6 +135,11 @@ public class CapitalizationDto {
    * @return scAETHFlowPoints
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-beanvalidation-no-nullable/src/main/java/org/openapitools/model/Capitalization.java
+  @Schema(name = "SCA_ETH_Flow_Points", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("SCA_ETH_Flow_Points")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface/src/main/java/org/openapitools/model/CapitalizationDto.java
   public String getScAETHFlowPoints() {
     return scAETHFlowPoints;
   }
@@ -139,6 +158,11 @@ public class CapitalizationDto {
    * @return ATT_NAME
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-beanvalidation-no-nullable/src/main/java/org/openapitools/model/Capitalization.java
+  @Schema(name = "ATT_NAME", description = "Name of the pet ", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("ATT_NAME")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface/src/main/java/org/openapitools/model/CapitalizationDto.java
   public String getATTNAME() {
     return ATT_NAME;
   }

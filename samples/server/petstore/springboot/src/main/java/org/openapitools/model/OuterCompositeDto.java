@@ -25,13 +25,10 @@ import javax.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class OuterCompositeDto {
 
-  @JsonProperty("my_number")
   private BigDecimal myNumber;
 
-  @JsonProperty("my_string")
   private String myString;
 
-  @JsonProperty("my_boolean")
   private Boolean myBoolean;
 
   public OuterCompositeDto myNumber(BigDecimal myNumber) {
@@ -44,7 +41,12 @@ public class OuterCompositeDto {
    * @return myNumber
   */
   @Valid 
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/OuterComposite.java
+  @Schema(name = "my_number", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
   @ApiModelProperty(value = "")
+  @JsonProperty("my_number")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot/src/main/java/org/openapitools/model/OuterCompositeDto.java
   public BigDecimal getMyNumber() {
     return myNumber;
   }
@@ -63,7 +65,12 @@ public class OuterCompositeDto {
    * @return myString
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/OuterComposite.java
+  @Schema(name = "my_string", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
   @ApiModelProperty(value = "")
+  @JsonProperty("my_string")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot/src/main/java/org/openapitools/model/OuterCompositeDto.java
   public String getMyString() {
     return myString;
   }
@@ -82,7 +89,12 @@ public class OuterCompositeDto {
    * @return myBoolean
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/OuterComposite.java
+  @Schema(name = "my_boolean", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
   @ApiModelProperty(value = "")
+  @JsonProperty("my_boolean")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot/src/main/java/org/openapitools/model/OuterCompositeDto.java
   public Boolean getMyBoolean() {
     return myBoolean;
   }

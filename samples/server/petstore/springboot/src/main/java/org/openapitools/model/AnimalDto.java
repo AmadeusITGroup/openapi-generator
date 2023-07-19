@@ -10,9 +10,6 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.openapitools.model.BigCatDto;
-import org.openapitools.model.CatDto;
-import org.openapitools.model.DogDto;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -40,11 +37,25 @@ import javax.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class AnimalDto {
 
-  @JsonProperty("className")
   private String className;
 
-  @JsonProperty("color")
   private String color = "red";
+
+  /**
+   * Default constructor
+   * @deprecated Use {@link AnimalDto#AnimalDto(String)}
+   */
+  @Deprecated
+  public AnimalDto() {
+    super();
+  }
+
+  /**
+   * Constructor with only required parameters
+   */
+  public AnimalDto(String className) {
+    this.className = className;
+  }
 
   public AnimalDto className(String className) {
     this.className = className;
@@ -56,7 +67,12 @@ public class AnimalDto {
    * @return className
   */
   @NotNull 
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-beanvalidation-no-nullable/src/main/java/org/openapitools/model/Animal.java
+  @Schema(name = "className", requiredMode = Schema.RequiredMode.REQUIRED)
+========
   @ApiModelProperty(required = true, value = "")
+  @JsonProperty("className")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot/src/main/java/org/openapitools/model/AnimalDto.java
   public String getClassName() {
     return className;
   }
@@ -75,7 +91,12 @@ public class AnimalDto {
    * @return color
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-beanvalidation-no-nullable/src/main/java/org/openapitools/model/Animal.java
+  @Schema(name = "color", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
   @ApiModelProperty(value = "")
+  @JsonProperty("color")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot/src/main/java/org/openapitools/model/AnimalDto.java
   public String getColor() {
     return color;
   }

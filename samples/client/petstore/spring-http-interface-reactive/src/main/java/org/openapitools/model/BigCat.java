@@ -8,6 +8,11 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonValue;
+<<<<<<<< HEAD:samples/server/petstore/springboot/src/main/java/org/openapitools/model/BigCat.java
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+========
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface-reactive/src/main/java/org/openapitools/model/BigCat.java
 import org.openapitools.model.Cat;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -64,8 +69,23 @@ public class BigCat extends Cat {
     }
   }
 
-  @JsonProperty("kind")
   private KindEnum kind;
+
+  /**
+   * Default constructor
+   * @deprecated Use {@link BigCat#BigCat(String)}
+   */
+  @Deprecated
+  public BigCat() {
+    super();
+  }
+
+  /**
+   * Constructor with only required parameters
+   */
+  public BigCat(String className) {
+    super(className);
+  }
 
   public BigCat kind(KindEnum kind) {
     this.kind = kind;
@@ -77,6 +97,7 @@ public class BigCat extends Cat {
    * @return kind
   */
   
+  @JsonProperty("kind")
   public KindEnum getKind() {
     return kind;
   }

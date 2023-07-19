@@ -27,24 +27,39 @@ import javax.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class TypeHolderExampleDto {
 
-  @JsonProperty("string_item")
   private String stringItem;
 
-  @JsonProperty("number_item")
   private BigDecimal numberItem;
 
-  @JsonProperty("float_item")
   private Float floatItem;
 
-  @JsonProperty("integer_item")
   private Integer integerItem;
 
-  @JsonProperty("bool_item")
   private Boolean boolItem;
 
-  @JsonProperty("array_item")
   @Valid
   private List<Integer> arrayItem = new ArrayList<>();
+
+  /**
+   * Default constructor
+   * @deprecated Use {@link TypeHolderExampleDto#TypeHolderExampleDto(String, BigDecimal, Float, Integer, Boolean, List<Integer>)}
+   */
+  @Deprecated
+  public TypeHolderExampleDto() {
+    super();
+  }
+
+  /**
+   * Constructor with only required parameters
+   */
+  public TypeHolderExampleDto(String stringItem, BigDecimal numberItem, Float floatItem, Integer integerItem, Boolean boolItem, List<Integer> arrayItem) {
+    this.stringItem = stringItem;
+    this.numberItem = numberItem;
+    this.floatItem = floatItem;
+    this.integerItem = integerItem;
+    this.boolItem = boolItem;
+    this.arrayItem = arrayItem;
+  }
 
   public TypeHolderExampleDto stringItem(String stringItem) {
     this.stringItem = stringItem;
@@ -56,7 +71,12 @@ public class TypeHolderExampleDto {
    * @return stringItem
   */
   @NotNull 
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-useoptional/src/main/java/org/openapitools/model/TypeHolderExample.java
+  @Schema(name = "string_item", example = "what", requiredMode = Schema.RequiredMode.REQUIRED)
+========
   @ApiModelProperty(example = "what", required = true, value = "")
+  @JsonProperty("string_item")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot/src/main/java/org/openapitools/model/TypeHolderExampleDto.java
   public String getStringItem() {
     return stringItem;
   }
@@ -75,7 +95,12 @@ public class TypeHolderExampleDto {
    * @return numberItem
   */
   @NotNull @Valid 
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-useoptional/src/main/java/org/openapitools/model/TypeHolderExample.java
+  @Schema(name = "number_item", example = "1.234", requiredMode = Schema.RequiredMode.REQUIRED)
+========
   @ApiModelProperty(example = "1.234", required = true, value = "")
+  @JsonProperty("number_item")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot/src/main/java/org/openapitools/model/TypeHolderExampleDto.java
   public BigDecimal getNumberItem() {
     return numberItem;
   }
@@ -94,7 +119,12 @@ public class TypeHolderExampleDto {
    * @return floatItem
   */
   @NotNull 
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-useoptional/src/main/java/org/openapitools/model/TypeHolderExample.java
+  @Schema(name = "float_item", example = "1.234", requiredMode = Schema.RequiredMode.REQUIRED)
+========
   @ApiModelProperty(example = "1.234", required = true, value = "")
+  @JsonProperty("float_item")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot/src/main/java/org/openapitools/model/TypeHolderExampleDto.java
   public Float getFloatItem() {
     return floatItem;
   }
@@ -113,7 +143,12 @@ public class TypeHolderExampleDto {
    * @return integerItem
   */
   @NotNull 
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-useoptional/src/main/java/org/openapitools/model/TypeHolderExample.java
+  @Schema(name = "integer_item", example = "-2", requiredMode = Schema.RequiredMode.REQUIRED)
+========
   @ApiModelProperty(example = "-2", required = true, value = "")
+  @JsonProperty("integer_item")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot/src/main/java/org/openapitools/model/TypeHolderExampleDto.java
   public Integer getIntegerItem() {
     return integerItem;
   }
@@ -132,7 +167,12 @@ public class TypeHolderExampleDto {
    * @return boolItem
   */
   @NotNull 
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-useoptional/src/main/java/org/openapitools/model/TypeHolderExample.java
+  @Schema(name = "bool_item", example = "true", requiredMode = Schema.RequiredMode.REQUIRED)
+========
   @ApiModelProperty(example = "true", required = true, value = "")
+  @JsonProperty("bool_item")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot/src/main/java/org/openapitools/model/TypeHolderExampleDto.java
   public Boolean getBoolItem() {
     return boolItem;
   }
@@ -147,6 +187,9 @@ public class TypeHolderExampleDto {
   }
 
   public TypeHolderExampleDto addArrayItemItem(Integer arrayItemItem) {
+    if (this.arrayItem == null) {
+      this.arrayItem = new ArrayList<>();
+    }
     this.arrayItem.add(arrayItemItem);
     return this;
   }
@@ -156,7 +199,12 @@ public class TypeHolderExampleDto {
    * @return arrayItem
   */
   @NotNull 
-  @ApiModelProperty(example = "[0, 1, 2, 3]", required = true, value = "")
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-useoptional/src/main/java/org/openapitools/model/TypeHolderExample.java
+  @Schema(name = "array_item", example = "[0, 1, 2, 3]", requiredMode = Schema.RequiredMode.REQUIRED)
+========
+  @ApiModelProperty(example = "[0,1,2,3]", required = true, value = "")
+  @JsonProperty("array_item")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot/src/main/java/org/openapitools/model/TypeHolderExampleDto.java
   public List<Integer> getArrayItem() {
     return arrayItem;
   }

@@ -23,7 +23,6 @@ import jakarta.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class AdditionalPropertiesObjectDto extends HashMap<String, Map> {
 
-  @JsonProperty("name")
   private String name;
 
   public AdditionalPropertiesObjectDto name(String name) {
@@ -36,6 +35,11 @@ public class AdditionalPropertiesObjectDto extends HashMap<String, Map> {
    * @return name
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/AdditionalPropertiesObject.java
+  @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("name")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface/src/main/java/org/openapitools/model/AdditionalPropertiesObjectDto.java
   public String getName() {
     return name;
   }

@@ -6,7 +6,14 @@ src/main/java/org/openapitools/api/FakeClassnameTags123Api.java
 src/main/java/org/openapitools/api/PetApi.java
 src/main/java/org/openapitools/api/StoreApi.java
 src/main/java/org/openapitools/api/UserApi.java
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-useoptional/.openapi-generator/FILES
+src/main/java/org/openapitools/api/UserApiController.java
+src/main/java/org/openapitools/configuration/EnumConverterConfiguration.java
+src/main/java/org/openapitools/configuration/HomeController.java
+src/main/java/org/openapitools/configuration/SpringDocConfiguration.java
+========
 src/main/java/org/openapitools/configuration/HttpInterfacesAbstractConfigurator.java
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface-reactive/.openapi-generator/FILES
 src/main/java/org/openapitools/model/AdditionalPropertiesAnyType.java
 src/main/java/org/openapitools/model/AdditionalPropertiesArray.java
 src/main/java/org/openapitools/model/AdditionalPropertiesBoolean.java
@@ -27,6 +34,7 @@ src/main/java/org/openapitools/model/CatAllOf.java
 src/main/java/org/openapitools/model/Category.java
 src/main/java/org/openapitools/model/ClassModel.java
 src/main/java/org/openapitools/model/Client.java
+src/main/java/org/openapitools/model/ContainerDefaultValue.java
 src/main/java/org/openapitools/model/Dog.java
 src/main/java/org/openapitools/model/DogAllOf.java
 src/main/java/org/openapitools/model/EnumArrays.java
@@ -49,6 +57,7 @@ src/main/java/org/openapitools/model/OuterComposite.java
 src/main/java/org/openapitools/model/OuterEnum.java
 src/main/java/org/openapitools/model/Pet.java
 src/main/java/org/openapitools/model/ReadOnlyFirst.java
+src/main/java/org/openapitools/model/ResponseObjectWithDifferentFieldNames.java
 src/main/java/org/openapitools/model/SpecialModelName.java
 src/main/java/org/openapitools/model/Tag.java
 src/main/java/org/openapitools/model/TypeHolderDefault.java

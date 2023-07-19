@@ -10,20 +10,30 @@
 
 from setuptools import setup, find_packages  # noqa: H301
 
-NAME = "petstore-api"
-VERSION = "1.0.0"
 # To install the library, run the following
 #
 # python setup.py install
 #
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
-
+NAME = "petstore-api"
+VERSION = "1.0.0"
+PYTHON_REQUIRES = ">=3.7"
 REQUIRES = [
+<<<<<<<< HEAD:samples/openapi3/client/petstore/python-nextgen-aiohttp/setup.py
+    "urllib3 >= 1.25.3",
+    "python-dateutil",
+    "aiohttp >= 3.0.0",
+    "pem>=19.3.0",
+    "pycryptodome>=3.9.0",
+    "pydantic",
+    "aenum"
+========
   "urllib3 >= 1.25.3",
   "python-dateutil",
   "pem>=19.3.0",
   "pycryptodome>=3.9.0",
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/openapi3/client/petstore/python-prior/setup.py
 ]
 
 setup(
@@ -34,11 +44,15 @@ setup(
     author_email="team@openapitools.org",
     url="",
     keywords=["OpenAPI", "OpenAPI-Generator", "OpenAPI Petstore"],
+<<<<<<<< HEAD:samples/openapi3/client/petstore/python-nextgen-aiohttp/setup.py
+========
     python_requires=">=3.6",
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/openapi3/client/petstore/python-prior/setup.py
     install_requires=REQUIRES,
     packages=find_packages(exclude=["test", "tests"]),
     include_package_data=True,
     license="Apache-2.0",
+    long_description_content_type='text/markdown',
     long_description="""\
     This spec is mainly for testing Petstore server and contains fake endpoints, models. Please do not use this for any other purpose. Special characters: \&quot; \\  # noqa: E501
     """

@@ -25,16 +25,13 @@ import jakarta.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class MixedPropertiesAndAdditionalPropertiesClass {
 
-  @JsonProperty("uuid")
   private UUID uuid;
 
-  @JsonProperty("dateTime")
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private OffsetDateTime dateTime;
 
-  @JsonProperty("map")
   
-  private Map<String, Animal> map = null;
+  private Map<String, Animal> map = new HashMap<>();
 
   public MixedPropertiesAndAdditionalPropertiesClass uuid(UUID uuid) {
     this.uuid = uuid;
@@ -45,7 +42,13 @@ public class MixedPropertiesAndAdditionalPropertiesClass {
    * Get uuid
    * @return uuid
   */
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/MixedPropertiesAndAdditionalPropertiesClass.java
+  @Valid 
+  @Schema(name = "uuid", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
   
+  @JsonProperty("uuid")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface-reactive/src/main/java/org/openapitools/model/MixedPropertiesAndAdditionalPropertiesClass.java
   public UUID getUuid() {
     return uuid;
   }
@@ -63,7 +66,13 @@ public class MixedPropertiesAndAdditionalPropertiesClass {
    * Get dateTime
    * @return dateTime
   */
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/MixedPropertiesAndAdditionalPropertiesClass.java
+  @Valid 
+  @Schema(name = "dateTime", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
   
+  @JsonProperty("dateTime")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface-reactive/src/main/java/org/openapitools/model/MixedPropertiesAndAdditionalPropertiesClass.java
   public OffsetDateTime getDateTime() {
     return dateTime;
   }
@@ -89,7 +98,13 @@ public class MixedPropertiesAndAdditionalPropertiesClass {
    * Get map
    * @return map
   */
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/MixedPropertiesAndAdditionalPropertiesClass.java
+  @Valid 
+  @Schema(name = "map", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
   
+  @JsonProperty("map")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface-reactive/src/main/java/org/openapitools/model/MixedPropertiesAndAdditionalPropertiesClass.java
   public Map<String, Animal> getMap() {
     return map;
   }

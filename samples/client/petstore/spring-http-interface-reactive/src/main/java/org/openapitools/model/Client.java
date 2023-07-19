@@ -19,7 +19,6 @@ import jakarta.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class Client {
 
-  @JsonProperty("client")
   private String client;
 
   public Client client(String client) {
@@ -32,6 +31,11 @@ public class Client {
    * @return client
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-useoptional/src/main/java/org/openapitools/model/Client.java
+  @Schema(name = "client", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("client")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface-reactive/src/main/java/org/openapitools/model/Client.java
   public String getClient() {
     return client;
   }
