@@ -24,21 +24,16 @@ import jakarta.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class TypeHolderDefaultDto {
 
-  @JsonProperty("string_item")
   private String stringItem = "what";
 
-  @JsonProperty("number_item")
-  private BigDecimal numberItem;
+  private BigDecimal numberItem = new BigDecimal("1.234");
 
-  @JsonProperty("integer_item")
-  private Integer integerItem;
+  private Integer integerItem = -2;
 
-  @JsonProperty("bool_item")
   private Boolean boolItem = true;
 
-  @JsonProperty("array_item")
   
-  private List<Integer> arrayItem = new ArrayList<>();
+  private List<Integer> arrayItem = new ArrayList<>(Arrays.asList(0, 1, 2, 3));
 
   public TypeHolderDefaultDto stringItem(String stringItem) {
     this.stringItem = stringItem;
@@ -49,7 +44,13 @@ public class TypeHolderDefaultDto {
    * Get stringItem
    * @return stringItem
   */
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/TypeHolderDefault.java
+  @NotNull 
+  @Schema(name = "string_item", requiredMode = Schema.RequiredMode.REQUIRED)
+========
   @NotNull
+  @JsonProperty("string_item")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface/src/main/java/org/openapitools/model/TypeHolderDefaultDto.java
   public String getStringItem() {
     return stringItem;
   }
@@ -67,7 +68,13 @@ public class TypeHolderDefaultDto {
    * Get numberItem
    * @return numberItem
   */
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/TypeHolderDefault.java
+  @NotNull @Valid 
+  @Schema(name = "number_item", requiredMode = Schema.RequiredMode.REQUIRED)
+========
   @NotNull
+  @JsonProperty("number_item")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface/src/main/java/org/openapitools/model/TypeHolderDefaultDto.java
   public BigDecimal getNumberItem() {
     return numberItem;
   }
@@ -85,7 +92,13 @@ public class TypeHolderDefaultDto {
    * Get integerItem
    * @return integerItem
   */
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/TypeHolderDefault.java
+  @NotNull 
+  @Schema(name = "integer_item", requiredMode = Schema.RequiredMode.REQUIRED)
+========
   @NotNull
+  @JsonProperty("integer_item")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface/src/main/java/org/openapitools/model/TypeHolderDefaultDto.java
   public Integer getIntegerItem() {
     return integerItem;
   }
@@ -103,7 +116,13 @@ public class TypeHolderDefaultDto {
    * Get boolItem
    * @return boolItem
   */
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/TypeHolderDefault.java
+  @NotNull 
+  @Schema(name = "bool_item", requiredMode = Schema.RequiredMode.REQUIRED)
+========
   @NotNull
+  @JsonProperty("bool_item")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface/src/main/java/org/openapitools/model/TypeHolderDefaultDto.java
   public Boolean getBoolItem() {
     return boolItem;
   }
@@ -118,6 +137,9 @@ public class TypeHolderDefaultDto {
   }
 
   public TypeHolderDefaultDto addArrayItemItem(Integer arrayItemItem) {
+    if (this.arrayItem == null) {
+      this.arrayItem = new ArrayList<>(Arrays.asList(0, 1, 2, 3));
+    }
     this.arrayItem.add(arrayItemItem);
     return this;
   }
@@ -126,7 +148,13 @@ public class TypeHolderDefaultDto {
    * Get arrayItem
    * @return arrayItem
   */
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/TypeHolderDefault.java
+  @NotNull 
+  @Schema(name = "array_item", requiredMode = Schema.RequiredMode.REQUIRED)
+========
   @NotNull
+  @JsonProperty("array_item")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface/src/main/java/org/openapitools/model/TypeHolderDefaultDto.java
   public List<Integer> getArrayItem() {
     return arrayItem;
   }

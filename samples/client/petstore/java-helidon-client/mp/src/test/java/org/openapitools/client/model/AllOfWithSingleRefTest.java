@@ -1,6 +1,6 @@
 /**
  * OpenAPI Petstore
- * This spec is mainly for testing Petstore server and contains fake endpoints, models. Please do not use this for any other purpose. Special characters: \" \\
+ * This is a sample server Petstore server. For this sample, you can use the api key `special-key` to test the authorization filters.
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -18,12 +18,40 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+<<<<<<<< HEAD:samples/openapi3/client/petstore/java/jersey2-java8-swagger1/src/test/java/org/openapitools/client/model/CategoryTest.java
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
+========
 import org.openapitools.client.model.SingleRefType;
 
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/java-helidon-client/mp/src/test/java/org/openapitools/client/model/AllOfWithSingleRefTest.java
 import org.junit.jupiter.api.Test;
 
-
 /**
+<<<<<<<< HEAD:samples/openapi3/client/petstore/java/jersey2-java8-swagger1/src/test/java/org/openapitools/client/model/CategoryTest.java
+ * Model tests for Category
+ */
+public class CategoryTest {
+    private final Category model = new Category();
+
+    /**
+     * Model tests for Category
+     */
+    @Test
+    public void testCategory() {
+        // TODO: test Category
+    }
+
+    /**
+     * Test the property 'id'
+     */
+    @Test
+    public void idTest() {
+        // TODO: test id
+========
  * Model tests for AllOfWithSingleRef
  */
 public class AllOfWithSingleRefTest {
@@ -35,12 +63,17 @@ public class AllOfWithSingleRefTest {
     @Test
     public void testAllOfWithSingleRef() {
         // TODO: test AllOfWithSingleRef
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/java-helidon-client/mp/src/test/java/org/openapitools/client/model/AllOfWithSingleRefTest.java
     }
 
     /**
      * Test the property 'username'
      */
     @Test
+<<<<<<<< HEAD:samples/openapi3/client/petstore/java/jersey2-java8-swagger1/src/test/java/org/openapitools/client/model/CategoryTest.java
+    public void nameTest() {
+        // TODO: test name
+========
     public void usernameTest() {
         // TODO: test username
     }
@@ -51,6 +84,7 @@ public class AllOfWithSingleRefTest {
     @Test
     public void singleRefTypeTest() {
         // TODO: test singleRefType
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/java-helidon-client/mp/src/test/java/org/openapitools/client/model/AllOfWithSingleRefTest.java
     }
 
 }

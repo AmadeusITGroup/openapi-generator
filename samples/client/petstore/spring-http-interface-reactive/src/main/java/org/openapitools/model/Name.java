@@ -19,17 +19,34 @@ import jakarta.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class Name {
 
-  @JsonProperty("name")
   private Integer name;
 
-  @JsonProperty("snake_case")
   private Integer snakeCase;
 
-  @JsonProperty("property")
   private String property;
 
+<<<<<<<< HEAD:samples/server/petstore/springboot/src/main/java/org/openapitools/model/Name.java
   @JsonProperty("123Number")
+  private Integer _123Number;
+========
   private Integer _123number;
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface-reactive/src/main/java/org/openapitools/model/Name.java
+
+  /**
+   * Default constructor
+   * @deprecated Use {@link Name#Name(Integer)}
+   */
+  @Deprecated
+  public Name() {
+    super();
+  }
+
+  /**
+   * Constructor with only required parameters
+   */
+  public Name(Integer name) {
+    this.name = name;
+  }
 
   public Name name(Integer name) {
     this.name = name;
@@ -41,6 +58,7 @@ public class Name {
    * @return name
   */
   @NotNull
+  @JsonProperty("name")
   public Integer getName() {
     return name;
   }
@@ -59,6 +77,7 @@ public class Name {
    * @return snakeCase
   */
   
+  @JsonProperty("snake_case")
   public Integer getSnakeCase() {
     return snakeCase;
   }
@@ -77,6 +96,7 @@ public class Name {
    * @return property
   */
   
+  @JsonProperty("property")
   public String getProperty() {
     return property;
   }
@@ -85,22 +105,29 @@ public class Name {
     this.property = property;
   }
 
-  public Name _123number(Integer _123number) {
-    this._123number = _123number;
+  public Name _123Number(Integer _123Number) {
+    this._123Number = _123Number;
     return this;
   }
 
   /**
-   * Get _123number
-   * @return _123number
+   * Get _123Number
+   * @return _123Number
   */
   
+<<<<<<<< HEAD:samples/server/petstore/springboot/src/main/java/org/openapitools/model/Name.java
+  @ApiModelProperty(readOnly = true, value = "")
+  public Integer get123Number() {
+    return _123Number;
+========
+  @JsonProperty("123Number")
   public Integer get123number() {
     return _123number;
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface-reactive/src/main/java/org/openapitools/model/Name.java
   }
 
-  public void set123number(Integer _123number) {
-    this._123number = _123number;
+  public void set123Number(Integer _123Number) {
+    this._123Number = _123Number;
   }
 
   @Override
@@ -115,12 +142,12 @@ public class Name {
     return Objects.equals(this.name, name.name) &&
         Objects.equals(this.snakeCase, name.snakeCase) &&
         Objects.equals(this.property, name.property) &&
-        Objects.equals(this._123number, name._123number);
+        Objects.equals(this._123Number, name._123Number);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, snakeCase, property, _123number);
+    return Objects.hash(name, snakeCase, property, _123Number);
   }
 
   @Override
@@ -130,7 +157,7 @@ public class Name {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    snakeCase: ").append(toIndentedString(snakeCase)).append("\n");
     sb.append("    property: ").append(toIndentedString(property)).append("\n");
-    sb.append("    _123number: ").append(toIndentedString(_123number)).append("\n");
+    sb.append("    _123Number: ").append(toIndentedString(_123Number)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -61,7 +61,6 @@ public class BigCatAllOf {
     }
   }
 
-  @JsonProperty("kind")
   private KindEnum kind;
 
   public BigCatAllOf kind(KindEnum kind) {
@@ -74,6 +73,11 @@ public class BigCatAllOf {
    * @return kind
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/BigCatAllOf.java
+  @Schema(name = "kind", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("kind")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface-reactive/src/main/java/org/openapitools/model/BigCatAllOf.java
   public KindEnum getKind() {
     return kind;
   }

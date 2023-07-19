@@ -21,7 +21,6 @@ import jakarta.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class ListDto {
 
-  @JsonProperty("123-list")
   private String _123list;
 
   public ListDto _123list(String _123list) {
@@ -34,6 +33,11 @@ public class ListDto {
    * @return _123list
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-useoptional/src/main/java/org/openapitools/model/ModelList.java
+  @Schema(name = "123-list", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("123-list")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface/src/main/java/org/openapitools/model/ListDto.java
   public String get123list() {
     return _123list;
   }

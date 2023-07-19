@@ -22,13 +22,10 @@ import jakarta.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class OuterCompositeDto {
 
-  @JsonProperty("my_number")
   private BigDecimal myNumber;
 
-  @JsonProperty("my_string")
   private String myString;
 
-  @JsonProperty("my_boolean")
   private Boolean myBoolean;
 
   public OuterCompositeDto myNumber(BigDecimal myNumber) {
@@ -40,7 +37,13 @@ public class OuterCompositeDto {
    * Get myNumber
    * @return myNumber
   */
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-beanvalidation-no-nullable/src/main/java/org/openapitools/model/OuterComposite.java
+  @Valid 
+  @Schema(name = "my_number", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
   
+  @JsonProperty("my_number")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface/src/main/java/org/openapitools/model/OuterCompositeDto.java
   public BigDecimal getMyNumber() {
     return myNumber;
   }
@@ -59,6 +62,11 @@ public class OuterCompositeDto {
    * @return myString
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-beanvalidation-no-nullable/src/main/java/org/openapitools/model/OuterComposite.java
+  @Schema(name = "my_string", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("my_string")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface/src/main/java/org/openapitools/model/OuterCompositeDto.java
   public String getMyString() {
     return myString;
   }
@@ -77,6 +85,11 @@ public class OuterCompositeDto {
    * @return myBoolean
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-beanvalidation-no-nullable/src/main/java/org/openapitools/model/OuterComposite.java
+  @Schema(name = "my_boolean", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("my_boolean")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface/src/main/java/org/openapitools/model/OuterCompositeDto.java
   public Boolean getMyBoolean() {
     return myBoolean;
   }

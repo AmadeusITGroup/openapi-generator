@@ -57,7 +57,6 @@ public class EnumArrays {
     }
   }
 
-  @JsonProperty("just_symbol")
   private JustSymbolEnum justSymbol;
 
   /**
@@ -95,9 +94,8 @@ public class EnumArrays {
     }
   }
 
-  @JsonProperty("array_enum")
   
-  private List<ArrayEnumEnum> arrayEnum = null;
+  private List<ArrayEnumEnum> arrayEnum;
 
   public EnumArrays justSymbol(JustSymbolEnum justSymbol) {
     this.justSymbol = justSymbol;
@@ -109,6 +107,11 @@ public class EnumArrays {
    * @return justSymbol
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-useoptional/src/main/java/org/openapitools/model/EnumArrays.java
+  @Schema(name = "just_symbol", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("just_symbol")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface-reactive/src/main/java/org/openapitools/model/EnumArrays.java
   public JustSymbolEnum getJustSymbol() {
     return justSymbol;
   }
@@ -135,6 +138,11 @@ public class EnumArrays {
    * @return arrayEnum
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-useoptional/src/main/java/org/openapitools/model/EnumArrays.java
+  @Schema(name = "array_enum", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("array_enum")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface-reactive/src/main/java/org/openapitools/model/EnumArrays.java
   public List<ArrayEnumEnum> getArrayEnum() {
     return arrayEnum;
   }

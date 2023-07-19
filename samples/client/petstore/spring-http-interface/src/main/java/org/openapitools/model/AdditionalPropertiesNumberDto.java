@@ -24,7 +24,6 @@ import jakarta.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class AdditionalPropertiesNumberDto extends HashMap<String, BigDecimal> {
 
-  @JsonProperty("name")
   private String name;
 
   public AdditionalPropertiesNumberDto name(String name) {
@@ -37,6 +36,11 @@ public class AdditionalPropertiesNumberDto extends HashMap<String, BigDecimal> {
    * @return name
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/AdditionalPropertiesNumber.java
+  @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("name")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface/src/main/java/org/openapitools/model/AdditionalPropertiesNumberDto.java
   public String getName() {
     return name;
   }

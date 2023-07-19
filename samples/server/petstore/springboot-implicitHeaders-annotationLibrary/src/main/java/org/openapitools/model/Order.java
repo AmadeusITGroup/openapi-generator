@@ -23,16 +23,12 @@ import javax.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class Order {
 
-  @JsonProperty("id")
   private Long id;
 
-  @JsonProperty("petId")
   private Long petId;
 
-  @JsonProperty("quantity")
   private Integer quantity;
 
-  @JsonProperty("shipDate")
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private OffsetDateTime shipDate;
 
@@ -73,10 +69,8 @@ public class Order {
     }
   }
 
-  @JsonProperty("status")
   private StatusEnum status;
 
-  @JsonProperty("complete")
   private Boolean complete = false;
 
   public Order id(Long id) {
@@ -89,6 +83,11 @@ public class Order {
    * @return id
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/Order.java
+  @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("id")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot-implicitHeaders-annotationLibrary/src/main/java/org/openapitools/model/Order.java
   public Long getId() {
     return id;
   }
@@ -107,6 +106,11 @@ public class Order {
    * @return petId
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/Order.java
+  @Schema(name = "petId", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("petId")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot-implicitHeaders-annotationLibrary/src/main/java/org/openapitools/model/Order.java
   public Long getPetId() {
     return petId;
   }
@@ -125,6 +129,11 @@ public class Order {
    * @return quantity
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/Order.java
+  @Schema(name = "quantity", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("quantity")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot-implicitHeaders-annotationLibrary/src/main/java/org/openapitools/model/Order.java
   public Integer getQuantity() {
     return quantity;
   }
@@ -143,6 +152,11 @@ public class Order {
    * @return shipDate
   */
   @Valid 
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/Order.java
+  @Schema(name = "shipDate", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("shipDate")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot-implicitHeaders-annotationLibrary/src/main/java/org/openapitools/model/Order.java
   public OffsetDateTime getShipDate() {
     return shipDate;
   }
@@ -161,6 +175,11 @@ public class Order {
    * @return status
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/Order.java
+  @Schema(name = "status", description = "Order Status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("status")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot-implicitHeaders-annotationLibrary/src/main/java/org/openapitools/model/Order.java
   public StatusEnum getStatus() {
     return status;
   }
@@ -179,6 +198,11 @@ public class Order {
    * @return complete
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/Order.java
+  @Schema(name = "complete", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("complete")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot-implicitHeaders-annotationLibrary/src/main/java/org/openapitools/model/Order.java
   public Boolean getComplete() {
     return complete;
   }

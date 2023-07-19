@@ -8,7 +8,10 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.openapitools.model.Animal;
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-useoptional/src/main/java/org/openapitools/model/Cat.java
 import org.openapitools.model.BigCat;
+========
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface-reactive/src/main/java/org/openapitools/model/Cat.java
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import jakarta.validation.constraints.NotNull;
@@ -33,8 +36,23 @@ import jakarta.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class Cat extends Animal {
 
-  @JsonProperty("declawed")
   private Boolean declawed;
+
+  /**
+   * Default constructor
+   * @deprecated Use {@link Cat#Cat(String)}
+   */
+  @Deprecated
+  public Cat() {
+    super();
+  }
+
+  /**
+   * Constructor with only required parameters
+   */
+  public Cat(String className) {
+    super(className);
+  }
 
   public Cat declawed(Boolean declawed) {
     this.declawed = declawed;
@@ -46,6 +64,11 @@ public class Cat extends Animal {
    * @return declawed
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-useoptional/src/main/java/org/openapitools/model/Cat.java
+  @Schema(name = "declawed", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("declawed")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface-reactive/src/main/java/org/openapitools/model/Cat.java
   public Boolean getDeclawed() {
     return declawed;
   }

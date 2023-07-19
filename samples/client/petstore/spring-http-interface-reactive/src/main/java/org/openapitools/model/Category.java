@@ -19,11 +19,25 @@ import jakarta.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class Category {
 
-  @JsonProperty("id")
   private Long id;
 
-  @JsonProperty("name")
   private String name = "default-name";
+
+  /**
+   * Default constructor
+   * @deprecated Use {@link Category#Category(String)}
+   */
+  @Deprecated
+  public Category() {
+    super();
+  }
+
+  /**
+   * Constructor with only required parameters
+   */
+  public Category(String name) {
+    this.name = name;
+  }
 
   public Category id(Long id) {
     this.id = id;
@@ -35,6 +49,11 @@ public class Category {
    * @return id
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-beanvalidation-no-nullable/src/main/java/org/openapitools/model/Category.java
+  @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("id")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface-reactive/src/main/java/org/openapitools/model/Category.java
   public Long getId() {
     return id;
   }
@@ -52,7 +71,13 @@ public class Category {
    * Get name
    * @return name
   */
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-beanvalidation-no-nullable/src/main/java/org/openapitools/model/Category.java
+  @NotNull 
+  @Schema(name = "name", requiredMode = Schema.RequiredMode.REQUIRED)
+========
   @NotNull
+  @JsonProperty("name")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface-reactive/src/main/java/org/openapitools/model/Category.java
   public String getName() {
     return name;
   }

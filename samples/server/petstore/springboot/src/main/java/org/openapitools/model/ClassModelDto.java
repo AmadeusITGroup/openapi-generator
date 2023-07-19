@@ -25,7 +25,6 @@ import javax.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class ClassModelDto {
 
-  @JsonProperty("_class")
   private String propertyClass;
 
   public ClassModelDto propertyClass(String propertyClass) {
@@ -38,7 +37,12 @@ public class ClassModelDto {
    * @return propertyClass
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/ClassModel.java
+  @Schema(name = "_class", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
   @ApiModelProperty(value = "")
+  @JsonProperty("_class")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot/src/main/java/org/openapitools/model/ClassModelDto.java
   public String getPropertyClass() {
     return propertyClass;
   }

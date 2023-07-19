@@ -33,9 +33,9 @@
                             <goal>exec</goal>
                         </goals>
                         <configuration>
-                            <executable>make</executable>
+                            <executable>bash</executable>
                             <arguments>
-                                <argument>test</argument>
+                                <argument>test_python3.sh</argument>
                             </arguments>
                         </configuration>
                     </execution>

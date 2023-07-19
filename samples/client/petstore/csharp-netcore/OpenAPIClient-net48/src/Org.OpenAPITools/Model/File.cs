@@ -27,6 +27,18 @@ using OpenAPIClientUtils = Org.OpenAPITools.Client.ClientUtils;
 namespace Org.OpenAPITools.Model
 {
     /// <summary>
+<<<<<<<< HEAD:samples/client/petstore/csharp-netcore/OpenAPIClient-net48/src/Org.OpenAPITools/Model/FooGetDefaultResponse.cs
+    /// FooGetDefaultResponse
+    /// </summary>
+    [DataContract(Name = "_foo_get_default_response")]
+    public partial class FooGetDefaultResponse : IEquatable<FooGetDefaultResponse>, IValidatableObject
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FooGetDefaultResponse" /> class.
+        /// </summary>
+        /// <param name="_string">_string.</param>
+        public FooGetDefaultResponse(Foo _string = default(Foo))
+========
     /// Must be named &#x60;File&#x60; for test.
     /// </summary>
     [DataContract(Name = "File")]
@@ -37,6 +49,7 @@ namespace Org.OpenAPITools.Model
         /// </summary>
         /// <param name="sourceURI">Test capitalization.</param>
         public File(string sourceURI = default(string))
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/csharp-netcore/OpenAPIClient-net48/src/Org.OpenAPITools/Model/File.cs
         {
             this.SourceURI = sourceURI;
             this.AdditionalProperties = new Dictionary<string, object>();
@@ -62,8 +75,13 @@ namespace Org.OpenAPITools.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
+<<<<<<<< HEAD:samples/client/petstore/csharp-netcore/OpenAPIClient-net48/src/Org.OpenAPITools/Model/FooGetDefaultResponse.cs
+            sb.Append("class FooGetDefaultResponse {\n");
+            sb.Append("  String: ").Append(String).Append("\n");
+========
             sb.Append("class File {\n");
             sb.Append("  SourceURI: ").Append(SourceURI).Append("\n");
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/csharp-netcore/OpenAPIClient-net48/src/Org.OpenAPITools/Model/File.cs
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -85,6 +103,17 @@ namespace Org.OpenAPITools.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
+<<<<<<<< HEAD:samples/client/petstore/csharp-netcore/OpenAPIClient-net48/src/Org.OpenAPITools/Model/FooGetDefaultResponse.cs
+            return OpenAPIClientUtils.compareLogic.Compare(this, input as FooGetDefaultResponse).AreEqual;
+        }
+
+        /// <summary>
+        /// Returns true if FooGetDefaultResponse instances are equal
+        /// </summary>
+        /// <param name="input">Instance of FooGetDefaultResponse to be compared</param>
+        /// <returns>Boolean</returns>
+        public bool Equals(FooGetDefaultResponse input)
+========
             return OpenAPIClientUtils.compareLogic.Compare(this, input as File).AreEqual;
         }
 
@@ -94,6 +123,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="input">Instance of File to be compared</param>
         /// <returns>Boolean</returns>
         public bool Equals(File input)
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/csharp-netcore/OpenAPIClient-net48/src/Org.OpenAPITools/Model/File.cs
         {
             return OpenAPIClientUtils.compareLogic.Compare(this, input).AreEqual;
         }
@@ -124,7 +154,7 @@ namespace Org.OpenAPITools.Model
         /// </summary>
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
-        public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             yield break;
         }

@@ -27,22 +27,17 @@ import jakarta.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class Pet {
 
-  @JsonProperty("id")
   private Long id;
 
-  @JsonProperty("category")
   private Category category;
 
-  @JsonProperty("name")
   private String name;
 
-  @JsonProperty("photoUrls")
   
   private Set<String> photoUrls = new LinkedHashSet<>();
 
-  @JsonProperty("tags")
   
-  private List<Tag> tags = null;
+  private List<Tag> tags;
 
   /**
    * pet status in the store
@@ -81,8 +76,24 @@ public class Pet {
     }
   }
 
-  @JsonProperty("status")
   private StatusEnum status;
+
+  /**
+   * Default constructor
+   * @deprecated Use {@link Pet#Pet(String, Set<String>)}
+   */
+  @Deprecated
+  public Pet() {
+    super();
+  }
+
+  /**
+   * Constructor with only required parameters
+   */
+  public Pet(String name, Set<String> photoUrls) {
+    this.name = name;
+    this.photoUrls = photoUrls;
+  }
 
   public Pet id(Long id) {
     this.id = id;
@@ -94,6 +105,11 @@ public class Pet {
    * @return id
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/Pet.java
+  @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("id")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface-reactive/src/main/java/org/openapitools/model/Pet.java
   public Long getId() {
     return id;
   }
@@ -111,7 +127,13 @@ public class Pet {
    * Get category
    * @return category
   */
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/Pet.java
+  @Valid 
+  @Schema(name = "category", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
   
+  @JsonProperty("category")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface-reactive/src/main/java/org/openapitools/model/Pet.java
   public Category getCategory() {
     return category;
   }
@@ -129,7 +151,13 @@ public class Pet {
    * Get name
    * @return name
   */
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/Pet.java
+  @NotNull 
+  @Schema(name = "name", example = "doggie", requiredMode = Schema.RequiredMode.REQUIRED)
+========
   @NotNull
+  @JsonProperty("name")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface-reactive/src/main/java/org/openapitools/model/Pet.java
   public String getName() {
     return name;
   }
@@ -144,6 +172,9 @@ public class Pet {
   }
 
   public Pet addPhotoUrlsItem(String photoUrlsItem) {
+    if (this.photoUrls == null) {
+      this.photoUrls = new LinkedHashSet<>();
+    }
     this.photoUrls.add(photoUrlsItem);
     return this;
   }
@@ -152,7 +183,13 @@ public class Pet {
    * Get photoUrls
    * @return photoUrls
   */
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/Pet.java
+  @NotNull 
+  @Schema(name = "photoUrls", requiredMode = Schema.RequiredMode.REQUIRED)
+========
   @NotNull
+  @JsonProperty("photoUrls")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface-reactive/src/main/java/org/openapitools/model/Pet.java
   public Set<String> getPhotoUrls() {
     return photoUrls;
   }
@@ -179,7 +216,13 @@ public class Pet {
    * Get tags
    * @return tags
   */
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/Pet.java
+  @Valid 
+  @Schema(name = "tags", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
   
+  @JsonProperty("tags")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface-reactive/src/main/java/org/openapitools/model/Pet.java
   public List<Tag> getTags() {
     return tags;
   }
@@ -198,6 +241,11 @@ public class Pet {
    * @return status
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/Pet.java
+  @Schema(name = "status", description = "pet status in the store", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("status")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface-reactive/src/main/java/org/openapitools/model/Pet.java
   public StatusEnum getStatus() {
     return status;
   }

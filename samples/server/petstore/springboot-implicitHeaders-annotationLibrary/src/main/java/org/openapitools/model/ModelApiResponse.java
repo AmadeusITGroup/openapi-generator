@@ -22,13 +22,10 @@ import javax.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class ModelApiResponse {
 
-  @JsonProperty("code")
   private Integer code;
 
-  @JsonProperty("type")
   private String type;
 
-  @JsonProperty("message")
   private String message;
 
   public ModelApiResponse code(Integer code) {
@@ -41,6 +38,11 @@ public class ModelApiResponse {
    * @return code
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/ModelApiResponse.java
+  @Schema(name = "code", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("code")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot-implicitHeaders-annotationLibrary/src/main/java/org/openapitools/model/ModelApiResponse.java
   public Integer getCode() {
     return code;
   }
@@ -59,6 +61,11 @@ public class ModelApiResponse {
    * @return type
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/ModelApiResponse.java
+  @Schema(name = "type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("type")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot-implicitHeaders-annotationLibrary/src/main/java/org/openapitools/model/ModelApiResponse.java
   public String getType() {
     return type;
   }
@@ -77,6 +84,11 @@ public class ModelApiResponse {
    * @return message
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/ModelApiResponse.java
+  @Schema(name = "message", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("message")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot-implicitHeaders-annotationLibrary/src/main/java/org/openapitools/model/ModelApiResponse.java
   public String getMessage() {
     return message;
   }

@@ -27,9 +27,8 @@ import javax.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class ArrayOfNumberOnlyDto {
 
-  @JsonProperty("ArrayNumber")
   @Valid
-  private List<BigDecimal> arrayNumber = null;
+  private List<BigDecimal> arrayNumber;
 
   public ArrayOfNumberOnlyDto arrayNumber(List<BigDecimal> arrayNumber) {
     this.arrayNumber = arrayNumber;
@@ -49,7 +48,12 @@ public class ArrayOfNumberOnlyDto {
    * @return arrayNumber
   */
   @Valid 
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/ArrayOfNumberOnly.java
+  @Schema(name = "ArrayNumber", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
   @ApiModelProperty(value = "")
+  @JsonProperty("ArrayNumber")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot/src/main/java/org/openapitools/model/ArrayOfNumberOnlyDto.java
   public List<BigDecimal> getArrayNumber() {
     return arrayNumber;
   }

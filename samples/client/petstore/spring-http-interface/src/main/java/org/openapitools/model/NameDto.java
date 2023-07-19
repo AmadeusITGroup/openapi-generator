@@ -21,16 +21,12 @@ import jakarta.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class NameDto {
 
-  @JsonProperty("name")
   private Integer name;
 
-  @JsonProperty("snake_case")
   private Integer snakeCase;
 
-  @JsonProperty("property")
   private String property;
 
-  @JsonProperty("123Number")
   private Integer _123number;
 
   public NameDto name(Integer name) {
@@ -42,7 +38,13 @@ public class NameDto {
    * Get name
    * @return name
   */
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-useoptional/src/main/java/org/openapitools/model/Name.java
+  @NotNull 
+  @Schema(name = "name", requiredMode = Schema.RequiredMode.REQUIRED)
+========
   @NotNull
+  @JsonProperty("name")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface/src/main/java/org/openapitools/model/NameDto.java
   public Integer getName() {
     return name;
   }
@@ -61,6 +63,11 @@ public class NameDto {
    * @return snakeCase
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-useoptional/src/main/java/org/openapitools/model/Name.java
+  @Schema(name = "snake_case", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("snake_case")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface/src/main/java/org/openapitools/model/NameDto.java
   public Integer getSnakeCase() {
     return snakeCase;
   }
@@ -79,6 +86,11 @@ public class NameDto {
    * @return property
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-useoptional/src/main/java/org/openapitools/model/Name.java
+  @Schema(name = "property", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("property")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface/src/main/java/org/openapitools/model/NameDto.java
   public String getProperty() {
     return property;
   }
@@ -97,6 +109,11 @@ public class NameDto {
    * @return _123number
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-useoptional/src/main/java/org/openapitools/model/Name.java
+  @Schema(name = "123Number", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("123Number")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface/src/main/java/org/openapitools/model/NameDto.java
   public Integer get123number() {
     return _123number;
   }

@@ -1,4 +1,4 @@
-/*
+/**
  * OpenAPI Petstore
  * This is a sample server Petstore server. For this sample, you can use the api key `special-key` to test the authorization filters.
  *
@@ -18,14 +18,30 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+<<<<<<<< HEAD:samples/client/petstore/java-helidon-client/se/src/test/java/org/openapitools/client/model/FooGetDefaultResponseTest.java
+import org.openapitools.client.model.Foo;
+========
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/openapi3/client/petstore/java/jersey2-java8-swagger1/src/test/java/org/openapitools/client/model/ModelApiResponseTest.java
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+
 /**
+<<<<<<<< HEAD:samples/client/petstore/java-helidon-client/se/src/test/java/org/openapitools/client/model/FooGetDefaultResponseTest.java
+ * Model tests for FooGetDefaultResponse
+ */
+public class FooGetDefaultResponseTest {
+    private final FooGetDefaultResponse model = new FooGetDefaultResponse();
+
+    /**
+     * Model tests for FooGetDefaultResponse
+     */
+    @Test
+    public void testFooGetDefaultResponse() {
+        // TODO: test FooGetDefaultResponse
+========
  * Model tests for ModelApiResponse
  */
 public class ModelApiResponseTest {
@@ -37,6 +53,7 @@ public class ModelApiResponseTest {
     @Test
     public void testModelApiResponse() {
         // TODO: test ModelApiResponse
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/openapi3/client/petstore/java/jersey2-java8-swagger1/src/test/java/org/openapitools/client/model/ModelApiResponseTest.java
     }
 
     /**

@@ -9,7 +9,11 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/BigCat.java
+import org.openapitools.model.Cat;
+========
 import org.openapitools.model.CatDto;
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface/src/main/java/org/openapitools/model/BigCatDto.java
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import jakarta.validation.constraints.NotNull;
@@ -66,7 +70,6 @@ public class BigCatDto extends CatDto {
     }
   }
 
-  @JsonProperty("kind")
   private KindEnum kind;
 
   public BigCatDto kind(KindEnum kind) {
@@ -79,6 +82,11 @@ public class BigCatDto extends CatDto {
    * @return kind
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/BigCat.java
+  @Schema(name = "kind", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("kind")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface/src/main/java/org/openapitools/model/BigCatDto.java
   public KindEnum getKind() {
     return kind;
   }

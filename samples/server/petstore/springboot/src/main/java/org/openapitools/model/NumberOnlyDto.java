@@ -25,7 +25,6 @@ import javax.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class NumberOnlyDto {
 
-  @JsonProperty("JustNumber")
   private BigDecimal justNumber;
 
   public NumberOnlyDto justNumber(BigDecimal justNumber) {
@@ -38,7 +37,12 @@ public class NumberOnlyDto {
    * @return justNumber
   */
   @Valid 
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/NumberOnly.java
+  @Schema(name = "JustNumber", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
   @ApiModelProperty(value = "")
+  @JsonProperty("JustNumber")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/server/petstore/springboot/src/main/java/org/openapitools/model/NumberOnlyDto.java
   public BigDecimal getJustNumber() {
     return justNumber;
   }

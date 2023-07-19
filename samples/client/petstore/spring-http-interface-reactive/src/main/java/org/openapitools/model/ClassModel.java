@@ -19,7 +19,6 @@ import jakarta.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class ClassModel {
 
-  @JsonProperty("_class")
   private String propertyClass;
 
   public ClassModel propertyClass(String propertyClass) {
@@ -32,6 +31,11 @@ public class ClassModel {
    * @return propertyClass
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-useoptional/src/main/java/org/openapitools/model/ClassModel.java
+  @Schema(name = "_class", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("_class")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface-reactive/src/main/java/org/openapitools/model/ClassModel.java
   public String getPropertyClass() {
     return propertyClass;
   }

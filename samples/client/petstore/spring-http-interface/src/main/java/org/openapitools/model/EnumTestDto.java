@@ -60,7 +60,6 @@ public class EnumTestDto {
     }
   }
 
-  @JsonProperty("enum_string")
   private EnumStringEnum enumString;
 
   /**
@@ -100,7 +99,6 @@ public class EnumTestDto {
     }
   }
 
-  @JsonProperty("enum_string_required")
   private EnumStringRequiredEnum enumStringRequired;
 
   /**
@@ -138,7 +136,6 @@ public class EnumTestDto {
     }
   }
 
-  @JsonProperty("enum_integer")
   private EnumIntegerEnum enumInteger;
 
   /**
@@ -176,10 +173,8 @@ public class EnumTestDto {
     }
   }
 
-  @JsonProperty("enum_number")
   private EnumNumberEnum enumNumber;
 
-  @JsonProperty("outerEnum")
   private OuterEnumDto outerEnum;
 
   public EnumTestDto enumString(EnumStringEnum enumString) {
@@ -192,6 +187,11 @@ public class EnumTestDto {
    * @return enumString
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/EnumTest.java
+  @Schema(name = "enum_string", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("enum_string")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface/src/main/java/org/openapitools/model/EnumTestDto.java
   public EnumStringEnum getEnumString() {
     return enumString;
   }
@@ -209,7 +209,13 @@ public class EnumTestDto {
    * Get enumStringRequired
    * @return enumStringRequired
   */
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/EnumTest.java
+  @NotNull 
+  @Schema(name = "enum_string_required", requiredMode = Schema.RequiredMode.REQUIRED)
+========
   @NotNull
+  @JsonProperty("enum_string_required")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface/src/main/java/org/openapitools/model/EnumTestDto.java
   public EnumStringRequiredEnum getEnumStringRequired() {
     return enumStringRequired;
   }
@@ -228,6 +234,11 @@ public class EnumTestDto {
    * @return enumInteger
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/EnumTest.java
+  @Schema(name = "enum_integer", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("enum_integer")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface/src/main/java/org/openapitools/model/EnumTestDto.java
   public EnumIntegerEnum getEnumInteger() {
     return enumInteger;
   }
@@ -246,6 +257,11 @@ public class EnumTestDto {
    * @return enumNumber
   */
   
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/EnumTest.java
+  @Schema(name = "enum_number", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+========
+  @JsonProperty("enum_number")
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface/src/main/java/org/openapitools/model/EnumTestDto.java
   public EnumNumberEnum getEnumNumber() {
     return enumNumber;
   }
@@ -263,8 +279,15 @@ public class EnumTestDto {
    * Get outerEnum
    * @return outerEnum
   */
+<<<<<<<< HEAD:samples/openapi3/server/petstore/springboot-reactive/src/main/java/org/openapitools/model/EnumTest.java
+  @Valid 
+  @Schema(name = "outerEnum", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  public OuterEnum getOuterEnum() {
+========
   
+  @JsonProperty("outerEnum")
   public OuterEnumDto getOuterEnum() {
+>>>>>>>> 7f8b853f502d9039c9a0aac2614ce92871e895ed:samples/client/petstore/spring-http-interface/src/main/java/org/openapitools/model/EnumTestDto.java
     return outerEnum;
   }
 

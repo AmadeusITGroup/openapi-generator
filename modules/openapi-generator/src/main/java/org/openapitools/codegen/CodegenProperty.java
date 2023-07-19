@@ -135,7 +135,9 @@ public class CodegenProperty implements Cloneable, IJsonSchemaValidationProperti
     public boolean isUuid;
     public boolean isUri;
     public boolean isEmail;
+    public boolean isPassword;
     public boolean isNull;
+    public boolean isVoid = false;
     /**
      * The type is a free-form object, i.e. it is a map of string to values with no declared properties.
      * A OAS free-form schema may include the 'additionalProperties' attribute, which puts a constraint
@@ -159,6 +161,7 @@ public class CodegenProperty implements Cloneable, IJsonSchemaValidationProperti
     public boolean isCircularReference;
     public boolean isDiscriminator;
     public boolean isNew; // true when this property overrides an inherited property
+    public Boolean isOverridden; // true if the property is a parent property (not defined in child/current schema)
     public List<String> _enum;
     public Map<String, Object> allowableValues;
     public List<CustomOption> customOptions = new ArrayList<>();
@@ -257,6 +260,8 @@ public class CodegenProperty implements Cloneable, IJsonSchemaValidationProperti
     public void setIsBooleanSchemaFalse(boolean isBooleanSchemaFalse) {
         this.isBooleanSchemaFalse = isBooleanSchemaFalse;
     }
+
+    public String getOpenApiType() { return openApiType; }
 
     public String getBaseName() {
         return baseName;
@@ -876,6 +881,16 @@ public class CodegenProperty implements Cloneable, IJsonSchemaValidationProperti
     }
 
     @Override
+    public boolean getIsVoid() {
+        return isVoid;
+    }
+
+    @Override
+    public void setIsVoid(boolean isVoid) {
+        this.isVoid = isVoid;
+    }
+
+    @Override
     public boolean getHasValidation() {
         return hasValidation;
     }
@@ -1053,6 +1068,7 @@ public class CodegenProperty implements Cloneable, IJsonSchemaValidationProperti
         sb.append(", isUuid=").append(isUuid);
         sb.append(", isUri=").append(isUri);
         sb.append(", isEmail=").append(isEmail);
+        sb.append(", isPassword=").append(isPassword);
         sb.append(", isFreeFormObject=").append(isFreeFormObject);
         sb.append(", isArray=").append(isArray);
         sb.append(", isMap=").append(isMap);
@@ -1067,6 +1083,7 @@ public class CodegenProperty implements Cloneable, IJsonSchemaValidationProperti
         sb.append(", isCircularReference=").append(isCircularReference);
         sb.append(", isDiscriminator=").append(isDiscriminator);
         sb.append(", isNew=").append(isNew);
+        sb.append(", isOverridden=").append(isOverridden);
         sb.append(", _enum=").append(_enum);
         sb.append(", allowableValues=").append(allowableValues);
         sb.append(", items=").append(items);
@@ -1094,6 +1111,7 @@ public class CodegenProperty implements Cloneable, IJsonSchemaValidationProperti
         sb.append(", xmlNamespace='").append(xmlNamespace).append('\'');
         sb.append(", isXmlWrapped=").append(isXmlWrapped);
         sb.append(", isNull=").append(isNull);
+        sb.append(", isVoid=").append(isVoid);
         sb.append(", getAdditionalPropertiesIsAnyType=").append(getAdditionalPropertiesIsAnyType());
         sb.append(", getHasVars=").append(getHasVars());
         sb.append(", getHasRequired=").append(getHasRequired());
@@ -1144,6 +1162,7 @@ public class CodegenProperty implements Cloneable, IJsonSchemaValidationProperti
                 isUuid == that.isUuid &&
                 isUri == that.isUri &&
                 isEmail == that.isEmail &&
+                isPassword == that.isPassword &&
                 isFreeFormObject == that.isFreeFormObject &&
                 isArray == that.isArray &&
                 isMap == that.isMap &&
@@ -1158,11 +1177,13 @@ public class CodegenProperty implements Cloneable, IJsonSchemaValidationProperti
                 isCircularReference == that.isCircularReference &&
                 isDiscriminator == that.isDiscriminator &&
                 isNew == that.isNew &&
+                isOverridden == that.isOverridden &&
                 hasValidation == that.hasValidation &&
                 isInherited == that.isInherited &&
                 isXmlAttribute == that.isXmlAttribute &&
                 isXmlWrapped == that.isXmlWrapped &&
                 isNull == that.isNull &&
+                isVoid == that.isVoid &&
                 hasMultipleTypes == that.getHasMultipleTypes() &&
                 hasDiscriminatorWithNonEmptyMapping == that.hasDiscriminatorWithNonEmptyMapping &&
                 isBooleanSchemaTrue == that.getIsBooleanSchemaTrue() &&
@@ -1233,13 +1254,13 @@ public class CodegenProperty implements Cloneable, IJsonSchemaValidationProperti
                 exclusiveMinimum, exclusiveMaximum, required, deprecated,
                 hasMoreNonReadOnly, isPrimitiveType, isModel, isContainer, isString, isNumeric,
                 isInteger, isLong, isNumber, isFloat, isDouble, isDecimal, isByteArray, isBinary, isFile,
-                isBoolean, isDate, isDateTime, isUuid, isUri, isEmail, isFreeFormObject,
+                isBoolean, isDate, isDateTime, isUuid, isUri, isEmail, isPassword, isFreeFormObject,
                 isArray, isMap, isEnum, isInnerEnum, isEnumRef, isAnyType, isReadOnly, isWriteOnly, isNullable, isShort,
-                isUnboundedInteger, isSelfReference, isCircularReference, isDiscriminator, isNew, _enum,
+                isUnboundedInteger, isSelfReference, isCircularReference, isDiscriminator, isNew, isOverridden, _enum,
                 allowableValues, items, mostInnerItems, additionalProperties, vars, requiredVars,
                 vendorExtensions, hasValidation, isInherited, discriminatorValue, nameInCamelCase,
                 nameInSnakeCase, enumName, maxItems, minItems, isXmlAttribute, xmlPrefix, xmlName,
-                xmlNamespace, isXmlWrapped, isNull, additionalPropertiesIsAnyType, hasVars, hasRequired,
+                xmlNamespace, isXmlWrapped, isNull, isVoid, additionalPropertiesIsAnyType, hasVars, hasRequired,
                 hasDiscriminatorWithNonEmptyMapping, composedSchemas, hasMultipleTypes, requiredVarsMap,
                 ref, uniqueItemsBoolean, schemaIsFromAdditionalProperties, isBooleanSchemaTrue, isBooleanSchemaFalse,
                 format, dependentRequired, contains);
