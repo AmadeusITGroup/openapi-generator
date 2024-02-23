@@ -26,7 +26,7 @@ public class Pet   {
   /**
    * pet status in the store
    */
-  public enum StatusEnum {
+  public enum Status {
     AVAILABLE("available"),
 
         PENDING("pending"),
@@ -34,7 +34,7 @@ public class Pet   {
         SOLD("sold");
     private String value;
 
-    StatusEnum(String value) {
+    Status(String value) {
       this.value = value;
     }
 
@@ -45,7 +45,7 @@ public class Pet   {
     }
   }
 
-  private StatusEnum status;
+  private Status status;
 
   /**
    **/
@@ -115,10 +115,10 @@ public class Pet   {
   
   @ApiModelProperty(value = "pet status in the store")
   @JsonProperty("status")
-  public StatusEnum getStatus() {
+  public Status getStatus() {
     return status;
   }
-  public void setStatus(StatusEnum status) {
+  public void setStatus(Status status) {
     this.status = status;
   }
 

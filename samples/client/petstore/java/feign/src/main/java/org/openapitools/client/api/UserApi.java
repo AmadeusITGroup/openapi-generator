@@ -14,6 +14,7 @@ import java.util.Map;
 import feign.*;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public interface UserApi extends ApiClient.Api {
 
 

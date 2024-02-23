@@ -1,4 +1,8 @@
 /*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:41.757Z[UTC]
+ *
  * OpenAPI Petstore
  * This is a sample server Petstore server. For this sample, you can use the api key `special-key` to test the authorization filters.
  *
@@ -82,8 +86,8 @@ public class Pet {
   /**
    * pet status in the store
    */
-  @JsonAdapter(StatusEnum.Adapter.class)
-  public enum StatusEnum {
+  @JsonAdapter(Status.Adapter.class)
+  public enum Status {
     AVAILABLE("available"),
     
     PENDING("pending"),
@@ -92,7 +96,7 @@ public class Pet {
 
     private String value;
 
-    StatusEnum(String value) {
+    Status(String value) {
       this.value = value;
     }
 
@@ -105,8 +109,8 @@ public class Pet {
       return String.valueOf(value);
     }
 
-    public static StatusEnum fromValue(String value) {
-      for (StatusEnum b : StatusEnum.values()) {
+    public static Status fromValue(String value) {
+      for (Status b : Status.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -114,16 +118,16 @@ public class Pet {
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
-    public static class Adapter extends TypeAdapter<StatusEnum> {
+    public static class Adapter extends TypeAdapter<Status> {
       @Override
-      public void write(final JsonWriter jsonWriter, final StatusEnum enumeration) throws IOException {
+      public void write(final JsonWriter jsonWriter, final Status enumeration) throws IOException {
         jsonWriter.value(enumeration.getValue());
       }
 
       @Override
-      public StatusEnum read(final JsonReader jsonReader) throws IOException {
+      public Status read(final JsonReader jsonReader) throws IOException {
         String value =  jsonReader.nextString();
-        return StatusEnum.fromValue(value);
+        return Status.fromValue(value);
       }
     }
   }
@@ -131,7 +135,7 @@ public class Pet {
   public static final String SERIALIZED_NAME_STATUS = "status";
   @Deprecated
   @SerializedName(SERIALIZED_NAME_STATUS)
-  private StatusEnum status;
+  private Status status;
 
   public Pet() {
   }
@@ -263,7 +267,7 @@ public class Pet {
 
 
   @Deprecated
-  public Pet status(StatusEnum status) {
+  public Pet status(Status status) {
     
     this.status = status;
     return this;
@@ -277,13 +281,13 @@ public class Pet {
   @Deprecated
   @javax.annotation.Nullable
   @ApiModelProperty(value = "pet status in the store")
-  public StatusEnum getStatus() {
+  public Status getStatus() {
     return status;
   }
 
 
   @Deprecated
-  public void setStatus(StatusEnum status) {
+  public void setStatus(Status status) {
     this.status = status;
   }
 

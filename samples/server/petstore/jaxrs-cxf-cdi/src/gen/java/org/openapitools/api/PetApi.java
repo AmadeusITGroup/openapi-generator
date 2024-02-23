@@ -29,6 +29,7 @@ import javax.validation.constraints.*;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen")
 
+
 public class PetApi  {
 
   @Context SecurityContext securityContext;

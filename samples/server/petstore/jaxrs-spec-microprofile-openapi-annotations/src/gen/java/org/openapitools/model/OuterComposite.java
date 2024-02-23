@@ -1,3 +1,9 @@
+/*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:47.530Z[UTC]
+ */
+
 package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
@@ -20,9 +26,17 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonTypeName("OuterComposite")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
 public class OuterComposite  implements Serializable {
+  
+  
   private @Valid BigDecimal myNumber;
+
+  
   private @Valid String myString;
+
+  
   private @Valid Boolean myBoolean;
+
+  
 
   protected OuterComposite(OuterCompositeBuilder<?, ?> b) {
     this.myNumber = b.myNumber;
@@ -40,6 +54,7 @@ public class OuterComposite  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(description = "")
@@ -61,6 +76,7 @@ public class OuterComposite  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(description = "")
   @JsonProperty("my_string")
@@ -80,6 +96,7 @@ public class OuterComposite  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(description = "")
@@ -175,5 +192,7 @@ public class OuterComposite  implements Serializable {
       return self();
     }
   }
+
+  
 }
 

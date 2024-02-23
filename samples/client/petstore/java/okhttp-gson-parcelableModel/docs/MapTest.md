@@ -8,13 +8,13 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**mapMapOfString** | **Map&lt;String, Map&lt;String, String&gt;&gt;** |  |  [optional] |
-|**mapOfEnumString** | [**Map&lt;String, InnerEnum&gt;**](#Map&lt;String, InnerEnum&gt;) |  |  [optional] |
+|**mapOfEnumString** | [**Map&lt;String, Inner&gt;**](#Map&lt;String, Inner&gt;) |  |  [optional] |
 |**directMap** | **Map&lt;String, Boolean&gt;** |  |  [optional] |
 |**indirectMap** | **Map&lt;String, Boolean&gt;** |  |  [optional] |
 
 
 
-## Enum: Map&lt;String, InnerEnum&gt;
+## Enum: Map&lt;String, Inner&gt;
 
 | Name | Value |
 |---- | -----|

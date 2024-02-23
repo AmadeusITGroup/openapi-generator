@@ -36,6 +36,7 @@ import javax.validation.Valid;
  */
 @Path("/fake")
 @Api(value = "/", description = "")
+
 public interface FakeApi  {
 
     /**

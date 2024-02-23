@@ -1,4 +1,8 @@
 /*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:39.240Z[UTC]
+ *
  * OpenAPI Petstore
  * This spec is mainly for testing Petstore server and contains fake endpoints, models. Please do not use this for any other purpose. Special characters: \" \\
  *
@@ -43,14 +47,14 @@ public class MapTest {
   /**
    * Gets or Sets inner
    */
-  public enum InnerEnum {
+  public enum Inner {
     UPPER("UPPER"),
     
     LOWER("lower");
 
     private String value;
 
-    InnerEnum(String value) {
+    Inner(String value) {
       this.value = value;
     }
 
@@ -65,8 +69,8 @@ public class MapTest {
     }
 
     @JsonCreator
-    public static InnerEnum fromValue(String value) {
-      for (InnerEnum b : InnerEnum.values()) {
+    public static Inner fromValue(String value) {
+      for (Inner b : Inner.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -76,7 +80,7 @@ public class MapTest {
   }
 
   public static final String JSON_PROPERTY_MAP_OF_ENUM_STRING = "map_of_enum_string";
-  private Map<String, InnerEnum> mapOfEnumString = new HashMap<>();
+  private Map<String, Inner> mapOfEnumString = new HashMap<>();
 
   public static final String JSON_PROPERTY_DIRECT_MAP = "direct_map";
   private Map<String, Boolean> directMap = new HashMap<>();
@@ -121,13 +125,13 @@ public class MapTest {
   }
 
 
-  public MapTest mapOfEnumString(Map<String, InnerEnum> mapOfEnumString) {
+  public MapTest mapOfEnumString(Map<String, Inner> mapOfEnumString) {
     
     this.mapOfEnumString = mapOfEnumString;
     return this;
   }
 
-  public MapTest putMapOfEnumStringItem(String key, InnerEnum mapOfEnumStringItem) {
+  public MapTest putMapOfEnumStringItem(String key, Inner mapOfEnumStringItem) {
     if (this.mapOfEnumString == null) {
       this.mapOfEnumString = new HashMap<>();
     }
@@ -143,14 +147,14 @@ public class MapTest {
   @JsonProperty(JSON_PROPERTY_MAP_OF_ENUM_STRING)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Map<String, InnerEnum> getMapOfEnumString() {
+  public Map<String, Inner> getMapOfEnumString() {
     return mapOfEnumString;
   }
 
 
   @JsonProperty(JSON_PROPERTY_MAP_OF_ENUM_STRING)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMapOfEnumString(Map<String, InnerEnum> mapOfEnumString) {
+  public void setMapOfEnumString(Map<String, Inner> mapOfEnumString) {
     this.mapOfEnumString = mapOfEnumString;
   }
 

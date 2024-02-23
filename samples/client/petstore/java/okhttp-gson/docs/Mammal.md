@@ -10,11 +10,11 @@
 |**hasBaleen** | **Boolean** |  |  [optional] |
 |**hasTeeth** | **Boolean** |  |  [optional] |
 |**className** | **String** |  |  |
-|**type** | [**TypeEnum**](#TypeEnum) |  |  [optional] |
+|**type** | [**Type**](#Type) |  |  [optional] |
 
 
 
-## Enum: TypeEnum
+## Enum: Type
 
 | Name | Value |
 |---- | -----|

@@ -1,4 +1,8 @@
 /*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:43.778Z[UTC]
+ *
  * OpenAPI Petstore
  * This spec is mainly for testing Petstore server and contains fake endpoints, models. Please do not use this for any other purpose. Special characters: \" \\
  *
@@ -36,15 +40,15 @@ public class MapTest {
   /**
    * Gets or Sets inner
    */
-  @JsonAdapter(InnerEnum.Adapter.class)
-  public enum InnerEnum {
+  @JsonAdapter(Inner.Adapter.class)
+  public enum Inner {
     UPPER("UPPER"),
     
     LOWER("lower");
 
     private String value;
 
-    InnerEnum(String value) {
+    Inner(String value) {
       this.value = value;
     }
 
@@ -57,8 +61,8 @@ public class MapTest {
       return String.valueOf(value);
     }
 
-    public static InnerEnum fromValue(String value) {
-      for (InnerEnum b : InnerEnum.values()) {
+    public static Inner fromValue(String value) {
+      for (Inner b : Inner.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -66,23 +70,23 @@ public class MapTest {
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
-    public static class Adapter extends TypeAdapter<InnerEnum> {
+    public static class Adapter extends TypeAdapter<Inner> {
       @Override
-      public void write(final JsonWriter jsonWriter, final InnerEnum enumeration) throws IOException {
+      public void write(final JsonWriter jsonWriter, final Inner enumeration) throws IOException {
         jsonWriter.value(enumeration.getValue());
       }
 
       @Override
-      public InnerEnum read(final JsonReader jsonReader) throws IOException {
+      public Inner read(final JsonReader jsonReader) throws IOException {
         String value =  jsonReader.nextString();
-        return InnerEnum.fromValue(value);
+        return Inner.fromValue(value);
       }
     }
   }
 
   public static final String SERIALIZED_NAME_MAP_OF_ENUM_STRING = "map_of_enum_string";
   @SerializedName(SERIALIZED_NAME_MAP_OF_ENUM_STRING)
-  private Map<String, InnerEnum> mapOfEnumString = new HashMap<>();
+  private Map<String, Inner> mapOfEnumString = new HashMap<>();
 
   public static final String SERIALIZED_NAME_DIRECT_MAP = "direct_map";
   @SerializedName(SERIALIZED_NAME_DIRECT_MAP)
@@ -125,13 +129,13 @@ public class MapTest {
   }
 
 
-  public MapTest mapOfEnumString(Map<String, InnerEnum> mapOfEnumString) {
+  public MapTest mapOfEnumString(Map<String, Inner> mapOfEnumString) {
     
     this.mapOfEnumString = mapOfEnumString;
     return this;
   }
 
-  public MapTest putMapOfEnumStringItem(String key, InnerEnum mapOfEnumStringItem) {
+  public MapTest putMapOfEnumStringItem(String key, Inner mapOfEnumStringItem) {
     if (this.mapOfEnumString == null) {
       this.mapOfEnumString = new HashMap<>();
     }
@@ -145,12 +149,12 @@ public class MapTest {
   **/
   @javax.annotation.Nullable
 
-  public Map<String, InnerEnum> getMapOfEnumString() {
+  public Map<String, Inner> getMapOfEnumString() {
     return mapOfEnumString;
   }
 
 
-  public void setMapOfEnumString(Map<String, InnerEnum> mapOfEnumString) {
+  public void setMapOfEnumString(Map<String, Inner> mapOfEnumString) {
     this.mapOfEnumString = mapOfEnumString;
   }
 

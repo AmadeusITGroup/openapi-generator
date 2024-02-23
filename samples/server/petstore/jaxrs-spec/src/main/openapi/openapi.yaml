@@ -1223,7 +1223,7 @@ components:
         id: 0
         shipDate: 2000-01-23T04:56:07.000+00:00
         complete: false
-        status: placed
+        status: PLACED
       properties:
         id:
           format: int64
@@ -1240,9 +1240,9 @@ components:
         status:
           description: Order Status
           enum:
-          - placed
-          - approved
-          - delivered
+          - PLACED
+          - APPROVED
+          - DELIVERED
           type: string
         complete:
           default: false
@@ -1328,7 +1328,7 @@ components:
           id: 1
         - name: name
           id: 1
-        status: available
+        status: AVAILABLE
       properties:
         id:
           format: int64
@@ -1357,9 +1357,9 @@ components:
         status:
           description: pet status in the store
           enum:
-          - available
-          - pending
-          - sold
+          - AVAILABLE
+          - PENDING
+          - SOLD
           type: string
       required:
       - name
@@ -1528,34 +1528,34 @@ components:
     EnumClass:
       default: -efg
       enum:
-      - ENUM_CLASS__ABC
-      - ENUM_CLASS__EFG
-      - ENUM_CLASS_(XYZ)
+      - _ABC
+      - _EFG
+      - (XYZ)
       type: string
     Enum_Test:
       properties:
         enum_string:
           enum:
           - UPPER
-          - lower
+          - LOWER
           - ""
           type: string
         enum_string_required:
           enum:
           - UPPER
-          - lower
+          - LOWER
           - ""
           type: string
         enum_integer:
           enum:
-          - 1
-          - -1
+          - "1"
+          - _1
           format: int32
           type: integer
         enum_number:
           enum:
-          - 1.1
-          - -1.2
+          - 1/1
+          - _1/2
           format: double
           type: number
         outerEnum:
@@ -1743,7 +1743,7 @@ components:
           additionalProperties:
             enum:
             - UPPER
-            - lower
+            - LOWER
             type: string
           type: object
         direct_map:
@@ -1801,21 +1801,21 @@ components:
         just_symbol:
           enum:
           - '>='
-          - $
+          - __
           type: string
         array_enum:
           items:
             enum:
-            - fish
-            - crab
+            - FISH
+            - CRAB
             type: string
           type: array
       type: object
     OuterEnum:
       enum:
-      - OUTER_ENUM_PLACED
-      - OUTER_ENUM_APPROVED
-      - OUTER_ENUM_DELIVERED
+      - PLACED
+      - APPROVED
+      - DELIVERED
       type: string
     OuterComposite:
       example:
@@ -2255,10 +2255,10 @@ components:
       properties:
         kind:
           enum:
-          - lions
-          - tigers
-          - leopards
-          - jaguars
+          - LIONS
+          - TIGERS
+          - LEOPARDS
+          - JAGUARS
           type: string
       type: object
       example: null

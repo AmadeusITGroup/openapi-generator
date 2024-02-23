@@ -7,12 +7,12 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**justSymbol** | [**JustSymbolEnum**](#JustSymbolEnum) |  |  [optional] |
-|**arrayEnum** | [**List&lt;ArrayEnumEnum&gt;**](#List&lt;ArrayEnumEnum&gt;) |  |  [optional] |
+|**justSymbol** | [**JustSymbol**](#JustSymbol) |  |  [optional] |
+|**arrayEnum** | [**List&lt;ArrayEnum&gt;**](#List&lt;ArrayEnum&gt;) |  |  [optional] |
 
 
 
-## Enum: JustSymbolEnum
+## Enum: JustSymbol
 
 | Name | Value |
 |---- | -----|
@@ -21,7 +21,7 @@
 
 
 
-## Enum: List&lt;ArrayEnumEnum&gt;
+## Enum: List&lt;ArrayEnum&gt;
 
 | Name | Value |
 |---- | -----|

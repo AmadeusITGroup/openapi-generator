@@ -38,14 +38,14 @@ public class Pet   {
   private List<Tag> tags;
 
 
-  public enum StatusEnum {
+  public enum Status {
     AVAILABLE("available"),
     PENDING("pending"),
     SOLD("sold");
 
     private String value;
 
-    StatusEnum(String value) {
+    Status(String value) {
       this.value = value;
     }
 
@@ -56,7 +56,7 @@ public class Pet   {
     }
   }
 
-  private StatusEnum status;
+  private Status status;
 
   /**
    */
@@ -146,7 +146,7 @@ public class Pet   {
   /**
    * pet status in the store
    */
-  public Pet status(StatusEnum status) {
+  public Pet status(Status status) {
     this.status = status;
     return this;
   }
@@ -154,10 +154,10 @@ public class Pet   {
   
   @ApiModelProperty(value = "pet status in the store")
   @JsonProperty("status")
-  public StatusEnum getStatus() {
+  public Status getStatus() {
     return status;
   }
-  public void setStatus(StatusEnum status) {
+  public void setStatus(Status status) {
     this.status = status;
   }
 

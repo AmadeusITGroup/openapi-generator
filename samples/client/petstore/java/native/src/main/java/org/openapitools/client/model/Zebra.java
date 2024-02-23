@@ -1,4 +1,8 @@
 /*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:40.868Z[UTC]
+ *
  * OpenAPI Petstore
  * This spec is mainly for testing Petstore server and contains fake endpoints, models. Please do not use this for any other purpose. Special characters: \" \\
  *
@@ -46,7 +50,7 @@ public class Zebra extends HashMap<String, Object> {
   /**
    * Gets or Sets type
    */
-  public enum TypeEnum {
+  public enum Type {
     PLAINS("plains"),
     
     MOUNTAIN("mountain"),
@@ -55,7 +59,7 @@ public class Zebra extends HashMap<String, Object> {
 
     private String value;
 
-    TypeEnum(String value) {
+    Type(String value) {
       this.value = value;
     }
 
@@ -70,8 +74,8 @@ public class Zebra extends HashMap<String, Object> {
     }
 
     @JsonCreator
-    public static TypeEnum fromValue(String value) {
-      for (TypeEnum b : TypeEnum.values()) {
+    public static Type fromValue(String value) {
+      for (Type b : Type.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -81,7 +85,7 @@ public class Zebra extends HashMap<String, Object> {
   }
 
   public static final String JSON_PROPERTY_TYPE = "type";
-  private TypeEnum type;
+  private Type type;
 
   public static final String JSON_PROPERTY_CLASS_NAME = "className";
   private String className;
@@ -89,7 +93,7 @@ public class Zebra extends HashMap<String, Object> {
   public Zebra() { 
   }
 
-  public Zebra type(TypeEnum type) {
+  public Zebra type(Type type) {
     this.type = type;
     return this;
   }
@@ -102,14 +106,14 @@ public class Zebra extends HashMap<String, Object> {
   @JsonProperty(JSON_PROPERTY_TYPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public TypeEnum getType() {
+  public Type getType() {
     return type;
   }
 
 
   @JsonProperty(JSON_PROPERTY_TYPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setType(TypeEnum type) {
+  public void setType(Type type) {
     this.type = type;
   }
 

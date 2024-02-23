@@ -1,3 +1,9 @@
+/*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:47.530Z[UTC]
+ */
+
 package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
@@ -21,15 +27,19 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonTypeName("MapTest")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
 public class MapTest  implements Serializable {
+  
+  
   private @Valid Map<String, Map<String, String>> mapMapOfString = new HashMap<>();
-  public enum InnerEnum {
 
-    UPPER(String.valueOf("UPPER")), LOWER(String.valueOf("lower"));
+
+public enum Inner {
+
+    UPPER(String.valueOf("UPPER")), LOWER(String.valueOf("LOWER"));
 
 
     private String value;
 
-    InnerEnum (String v) {
+    Inner (String v) {
         value = v;
     }
 
@@ -47,8 +57,8 @@ public class MapTest  implements Serializable {
      * Convert a String into String, as specified in the
      * <a href="https://download.oracle.com/otndocs/jcp/jaxrs-2_0-fr-eval-spec/index.html">See JAX RS 2.0 Specification, section 3.2, p. 12</a>
      */
-	public static InnerEnum fromString(String s) {
-        for (InnerEnum b : InnerEnum.values()) {
+	public static Inner fromString(String s) {
+        for (Inner b : Inner.values()) {
             // using Objects.toString() to be safe if value type non-object type
             // because types like 'int' etc. will be auto-boxed
             if (java.util.Objects.toString(b.value).equals(s)) {
@@ -59,8 +69,8 @@ public class MapTest  implements Serializable {
 	}
 	
     @JsonCreator
-    public static InnerEnum fromValue(String value) {
-        for (InnerEnum b : InnerEnum.values()) {
+    public static Inner fromValue(String value) {
+        for (Inner b : Inner.values()) {
             if (b.value.equals(value)) {
                 return b;
             }
@@ -69,9 +79,16 @@ public class MapTest  implements Serializable {
     }
 }
 
-  private @Valid Map<String, InnerEnum> mapOfEnumString = new HashMap<>();
+  
+  private @Valid Map<String, Inner> mapOfEnumString = new HashMap<>();
+
+  
   private @Valid Map<String, Boolean> directMap = new HashMap<>();
+
+  
   private @Valid Map<String, Boolean> indirectMap = new HashMap<>();
+
+  
 
   protected MapTest(MapTestBuilder<?, ?> b) {
     this.mapMapOfString = b.mapMapOfString;
@@ -90,6 +107,7 @@ public class MapTest  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(description = "")
@@ -121,25 +139,26 @@ public class MapTest  implements Serializable {
   }
   /**
    **/
-  public MapTest mapOfEnumString(Map<String, InnerEnum> mapOfEnumString) {
+  public MapTest mapOfEnumString(Map<String, Inner> mapOfEnumString) {
     this.mapOfEnumString = mapOfEnumString;
     return this;
   }
 
   
+  
   @ApiModelProperty(value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(description = "")
   @JsonProperty("map_of_enum_string")
-  public Map<String, InnerEnum> getMapOfEnumString() {
+  public Map<String, Inner> getMapOfEnumString() {
     return mapOfEnumString;
   }
 
   @JsonProperty("map_of_enum_string")
-  public void setMapOfEnumString(Map<String, InnerEnum> mapOfEnumString) {
+  public void setMapOfEnumString(Map<String, Inner> mapOfEnumString) {
     this.mapOfEnumString = mapOfEnumString;
   }
 
-  public MapTest putMapOfEnumStringItem(String key, InnerEnum mapOfEnumStringItem) {
+  public MapTest putMapOfEnumStringItem(String key, Inner mapOfEnumStringItem) {
     if (this.mapOfEnumString == null) {
       this.mapOfEnumString = new HashMap<>();
     }
@@ -148,7 +167,7 @@ public class MapTest  implements Serializable {
     return this;
   }
 
-  public MapTest removeMapOfEnumStringItem(InnerEnum mapOfEnumStringItem) {
+  public MapTest removeMapOfEnumStringItem(Inner mapOfEnumStringItem) {
     if (mapOfEnumStringItem != null && this.mapOfEnumString != null) {
       this.mapOfEnumString.remove(mapOfEnumStringItem);
     }
@@ -162,6 +181,7 @@ public class MapTest  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(description = "")
@@ -198,6 +218,7 @@ public class MapTest  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(description = "")
@@ -292,7 +313,7 @@ public class MapTest  implements Serializable {
 
   public static abstract class MapTestBuilder<C extends MapTest, B extends MapTestBuilder<C, B>>  {
     private Map<String, Map<String, String>> mapMapOfString = new HashMap<>();
-    private Map<String, InnerEnum> mapOfEnumString = new HashMap<>();
+    private Map<String, Inner> mapOfEnumString = new HashMap<>();
     private Map<String, Boolean> directMap = new HashMap<>();
     private Map<String, Boolean> indirectMap = new HashMap<>();
     protected abstract B self();
@@ -303,7 +324,7 @@ public class MapTest  implements Serializable {
       this.mapMapOfString = mapMapOfString;
       return self();
     }
-    public B mapOfEnumString(Map<String, InnerEnum> mapOfEnumString) {
+    public B mapOfEnumString(Map<String, Inner> mapOfEnumString) {
       this.mapOfEnumString = mapOfEnumString;
       return self();
     }
@@ -316,5 +337,7 @@ public class MapTest  implements Serializable {
       return self();
     }
   }
+
+  
 }
 

@@ -35,6 +35,7 @@ import org.openapitools.client.model.Client;
 @RegisterRestClient
 @RegisterProvider(ApiExceptionMapper.class)
 @Path("/fake_classname_test")
+
 public interface FakeClassnameTags123Api  {
 
     /**

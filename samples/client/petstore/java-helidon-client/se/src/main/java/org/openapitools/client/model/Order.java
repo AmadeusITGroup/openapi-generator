@@ -32,13 +32,13 @@ public class Order  {
 
   private OffsetDateTime shipDate;
 
-public enum StatusEnum {
+public enum Status {
 
     PLACED(String.valueOf("placed")), APPROVED(String.valueOf("approved")), DELIVERED(String.valueOf("delivered"));
 
     String value;
 
-    StatusEnum (String v) {
+    Status (String v) {
         value = v;
     }
 
@@ -56,7 +56,7 @@ public enum StatusEnum {
  /**
    * Order Status
   **/
-  private StatusEnum status;
+  private Status status;
 
   private Boolean complete = false;
 
@@ -144,18 +144,18 @@ public enum StatusEnum {
    * Order Status
    * @return status
   **/
-  public StatusEnum getStatus() {
+  public Status getStatus() {
     return status;
   }
 
   /**
     * Set status
   **/
-  public void setStatus(StatusEnum status) {
+  public void setStatus(Status status) {
     this.status = status;
   }
 
-  public Order status(StatusEnum status) {
+  public Order status(Status status) {
     this.status = status;
     return this;
   }

@@ -124,7 +124,7 @@ interface PetApiDelegate {
                     break
                 }
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/xml"))) {
-                    ApiUtil.setExampleResponse(request, "application/xml", "<Pet>  <id>123456789</id>  <name>doggie</name>  <photoUrls>    <photoUrls>aeiou</photoUrls>  </photoUrls>  <tags>  </tags>  <status>aeiou</status></Pet>")
+                    ApiUtil.setExampleResponse(request, "application/xml", "<Pet>  <id>123456789</id>  <Category>    <id>123456789</id>    <name>aeiou</name>  </Category>  <name>doggie</name>  <photoUrls>    <photoUrls>aeiou</photoUrls>  </photoUrls>  <tags>    <Tag>      <id>123456789</id>      <name>aeiou</name>    </Tag>  </tags>  <status>aeiou</status></Pet>")
                     break
                 }
             }

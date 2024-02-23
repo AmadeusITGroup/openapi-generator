@@ -29,6 +29,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import static org.openapitools.codegen.languages.features.GzipFeatures.USE_GZIP_FEATURE;
 import static org.openapitools.codegen.utils.StringUtils.underscore;
@@ -361,10 +362,12 @@ public class JavaJAXRSSpecServerCodegen extends AbstractJavaJAXRSServerCodegen {
 
         // update values
         if(allowableValues.containsKey("values")) {
-            List<String> values = (List<String>)allowableValues.get("values");
+            List values = (List)allowableValues.get("values");
             for(int i = 0 ; i < values.size() ; i++) {
-                if (!values.get(i).startsWith(prefix + "_")) {
-                    String value = values.get(i);
+                String valueAsString = (values.get(i) instanceof String) ?
+                  (String) values.get(i) : values.get(i).toString();
+                if (!valueAsString.startsWith(prefix + "_")) {
+                    String value = valueAsString;
                     if (this.enumStructNameAsPrefix) {
                         value = prefix + "_" + value;
                     }

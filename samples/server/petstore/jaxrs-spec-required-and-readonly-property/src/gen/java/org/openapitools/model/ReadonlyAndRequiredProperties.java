@@ -1,3 +1,9 @@
+/*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:47.530Z[UTC]
+ */
+
 package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
@@ -18,10 +24,20 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonTypeName("ReadonlyAndRequiredProperties")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
 public class ReadonlyAndRequiredProperties  implements Serializable {
+  
+  
   private @Valid String requiredYesReadonlyYes;
+
+  
   private @Valid String requiredYesReadonlyNo;
+
+  
   private @Valid String requiredNoReadonlyYes;
+
+  
   private @Valid String requiredNoReadonlyNo;
+
+  
 
   protected ReadonlyAndRequiredProperties(ReadonlyAndRequiredPropertiesBuilder<?, ?> b) {
     this.requiredYesReadonlyYes = b.requiredYesReadonlyYes;
@@ -41,6 +57,7 @@ public class ReadonlyAndRequiredProperties  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("requiredYesReadonlyYes")
   public String getRequiredYesReadonlyYes() {
@@ -59,6 +76,7 @@ public class ReadonlyAndRequiredProperties  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("requiredYesReadonlyNo")
@@ -80,6 +98,7 @@ public class ReadonlyAndRequiredProperties  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(value = "")
   @JsonProperty("requiredNoReadonlyYes")
   public String getRequiredNoReadonlyYes() {
@@ -98,6 +117,7 @@ public class ReadonlyAndRequiredProperties  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @JsonProperty("requiredNoReadonlyNo")
@@ -199,5 +219,7 @@ public class ReadonlyAndRequiredProperties  implements Serializable {
       return self();
     }
   }
+
+  
 }
 

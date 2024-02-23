@@ -12,6 +12,7 @@ import io.vertx.core.json.JsonObject;
 import java.util.List;
 import java.util.Map;
 
+
 public interface PetApi  {
     Future<ApiResponse<Pet>> addPet(Pet pet);
     Future<ApiResponse<Void>> deletePet(Long petId, String apiKey);

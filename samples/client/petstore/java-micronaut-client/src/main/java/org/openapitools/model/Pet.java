@@ -61,14 +61,14 @@ public class Pet {
     /**
      * pet status in the store
      */
-    public enum StatusEnum {
+    public enum Status {
         AVAILABLE("available"),
         PENDING("pending"),
         SOLD("sold");
 
         private String value;
 
-        StatusEnum(String value) {
+        Status(String value) {
             this.value = value;
         }
 
@@ -83,8 +83,8 @@ public class Pet {
         }
 
         @JsonCreator
-        public static StatusEnum fromValue(String value) {
-            for (StatusEnum b : StatusEnum.values()) {
+        public static Status fromValue(String value) {
+            for (Status b : Status.values()) {
                 if (b.value.equals(value)) {
                     return b;
                 }
@@ -93,7 +93,7 @@ public class Pet {
         }
     }
     public static final String JSON_PROPERTY_STATUS = "status";
-    private StatusEnum status;
+    private Status status;
 
     public Pet() {
     }
@@ -222,7 +222,7 @@ public class Pet {
         this.tags = tags;
     }
 
-    public Pet status(StatusEnum status) {
+    public Pet status(Status status) {
         this.status = status;
         return this;
     }
@@ -234,13 +234,13 @@ public class Pet {
     @Nullable
     @JsonProperty(JSON_PROPERTY_STATUS)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public StatusEnum getStatus() {
+    public Status getStatus() {
         return status;
     }
 
     @JsonProperty(JSON_PROPERTY_STATUS)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setStatus(StatusEnum status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 

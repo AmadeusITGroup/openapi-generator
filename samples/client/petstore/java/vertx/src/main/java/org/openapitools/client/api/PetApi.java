@@ -11,6 +11,7 @@ import io.vertx.core.json.JsonObject;
 
 import java.util.*;
 
+
 public interface PetApi {
 
     void addPet(Pet body, Handler<AsyncResult<Void>> handler);

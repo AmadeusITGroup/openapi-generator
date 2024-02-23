@@ -30,14 +30,14 @@ public class Order  {
   @ApiModelProperty(value = "")
   private Date shipDate;
 
-public enum StatusEnum {
+public enum Status {
 
 PLACED(String.valueOf("placed")), APPROVED(String.valueOf("approved")), DELIVERED(String.valueOf("delivered"));
 
 
     private String value;
 
-    StatusEnum (String v) {
+    Status (String v) {
         value = v;
     }
 
@@ -52,8 +52,8 @@ PLACED(String.valueOf("placed")), APPROVED(String.valueOf("approved")), DELIVERE
     }
 
     @JsonCreator
-    public static StatusEnum fromValue(String value) {
-        for (StatusEnum b : StatusEnum.values()) {
+    public static Status fromValue(String value) {
+        for (Status b : Status.values()) {
             if (b.value.equals(value)) {
                 return b;
             }
@@ -66,7 +66,7 @@ PLACED(String.valueOf("placed")), APPROVED(String.valueOf("approved")), DELIVERE
  /**
    * Order Status
   **/
-  private StatusEnum status;
+  private Status status;
 
   @ApiModelProperty(value = "")
   private Boolean complete = false;
@@ -154,11 +154,11 @@ PLACED(String.valueOf("placed")), APPROVED(String.valueOf("approved")), DELIVERE
     return status.value();
   }
 
-  public void setStatus(StatusEnum status) {
+  public void setStatus(Status status) {
     this.status = status;
   }
 
-  public Order status(StatusEnum status) {
+  public Order status(Status status) {
     this.status = status;
     return this;
   }

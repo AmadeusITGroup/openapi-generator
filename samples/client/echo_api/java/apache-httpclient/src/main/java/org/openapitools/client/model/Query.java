@@ -1,4 +1,8 @@
 /*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:39.076Z[UTC]
+ *
  * Echo Server API
  * Echo Server API
  *
@@ -43,7 +47,7 @@ public class Query {
   /**
    * Gets or Sets outcomes
    */
-  public enum OutcomesEnum {
+  public enum Outcomes {
     SUCCESS("SUCCESS"),
     
     FAILURE("FAILURE"),
@@ -52,7 +56,7 @@ public class Query {
 
     private String value;
 
-    OutcomesEnum(String value) {
+    Outcomes(String value) {
       this.value = value;
     }
 
@@ -67,8 +71,8 @@ public class Query {
     }
 
     @JsonCreator
-    public static OutcomesEnum fromValue(String value) {
-      for (OutcomesEnum b : OutcomesEnum.values()) {
+    public static Outcomes fromValue(String value) {
+      for (Outcomes b : Outcomes.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -78,7 +82,7 @@ public class Query {
   }
 
   public static final String JSON_PROPERTY_OUTCOMES = "outcomes";
-  private List<OutcomesEnum> outcomes = new ArrayList<>(Arrays.asList(OutcomesEnum.SUCCESS, OutcomesEnum.FAILURE));
+  private List<Outcomes> outcomes = new ArrayList<>(Arrays.asList(Outcomes.SUCCESS, Outcomes.FAILURE));
 
   public Query() {
   }
@@ -109,15 +113,15 @@ public class Query {
   }
 
 
-  public Query outcomes(List<OutcomesEnum> outcomes) {
+  public Query outcomes(List<Outcomes> outcomes) {
     
     this.outcomes = outcomes;
     return this;
   }
 
-  public Query addOutcomesItem(OutcomesEnum outcomesItem) {
+  public Query addOutcomesItem(Outcomes outcomesItem) {
     if (this.outcomes == null) {
-      this.outcomes = new ArrayList<>(Arrays.asList(OutcomesEnum.SUCCESS, OutcomesEnum.FAILURE));
+      this.outcomes = new ArrayList<>(Arrays.asList(Outcomes.SUCCESS, Outcomes.FAILURE));
     }
     this.outcomes.add(outcomesItem);
     return this;
@@ -131,14 +135,14 @@ public class Query {
   @JsonProperty(JSON_PROPERTY_OUTCOMES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<OutcomesEnum> getOutcomes() {
+  public List<Outcomes> getOutcomes() {
     return outcomes;
   }
 
 
   @JsonProperty(JSON_PROPERTY_OUTCOMES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOutcomes(List<OutcomesEnum> outcomes) {
+  public void setOutcomes(List<Outcomes> outcomes) {
     this.outcomes = outcomes;
   }
 

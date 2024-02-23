@@ -1,3 +1,9 @@
+/*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:47.452Z[UTC]
+ */
+
 package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -21,8 +27,14 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonTypeName("200_response")
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
 public class Model200Response  implements Serializable {
+  
+  
   private @Valid Integer name;
+
+  
   private @Valid String propertyClass;
+
+  
 
   protected Model200Response(Model200ResponseBuilder<?, ?> b) {
     this.name = b.name;
@@ -39,6 +51,7 @@ public class Model200Response  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @JsonProperty("name")
@@ -58,6 +71,7 @@ public class Model200Response  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @JsonProperty("class")
@@ -145,5 +159,7 @@ public class Model200Response  implements Serializable {
       return self();
     }
   }
+
+  
 }
 

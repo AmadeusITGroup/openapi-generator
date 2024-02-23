@@ -29,6 +29,7 @@ import javax.validation.Valid;
  */
 @Path("/user")
 @Api(value = "/", description = "")
+
 public interface UserApi  {
 
     /**

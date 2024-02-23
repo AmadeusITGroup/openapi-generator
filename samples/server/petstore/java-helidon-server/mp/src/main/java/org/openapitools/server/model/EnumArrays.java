@@ -27,14 +27,14 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 public class EnumArrays  {
   
-public enum JustSymbolEnum {
+public enum JustSymbol {
 
     GREATER_THAN_OR_EQUAL_TO(String.valueOf(">=")), DOLLAR(String.valueOf("$"));
 
 
     private String value;
 
-    JustSymbolEnum (String v) {
+    JustSymbol (String v) {
         value = v;
     }
 
@@ -52,8 +52,8 @@ public enum JustSymbolEnum {
      * Convert a String into String, as specified in the
      * <a href="https://download.oracle.com/otndocs/jcp/jaxrs-2_0-fr-eval-spec/index.html">See JAX RS 2.0 Specification, section 3.2, p. 12</a>
      */
-	public static JustSymbolEnum fromString(String s) {
-        for (JustSymbolEnum b : JustSymbolEnum.values()) {
+	public static JustSymbol fromString(String s) {
+        for (JustSymbol b : JustSymbol.values()) {
             // using Objects.toString() to be safe if value type non-object type
             // because types like 'int' etc. will be auto-boxed
             if (java.util.Objects.toString(b.value).equals(s)) {
@@ -64,8 +64,8 @@ public enum JustSymbolEnum {
 	}
 	
     @JsonCreator
-    public static JustSymbolEnum fromValue(String value) {
-        for (JustSymbolEnum b : JustSymbolEnum.values()) {
+    public static JustSymbol fromValue(String value) {
+        for (JustSymbol b : JustSymbol.values()) {
             if (b.value.equals(value)) {
                 return b;
             }
@@ -74,16 +74,16 @@ public enum JustSymbolEnum {
     }
 }
 
-  private JustSymbolEnum justSymbol;
+  private JustSymbol justSymbol;
 
-public enum ArrayEnumEnum {
+public enum ArrayEnum {
 
     FISH(String.valueOf("fish")), CRAB(String.valueOf("crab"));
 
 
     private String value;
 
-    ArrayEnumEnum (String v) {
+    ArrayEnum (String v) {
         value = v;
     }
 
@@ -101,8 +101,8 @@ public enum ArrayEnumEnum {
      * Convert a String into String, as specified in the
      * <a href="https://download.oracle.com/otndocs/jcp/jaxrs-2_0-fr-eval-spec/index.html">See JAX RS 2.0 Specification, section 3.2, p. 12</a>
      */
-	public static ArrayEnumEnum fromString(String s) {
-        for (ArrayEnumEnum b : ArrayEnumEnum.values()) {
+	public static ArrayEnum fromString(String s) {
+        for (ArrayEnum b : ArrayEnum.values()) {
             // using Objects.toString() to be safe if value type non-object type
             // because types like 'int' etc. will be auto-boxed
             if (java.util.Objects.toString(b.value).equals(s)) {
@@ -113,8 +113,8 @@ public enum ArrayEnumEnum {
 	}
 	
     @JsonCreator
-    public static ArrayEnumEnum fromValue(String value) {
-        for (ArrayEnumEnum b : ArrayEnumEnum.values()) {
+    public static ArrayEnum fromValue(String value) {
+        for (ArrayEnum b : ArrayEnum.values()) {
             if (b.value.equals(value)) {
                 return b;
             }
@@ -123,24 +123,24 @@ public enum ArrayEnumEnum {
     }
 }
 
-  private List<ArrayEnumEnum> arrayEnum = null;
+  private List<ArrayEnum> arrayEnum = null;
 
  /**
    * Get justSymbol
    * @return justSymbol
   **/
-  public JustSymbolEnum getJustSymbol() {
+  public JustSymbol getJustSymbol() {
     return justSymbol;
   }
 
   /**
     * Set justSymbol
   **/
-  public void setJustSymbol(JustSymbolEnum justSymbol) {
+  public void setJustSymbol(JustSymbol justSymbol) {
     this.justSymbol = justSymbol;
   }
 
-  public EnumArrays justSymbol(JustSymbolEnum justSymbol) {
+  public EnumArrays justSymbol(JustSymbol justSymbol) {
     this.justSymbol = justSymbol;
     return this;
   }
@@ -149,23 +149,23 @@ public enum ArrayEnumEnum {
    * Get arrayEnum
    * @return arrayEnum
   **/
-  public List<ArrayEnumEnum> getArrayEnum() {
+  public List<ArrayEnum> getArrayEnum() {
     return arrayEnum;
   }
 
   /**
     * Set arrayEnum
   **/
-  public void setArrayEnum(List<ArrayEnumEnum> arrayEnum) {
+  public void setArrayEnum(List<ArrayEnum> arrayEnum) {
     this.arrayEnum = arrayEnum;
   }
 
-  public EnumArrays arrayEnum(List<ArrayEnumEnum> arrayEnum) {
+  public EnumArrays arrayEnum(List<ArrayEnum> arrayEnum) {
     this.arrayEnum = arrayEnum;
     return this;
   }
 
-  public EnumArrays addArrayEnumItem(ArrayEnumEnum arrayEnumItem) {
+  public EnumArrays addArrayEnumItem(ArrayEnum arrayEnumItem) {
     this.arrayEnum.add(arrayEnumItem);
     return this;
   }

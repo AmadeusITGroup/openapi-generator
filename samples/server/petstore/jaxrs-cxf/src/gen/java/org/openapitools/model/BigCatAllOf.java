@@ -13,14 +13,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class BigCatAllOf  {
   
-public enum KindEnum {
+public enum Kind {
 
 LIONS(String.valueOf("lions")), TIGERS(String.valueOf("tigers")), LEOPARDS(String.valueOf("leopards")), JAGUARS(String.valueOf("jaguars"));
 
 
     private String value;
 
-    KindEnum (String v) {
+    Kind (String v) {
         value = v;
     }
 
@@ -35,8 +35,8 @@ LIONS(String.valueOf("lions")), TIGERS(String.valueOf("tigers")), LEOPARDS(Strin
     }
 
     @JsonCreator
-    public static KindEnum fromValue(String value) {
-        for (KindEnum b : KindEnum.values()) {
+    public static Kind fromValue(String value) {
+        for (Kind b : Kind.values()) {
             if (b.value.equals(value)) {
                 return b;
             }
@@ -46,7 +46,7 @@ LIONS(String.valueOf("lions")), TIGERS(String.valueOf("tigers")), LEOPARDS(Strin
 }
 
   @ApiModelProperty(value = "")
-  private KindEnum kind;
+  private Kind kind;
  /**
    * Get kind
    * @return kind
@@ -59,11 +59,11 @@ LIONS(String.valueOf("lions")), TIGERS(String.valueOf("tigers")), LEOPARDS(Strin
     return kind.value();
   }
 
-  public void setKind(KindEnum kind) {
+  public void setKind(Kind kind) {
     this.kind = kind;
   }
 
-  public BigCatAllOf kind(KindEnum kind) {
+  public BigCatAllOf kind(Kind kind) {
     this.kind = kind;
     return this;
   }

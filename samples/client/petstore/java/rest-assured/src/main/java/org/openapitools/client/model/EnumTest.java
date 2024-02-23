@@ -1,4 +1,8 @@
 /*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:43.438Z[UTC]
+ *
  * OpenAPI Petstore
  * This spec is mainly for testing Petstore server and contains fake endpoints, models. Please do not use this for any other purpose. Special characters: \" \\
  *
@@ -34,8 +38,8 @@ public class EnumTest {
   /**
    * Gets or Sets enumString
    */
-  @JsonAdapter(EnumStringEnum.Adapter.class)
-  public enum EnumStringEnum {
+  @JsonAdapter(EnumString.Adapter.class)
+  public enum EnumString {
     UPPER("UPPER"),
     
     LOWER("lower"),
@@ -44,7 +48,7 @@ public class EnumTest {
 
     private String value;
 
-    EnumStringEnum(String value) {
+    EnumString(String value) {
       this.value = value;
     }
 
@@ -57,8 +61,8 @@ public class EnumTest {
       return String.valueOf(value);
     }
 
-    public static EnumStringEnum fromValue(String value) {
-      for (EnumStringEnum b : EnumStringEnum.values()) {
+    public static EnumString fromValue(String value) {
+      for (EnumString b : EnumString.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -66,29 +70,29 @@ public class EnumTest {
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
-    public static class Adapter extends TypeAdapter<EnumStringEnum> {
+    public static class Adapter extends TypeAdapter<EnumString> {
       @Override
-      public void write(final JsonWriter jsonWriter, final EnumStringEnum enumeration) throws IOException {
+      public void write(final JsonWriter jsonWriter, final EnumString enumeration) throws IOException {
         jsonWriter.value(enumeration.getValue());
       }
 
       @Override
-      public EnumStringEnum read(final JsonReader jsonReader) throws IOException {
+      public EnumString read(final JsonReader jsonReader) throws IOException {
         String value =  jsonReader.nextString();
-        return EnumStringEnum.fromValue(value);
+        return EnumString.fromValue(value);
       }
     }
   }
 
   public static final String SERIALIZED_NAME_ENUM_STRING = "enum_string";
   @SerializedName(SERIALIZED_NAME_ENUM_STRING)
-  private EnumStringEnum enumString;
+  private EnumString enumString;
 
   /**
    * Gets or Sets enumStringRequired
    */
-  @JsonAdapter(EnumStringRequiredEnum.Adapter.class)
-  public enum EnumStringRequiredEnum {
+  @JsonAdapter(EnumStringRequired.Adapter.class)
+  public enum EnumStringRequired {
     UPPER("UPPER"),
     
     LOWER("lower"),
@@ -97,7 +101,7 @@ public class EnumTest {
 
     private String value;
 
-    EnumStringRequiredEnum(String value) {
+    EnumStringRequired(String value) {
       this.value = value;
     }
 
@@ -110,8 +114,8 @@ public class EnumTest {
       return String.valueOf(value);
     }
 
-    public static EnumStringRequiredEnum fromValue(String value) {
-      for (EnumStringRequiredEnum b : EnumStringRequiredEnum.values()) {
+    public static EnumStringRequired fromValue(String value) {
+      for (EnumStringRequired b : EnumStringRequired.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -119,36 +123,36 @@ public class EnumTest {
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
-    public static class Adapter extends TypeAdapter<EnumStringRequiredEnum> {
+    public static class Adapter extends TypeAdapter<EnumStringRequired> {
       @Override
-      public void write(final JsonWriter jsonWriter, final EnumStringRequiredEnum enumeration) throws IOException {
+      public void write(final JsonWriter jsonWriter, final EnumStringRequired enumeration) throws IOException {
         jsonWriter.value(enumeration.getValue());
       }
 
       @Override
-      public EnumStringRequiredEnum read(final JsonReader jsonReader) throws IOException {
+      public EnumStringRequired read(final JsonReader jsonReader) throws IOException {
         String value =  jsonReader.nextString();
-        return EnumStringRequiredEnum.fromValue(value);
+        return EnumStringRequired.fromValue(value);
       }
     }
   }
 
   public static final String SERIALIZED_NAME_ENUM_STRING_REQUIRED = "enum_string_required";
   @SerializedName(SERIALIZED_NAME_ENUM_STRING_REQUIRED)
-  private EnumStringRequiredEnum enumStringRequired;
+  private EnumStringRequired enumStringRequired;
 
   /**
    * Gets or Sets enumInteger
    */
-  @JsonAdapter(EnumIntegerEnum.Adapter.class)
-  public enum EnumIntegerEnum {
+  @JsonAdapter(EnumInteger.Adapter.class)
+  public enum EnumInteger {
     NUMBER_1(1),
     
     NUMBER_MINUS_1(-1);
 
     private Integer value;
 
-    EnumIntegerEnum(Integer value) {
+    EnumInteger(Integer value) {
       this.value = value;
     }
 
@@ -161,8 +165,8 @@ public class EnumTest {
       return String.valueOf(value);
     }
 
-    public static EnumIntegerEnum fromValue(Integer value) {
-      for (EnumIntegerEnum b : EnumIntegerEnum.values()) {
+    public static EnumInteger fromValue(Integer value) {
+      for (EnumInteger b : EnumInteger.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -170,36 +174,36 @@ public class EnumTest {
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
-    public static class Adapter extends TypeAdapter<EnumIntegerEnum> {
+    public static class Adapter extends TypeAdapter<EnumInteger> {
       @Override
-      public void write(final JsonWriter jsonWriter, final EnumIntegerEnum enumeration) throws IOException {
+      public void write(final JsonWriter jsonWriter, final EnumInteger enumeration) throws IOException {
         jsonWriter.value(enumeration.getValue());
       }
 
       @Override
-      public EnumIntegerEnum read(final JsonReader jsonReader) throws IOException {
+      public EnumInteger read(final JsonReader jsonReader) throws IOException {
         Integer value =  jsonReader.nextInt();
-        return EnumIntegerEnum.fromValue(value);
+        return EnumInteger.fromValue(value);
       }
     }
   }
 
   public static final String SERIALIZED_NAME_ENUM_INTEGER = "enum_integer";
   @SerializedName(SERIALIZED_NAME_ENUM_INTEGER)
-  private EnumIntegerEnum enumInteger;
+  private EnumInteger enumInteger;
 
   /**
    * Gets or Sets enumNumber
    */
-  @JsonAdapter(EnumNumberEnum.Adapter.class)
-  public enum EnumNumberEnum {
+  @JsonAdapter(EnumNumber.Adapter.class)
+  public enum EnumNumber {
     NUMBER_1_DOT_1(1.1),
     
     NUMBER_MINUS_1_DOT_2(-1.2);
 
     private Double value;
 
-    EnumNumberEnum(Double value) {
+    EnumNumber(Double value) {
       this.value = value;
     }
 
@@ -212,8 +216,8 @@ public class EnumTest {
       return String.valueOf(value);
     }
 
-    public static EnumNumberEnum fromValue(Double value) {
-      for (EnumNumberEnum b : EnumNumberEnum.values()) {
+    public static EnumNumber fromValue(Double value) {
+      for (EnumNumber b : EnumNumber.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -221,23 +225,23 @@ public class EnumTest {
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
-    public static class Adapter extends TypeAdapter<EnumNumberEnum> {
+    public static class Adapter extends TypeAdapter<EnumNumber> {
       @Override
-      public void write(final JsonWriter jsonWriter, final EnumNumberEnum enumeration) throws IOException {
+      public void write(final JsonWriter jsonWriter, final EnumNumber enumeration) throws IOException {
         jsonWriter.value(enumeration.getValue());
       }
 
       @Override
-      public EnumNumberEnum read(final JsonReader jsonReader) throws IOException {
+      public EnumNumber read(final JsonReader jsonReader) throws IOException {
         Double value =  jsonReader.nextDouble();
-        return EnumNumberEnum.fromValue(value);
+        return EnumNumber.fromValue(value);
       }
     }
   }
 
   public static final String SERIALIZED_NAME_ENUM_NUMBER = "enum_number";
   @SerializedName(SERIALIZED_NAME_ENUM_NUMBER)
-  private EnumNumberEnum enumNumber;
+  private EnumNumber enumNumber;
 
   public static final String SERIALIZED_NAME_OUTER_ENUM = "outerEnum";
   @SerializedName(SERIALIZED_NAME_OUTER_ENUM)
@@ -246,7 +250,7 @@ public class EnumTest {
   public EnumTest() {
   }
 
-  public EnumTest enumString(EnumStringEnum enumString) {
+  public EnumTest enumString(EnumString enumString) {
     
     this.enumString = enumString;
     return this;
@@ -259,17 +263,17 @@ public class EnumTest {
   @javax.annotation.Nullable
 
 
-  public EnumStringEnum getEnumString() {
+  public EnumString getEnumString() {
     return enumString;
   }
 
 
-  public void setEnumString(EnumStringEnum enumString) {
+  public void setEnumString(EnumString enumString) {
     this.enumString = enumString;
   }
 
 
-  public EnumTest enumStringRequired(EnumStringRequiredEnum enumStringRequired) {
+  public EnumTest enumStringRequired(EnumStringRequired enumStringRequired) {
     
     this.enumStringRequired = enumStringRequired;
     return this;
@@ -283,17 +287,17 @@ public class EnumTest {
   @NotNull
 
 
-  public EnumStringRequiredEnum getEnumStringRequired() {
+  public EnumStringRequired getEnumStringRequired() {
     return enumStringRequired;
   }
 
 
-  public void setEnumStringRequired(EnumStringRequiredEnum enumStringRequired) {
+  public void setEnumStringRequired(EnumStringRequired enumStringRequired) {
     this.enumStringRequired = enumStringRequired;
   }
 
 
-  public EnumTest enumInteger(EnumIntegerEnum enumInteger) {
+  public EnumTest enumInteger(EnumInteger enumInteger) {
     
     this.enumInteger = enumInteger;
     return this;
@@ -306,17 +310,17 @@ public class EnumTest {
   @javax.annotation.Nullable
 
 
-  public EnumIntegerEnum getEnumInteger() {
+  public EnumInteger getEnumInteger() {
     return enumInteger;
   }
 
 
-  public void setEnumInteger(EnumIntegerEnum enumInteger) {
+  public void setEnumInteger(EnumInteger enumInteger) {
     this.enumInteger = enumInteger;
   }
 
 
-  public EnumTest enumNumber(EnumNumberEnum enumNumber) {
+  public EnumTest enumNumber(EnumNumber enumNumber) {
     
     this.enumNumber = enumNumber;
     return this;
@@ -329,12 +333,12 @@ public class EnumTest {
   @javax.annotation.Nullable
 
 
-  public EnumNumberEnum getEnumNumber() {
+  public EnumNumber getEnumNumber() {
     return enumNumber;
   }
 
 
-  public void setEnumNumber(EnumNumberEnum enumNumber) {
+  public void setEnumNumber(EnumNumber enumNumber) {
     this.enumNumber = enumNumber;
   }
 

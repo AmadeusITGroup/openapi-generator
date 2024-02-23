@@ -36,6 +36,7 @@ import jakarta.validation.Valid;
 
 @Path("/fake")
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaHelidonServerCodegen")
+
 public interface FakeService {
 
     @GET

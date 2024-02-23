@@ -38,6 +38,7 @@ import {{javaxPackage}}.validation.Valid;
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 {{/addConsumesProducesJson}}
+{{>additionalApiTypeAnnotations}}
 public interface {{classname}}  {
 {{#operations}}
 {{#operation}}

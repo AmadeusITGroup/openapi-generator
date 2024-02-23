@@ -16,6 +16,7 @@ import io.vertx.core.json.JsonObject;
 
 import java.util.*;
 
+
 public interface FakeApi {
 
     void createXmlItem(XmlItem xmlItem, Handler<AsyncResult<Void>> handler);

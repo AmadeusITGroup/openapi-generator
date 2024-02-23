@@ -1,3 +1,9 @@
+/*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:47.452Z[UTC]
+ */
+
 package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
@@ -18,12 +24,26 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonTypeName("Capitalization")
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
 public class Capitalization  implements Serializable {
+  
+  
   private @Valid String smallCamel;
+
+  
   private @Valid String capitalCamel;
+
+  
   private @Valid String smallSnake;
+
+  
   private @Valid String capitalSnake;
+
+  
   private @Valid String scAETHFlowPoints;
+
+  
   private @Valid String ATT_NAME;
+
+  
 
   protected Capitalization(CapitalizationBuilder<?, ?> b) {
     this.smallCamel = b.smallCamel;
@@ -45,6 +65,7 @@ public class Capitalization  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(value = "")
   @JsonProperty("smallCamel")
   public String getSmallCamel() {
@@ -63,6 +84,7 @@ public class Capitalization  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @JsonProperty("CapitalCamel")
@@ -83,6 +105,7 @@ public class Capitalization  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(value = "")
   @JsonProperty("small_Snake")
   public String getSmallSnake() {
@@ -101,6 +124,7 @@ public class Capitalization  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @JsonProperty("Capital_Snake")
@@ -121,6 +145,7 @@ public class Capitalization  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(value = "")
   @JsonProperty("SCA_ETH_Flow_Points")
   public String getScAETHFlowPoints() {
@@ -140,6 +165,7 @@ public class Capitalization  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "Name of the pet ")
   @JsonProperty("ATT_NAME")
@@ -255,5 +281,7 @@ public class Capitalization  implements Serializable {
       return self();
     }
   }
+
+  
 }
 

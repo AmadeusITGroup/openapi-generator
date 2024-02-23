@@ -1,3 +1,9 @@
+/*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:47.530Z[UTC]
+ */
+
 package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
@@ -22,7 +28,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonTypeName("ArrayOfNumberOnly")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
 public class ArrayOfNumberOnly  implements Serializable {
+  
+  
   private @Valid List<BigDecimal> arrayNumber;
+
+  
 
   protected ArrayOfNumberOnly(ArrayOfNumberOnlyBuilder<?, ?> b) {
     this.arrayNumber = b.arrayNumber;
@@ -38,6 +48,7 @@ public class ArrayOfNumberOnly  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(description = "")
@@ -135,5 +146,7 @@ public class ArrayOfNumberOnly  implements Serializable {
       return self();
     }
   }
+
+  
 }
 

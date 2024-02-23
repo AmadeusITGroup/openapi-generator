@@ -1,3 +1,9 @@
+/*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:47.458Z[UTC]
+ */
+
 package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
@@ -18,6 +24,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonTypeName("Client")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
 public class Client  implements Serializable {
+  
+  
   private @Valid String client;
 
   /**
@@ -27,6 +35,7 @@ public class Client  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @JsonProperty("client")
@@ -79,5 +88,7 @@ public class Client  implements Serializable {
   }
 
 
+
+  
 }
 

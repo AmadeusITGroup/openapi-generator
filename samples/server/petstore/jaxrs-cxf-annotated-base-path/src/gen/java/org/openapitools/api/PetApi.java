@@ -29,6 +29,7 @@ import javax.validation.Valid;
  */
 @Path("/v2/pet")
 @Api(value = "/", description = "")
+
 public interface PetApi  {
 
     /**

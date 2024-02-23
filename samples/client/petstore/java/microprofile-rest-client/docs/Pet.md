@@ -13,11 +13,11 @@ A pet for sale in the pet store
 |**name** | **String** |  |  |
 |**photoUrls** | **List&lt;String&gt;** |  |  |
 |**tags** | [**List&lt;Tag&gt;**](Tag.md) |  |  [optional] |
-|**status** | [**StatusEnum**](#StatusEnum) | pet status in the store |  [optional] |
+|**status** | [**Status**](#Status) | pet status in the store |  [optional] |
 
 
 
-## Enum: StatusEnum
+## Enum: Status
 
 | Name | Value |
 |---- | -----|

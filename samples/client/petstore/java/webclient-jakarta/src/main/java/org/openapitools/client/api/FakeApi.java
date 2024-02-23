@@ -37,6 +37,7 @@ import reactor.core.publisher.Mono;
 import reactor.core.publisher.Flux;
 
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class FakeApi {
     private ApiClient apiClient;
 

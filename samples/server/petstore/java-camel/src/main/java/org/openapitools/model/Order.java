@@ -49,7 +49,7 @@ public class Order {
   /**
    * Order Status
    */
-  public enum StatusEnum {
+  public enum Status {
     PLACED("placed"),
     
     APPROVED("approved"),
@@ -58,7 +58,7 @@ public class Order {
 
     private String value;
 
-    StatusEnum(String value) {
+    Status(String value) {
       this.value = value;
     }
 
@@ -73,8 +73,8 @@ public class Order {
     }
 
     @JsonCreator
-    public static StatusEnum fromValue(String value) {
-      for (StatusEnum b : StatusEnum.values()) {
+    public static Status fromValue(String value) {
+      for (Status b : Status.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -84,7 +84,7 @@ public class Order {
   }
 
   @JacksonXmlProperty(localName = "status")
-  private StatusEnum status;
+  private Status status;
 
   @JacksonXmlProperty(localName = "complete")
   private Boolean complete = false;
@@ -169,7 +169,7 @@ public class Order {
     this.shipDate = shipDate;
   }
 
-  public Order status(StatusEnum status) {
+  public Order status(Status status) {
     this.status = status;
     return this;
   }
@@ -181,11 +181,11 @@ public class Order {
   
   @Schema(name = "status", description = "Order Status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
-  public StatusEnum getStatus() {
+  public Status getStatus() {
     return status;
   }
 
-  public void setStatus(StatusEnum status) {
+  public void setStatus(Status status) {
     this.status = status;
   }
 

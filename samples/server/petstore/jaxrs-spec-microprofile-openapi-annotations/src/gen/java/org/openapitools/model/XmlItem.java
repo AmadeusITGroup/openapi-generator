@@ -1,3 +1,9 @@
+/*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:47.530Z[UTC]
+ */
+
 package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
@@ -22,35 +28,95 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonTypeName("XmlItem")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
 public class XmlItem  implements Serializable {
+  
+  
   private @Valid String attributeString;
+
+  
   private @Valid BigDecimal attributeNumber;
+
+  
   private @Valid Integer attributeInteger;
+
+  
   private @Valid Boolean attributeBoolean;
+
+  
   private @Valid List<Integer> wrappedArray;
+
+  
   private @Valid String nameString;
+
+  
   private @Valid BigDecimal nameNumber;
+
+  
   private @Valid Integer nameInteger;
+
+  
   private @Valid Boolean nameBoolean;
+
+  
   private @Valid List<Integer> nameArray;
+
+  
   private @Valid List<Integer> nameWrappedArray;
+
+  
   private @Valid String prefixString;
+
+  
   private @Valid BigDecimal prefixNumber;
+
+  
   private @Valid Integer prefixInteger;
+
+  
   private @Valid Boolean prefixBoolean;
+
+  
   private @Valid List<Integer> prefixArray;
+
+  
   private @Valid List<Integer> prefixWrappedArray;
+
+  
   private @Valid String namespaceString;
+
+  
   private @Valid BigDecimal namespaceNumber;
+
+  
   private @Valid Integer namespaceInteger;
+
+  
   private @Valid Boolean namespaceBoolean;
+
+  
   private @Valid List<Integer> namespaceArray;
+
+  
   private @Valid List<Integer> namespaceWrappedArray;
+
+  
   private @Valid String prefixNsString;
+
+  
   private @Valid BigDecimal prefixNsNumber;
+
+  
   private @Valid Integer prefixNsInteger;
+
+  
   private @Valid Boolean prefixNsBoolean;
+
+  
   private @Valid List<Integer> prefixNsArray;
+
+  
   private @Valid List<Integer> prefixNsWrappedArray;
+
+  
 
   protected XmlItem(XmlItemBuilder<?, ?> b) {
     this.attributeString = b.attributeString;
@@ -95,6 +161,7 @@ public class XmlItem  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(example = "string", value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(example = "string", description = "")
   @JsonProperty("attribute_string")
@@ -114,6 +181,7 @@ public class XmlItem  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(example = "1.234", value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(example = "1.234", description = "")
@@ -135,6 +203,7 @@ public class XmlItem  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(example = "-2", value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(example = "-2", description = "")
   @JsonProperty("attribute_integer")
@@ -155,6 +224,7 @@ public class XmlItem  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(example = "true", value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(example = "true", description = "")
   @JsonProperty("attribute_boolean")
@@ -174,6 +244,7 @@ public class XmlItem  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(description = "")
@@ -211,6 +282,7 @@ public class XmlItem  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(example = "string", value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(example = "string", description = "")
   @JsonProperty("name_string")
@@ -230,6 +302,7 @@ public class XmlItem  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(example = "1.234", value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(example = "1.234", description = "")
@@ -251,6 +324,7 @@ public class XmlItem  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(example = "-2", value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(example = "-2", description = "")
   @JsonProperty("name_integer")
@@ -271,6 +345,7 @@ public class XmlItem  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(example = "true", value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(example = "true", description = "")
   @JsonProperty("name_boolean")
@@ -290,6 +365,7 @@ public class XmlItem  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(description = "")
@@ -327,6 +403,7 @@ public class XmlItem  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(description = "")
   @JsonProperty("name_wrapped_array")
@@ -363,6 +440,7 @@ public class XmlItem  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(example = "string", value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(example = "string", description = "")
   @JsonProperty("prefix_string")
@@ -382,6 +460,7 @@ public class XmlItem  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(example = "1.234", value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(example = "1.234", description = "")
@@ -403,6 +482,7 @@ public class XmlItem  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(example = "-2", value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(example = "-2", description = "")
   @JsonProperty("prefix_integer")
@@ -423,6 +503,7 @@ public class XmlItem  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(example = "true", value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(example = "true", description = "")
   @JsonProperty("prefix_boolean")
@@ -442,6 +523,7 @@ public class XmlItem  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(description = "")
@@ -479,6 +561,7 @@ public class XmlItem  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(description = "")
   @JsonProperty("prefix_wrapped_array")
@@ -515,6 +598,7 @@ public class XmlItem  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(example = "string", value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(example = "string", description = "")
   @JsonProperty("namespace_string")
@@ -534,6 +618,7 @@ public class XmlItem  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(example = "1.234", value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(example = "1.234", description = "")
@@ -555,6 +640,7 @@ public class XmlItem  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(example = "-2", value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(example = "-2", description = "")
   @JsonProperty("namespace_integer")
@@ -575,6 +661,7 @@ public class XmlItem  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(example = "true", value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(example = "true", description = "")
   @JsonProperty("namespace_boolean")
@@ -594,6 +681,7 @@ public class XmlItem  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(description = "")
@@ -631,6 +719,7 @@ public class XmlItem  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(description = "")
   @JsonProperty("namespace_wrapped_array")
@@ -667,6 +756,7 @@ public class XmlItem  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(example = "string", value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(example = "string", description = "")
   @JsonProperty("prefix_ns_string")
@@ -686,6 +776,7 @@ public class XmlItem  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(example = "1.234", value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(example = "1.234", description = "")
@@ -707,6 +798,7 @@ public class XmlItem  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(example = "-2", value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(example = "-2", description = "")
   @JsonProperty("prefix_ns_integer")
@@ -727,6 +819,7 @@ public class XmlItem  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(example = "true", value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(example = "true", description = "")
   @JsonProperty("prefix_ns_boolean")
@@ -746,6 +839,7 @@ public class XmlItem  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(description = "")
@@ -782,6 +876,7 @@ public class XmlItem  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(description = "")
@@ -1075,5 +1170,7 @@ public class XmlItem  implements Serializable {
       return self();
     }
   }
+
+  
 }
 

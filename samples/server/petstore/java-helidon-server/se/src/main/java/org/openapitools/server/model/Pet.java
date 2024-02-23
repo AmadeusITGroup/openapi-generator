@@ -23,14 +23,14 @@ public class Pet   {
     /**
     * pet status in the store
     */
-    public enum StatusEnum {
+    public enum Status {
         AVAILABLE("available"),
         PENDING("pending"),
         SOLD("sold");
 
         private String value;
 
-        StatusEnum(String value) {
+        Status(String value) {
             this.value = value;
         }
 
@@ -46,8 +46,8 @@ public class Pet   {
 
 
         @JsonCreator
-        public static StatusEnum fromValue(String text) {
-            for (StatusEnum b : StatusEnum.values()) {
+        public static Status fromValue(String text) {
+            for (Status b : Status.values()) {
                 if (String.valueOf(b.value).equals(text)) {
                     return b;
                 }
@@ -57,7 +57,7 @@ public class Pet   {
     }
 
 
-    private StatusEnum status;
+    private Status status;
 
     /**
      * Default constructor.
@@ -82,7 +82,7 @@ public class Pet   {
         String name, 
         Set<String> photoUrls, 
         List<Tag> tags, 
-        StatusEnum status
+        Status status
     ) {
         this.id = id;
         this.category = category;
@@ -158,11 +158,11 @@ public class Pet   {
      * pet status in the store
      * @return status
      */
-    public StatusEnum getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(StatusEnum status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 

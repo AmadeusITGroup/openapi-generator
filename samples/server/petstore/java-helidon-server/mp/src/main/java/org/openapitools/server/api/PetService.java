@@ -27,6 +27,7 @@ import jakarta.validation.Valid;
 
 @Path("")
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaHelidonServerCodegen")
+
 public interface PetService {
 
     @POST

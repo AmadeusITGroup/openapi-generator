@@ -25,6 +25,7 @@ import jakarta.validation.Valid;
 
 @Path("/store")
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaHelidonServerCodegen")
+
 public interface StoreService {
 
     @DELETE

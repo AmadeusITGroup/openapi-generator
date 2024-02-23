@@ -1,3 +1,9 @@
+/*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:47.452Z[UTC]
+ */
+
 package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
@@ -19,7 +25,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonTypeName("NumberOnly")
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
 public class NumberOnly  implements Serializable {
+  
+  
   private @Valid BigDecimal justNumber;
+
+  
 
   protected NumberOnly(NumberOnlyBuilder<?, ?> b) {
     this.justNumber = b.justNumber;
@@ -35,6 +45,7 @@ public class NumberOnly  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @JsonProperty("JustNumber")
@@ -115,5 +126,7 @@ public class NumberOnly  implements Serializable {
       return self();
     }
   }
+
+  
 }
 

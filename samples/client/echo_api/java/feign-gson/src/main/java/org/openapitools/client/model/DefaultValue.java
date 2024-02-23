@@ -1,4 +1,8 @@
 /*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:39.094Z[UTC]
+ *
  * Echo Server API
  * Echo Server API
  *
@@ -38,8 +42,8 @@ public class DefaultValue {
   /**
    * Gets or Sets arrayStringEnumDefault
    */
-  @JsonAdapter(ArrayStringEnumDefaultEnum.Adapter.class)
-  public enum ArrayStringEnumDefaultEnum {
+  @JsonAdapter(ArrayStringEnumDefault.Adapter.class)
+  public enum ArrayStringEnumDefault {
     SUCCESS("success"),
     
     FAILURE("failure"),
@@ -48,7 +52,7 @@ public class DefaultValue {
 
     private String value;
 
-    ArrayStringEnumDefaultEnum(String value) {
+    ArrayStringEnumDefault(String value) {
       this.value = value;
     }
 
@@ -61,8 +65,8 @@ public class DefaultValue {
       return String.valueOf(value);
     }
 
-    public static ArrayStringEnumDefaultEnum fromValue(String value) {
-      for (ArrayStringEnumDefaultEnum b : ArrayStringEnumDefaultEnum.values()) {
+    public static ArrayStringEnumDefault fromValue(String value) {
+      for (ArrayStringEnumDefault b : ArrayStringEnumDefault.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -70,23 +74,23 @@ public class DefaultValue {
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
-    public static class Adapter extends TypeAdapter<ArrayStringEnumDefaultEnum> {
+    public static class Adapter extends TypeAdapter<ArrayStringEnumDefault> {
       @Override
-      public void write(final JsonWriter jsonWriter, final ArrayStringEnumDefaultEnum enumeration) throws IOException {
+      public void write(final JsonWriter jsonWriter, final ArrayStringEnumDefault enumeration) throws IOException {
         jsonWriter.value(enumeration.getValue());
       }
 
       @Override
-      public ArrayStringEnumDefaultEnum read(final JsonReader jsonReader) throws IOException {
+      public ArrayStringEnumDefault read(final JsonReader jsonReader) throws IOException {
         String value =  jsonReader.nextString();
-        return ArrayStringEnumDefaultEnum.fromValue(value);
+        return ArrayStringEnumDefault.fromValue(value);
       }
     }
   }
 
   public static final String SERIALIZED_NAME_ARRAY_STRING_ENUM_DEFAULT = "array_string_enum_default";
   @SerializedName(SERIALIZED_NAME_ARRAY_STRING_ENUM_DEFAULT)
-  private List<ArrayStringEnumDefaultEnum> arrayStringEnumDefault = new ArrayList<>(Arrays.asList(ArrayStringEnumDefaultEnum.SUCCESS, ArrayStringEnumDefaultEnum.FAILURE));
+  private List<ArrayStringEnumDefault> arrayStringEnumDefault = new ArrayList<>(Arrays.asList(ArrayStringEnumDefault.SUCCESS, ArrayStringEnumDefault.FAILURE));
 
   public static final String SERIALIZED_NAME_ARRAY_STRING_DEFAULT = "array_string_default";
   @SerializedName(SERIALIZED_NAME_ARRAY_STRING_DEFAULT)
@@ -145,15 +149,15 @@ public class DefaultValue {
   }
 
 
-  public DefaultValue arrayStringEnumDefault(List<ArrayStringEnumDefaultEnum> arrayStringEnumDefault) {
+  public DefaultValue arrayStringEnumDefault(List<ArrayStringEnumDefault> arrayStringEnumDefault) {
     
     this.arrayStringEnumDefault = arrayStringEnumDefault;
     return this;
   }
 
-  public DefaultValue addArrayStringEnumDefaultItem(ArrayStringEnumDefaultEnum arrayStringEnumDefaultItem) {
+  public DefaultValue addArrayStringEnumDefaultItem(ArrayStringEnumDefault arrayStringEnumDefaultItem) {
     if (this.arrayStringEnumDefault == null) {
-      this.arrayStringEnumDefault = new ArrayList<>(Arrays.asList(ArrayStringEnumDefaultEnum.SUCCESS, ArrayStringEnumDefaultEnum.FAILURE));
+      this.arrayStringEnumDefault = new ArrayList<>(Arrays.asList(ArrayStringEnumDefault.SUCCESS, ArrayStringEnumDefault.FAILURE));
     }
     this.arrayStringEnumDefault.add(arrayStringEnumDefaultItem);
     return this;
@@ -165,12 +169,12 @@ public class DefaultValue {
   **/
   @javax.annotation.Nullable
 
-  public List<ArrayStringEnumDefaultEnum> getArrayStringEnumDefault() {
+  public List<ArrayStringEnumDefault> getArrayStringEnumDefault() {
     return arrayStringEnumDefault;
   }
 
 
-  public void setArrayStringEnumDefault(List<ArrayStringEnumDefaultEnum> arrayStringEnumDefault) {
+  public void setArrayStringEnumDefault(List<ArrayStringEnumDefault> arrayStringEnumDefault) {
     this.arrayStringEnumDefault = arrayStringEnumDefault;
   }
 

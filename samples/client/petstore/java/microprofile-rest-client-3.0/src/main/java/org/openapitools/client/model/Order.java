@@ -43,16 +43,16 @@ public class Order  {
   @JsonbProperty("shipDate")
   private Date shipDate;
 
-  @JsonbTypeSerializer(StatusEnum.Serializer.class)
-  @JsonbTypeDeserializer(StatusEnum.Deserializer.class)
-  public enum StatusEnum {
+  @JsonbTypeSerializer(Status.Serializer.class)
+  @JsonbTypeDeserializer(Status.Deserializer.class)
+  public enum Status {
 
     PLACED(String.valueOf("placed")), APPROVED(String.valueOf("approved")), DELIVERED(String.valueOf("delivered"));
 
 
     String value;
 
-    StatusEnum (String v) {
+    Status (String v) {
         value = v;
     }
 
@@ -65,10 +65,10 @@ public class Order  {
         return String.valueOf(value);
     }
 
-    public static final class Deserializer implements JsonbDeserializer<StatusEnum> {
+    public static final class Deserializer implements JsonbDeserializer<Status> {
         @Override
-        public StatusEnum deserialize(JsonParser parser, DeserializationContext ctx, Type rtType) {
-            for (StatusEnum b : StatusEnum.values()) {
+        public Status deserialize(JsonParser parser, DeserializationContext ctx, Type rtType) {
+            for (Status b : Status.values()) {
                 if (String.valueOf(b.value).equals(parser.getString())) {
                     return b;
                 }
@@ -77,9 +77,9 @@ public class Order  {
         }
     }
 
-    public static final class Serializer implements JsonbSerializer<StatusEnum> {
+    public static final class Serializer implements JsonbSerializer<Status> {
         @Override
-        public void serialize(StatusEnum obj, JsonGenerator generator, SerializationContext ctx) {
+        public void serialize(Status obj, JsonGenerator generator, SerializationContext ctx) {
             generator.write(obj.value);
         }
     }
@@ -89,7 +89,7 @@ public class Order  {
    * Order Status
   **/
   @JsonbProperty("status")
-  private StatusEnum status;
+  private Status status;
 
   @JsonbProperty("complete")
   private Boolean complete = false;
@@ -178,18 +178,18 @@ public class Order  {
    * Order Status
    * @return status
   **/
-  public StatusEnum getStatus() {
+  public Status getStatus() {
     return status;
   }
 
   /**
     * Set status
   **/
-  public void setStatus(StatusEnum status) {
+  public void setStatus(Status status) {
     this.status = status;
   }
 
-  public Order status(StatusEnum status) {
+  public Order status(Status status) {
     this.status = status;
     return this;
   }

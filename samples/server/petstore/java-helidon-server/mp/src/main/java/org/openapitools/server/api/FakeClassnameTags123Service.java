@@ -24,6 +24,7 @@ import jakarta.validation.Valid;
 
 @Path("/fake_classname_test")
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaHelidonServerCodegen")
+
 public interface FakeClassnameTags123Service {
 
     @PATCH

@@ -1,3 +1,9 @@
+/*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:47.530Z[UTC]
+ */
+
 package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
@@ -19,14 +25,32 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonTypeName("User")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
 public class User  implements Serializable {
+  
+  
   private @Valid Long id;
+
+  
   private @Valid String username;
+
+  
   private @Valid String firstName;
+
+  
   private @Valid String lastName;
+
+  
   private @Valid String email;
+
+  
   private @Valid String password;
+
+  
   private @Valid String phone;
+
+  
   private @Valid Integer userStatus;
+
+  
 
   protected User(UserBuilder<?, ?> b) {
     this.id = b.id;
@@ -50,6 +74,7 @@ public class User  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(description = "")
   @JsonProperty("id")
@@ -69,6 +94,7 @@ public class User  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(description = "")
@@ -90,6 +116,7 @@ public class User  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(description = "")
   @JsonProperty("firstName")
@@ -109,6 +136,7 @@ public class User  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(description = "")
@@ -130,6 +158,7 @@ public class User  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(description = "")
   @JsonProperty("email")
@@ -149,6 +178,7 @@ public class User  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(description = "")
@@ -170,6 +200,7 @@ public class User  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(description = "")
   @JsonProperty("phone")
@@ -190,6 +221,7 @@ public class User  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "User Status")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(description = "User Status")
@@ -320,5 +352,7 @@ public class User  implements Serializable {
       return self();
     }
   }
+
+  
 }
 

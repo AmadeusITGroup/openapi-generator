@@ -35,6 +35,7 @@ import org.openapitools.client.model.FooGetDefaultResponse;
 @RegisterRestClient
 @RegisterProvider(ApiExceptionMapper.class)
 @Path("/foo")
+
 public interface DefaultApi  {
 
     @GET

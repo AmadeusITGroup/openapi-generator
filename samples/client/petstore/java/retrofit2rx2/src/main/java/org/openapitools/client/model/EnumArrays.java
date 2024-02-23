@@ -1,4 +1,8 @@
 /*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:43.692Z[UTC]
+ *
  * OpenAPI Petstore
  * This spec is mainly for testing Petstore server and contains fake endpoints, models. Please do not use this for any other purpose. Special characters: \" \\
  *
@@ -32,15 +36,15 @@ public class EnumArrays {
   /**
    * Gets or Sets justSymbol
    */
-  @JsonAdapter(JustSymbolEnum.Adapter.class)
-  public enum JustSymbolEnum {
+  @JsonAdapter(JustSymbol.Adapter.class)
+  public enum JustSymbol {
     GREATER_THAN_OR_EQUAL_TO(">="),
     
     DOLLAR("$");
 
     private String value;
 
-    JustSymbolEnum(String value) {
+    JustSymbol(String value) {
       this.value = value;
     }
 
@@ -53,8 +57,8 @@ public class EnumArrays {
       return String.valueOf(value);
     }
 
-    public static JustSymbolEnum fromValue(String value) {
-      for (JustSymbolEnum b : JustSymbolEnum.values()) {
+    public static JustSymbol fromValue(String value) {
+      for (JustSymbol b : JustSymbol.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -62,36 +66,36 @@ public class EnumArrays {
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
-    public static class Adapter extends TypeAdapter<JustSymbolEnum> {
+    public static class Adapter extends TypeAdapter<JustSymbol> {
       @Override
-      public void write(final JsonWriter jsonWriter, final JustSymbolEnum enumeration) throws IOException {
+      public void write(final JsonWriter jsonWriter, final JustSymbol enumeration) throws IOException {
         jsonWriter.value(enumeration.getValue());
       }
 
       @Override
-      public JustSymbolEnum read(final JsonReader jsonReader) throws IOException {
+      public JustSymbol read(final JsonReader jsonReader) throws IOException {
         String value =  jsonReader.nextString();
-        return JustSymbolEnum.fromValue(value);
+        return JustSymbol.fromValue(value);
       }
     }
   }
 
   public static final String SERIALIZED_NAME_JUST_SYMBOL = "just_symbol";
   @SerializedName(SERIALIZED_NAME_JUST_SYMBOL)
-  private JustSymbolEnum justSymbol;
+  private JustSymbol justSymbol;
 
   /**
    * Gets or Sets arrayEnum
    */
-  @JsonAdapter(ArrayEnumEnum.Adapter.class)
-  public enum ArrayEnumEnum {
+  @JsonAdapter(ArrayEnum.Adapter.class)
+  public enum ArrayEnum {
     FISH("fish"),
     
     CRAB("crab");
 
     private String value;
 
-    ArrayEnumEnum(String value) {
+    ArrayEnum(String value) {
       this.value = value;
     }
 
@@ -104,8 +108,8 @@ public class EnumArrays {
       return String.valueOf(value);
     }
 
-    public static ArrayEnumEnum fromValue(String value) {
-      for (ArrayEnumEnum b : ArrayEnumEnum.values()) {
+    public static ArrayEnum fromValue(String value) {
+      for (ArrayEnum b : ArrayEnum.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -113,28 +117,28 @@ public class EnumArrays {
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
-    public static class Adapter extends TypeAdapter<ArrayEnumEnum> {
+    public static class Adapter extends TypeAdapter<ArrayEnum> {
       @Override
-      public void write(final JsonWriter jsonWriter, final ArrayEnumEnum enumeration) throws IOException {
+      public void write(final JsonWriter jsonWriter, final ArrayEnum enumeration) throws IOException {
         jsonWriter.value(enumeration.getValue());
       }
 
       @Override
-      public ArrayEnumEnum read(final JsonReader jsonReader) throws IOException {
+      public ArrayEnum read(final JsonReader jsonReader) throws IOException {
         String value =  jsonReader.nextString();
-        return ArrayEnumEnum.fromValue(value);
+        return ArrayEnum.fromValue(value);
       }
     }
   }
 
   public static final String SERIALIZED_NAME_ARRAY_ENUM = "array_enum";
   @SerializedName(SERIALIZED_NAME_ARRAY_ENUM)
-  private List<ArrayEnumEnum> arrayEnum;
+  private List<ArrayEnum> arrayEnum;
 
   public EnumArrays() {
   }
 
-  public EnumArrays justSymbol(JustSymbolEnum justSymbol) {
+  public EnumArrays justSymbol(JustSymbol justSymbol) {
     
     this.justSymbol = justSymbol;
     return this;
@@ -146,23 +150,23 @@ public class EnumArrays {
   **/
   @javax.annotation.Nullable
 
-  public JustSymbolEnum getJustSymbol() {
+  public JustSymbol getJustSymbol() {
     return justSymbol;
   }
 
 
-  public void setJustSymbol(JustSymbolEnum justSymbol) {
+  public void setJustSymbol(JustSymbol justSymbol) {
     this.justSymbol = justSymbol;
   }
 
 
-  public EnumArrays arrayEnum(List<ArrayEnumEnum> arrayEnum) {
+  public EnumArrays arrayEnum(List<ArrayEnum> arrayEnum) {
     
     this.arrayEnum = arrayEnum;
     return this;
   }
 
-  public EnumArrays addArrayEnumItem(ArrayEnumEnum arrayEnumItem) {
+  public EnumArrays addArrayEnumItem(ArrayEnum arrayEnumItem) {
     if (this.arrayEnum == null) {
       this.arrayEnum = new ArrayList<>();
     }
@@ -176,12 +180,12 @@ public class EnumArrays {
   **/
   @javax.annotation.Nullable
 
-  public List<ArrayEnumEnum> getArrayEnum() {
+  public List<ArrayEnum> getArrayEnum() {
     return arrayEnum;
   }
 
 
-  public void setArrayEnum(List<ArrayEnumEnum> arrayEnum) {
+  public void setArrayEnum(List<ArrayEnum> arrayEnum) {
     this.arrayEnum = arrayEnum;
   }
 

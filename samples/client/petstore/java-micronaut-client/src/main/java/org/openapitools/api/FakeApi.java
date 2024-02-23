@@ -36,6 +36,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 @Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen")
+
 @Client("${petstore-micronaut-base-path}")
 public interface FakeApi {
     /**

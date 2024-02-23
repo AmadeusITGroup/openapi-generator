@@ -1,4 +1,8 @@
 /*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:43.438Z[UTC]
+ *
  * OpenAPI Petstore
  * This spec is mainly for testing Petstore server and contains fake endpoints, models. Please do not use this for any other purpose. Special characters: \" \\
  *
@@ -33,8 +37,8 @@ public class BigCatAllOf {
   /**
    * Gets or Sets kind
    */
-  @JsonAdapter(KindEnum.Adapter.class)
-  public enum KindEnum {
+  @JsonAdapter(Kind.Adapter.class)
+  public enum Kind {
     LIONS("lions"),
     
     TIGERS("tigers"),
@@ -45,7 +49,7 @@ public class BigCatAllOf {
 
     private String value;
 
-    KindEnum(String value) {
+    Kind(String value) {
       this.value = value;
     }
 
@@ -58,8 +62,8 @@ public class BigCatAllOf {
       return String.valueOf(value);
     }
 
-    public static KindEnum fromValue(String value) {
-      for (KindEnum b : KindEnum.values()) {
+    public static Kind fromValue(String value) {
+      for (Kind b : Kind.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -67,28 +71,28 @@ public class BigCatAllOf {
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
-    public static class Adapter extends TypeAdapter<KindEnum> {
+    public static class Adapter extends TypeAdapter<Kind> {
       @Override
-      public void write(final JsonWriter jsonWriter, final KindEnum enumeration) throws IOException {
+      public void write(final JsonWriter jsonWriter, final Kind enumeration) throws IOException {
         jsonWriter.value(enumeration.getValue());
       }
 
       @Override
-      public KindEnum read(final JsonReader jsonReader) throws IOException {
+      public Kind read(final JsonReader jsonReader) throws IOException {
         String value =  jsonReader.nextString();
-        return KindEnum.fromValue(value);
+        return Kind.fromValue(value);
       }
     }
   }
 
   public static final String SERIALIZED_NAME_KIND = "kind";
   @SerializedName(SERIALIZED_NAME_KIND)
-  private KindEnum kind;
+  private Kind kind;
 
   public BigCatAllOf() {
   }
 
-  public BigCatAllOf kind(KindEnum kind) {
+  public BigCatAllOf kind(Kind kind) {
     
     this.kind = kind;
     return this;
@@ -101,12 +105,12 @@ public class BigCatAllOf {
   @javax.annotation.Nullable
 
 
-  public KindEnum getKind() {
+  public Kind getKind() {
     return kind;
   }
 
 
-  public void setKind(KindEnum kind) {
+  public void setKind(Kind kind) {
     this.kind = kind;
   }
 

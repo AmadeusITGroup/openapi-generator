@@ -1,5 +1,12 @@
+/*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:47.530Z[UTC]
+ */
+
 package org.openapitools.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -28,8 +35,14 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonTypeName("Animal")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
 public class Animal  implements Serializable {
+  
+  @JsonIgnore
   private @Valid String className;
+
+  
   private @Valid String color = "red";
+
+  
 
   protected Animal(AnimalBuilder<?, ?> b) {
     this.className = b.className;
@@ -41,12 +54,13 @@ public class Animal  implements Serializable {
 
   /**
    **/
-  public Animal className(String className) {
+  protected Animal className(String className) {
     this.className = className;
     return this;
   }
 
   
+  @JsonIgnore
   @ApiModelProperty(required = true, value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(required = true, description = "")
   @JsonProperty("className")
@@ -56,7 +70,7 @@ public class Animal  implements Serializable {
   }
 
   @JsonProperty("className")
-  public void setClassName(String className) {
+  protected void setClassName(String className) {
     this.className = className;
   }
 
@@ -67,6 +81,7 @@ public class Animal  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(description = "")
@@ -155,5 +170,7 @@ public class Animal  implements Serializable {
       return self();
     }
   }
+
+  
 }
 

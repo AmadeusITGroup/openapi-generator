@@ -1,4 +1,8 @@
 /*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:41.757Z[UTC]
+ *
  * OpenAPI Petstore
  * This is a sample server Petstore server. For this sample, you can use the api key `special-key` to test the authorization filters.
  *
@@ -75,8 +79,8 @@ public class Order {
   /**
    * Order Status
    */
-  @JsonAdapter(StatusEnum.Adapter.class)
-  public enum StatusEnum {
+  @JsonAdapter(Status.Adapter.class)
+  public enum Status {
     PLACED("placed"),
     
     APPROVED("approved"),
@@ -85,7 +89,7 @@ public class Order {
 
     private String value;
 
-    StatusEnum(String value) {
+    Status(String value) {
       this.value = value;
     }
 
@@ -98,8 +102,8 @@ public class Order {
       return String.valueOf(value);
     }
 
-    public static StatusEnum fromValue(String value) {
-      for (StatusEnum b : StatusEnum.values()) {
+    public static Status fromValue(String value) {
+      for (Status b : Status.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -107,23 +111,23 @@ public class Order {
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
-    public static class Adapter extends TypeAdapter<StatusEnum> {
+    public static class Adapter extends TypeAdapter<Status> {
       @Override
-      public void write(final JsonWriter jsonWriter, final StatusEnum enumeration) throws IOException {
+      public void write(final JsonWriter jsonWriter, final Status enumeration) throws IOException {
         jsonWriter.value(enumeration.getValue());
       }
 
       @Override
-      public StatusEnum read(final JsonReader jsonReader) throws IOException {
+      public Status read(final JsonReader jsonReader) throws IOException {
         String value =  jsonReader.nextString();
-        return StatusEnum.fromValue(value);
+        return Status.fromValue(value);
       }
     }
   }
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
-  private StatusEnum status;
+  private Status status;
 
   public static final String SERIALIZED_NAME_COMPLETE = "complete";
   @SerializedName(SERIALIZED_NAME_COMPLETE)
@@ -220,7 +224,7 @@ public class Order {
   }
 
 
-  public Order status(StatusEnum status) {
+  public Order status(Status status) {
     
     this.status = status;
     return this;
@@ -232,12 +236,12 @@ public class Order {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Order Status")
-  public StatusEnum getStatus() {
+  public Status getStatus() {
     return status;
   }
 
 
-  public void setStatus(StatusEnum status) {
+  public void setStatus(Status status) {
     this.status = status;
   }
 

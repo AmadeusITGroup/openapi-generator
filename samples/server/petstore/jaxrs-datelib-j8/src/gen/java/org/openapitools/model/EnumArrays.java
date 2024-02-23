@@ -38,14 +38,14 @@ public class EnumArrays  implements Serializable {
   /**
    * Gets or Sets justSymbol
    */
-  public enum JustSymbolEnum {
+  public enum JustSymbol {
     GREATER_THAN_OR_EQUAL_TO(">="),
     
     DOLLAR("$");
 
     private String value;
 
-    JustSymbolEnum(String value) {
+    JustSymbol(String value) {
       this.value = value;
     }
 
@@ -56,8 +56,8 @@ public class EnumArrays  implements Serializable {
     }
 
     @JsonCreator
-    public static JustSymbolEnum fromValue(String value) {
-      for (JustSymbolEnum b : JustSymbolEnum.values()) {
+    public static JustSymbol fromValue(String value) {
+      for (JustSymbol b : JustSymbol.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -68,19 +68,19 @@ public class EnumArrays  implements Serializable {
 
   public static final String JSON_PROPERTY_JUST_SYMBOL = "just_symbol";
   @JsonProperty(JSON_PROPERTY_JUST_SYMBOL)
-  private JustSymbolEnum justSymbol;
+  private JustSymbol justSymbol;
 
   /**
    * Gets or Sets arrayEnum
    */
-  public enum ArrayEnumEnum {
+  public enum ArrayEnum {
     FISH("fish"),
     
     CRAB("crab");
 
     private String value;
 
-    ArrayEnumEnum(String value) {
+    ArrayEnum(String value) {
       this.value = value;
     }
 
@@ -91,8 +91,8 @@ public class EnumArrays  implements Serializable {
     }
 
     @JsonCreator
-    public static ArrayEnumEnum fromValue(String value) {
-      for (ArrayEnumEnum b : ArrayEnumEnum.values()) {
+    public static ArrayEnum fromValue(String value) {
+      for (ArrayEnum b : ArrayEnum.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -103,9 +103,9 @@ public class EnumArrays  implements Serializable {
 
   public static final String JSON_PROPERTY_ARRAY_ENUM = "array_enum";
   @JsonProperty(JSON_PROPERTY_ARRAY_ENUM)
-  private List<ArrayEnumEnum> arrayEnum;
+  private List<ArrayEnum> arrayEnum;
 
-  public EnumArrays justSymbol(JustSymbolEnum justSymbol) {
+  public EnumArrays justSymbol(JustSymbol justSymbol) {
     this.justSymbol = justSymbol;
     return this;
   }
@@ -117,20 +117,20 @@ public class EnumArrays  implements Serializable {
   @JsonProperty(value = "just_symbol")
   @ApiModelProperty(value = "")
   
-  public JustSymbolEnum getJustSymbol() {
+  public JustSymbol getJustSymbol() {
     return justSymbol;
   }
 
-  public void setJustSymbol(JustSymbolEnum justSymbol) {
+  public void setJustSymbol(JustSymbol justSymbol) {
     this.justSymbol = justSymbol;
   }
 
-  public EnumArrays arrayEnum(List<ArrayEnumEnum> arrayEnum) {
+  public EnumArrays arrayEnum(List<ArrayEnum> arrayEnum) {
     this.arrayEnum = arrayEnum;
     return this;
   }
 
-  public EnumArrays addArrayEnumItem(ArrayEnumEnum arrayEnumItem) {
+  public EnumArrays addArrayEnumItem(ArrayEnum arrayEnumItem) {
     if (this.arrayEnum == null) {
       this.arrayEnum = new ArrayList<>();
     }
@@ -145,11 +145,11 @@ public class EnumArrays  implements Serializable {
   @JsonProperty(value = "array_enum")
   @ApiModelProperty(value = "")
   
-  public List<ArrayEnumEnum> getArrayEnum() {
+  public List<ArrayEnum> getArrayEnum() {
     return arrayEnum;
   }
 
-  public void setArrayEnum(List<ArrayEnumEnum> arrayEnum) {
+  public void setArrayEnum(List<ArrayEnum> arrayEnum) {
     this.arrayEnum = arrayEnum;
   }
 

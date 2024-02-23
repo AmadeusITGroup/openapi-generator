@@ -18,14 +18,14 @@ public class MapTest  {
   @Valid
   private Map<String, Map<String, String>> mapMapOfString = new HashMap<>();
 
-public enum InnerEnum {
+public enum Inner {
 
 UPPER(String.valueOf("UPPER")), LOWER(String.valueOf("lower"));
 
 
     private String value;
 
-    InnerEnum (String v) {
+    Inner (String v) {
         value = v;
     }
 
@@ -40,8 +40,8 @@ UPPER(String.valueOf("UPPER")), LOWER(String.valueOf("lower"));
     }
 
     @JsonCreator
-    public static InnerEnum fromValue(String value) {
-        for (InnerEnum b : InnerEnum.values()) {
+    public static Inner fromValue(String value) {
+        for (Inner b : Inner.values()) {
             if (b.value.equals(value)) {
                 return b;
             }
@@ -51,7 +51,7 @@ UPPER(String.valueOf("UPPER")), LOWER(String.valueOf("lower"));
 }
 
   @ApiModelProperty(value = "")
-  private Map<String, InnerEnum> mapOfEnumString = new HashMap<>();
+  private Map<String, Inner> mapOfEnumString = new HashMap<>();
 
   @ApiModelProperty(value = "")
   private Map<String, Boolean> directMap = new HashMap<>();
@@ -86,20 +86,20 @@ UPPER(String.valueOf("UPPER")), LOWER(String.valueOf("lower"));
    * @return mapOfEnumString
   **/
   @JsonProperty("map_of_enum_string")
-  public Map<String, InnerEnum> getMapOfEnumString() {
+  public Map<String, Inner> getMapOfEnumString() {
     return mapOfEnumString;
   }
 
-  public void setMapOfEnumString(Map<String, InnerEnum> mapOfEnumString) {
+  public void setMapOfEnumString(Map<String, Inner> mapOfEnumString) {
     this.mapOfEnumString = mapOfEnumString;
   }
 
-  public MapTest mapOfEnumString(Map<String, InnerEnum> mapOfEnumString) {
+  public MapTest mapOfEnumString(Map<String, Inner> mapOfEnumString) {
     this.mapOfEnumString = mapOfEnumString;
     return this;
   }
 
-  public MapTest putMapOfEnumStringItem(String key, InnerEnum mapOfEnumStringItem) {
+  public MapTest putMapOfEnumStringItem(String key, Inner mapOfEnumStringItem) {
     this.mapOfEnumString.put(key, mapOfEnumStringItem);
     return this;
   }

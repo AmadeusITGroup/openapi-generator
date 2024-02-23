@@ -58,6 +58,7 @@ import javax.validation.Valid;
 @Api(description = "the another-fake API")
 @Path("/another-fake/dummy")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
+
 public class AnotherFakeApi {
 
     @PATCH

@@ -27,13 +27,13 @@ public class MapTest  {
   
   private Map<String, Map<String, String>> mapMapOfString = null;
 
-public enum InnerEnum {
+public enum Inner {
 
     UPPER(String.valueOf("UPPER")), LOWER(String.valueOf("lower"));
 
     String value;
 
-    InnerEnum (String v) {
+    Inner (String v) {
         value = v;
     }
 
@@ -48,7 +48,7 @@ public enum InnerEnum {
 
 }
 
-  private Map<String, InnerEnum> mapOfEnumString = null;
+  private Map<String, Inner> mapOfEnumString = null;
 
   private Map<String, Boolean> directMap = null;
 
@@ -83,23 +83,23 @@ public enum InnerEnum {
    * Get mapOfEnumString
    * @return mapOfEnumString
   **/
-  public Map<String, InnerEnum> getMapOfEnumString() {
+  public Map<String, Inner> getMapOfEnumString() {
     return mapOfEnumString;
   }
 
   /**
     * Set mapOfEnumString
   **/
-  public void setMapOfEnumString(Map<String, InnerEnum> mapOfEnumString) {
+  public void setMapOfEnumString(Map<String, Inner> mapOfEnumString) {
     this.mapOfEnumString = mapOfEnumString;
   }
 
-  public MapTest mapOfEnumString(Map<String, InnerEnum> mapOfEnumString) {
+  public MapTest mapOfEnumString(Map<String, Inner> mapOfEnumString) {
     this.mapOfEnumString = mapOfEnumString;
     return this;
   }
 
-  public MapTest putMapOfEnumStringItem(String key, InnerEnum mapOfEnumStringItem) {
+  public MapTest putMapOfEnumStringItem(String key, Inner mapOfEnumStringItem) {
     this.mapOfEnumString.put(key, mapOfEnumStringItem);
     return this;
   }

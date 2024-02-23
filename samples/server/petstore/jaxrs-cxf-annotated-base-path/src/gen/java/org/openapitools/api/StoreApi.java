@@ -28,6 +28,7 @@ import javax.validation.Valid;
  */
 @Path("/v2/store")
 @Api(value = "/", description = "")
+
 public interface StoreApi  {
 
     /**

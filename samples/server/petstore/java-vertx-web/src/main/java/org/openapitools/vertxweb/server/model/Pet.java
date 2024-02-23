@@ -22,14 +22,14 @@ public class Pet   {
   private List<Tag> tags;
 
 
-  public enum StatusEnum {
+  public enum Status {
     AVAILABLE("available"),
     PENDING("pending"),
     SOLD("sold");
 
     private String value;
 
-    StatusEnum(String value) {
+    Status(String value) {
       this.value = value;
     }
 
@@ -40,13 +40,13 @@ public class Pet   {
     }
   }
 
-  private StatusEnum status;
+  private Status status;
 
   public Pet () {
 
   }
 
-  public Pet (Long id, Category category, String name, List<String> photoUrls, List<Tag> tags, StatusEnum status) {
+  public Pet (Long id, Category category, String name, List<String> photoUrls, List<Tag> tags, Status status) {
     this.id = id;
     this.category = category;
     this.name = name;
@@ -102,10 +102,10 @@ public class Pet   {
 
     
   @JsonProperty("status")
-  public StatusEnum getStatus() {
+  public Status getStatus() {
     return status;
   }
-  public void setStatus(StatusEnum status) {
+  public void setStatus(Status status) {
     this.status = status;
   }
 

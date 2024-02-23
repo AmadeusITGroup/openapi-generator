@@ -1,4 +1,8 @@
 /*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:41.838Z[UTC]
+ *
  * OpenAPI Petstore
  * This spec is mainly for testing Petstore server and contains fake endpoints, models. Please do not use this for any other purpose. Special characters: \" \\
  *
@@ -55,15 +59,15 @@ public class EnumStringDiscriminator {
   /**
    * enum string type
    */
-  @JsonAdapter(EnumStrTypeEnum.Adapter.class)
-  public enum EnumStrTypeEnum {
+  @JsonAdapter(EnumStrType.Adapter.class)
+  public enum EnumStrType {
     A("type_a"),
     
     B("type_b");
 
     private String value;
 
-    EnumStrTypeEnum(String value) {
+    EnumStrType(String value) {
       this.value = value;
     }
 
@@ -76,8 +80,8 @@ public class EnumStringDiscriminator {
       return String.valueOf(value);
     }
 
-    public static EnumStrTypeEnum fromValue(String value) {
-      for (EnumStrTypeEnum b : EnumStrTypeEnum.values()) {
+    public static EnumStrType fromValue(String value) {
+      for (EnumStrType b : EnumStrType.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -85,28 +89,28 @@ public class EnumStringDiscriminator {
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
-    public static class Adapter extends TypeAdapter<EnumStrTypeEnum> {
+    public static class Adapter extends TypeAdapter<EnumStrType> {
       @Override
-      public void write(final JsonWriter jsonWriter, final EnumStrTypeEnum enumeration) throws IOException {
+      public void write(final JsonWriter jsonWriter, final EnumStrType enumeration) throws IOException {
         jsonWriter.value(enumeration.getValue());
       }
 
       @Override
-      public EnumStrTypeEnum read(final JsonReader jsonReader) throws IOException {
+      public EnumStrType read(final JsonReader jsonReader) throws IOException {
         String value =  jsonReader.nextString();
-        return EnumStrTypeEnum.fromValue(value);
+        return EnumStrType.fromValue(value);
       }
     }
   }
 
   public static final String SERIALIZED_NAME_ENUM_STR_TYPE = "enum_str_type";
   @SerializedName(SERIALIZED_NAME_ENUM_STR_TYPE)
-  protected EnumStrTypeEnum enumStrType;
+  protected EnumStrType enumStrType;
 
   public EnumStringDiscriminator() {
   }
 
-  public EnumStringDiscriminator enumStrType(EnumStrTypeEnum enumStrType) {
+  public EnumStringDiscriminator enumStrType(EnumStrType enumStrType) {
     
     this.enumStrType = enumStrType;
     return this;
@@ -117,12 +121,12 @@ public class EnumStringDiscriminator {
    * @return enumStrType
   **/
   @javax.annotation.Nonnull
-  public EnumStrTypeEnum getEnumStrType() {
+  public EnumStrType getEnumStrType() {
     return enumStrType;
   }
 
 
-  public void setEnumStrType(EnumStrTypeEnum enumStrType) {
+  public void setEnumStrType(EnumStrType enumStrType) {
     this.enumStrType = enumStrType;
   }
 

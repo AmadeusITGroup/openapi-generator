@@ -35,6 +35,7 @@ import org.openapitools.client.model.Client;
 @RegisterRestClient
 @RegisterProvider(ApiExceptionMapper.class)
 @Path("/another-fake/dummy")
+
 public interface AnotherFakeApi  {
 
     /**

@@ -1,4 +1,8 @@
 /*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:39.643Z[UTC]
+ *
  * OpenAPI Petstore
  * This spec is mainly for testing Petstore server and contains fake endpoints, models. Please do not use this for any other purpose. Special characters: \" \\
  *
@@ -17,6 +21,7 @@ import java.util.Objects;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.HashMap;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -47,7 +52,7 @@ public class BigCat extends Cat {
   /**
    * Gets or Sets kind
    */
-  public enum KindEnum {
+  public enum Kind {
     LIONS("lions"),
     
     TIGERS("tigers"),
@@ -58,7 +63,7 @@ public class BigCat extends Cat {
 
     private String value;
 
-    KindEnum(String value) {
+    Kind(String value) {
       this.value = value;
     }
 
@@ -73,8 +78,8 @@ public class BigCat extends Cat {
     }
 
     @JsonCreator
-    public static KindEnum fromValue(String value) {
-      for (KindEnum b : KindEnum.values()) {
+    public static Kind fromValue(String value) {
+      for (Kind b : Kind.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -84,12 +89,12 @@ public class BigCat extends Cat {
   }
 
   public static final String JSON_PROPERTY_KIND = "kind";
-  private KindEnum kind;
+  private Kind kind;
 
   public BigCat() { 
   }
 
-  public BigCat kind(KindEnum kind) {
+  public BigCat kind(Kind kind) {
     this.kind = kind;
     return this;
   }
@@ -102,14 +107,14 @@ public class BigCat extends Cat {
   @JsonProperty(JSON_PROPERTY_KIND)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public KindEnum getKind() {
+  public Kind getKind() {
     return kind;
   }
 
 
   @JsonProperty(JSON_PROPERTY_KIND)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setKind(KindEnum kind) {
+  public void setKind(Kind kind) {
     this.kind = kind;
   }
 

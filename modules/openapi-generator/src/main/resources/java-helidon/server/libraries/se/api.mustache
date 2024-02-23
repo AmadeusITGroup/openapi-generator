@@ -15,6 +15,7 @@ import io.helidon.webserver.ServerRequest;
 import io.helidon.webserver.ServerResponse;
 import io.helidon.webserver.Service;
 
+{{>additionalApiTypeAnnotations}}
 {{#operations}}
 {{^useAbstractClass}}public interface {{classname}} extends Service { {{/useAbstractClass}}
 {{#useAbstractClass}}public abstract class {{classname}} implements Service {

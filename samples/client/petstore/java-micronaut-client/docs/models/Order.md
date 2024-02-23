@@ -12,14 +12,14 @@ Name | Type | Description | Notes
 **petId** | `Long` |  |  [optional property]
 **quantity** | `Integer` |  |  [optional property]
 **shipDate** | `OffsetDateTime` |  |  [optional property]
-**status** | [**StatusEnum**](#StatusEnum) | Order Status |  [optional property]
+**status** | [**Status**](#Status) | Order Status |  [optional property]
 **complete** | `Boolean` |  |  [optional property]
 
 
 
 
 
-## StatusEnum
+## Status
 
 Name | Value
 ---- | -----

@@ -1,3 +1,9 @@
+/*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:47.452Z[UTC]
+ */
+
 package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
@@ -18,14 +24,32 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonTypeName("User")
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
 public class User  implements Serializable {
+  
+  
   private @Valid Long id;
+
+  
   private @Valid String username;
+
+  
   private @Valid String firstName;
+
+  
   private @Valid String lastName;
+
+  
   private @Valid String email;
+
+  
   private @Valid String password;
+
+  
   private @Valid String phone;
+
+  
   private @Valid Integer userStatus;
+
+  
 
   protected User(UserBuilder<?, ?> b) {
     this.id = b.id;
@@ -49,6 +73,7 @@ public class User  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(value = "")
   @JsonProperty("id")
   public Long getId() {
@@ -67,6 +92,7 @@ public class User  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @JsonProperty("username")
@@ -87,6 +113,7 @@ public class User  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(value = "")
   @JsonProperty("firstName")
   public String getFirstName() {
@@ -105,6 +132,7 @@ public class User  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @JsonProperty("lastName")
@@ -125,6 +153,7 @@ public class User  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(value = "")
   @JsonProperty("email")
   public String getEmail() {
@@ -143,6 +172,7 @@ public class User  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @JsonProperty("password")
@@ -163,6 +193,7 @@ public class User  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(value = "")
   @JsonProperty("phone")
   public String getPhone() {
@@ -182,6 +213,7 @@ public class User  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "User Status")
   @JsonProperty("userStatus")
@@ -311,5 +343,7 @@ public class User  implements Serializable {
       return self();
     }
   }
+
+  
 }
 

@@ -49,16 +49,16 @@ public class Pet  {
   @JsonbProperty("tags")
   private List<Tag> tags = null;
 
-  @JsonbTypeSerializer(StatusEnum.Serializer.class)
-  @JsonbTypeDeserializer(StatusEnum.Deserializer.class)
-  public enum StatusEnum {
+  @JsonbTypeSerializer(Status.Serializer.class)
+  @JsonbTypeDeserializer(Status.Deserializer.class)
+  public enum Status {
 
     AVAILABLE(String.valueOf("available")), PENDING(String.valueOf("pending")), SOLD(String.valueOf("sold"));
 
 
     String value;
 
-    StatusEnum (String v) {
+    Status (String v) {
         value = v;
     }
 
@@ -71,10 +71,10 @@ public class Pet  {
         return String.valueOf(value);
     }
 
-    public static final class Deserializer implements JsonbDeserializer<StatusEnum> {
+    public static final class Deserializer implements JsonbDeserializer<Status> {
         @Override
-        public StatusEnum deserialize(JsonParser parser, DeserializationContext ctx, Type rtType) {
-            for (StatusEnum b : StatusEnum.values()) {
+        public Status deserialize(JsonParser parser, DeserializationContext ctx, Type rtType) {
+            for (Status b : Status.values()) {
                 if (String.valueOf(b.value).equals(parser.getString())) {
                     return b;
                 }
@@ -83,9 +83,9 @@ public class Pet  {
         }
     }
 
-    public static final class Serializer implements JsonbSerializer<StatusEnum> {
+    public static final class Serializer implements JsonbSerializer<Status> {
         @Override
-        public void serialize(StatusEnum obj, JsonGenerator generator, SerializationContext ctx) {
+        public void serialize(Status obj, JsonGenerator generator, SerializationContext ctx) {
             generator.write(obj.value);
         }
     }
@@ -95,7 +95,7 @@ public class Pet  {
    * pet status in the store
   **/
   @JsonbProperty("status")
-  private StatusEnum status;
+  private Status status;
 
  /**
    * Get id
@@ -213,18 +213,18 @@ public class Pet  {
    * @deprecated
   **/
   @Deprecated
-  public StatusEnum getStatus() {
+  public Status getStatus() {
     return status;
   }
 
   /**
     * Set status
   **/
-  public void setStatus(StatusEnum status) {
+  public void setStatus(Status status) {
     this.status = status;
   }
 
-  public Pet status(StatusEnum status) {
+  public Pet status(Status status) {
     this.status = status;
     return this;
   }

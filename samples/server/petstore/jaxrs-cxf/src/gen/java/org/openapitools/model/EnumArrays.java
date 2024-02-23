@@ -14,14 +14,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class EnumArrays  {
   
-public enum JustSymbolEnum {
+public enum JustSymbol {
 
 GREATER_THAN_OR_EQUAL_TO(String.valueOf(">=")), DOLLAR(String.valueOf("$"));
 
 
     private String value;
 
-    JustSymbolEnum (String v) {
+    JustSymbol (String v) {
         value = v;
     }
 
@@ -36,8 +36,8 @@ GREATER_THAN_OR_EQUAL_TO(String.valueOf(">=")), DOLLAR(String.valueOf("$"));
     }
 
     @JsonCreator
-    public static JustSymbolEnum fromValue(String value) {
-        for (JustSymbolEnum b : JustSymbolEnum.values()) {
+    public static JustSymbol fromValue(String value) {
+        for (JustSymbol b : JustSymbol.values()) {
             if (b.value.equals(value)) {
                 return b;
             }
@@ -47,16 +47,16 @@ GREATER_THAN_OR_EQUAL_TO(String.valueOf(">=")), DOLLAR(String.valueOf("$"));
 }
 
   @ApiModelProperty(value = "")
-  private JustSymbolEnum justSymbol;
+  private JustSymbol justSymbol;
 
-public enum ArrayEnumEnum {
+public enum ArrayEnum {
 
 FISH(String.valueOf("fish")), CRAB(String.valueOf("crab"));
 
 
     private String value;
 
-    ArrayEnumEnum (String v) {
+    ArrayEnum (String v) {
         value = v;
     }
 
@@ -71,8 +71,8 @@ FISH(String.valueOf("fish")), CRAB(String.valueOf("crab"));
     }
 
     @JsonCreator
-    public static ArrayEnumEnum fromValue(String value) {
-        for (ArrayEnumEnum b : ArrayEnumEnum.values()) {
+    public static ArrayEnum fromValue(String value) {
+        for (ArrayEnum b : ArrayEnum.values()) {
             if (b.value.equals(value)) {
                 return b;
             }
@@ -82,7 +82,7 @@ FISH(String.valueOf("fish")), CRAB(String.valueOf("crab"));
 }
 
   @ApiModelProperty(value = "")
-  private List<ArrayEnumEnum> arrayEnum;
+  private List<ArrayEnum> arrayEnum;
  /**
    * Get justSymbol
    * @return justSymbol
@@ -95,11 +95,11 @@ FISH(String.valueOf("fish")), CRAB(String.valueOf("crab"));
     return justSymbol.value();
   }
 
-  public void setJustSymbol(JustSymbolEnum justSymbol) {
+  public void setJustSymbol(JustSymbol justSymbol) {
     this.justSymbol = justSymbol;
   }
 
-  public EnumArrays justSymbol(JustSymbolEnum justSymbol) {
+  public EnumArrays justSymbol(JustSymbol justSymbol) {
     this.justSymbol = justSymbol;
     return this;
   }
@@ -109,20 +109,20 @@ FISH(String.valueOf("fish")), CRAB(String.valueOf("crab"));
    * @return arrayEnum
   **/
   @JsonProperty("array_enum")
-  public List<ArrayEnumEnum> getArrayEnum() {
+  public List<ArrayEnum> getArrayEnum() {
     return arrayEnum;
   }
 
-  public void setArrayEnum(List<ArrayEnumEnum> arrayEnum) {
+  public void setArrayEnum(List<ArrayEnum> arrayEnum) {
     this.arrayEnum = arrayEnum;
   }
 
-  public EnumArrays arrayEnum(List<ArrayEnumEnum> arrayEnum) {
+  public EnumArrays arrayEnum(List<ArrayEnum> arrayEnum) {
     this.arrayEnum = arrayEnum;
     return this;
   }
 
-  public EnumArrays addArrayEnumItem(ArrayEnumEnum arrayEnumItem) {
+  public EnumArrays addArrayEnumItem(ArrayEnum arrayEnumItem) {
     this.arrayEnum.add(arrayEnumItem);
     return this;
   }

@@ -68,6 +68,7 @@ import javax.validation.Valid;
 @Api(description = "the fake API")
 @Path("/fake")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
+
 public class FakeApi {
 
     @POST

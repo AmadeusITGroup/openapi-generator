@@ -1,3 +1,9 @@
+/*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:47.458Z[UTC]
+ */
+
 package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
@@ -19,18 +25,28 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonTypeName("Order")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
 public class Order  implements Serializable {
+  
+  
   private @Valid Long id;
-  private @Valid Long petId;
-  private @Valid Integer quantity;
-  private @Valid Date shipDate;
-  public enum StatusEnum {
 
-    PLACED(String.valueOf("placed")), APPROVED(String.valueOf("approved")), DELIVERED(String.valueOf("delivered"));
+  
+  private @Valid Long petId;
+
+  
+  private @Valid Integer quantity;
+
+  
+  private @Valid Date shipDate;
+
+
+public enum Status {
+
+    PLACED(String.valueOf("PLACED")), APPROVED(String.valueOf("APPROVED")), DELIVERED(String.valueOf("DELIVERED"));
 
 
     private String value;
 
-    StatusEnum (String v) {
+    Status (String v) {
         value = v;
     }
 
@@ -48,8 +64,8 @@ public class Order  implements Serializable {
      * Convert a String into String, as specified in the
      * <a href="https://download.oracle.com/otndocs/jcp/jaxrs-2_0-fr-eval-spec/index.html">See JAX RS 2.0 Specification, section 3.2, p. 12</a>
      */
-	public static StatusEnum fromString(String s) {
-        for (StatusEnum b : StatusEnum.values()) {
+	public static Status fromString(String s) {
+        for (Status b : Status.values()) {
             // using Objects.toString() to be safe if value type non-object type
             // because types like 'int' etc. will be auto-boxed
             if (java.util.Objects.toString(b.value).equals(s)) {
@@ -60,8 +76,8 @@ public class Order  implements Serializable {
 	}
 	
     @JsonCreator
-    public static StatusEnum fromValue(String value) {
-        for (StatusEnum b : StatusEnum.values()) {
+    public static Status fromValue(String value) {
+        for (Status b : Status.values()) {
             if (b.value.equals(value)) {
                 return b;
             }
@@ -70,7 +86,10 @@ public class Order  implements Serializable {
     }
 }
 
-  private @Valid StatusEnum status;
+  
+  private @Valid Status status;
+
+  
   private @Valid Boolean complete = false;
 
   /**
@@ -80,6 +99,7 @@ public class Order  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @JsonProperty("id")
@@ -100,6 +120,7 @@ public class Order  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(value = "")
   @JsonProperty("petId")
   public Long getPetId() {
@@ -118,6 +139,7 @@ public class Order  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @JsonProperty("quantity")
@@ -138,6 +160,7 @@ public class Order  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(value = "")
   @JsonProperty("shipDate")
   public Date getShipDate() {
@@ -152,20 +175,21 @@ public class Order  implements Serializable {
   /**
    * Order Status
    **/
-  public Order status(StatusEnum status) {
+  public Order status(Status status) {
     this.status = status;
     return this;
   }
 
   
+  
   @ApiModelProperty(value = "Order Status")
   @JsonProperty("status")
-  public StatusEnum getStatus() {
+  public Status getStatus() {
     return status;
   }
 
   @JsonProperty("status")
-  public void setStatus(StatusEnum status) {
+  public void setStatus(Status status) {
     this.status = status;
   }
 
@@ -176,6 +200,7 @@ public class Order  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @JsonProperty("complete")
@@ -238,5 +263,7 @@ public class Order  implements Serializable {
   }
 
 
+
+  
 }
 

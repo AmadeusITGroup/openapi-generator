@@ -7,11 +7,11 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**enumString** | [**EnumStringEnum**](#EnumStringEnum) |  |  [optional] |
-|**enumStringRequired** | [**EnumStringRequiredEnum**](#EnumStringRequiredEnum) |  |  |
-|**enumInteger** | [**EnumIntegerEnum**](#EnumIntegerEnum) |  |  [optional] |
-|**enumIntegerOnly** | [**EnumIntegerOnlyEnum**](#EnumIntegerOnlyEnum) |  |  [optional] |
-|**enumNumber** | [**EnumNumberEnum**](#EnumNumberEnum) |  |  [optional] |
+|**enumString** | [**EnumString**](#EnumString) |  |  [optional] |
+|**enumStringRequired** | [**EnumStringRequired**](#EnumStringRequired) |  |  |
+|**enumInteger** | [**EnumInteger**](#EnumInteger) |  |  [optional] |
+|**enumIntegerOnly** | [**EnumIntegerOnly**](#EnumIntegerOnly) |  |  [optional] |
+|**enumNumber** | [**EnumNumber**](#EnumNumber) |  |  [optional] |
 |**outerEnum** | **OuterEnum** |  |  [optional] |
 |**outerEnumInteger** | **OuterEnumInteger** |  |  [optional] |
 |**outerEnumDefaultValue** | **OuterEnumDefaultValue** |  |  [optional] |
@@ -19,7 +19,7 @@
 
 
 
-## Enum: EnumStringEnum
+## Enum: EnumString
 
 | Name | Value |
 |---- | -----|
@@ -29,7 +29,7 @@
 
 
 
-## Enum: EnumStringRequiredEnum
+## Enum: EnumStringRequired
 
 | Name | Value |
 |---- | -----|
@@ -39,7 +39,7 @@
 
 
 
-## Enum: EnumIntegerEnum
+## Enum: EnumInteger
 
 | Name | Value |
 |---- | -----|
@@ -48,7 +48,7 @@
 
 
 
-## Enum: EnumIntegerOnlyEnum
+## Enum: EnumIntegerOnly
 
 | Name | Value |
 |---- | -----|
@@ -57,7 +57,7 @@
 
 
 
-## Enum: EnumNumberEnum
+## Enum: EnumNumber
 
 | Name | Value |
 |---- | -----|

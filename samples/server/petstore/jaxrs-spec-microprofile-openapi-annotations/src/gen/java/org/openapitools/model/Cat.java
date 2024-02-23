@@ -1,3 +1,9 @@
+/*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:47.530Z[UTC]
+ */
+
 package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
@@ -20,7 +26,14 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonTypeName("Cat")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
 public class Cat extends Animal implements Serializable {
+  
+  
   private @Valid Boolean declawed;
+
+  public Cat() {
+    super();
+    this.className("Cat");
+  }
 
   protected Cat(CatBuilder<?, ?> b) {
     super(b);
@@ -37,6 +50,7 @@ public class Cat extends Animal implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(description = "")
@@ -116,5 +130,7 @@ public class Cat extends Animal implements Serializable {
       return self();
     }
   }
+
+  
 }
 

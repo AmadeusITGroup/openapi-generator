@@ -1,3 +1,9 @@
+/*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:47.530Z[UTC]
+ */
+
 package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
@@ -22,12 +28,26 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonTypeName("TypeHolderExample")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
 public class TypeHolderExample  implements Serializable {
+  
+  
   private @Valid String stringItem;
+
+  
   private @Valid BigDecimal numberItem;
+
+  
   private @Valid Float floatItem;
+
+  
   private @Valid Integer integerItem;
+
+  
   private @Valid Boolean boolItem;
+
+  
   private @Valid List<Integer> arrayItem = new ArrayList<>();
+
+  
 
   protected TypeHolderExample(TypeHolderExampleBuilder<?, ?> b) {
     this.stringItem = b.stringItem;
@@ -48,6 +68,7 @@ public class TypeHolderExample  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(example = "what", required = true, value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(example = "what", required = true, description = "")
@@ -70,6 +91,7 @@ public class TypeHolderExample  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(example = "1.234", required = true, value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(example = "1.234", required = true, description = "")
   @JsonProperty("number_item")
@@ -90,6 +112,7 @@ public class TypeHolderExample  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(example = "1.234", required = true, value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(example = "1.234", required = true, description = "")
@@ -112,6 +135,7 @@ public class TypeHolderExample  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(example = "-2", required = true, value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(example = "-2", required = true, description = "")
   @JsonProperty("integer_item")
@@ -133,6 +157,7 @@ public class TypeHolderExample  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(example = "true", required = true, value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(example = "true", required = true, description = "")
   @JsonProperty("bool_item")
@@ -153,6 +178,7 @@ public class TypeHolderExample  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(example = "[0, 1, 2, 3]", required = true, value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(example = "[0, 1, 2, 3]", required = true, description = "")
@@ -286,5 +312,7 @@ public class TypeHolderExample  implements Serializable {
       return self();
     }
   }
+
+  
 }
 

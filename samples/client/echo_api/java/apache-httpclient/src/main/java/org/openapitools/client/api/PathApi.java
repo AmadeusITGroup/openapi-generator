@@ -1,4 +1,8 @@
 /*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:39.076Z[UTC]
+ *
  * Echo Server API
  * Echo Server API
  *
@@ -30,6 +34,7 @@ import java.util.Map;
 import java.util.StringJoiner;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class PathApi {
 
 

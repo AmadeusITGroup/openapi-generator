@@ -1,3 +1,9 @@
+/*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:47.452Z[UTC]
+ */
+
 package org.openapitools.model;
 
 import java.io.Serializable;
@@ -12,11 +18,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
  */
 public enum EnumClass {
   
-  _ABC("_abc"),
+  _ABC("_ABC"),
   
-  _EFG("-efg"),
+  _EFG("_EFG"),
   
-  _XYZ_("(xyz)");
+  _XYZ_("(XYZ)");
 
   private String value;
 

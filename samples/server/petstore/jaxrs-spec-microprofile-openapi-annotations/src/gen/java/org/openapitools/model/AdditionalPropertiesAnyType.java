@@ -1,3 +1,9 @@
+/*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:47.530Z[UTC]
+ */
+
 package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
@@ -21,6 +27,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonTypeName("AdditionalPropertiesAnyType")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
 public class AdditionalPropertiesAnyType extends HashMap<String, Object> implements Serializable {
+  
+  
   private @Valid String name;
 
   /**
@@ -30,6 +38,7 @@ public class AdditionalPropertiesAnyType extends HashMap<String, Object> impleme
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(description = "")
@@ -84,5 +93,7 @@ public class AdditionalPropertiesAnyType extends HashMap<String, Object> impleme
   }
 
 
+
+  
 }
 

@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**$type** | [**TypeEnum**](#TypeEnum) |  |  [optional] |
+|**$type** | [**Type**](#Type) |  |  [optional] |
 |**id** | **Long** |  |  [optional] |
 |**name** | **String** |  |  [optional] |
 |**active** | **Boolean** |  |  [optional] |
@@ -15,7 +15,7 @@
 
 
 
-## Enum: TypeEnum
+## Enum: Type
 
 | Name | Value |
 |---- | -----|

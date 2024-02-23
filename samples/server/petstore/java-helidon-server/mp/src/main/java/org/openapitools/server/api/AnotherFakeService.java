@@ -24,6 +24,7 @@ import jakarta.validation.Valid;
 
 @Path("/another-fake/dummy")
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaHelidonServerCodegen")
+
 public interface AnotherFakeService {
 
     @PATCH

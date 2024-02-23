@@ -20,6 +20,7 @@ import org.openapitools.client.model.FooGetDefaultResponse;
  *
  * <p>This spec is mainly for testing Petstore server and contains fake endpoints, models. Please do not use this for any other purpose. Special characters: \" \\
  */
+
 public interface DefaultApi {
 
   ApiResponse<FooGetDefaultResponse> fooGet();
