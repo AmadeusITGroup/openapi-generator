@@ -1,3 +1,9 @@
+/*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:47.452Z[UTC]
+ */
+
 package org.openapitools.api;
 
 import java.util.Map;
@@ -17,6 +23,7 @@ import jakarta.validation.Valid;
 @Path("/store")
 @Api(description = "the store API")
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
+
 public class StoreApi {
 
     @DELETE

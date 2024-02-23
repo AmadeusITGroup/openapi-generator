@@ -1,3 +1,9 @@
+/*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:47.452Z[UTC]
+ */
+
 package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -19,7 +25,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonTypeName("Cat_allOf")
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
 public class CatAllOf  implements Serializable {
+  
+  
   private @Valid Boolean declawed;
+
+  
 
   protected CatAllOf(CatAllOfBuilder<?, ?> b) {
     this.declawed = b.declawed;
@@ -35,6 +45,7 @@ public class CatAllOf  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @JsonProperty("declawed")
@@ -115,5 +126,7 @@ public class CatAllOf  implements Serializable {
       return self();
     }
   }
+
+  
 }
 

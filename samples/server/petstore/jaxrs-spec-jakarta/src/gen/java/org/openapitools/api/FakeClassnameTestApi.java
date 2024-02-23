@@ -1,3 +1,9 @@
+/*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:47.452Z[UTC]
+ */
+
 package org.openapitools.api;
 
 import org.openapitools.model.Client;
@@ -16,6 +22,7 @@ import jakarta.validation.Valid;
 @Path("/fake_classname_test")
 @Api(description = "the fake_classname_test API")
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
+
 public class FakeClassnameTestApi {
 
     @PATCH

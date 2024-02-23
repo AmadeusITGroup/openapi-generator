@@ -1,7 +1,7 @@
 /*
  * Generation info:
  *   - generator version: 6.6.5-amadeus
- *   - datetime: 2023-08-22T08:19:21.786034800Z[UTC]
+ *   - datetime: 2024-02-23T13:46:47.691Z[UTC]
  */
 
 package org.openapitools.model;
@@ -44,14 +44,14 @@ public class Order  implements Serializable {
   private @Valid Date shipDate;
 
 
-public enum StatusEnum {
+public enum Status {
 
-    PLACED(String.valueOf("placed")), APPROVED(String.valueOf("approved")), DELIVERED(String.valueOf("delivered"));
+    PLACED(String.valueOf("PLACED")), APPROVED(String.valueOf("APPROVED")), DELIVERED(String.valueOf("DELIVERED"));
 
 
     private String value;
 
-    StatusEnum (String v) {
+    Status (String v) {
         value = v;
     }
 
@@ -69,8 +69,8 @@ public enum StatusEnum {
      * Convert a String into String, as specified in the
      * <a href="https://download.oracle.com/otndocs/jcp/jaxrs-2_0-fr-eval-spec/index.html">See JAX RS 2.0 Specification, section 3.2, p. 12</a>
      */
-	public static StatusEnum fromString(String s) {
-        for (StatusEnum b : StatusEnum.values()) {
+	public static Status fromString(String s) {
+        for (Status b : Status.values()) {
             // using Objects.toString() to be safe if value type non-object type
             // because types like 'int' etc. will be auto-boxed
             if (java.util.Objects.toString(b.value).equals(s)) {
@@ -81,8 +81,8 @@ public enum StatusEnum {
 	}
 	
     @JsonCreator
-    public static StatusEnum fromValue(String value) {
-        for (StatusEnum b : StatusEnum.values()) {
+    public static Status fromValue(String value) {
+        for (Status b : Status.values()) {
             if (b.value.equals(value)) {
                 return b;
             }
@@ -92,7 +92,7 @@ public enum StatusEnum {
 }
 
   
-  private @Valid StatusEnum status;
+  private @Valid Status status;
 
   
   private @Valid Boolean complete = false;
@@ -194,7 +194,7 @@ public enum StatusEnum {
   /**
    * Order Status
    **/
-  public Order status(StatusEnum status) {
+  public Order status(Status status) {
     this.status = status;
     return this;
   }
@@ -203,12 +203,12 @@ public enum StatusEnum {
   
   @ApiModelProperty(value = "Order Status")
   @JsonProperty("status")
-  public StatusEnum getStatus() {
+  public Status getStatus() {
     return status;
   }
 
   @JsonProperty("status")
-  public void setStatus(StatusEnum status) {
+  public void setStatus(Status status) {
     this.status = status;
   }
 
@@ -304,7 +304,7 @@ public enum StatusEnum {
     private Long petId;
     private Integer quantity;
     private Date shipDate;
-    private StatusEnum status;
+    private Status status;
     private Boolean complete = false;
     protected abstract B self();
 
@@ -326,7 +326,7 @@ public enum StatusEnum {
       this.shipDate = shipDate;
       return self();
     }
-    public B status(StatusEnum status) {
+    public B status(Status status) {
       this.status = status;
       return self();
     }

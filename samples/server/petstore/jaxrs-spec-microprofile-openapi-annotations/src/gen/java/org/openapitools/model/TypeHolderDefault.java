@@ -1,3 +1,9 @@
+/*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:47.530Z[UTC]
+ */
+
 package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
@@ -22,11 +28,23 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonTypeName("TypeHolderDefault")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
 public class TypeHolderDefault  implements Serializable {
+  
+  
   private @Valid String stringItem = "what";
+
+  
   private @Valid BigDecimal numberItem;
+
+  
   private @Valid Integer integerItem;
+
+  
   private @Valid Boolean boolItem = true;
+
+  
   private @Valid List<Integer> arrayItem = new ArrayList<>();
+
+  
 
   protected TypeHolderDefault(TypeHolderDefaultBuilder<?, ?> b) {
     this.stringItem = b.stringItem;
@@ -46,6 +64,7 @@ public class TypeHolderDefault  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(required = true, value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(required = true, description = "")
@@ -68,6 +87,7 @@ public class TypeHolderDefault  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(required = true, value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(required = true, description = "")
   @JsonProperty("number_item")
@@ -88,6 +108,7 @@ public class TypeHolderDefault  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(required = true, value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(required = true, description = "")
@@ -110,6 +131,7 @@ public class TypeHolderDefault  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(required = true, value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(required = true, description = "")
   @JsonProperty("bool_item")
@@ -130,6 +152,7 @@ public class TypeHolderDefault  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(required = true, value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(required = true, description = "")
@@ -256,5 +279,7 @@ public class TypeHolderDefault  implements Serializable {
       return self();
     }
   }
+
+  
 }
 

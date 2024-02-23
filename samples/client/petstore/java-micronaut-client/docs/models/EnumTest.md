@@ -8,13 +8,13 @@ The class is defined in **[EnumTest.java](../../src/main/java/org/openapitools/m
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**enumString** | [**EnumStringEnum**](#EnumStringEnum) |  |  [optional property]
-**enumStringRequired** | [**EnumStringRequiredEnum**](#EnumStringRequiredEnum) |  | 
-**enumInteger** | [**EnumIntegerEnum**](#EnumIntegerEnum) |  |  [optional property]
-**enumNumber** | [**EnumNumberEnum**](#EnumNumberEnum) |  |  [optional property]
+**enumString** | [**EnumString**](#EnumString) |  |  [optional property]
+**enumStringRequired** | [**EnumStringRequired**](#EnumStringRequired) |  | 
+**enumInteger** | [**EnumInteger**](#EnumInteger) |  |  [optional property]
+**enumNumber** | [**EnumNumber**](#EnumNumber) |  |  [optional property]
 **outerEnum** | `OuterEnum` |  |  [optional property]
 
-## EnumStringEnum
+## EnumString
 
 Name | Value
 ---- | -----
@@ -22,7 +22,7 @@ UPPER | `"UPPER"`
 LOWER | `"lower"`
 EMPTY | `""`
 
-## EnumStringRequiredEnum
+## EnumStringRequired
 
 Name | Value
 ---- | -----
@@ -30,14 +30,14 @@ UPPER | `"UPPER"`
 LOWER | `"lower"`
 EMPTY | `""`
 
-## EnumIntegerEnum
+## EnumInteger
 
 Name | Value
 ---- | -----
 NUMBER_1 | `1`
 NUMBER_MINUS_1 | `-1`
 
-## EnumNumberEnum
+## EnumNumber
 
 Name | Value
 ---- | -----

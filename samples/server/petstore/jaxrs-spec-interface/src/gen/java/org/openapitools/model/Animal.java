@@ -1,5 +1,12 @@
+/*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:47.458Z[UTC]
+ */
+
 package org.openapitools.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -27,17 +34,22 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonTypeName("Animal")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
 public class Animal  implements Serializable {
+  
+  @JsonIgnore
   private @Valid String className;
+
+  
   private @Valid String color = "red";
 
   /**
    **/
-  public Animal className(String className) {
+  protected Animal className(String className) {
     this.className = className;
     return this;
   }
 
   
+  @JsonIgnore
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("className")
   @NotNull
@@ -46,7 +58,7 @@ public class Animal  implements Serializable {
   }
 
   @JsonProperty("className")
-  public void setClassName(String className) {
+  protected void setClassName(String className) {
     this.className = className;
   }
 
@@ -57,6 +69,7 @@ public class Animal  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @JsonProperty("color")
@@ -111,5 +124,7 @@ public class Animal  implements Serializable {
   }
 
 
+
+  
 }
 

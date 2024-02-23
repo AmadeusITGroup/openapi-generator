@@ -1,3 +1,9 @@
+/*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:47.452Z[UTC]
+ */
+
 package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
@@ -20,10 +26,20 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonTypeName("Name")
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
 public class Name  implements Serializable {
+  
+  
   private @Valid Integer name;
+
+  
   private @Valid Integer snakeCase;
+
+  
   private @Valid String property;
+
+  
   private @Valid Integer _123number;
+
+  
 
   protected Name(NameBuilder<?, ?> b) {
     this.name = b.name;
@@ -42,6 +58,7 @@ public class Name  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("name")
@@ -63,6 +80,7 @@ public class Name  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(value = "")
   @JsonProperty("snake_case")
   public Integer getSnakeCase() {
@@ -82,6 +100,7 @@ public class Name  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(value = "")
   @JsonProperty("property")
   public String getProperty() {
@@ -100,6 +119,7 @@ public class Name  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @JsonProperty("123Number")
@@ -201,5 +221,7 @@ public class Name  implements Serializable {
       return self();
     }
   }
+
+  
 }
 

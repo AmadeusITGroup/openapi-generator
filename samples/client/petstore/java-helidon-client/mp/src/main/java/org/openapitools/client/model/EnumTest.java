@@ -31,13 +31,13 @@ import java.util.NoSuchElementException;
 
 public class EnumTest  {
   
-public enum EnumStringEnum {
+public enum EnumString {
 
     UPPER(String.valueOf("UPPER")), LOWER(String.valueOf("lower")), EMPTY(String.valueOf(""));
 
     String value;
 
-    EnumStringEnum (String v) {
+    EnumString (String v) {
         value = v;
     }
 
@@ -52,15 +52,15 @@ public enum EnumStringEnum {
 
 }
 
-  private EnumStringEnum enumString;
+  private EnumString enumString;
 
-public enum EnumStringRequiredEnum {
+public enum EnumStringRequired {
 
     UPPER(String.valueOf("UPPER")), LOWER(String.valueOf("lower")), EMPTY(String.valueOf(""));
 
     String value;
 
-    EnumStringRequiredEnum (String v) {
+    EnumStringRequired (String v) {
         value = v;
     }
 
@@ -75,15 +75,15 @@ public enum EnumStringRequiredEnum {
 
 }
 
-  private EnumStringRequiredEnum enumStringRequired;
+  private EnumStringRequired enumStringRequired;
 
-public enum EnumIntegerEnum {
+public enum EnumInteger {
 
     NUMBER_1(Integer.valueOf(1)), NUMBER_MINUS_1(Integer.valueOf(-1));
 
     Integer value;
 
-    EnumIntegerEnum (Integer v) {
+    EnumInteger (Integer v) {
         value = v;
     }
 
@@ -98,15 +98,15 @@ public enum EnumIntegerEnum {
 
 }
 
-  private EnumIntegerEnum enumInteger;
+  private EnumInteger enumInteger;
 
-public enum EnumNumberEnum {
+public enum EnumNumber {
 
     NUMBER_1_DOT_1(Double.valueOf(1.1)), NUMBER_MINUS_1_DOT_2(Double.valueOf(-1.2));
 
     Double value;
 
-    EnumNumberEnum (Double v) {
+    EnumNumber (Double v) {
         value = v;
     }
 
@@ -121,7 +121,7 @@ public enum EnumNumberEnum {
 
 }
 
-  private EnumNumberEnum enumNumber;
+  private EnumNumber enumNumber;
 
   private OuterEnum outerEnum;
 
@@ -135,18 +135,18 @@ public enum EnumNumberEnum {
    * Get enumString
    * @return enumString
   **/
-  public EnumStringEnum getEnumString() {
+  public EnumString getEnumString() {
     return enumString;
   }
 
   /**
     * Set enumString
   **/
-  public void setEnumString(EnumStringEnum enumString) {
+  public void setEnumString(EnumString enumString) {
     this.enumString = enumString;
   }
 
-  public EnumTest enumString(EnumStringEnum enumString) {
+  public EnumTest enumString(EnumString enumString) {
     this.enumString = enumString;
     return this;
   }
@@ -155,18 +155,18 @@ public enum EnumNumberEnum {
    * Get enumStringRequired
    * @return enumStringRequired
   **/
-  public EnumStringRequiredEnum getEnumStringRequired() {
+  public EnumStringRequired getEnumStringRequired() {
     return enumStringRequired;
   }
 
   /**
     * Set enumStringRequired
   **/
-  public void setEnumStringRequired(EnumStringRequiredEnum enumStringRequired) {
+  public void setEnumStringRequired(EnumStringRequired enumStringRequired) {
     this.enumStringRequired = enumStringRequired;
   }
 
-  public EnumTest enumStringRequired(EnumStringRequiredEnum enumStringRequired) {
+  public EnumTest enumStringRequired(EnumStringRequired enumStringRequired) {
     this.enumStringRequired = enumStringRequired;
     return this;
   }
@@ -175,18 +175,18 @@ public enum EnumNumberEnum {
    * Get enumInteger
    * @return enumInteger
   **/
-  public EnumIntegerEnum getEnumInteger() {
+  public EnumInteger getEnumInteger() {
     return enumInteger;
   }
 
   /**
     * Set enumInteger
   **/
-  public void setEnumInteger(EnumIntegerEnum enumInteger) {
+  public void setEnumInteger(EnumInteger enumInteger) {
     this.enumInteger = enumInteger;
   }
 
-  public EnumTest enumInteger(EnumIntegerEnum enumInteger) {
+  public EnumTest enumInteger(EnumInteger enumInteger) {
     this.enumInteger = enumInteger;
     return this;
   }
@@ -195,18 +195,18 @@ public enum EnumNumberEnum {
    * Get enumNumber
    * @return enumNumber
   **/
-  public EnumNumberEnum getEnumNumber() {
+  public EnumNumber getEnumNumber() {
     return enumNumber;
   }
 
   /**
     * Set enumNumber
   **/
-  public void setEnumNumber(EnumNumberEnum enumNumber) {
+  public void setEnumNumber(EnumNumber enumNumber) {
     this.enumNumber = enumNumber;
   }
 
-  public EnumTest enumNumber(EnumNumberEnum enumNumber) {
+  public EnumTest enumNumber(EnumNumber enumNumber) {
     this.enumNumber = enumNumber;
     return this;
   }

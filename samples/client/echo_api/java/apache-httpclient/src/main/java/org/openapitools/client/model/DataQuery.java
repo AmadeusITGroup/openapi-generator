@@ -1,4 +1,8 @@
 /*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:39.076Z[UTC]
+ *
  * Echo Server API
  * Echo Server API
  *
@@ -137,7 +141,7 @@ public class DataQuery extends Query {
   }
 
   @Override
-  public DataQuery outcomes(List<OutcomesEnum> outcomes) {
+  public DataQuery outcomes(List<Outcomes> outcomes) {
     this.setOutcomes(outcomes);
     return this;
   }

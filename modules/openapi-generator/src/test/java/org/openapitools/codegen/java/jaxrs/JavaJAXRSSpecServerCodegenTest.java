@@ -882,6 +882,7 @@ public class JavaJAXRSSpecServerCodegenTest extends JavaJaxrsBaseTest {
         codegen.additionalProperties().put(USE_TAGS, true); //And use tags to generate everything in several API files
         codegen.additionalProperties().put(RETURN_RESPONSE, true); // Retrieve HTTP Response
         codegen.additionalProperties().put(USE_JAKARTA_EE, true); // Use Jakarta
+        codegen.additionalProperties().put(ADDITIONAL_API_TYPE_ANNOTATIONS, "@org.eclipse.microprofile.faulttolerance.Retry"); // use Api annotation
         codegen.setLibrary(QUARKUS_LIBRARY); // Set Quarkus
 
         final ClientOptInput input = new ClientOptInput()
@@ -906,6 +907,8 @@ public class JavaJAXRSSpecServerCodegenTest extends JavaJaxrsBaseTest {
                 "@org.eclipse.microprofile.openapi.annotations.OpenAPIDefinition(\n" +
                         "   info = @org.eclipse.microprofile.openapi.annotations.info.Info(\n" +
                         "        title = \"store\", version=\"1.0.0\", description=\"Access to Petstore orders\",");
+        assertFileContains(output.toPath().resolve("src/gen/java/org/openapitools/api/StoreApi.java"),
+          "@org.eclipse.microprofile.faulttolerance.Retry");
 
         TestUtils.ensureContainsFile(files, output, "src/gen/java/org/openapitools/api/UserApi.java");
         assertFileContains(output.toPath().resolve("src/gen/java/org/openapitools/api/UserApi.java"),

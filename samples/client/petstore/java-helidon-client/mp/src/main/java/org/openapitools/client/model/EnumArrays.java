@@ -25,13 +25,13 @@ import java.util.List;
 
 public class EnumArrays  {
   
-public enum JustSymbolEnum {
+public enum JustSymbol {
 
     GREATER_THAN_OR_EQUAL_TO(String.valueOf(">=")), DOLLAR(String.valueOf("$"));
 
     String value;
 
-    JustSymbolEnum (String v) {
+    JustSymbol (String v) {
         value = v;
     }
 
@@ -46,15 +46,15 @@ public enum JustSymbolEnum {
 
 }
 
-  private JustSymbolEnum justSymbol;
+  private JustSymbol justSymbol;
 
-public enum ArrayEnumEnum {
+public enum ArrayEnum {
 
     FISH(String.valueOf("fish")), CRAB(String.valueOf("crab"));
 
     String value;
 
-    ArrayEnumEnum (String v) {
+    ArrayEnum (String v) {
         value = v;
     }
 
@@ -69,24 +69,24 @@ public enum ArrayEnumEnum {
 
 }
 
-  private List<ArrayEnumEnum> arrayEnum = null;
+  private List<ArrayEnum> arrayEnum = null;
 
  /**
    * Get justSymbol
    * @return justSymbol
   **/
-  public JustSymbolEnum getJustSymbol() {
+  public JustSymbol getJustSymbol() {
     return justSymbol;
   }
 
   /**
     * Set justSymbol
   **/
-  public void setJustSymbol(JustSymbolEnum justSymbol) {
+  public void setJustSymbol(JustSymbol justSymbol) {
     this.justSymbol = justSymbol;
   }
 
-  public EnumArrays justSymbol(JustSymbolEnum justSymbol) {
+  public EnumArrays justSymbol(JustSymbol justSymbol) {
     this.justSymbol = justSymbol;
     return this;
   }
@@ -95,23 +95,23 @@ public enum ArrayEnumEnum {
    * Get arrayEnum
    * @return arrayEnum
   **/
-  public List<ArrayEnumEnum> getArrayEnum() {
+  public List<ArrayEnum> getArrayEnum() {
     return arrayEnum;
   }
 
   /**
     * Set arrayEnum
   **/
-  public void setArrayEnum(List<ArrayEnumEnum> arrayEnum) {
+  public void setArrayEnum(List<ArrayEnum> arrayEnum) {
     this.arrayEnum = arrayEnum;
   }
 
-  public EnumArrays arrayEnum(List<ArrayEnumEnum> arrayEnum) {
+  public EnumArrays arrayEnum(List<ArrayEnum> arrayEnum) {
     this.arrayEnum = arrayEnum;
     return this;
   }
 
-  public EnumArrays addArrayEnumItem(ArrayEnumEnum arrayEnumItem) {
+  public EnumArrays addArrayEnumItem(ArrayEnum arrayEnumItem) {
     this.arrayEnum.add(arrayEnumItem);
     return this;
   }

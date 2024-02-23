@@ -1,3 +1,9 @@
+/*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:47.452Z[UTC]
+ */
+
 package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -21,7 +27,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonTypeName("File")
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
 public class ModelFile  implements Serializable {
+  
+  
   private @Valid String sourceURI;
+
+  
 
   protected ModelFile(ModelFileBuilder<?, ?> b) {
     this.sourceURI = b.sourceURI;
@@ -38,6 +48,7 @@ public class ModelFile  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "Test capitalization")
   @JsonProperty("sourceURI")
@@ -118,5 +129,7 @@ public class ModelFile  implements Serializable {
       return self();
     }
   }
+
+  
 }
 

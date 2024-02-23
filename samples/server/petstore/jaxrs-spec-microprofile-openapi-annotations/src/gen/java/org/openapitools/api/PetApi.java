@@ -61,6 +61,7 @@ import javax.validation.Valid;
 @Api(description = "the pet API")
 @Path("/pet")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
+
 public class PetApi {
 
     @POST

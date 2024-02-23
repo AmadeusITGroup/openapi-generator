@@ -1,3 +1,9 @@
+/*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:47.458Z[UTC]
+ */
+
 package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
@@ -22,16 +28,38 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonTypeName("AdditionalPropertiesClass")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
 public class AdditionalPropertiesClass  implements Serializable {
+  
+  
   private @Valid Map<String, String> mapString = new HashMap<>();
+
+  
   private @Valid Map<String, BigDecimal> mapNumber = new HashMap<>();
+
+  
   private @Valid Map<String, Integer> mapInteger = new HashMap<>();
+
+  
   private @Valid Map<String, Boolean> mapBoolean = new HashMap<>();
+
+  
   private @Valid Map<String, List<Integer>> mapArrayInteger = new HashMap<>();
+
+  
   private @Valid Map<String, List<Object>> mapArrayAnytype = new HashMap<>();
+
+  
   private @Valid Map<String, Map<String, String>> mapMapString = new HashMap<>();
+
+  
   private @Valid Map<String, Map<String, Object>> mapMapAnytype = new HashMap<>();
+
+  
   private @Valid Object anytype1;
+
+  
   private @Valid Object anytype2;
+
+  
   private @Valid Object anytype3;
 
   /**
@@ -41,6 +69,7 @@ public class AdditionalPropertiesClass  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @JsonProperty("map_string")
@@ -77,6 +106,7 @@ public class AdditionalPropertiesClass  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(value = "")
   @JsonProperty("map_number")
   public Map<String, BigDecimal> getMapNumber() {
@@ -111,6 +141,7 @@ public class AdditionalPropertiesClass  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @JsonProperty("map_integer")
@@ -147,6 +178,7 @@ public class AdditionalPropertiesClass  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(value = "")
   @JsonProperty("map_boolean")
   public Map<String, Boolean> getMapBoolean() {
@@ -181,6 +213,7 @@ public class AdditionalPropertiesClass  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @JsonProperty("map_array_integer")
@@ -217,6 +250,7 @@ public class AdditionalPropertiesClass  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(value = "")
   @JsonProperty("map_array_anytype")
   public Map<String, List<Object>> getMapArrayAnytype() {
@@ -251,6 +285,7 @@ public class AdditionalPropertiesClass  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @JsonProperty("map_map_string")
@@ -287,6 +322,7 @@ public class AdditionalPropertiesClass  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(value = "")
   @JsonProperty("map_map_anytype")
   public Map<String, Map<String, Object>> getMapMapAnytype() {
@@ -322,6 +358,7 @@ public class AdditionalPropertiesClass  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(value = "")
   @JsonProperty("anytype_1")
   public Object getAnytype1() {
@@ -341,6 +378,7 @@ public class AdditionalPropertiesClass  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(value = "")
   @JsonProperty("anytype_2")
   public Object getAnytype2() {
@@ -359,6 +397,7 @@ public class AdditionalPropertiesClass  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @JsonProperty("anytype_3")
@@ -431,5 +470,7 @@ public class AdditionalPropertiesClass  implements Serializable {
   }
 
 
+
+  
 }
 

@@ -11,12 +11,12 @@
 |**petId** | **Long** |  |  [optional] |
 |**quantity** | **Integer** |  |  [optional] |
 |**shipDate** | **LocalDateTime** |  |  [optional] |
-|**status** | [**StatusEnum**](#StatusEnum) | Order Status |  [optional] |
+|**status** | [**Status**](#Status) | Order Status |  [optional] |
 |**complete** | **Boolean** |  |  [optional] |
 
 
 
-## Enum: StatusEnum
+## Enum: Status
 
 | Name | Value |
 |---- | -----|

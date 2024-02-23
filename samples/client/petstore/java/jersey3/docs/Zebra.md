@@ -7,12 +7,12 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**type** | [**TypeEnum**](#TypeEnum) |  |  [optional] |
+|**type** | [**Type**](#Type) |  |  [optional] |
 |**className** | **String** |  |  |
 
 
 
-## Enum: TypeEnum
+## Enum: Type
 
 | Name | Value |
 |---- | -----|

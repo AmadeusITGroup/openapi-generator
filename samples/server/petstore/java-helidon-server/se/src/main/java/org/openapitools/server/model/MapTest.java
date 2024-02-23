@@ -14,13 +14,13 @@ public class MapTest   {
     /**
     * Gets or Sets inner
     */
-    public enum InnerEnum {
+    public enum Inner {
         UPPER("UPPER"),
         LOWER("lower");
 
         private String value;
 
-        InnerEnum(String value) {
+        Inner(String value) {
             this.value = value;
         }
 
@@ -36,8 +36,8 @@ public class MapTest   {
 
 
         @JsonCreator
-        public static InnerEnum fromValue(String text) {
-            for (InnerEnum b : InnerEnum.values()) {
+        public static Inner fromValue(String text) {
+            for (Inner b : Inner.values()) {
                 if (String.valueOf(b.value).equals(text)) {
                     return b;
                 }
@@ -47,7 +47,7 @@ public class MapTest   {
     }
 
 
-    private Map<String, InnerEnum> mapOfEnumString = new HashMap<>();
+    private Map<String, Inner> mapOfEnumString = new HashMap<>();
     private Map<String, Boolean> directMap = new HashMap<>();
     private Map<String, Boolean> indirectMap = new HashMap<>();
 
@@ -68,7 +68,7 @@ public class MapTest   {
      */
     public MapTest(
         Map<String, Map<String, String>> mapMapOfString, 
-        Map<String, InnerEnum> mapOfEnumString, 
+        Map<String, Inner> mapOfEnumString, 
         Map<String, Boolean> directMap, 
         Map<String, Boolean> indirectMap
     ) {
@@ -96,11 +96,11 @@ public class MapTest   {
      * Get mapOfEnumString
      * @return mapOfEnumString
      */
-    public Map<String, InnerEnum> getMapOfEnumString() {
+    public Map<String, Inner> getMapOfEnumString() {
         return mapOfEnumString;
     }
 
-    public void setMapOfEnumString(Map<String, InnerEnum> mapOfEnumString) {
+    public void setMapOfEnumString(Map<String, Inner> mapOfEnumString) {
         this.mapOfEnumString = mapOfEnumString;
     }
 

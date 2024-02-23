@@ -29,14 +29,14 @@ public class MapTest  {
   
   private Map<String, Map<String, String>> mapMapOfString = null;
 
-public enum InnerEnum {
+public enum Inner {
 
     UPPER(String.valueOf("UPPER")), LOWER(String.valueOf("lower"));
 
 
     private String value;
 
-    InnerEnum (String v) {
+    Inner (String v) {
         value = v;
     }
 
@@ -54,8 +54,8 @@ public enum InnerEnum {
      * Convert a String into String, as specified in the
      * <a href="https://download.oracle.com/otndocs/jcp/jaxrs-2_0-fr-eval-spec/index.html">See JAX RS 2.0 Specification, section 3.2, p. 12</a>
      */
-	public static InnerEnum fromString(String s) {
-        for (InnerEnum b : InnerEnum.values()) {
+	public static Inner fromString(String s) {
+        for (Inner b : Inner.values()) {
             // using Objects.toString() to be safe if value type non-object type
             // because types like 'int' etc. will be auto-boxed
             if (java.util.Objects.toString(b.value).equals(s)) {
@@ -66,8 +66,8 @@ public enum InnerEnum {
 	}
 	
     @JsonCreator
-    public static InnerEnum fromValue(String value) {
-        for (InnerEnum b : InnerEnum.values()) {
+    public static Inner fromValue(String value) {
+        for (Inner b : Inner.values()) {
             if (b.value.equals(value)) {
                 return b;
             }
@@ -76,7 +76,7 @@ public enum InnerEnum {
     }
 }
 
-  private Map<String, InnerEnum> mapOfEnumString = null;
+  private Map<String, Inner> mapOfEnumString = null;
 
   private Map<String, Boolean> directMap = null;
 
@@ -111,23 +111,23 @@ public enum InnerEnum {
    * Get mapOfEnumString
    * @return mapOfEnumString
   **/
-  public Map<String, InnerEnum> getMapOfEnumString() {
+  public Map<String, Inner> getMapOfEnumString() {
     return mapOfEnumString;
   }
 
   /**
     * Set mapOfEnumString
   **/
-  public void setMapOfEnumString(Map<String, InnerEnum> mapOfEnumString) {
+  public void setMapOfEnumString(Map<String, Inner> mapOfEnumString) {
     this.mapOfEnumString = mapOfEnumString;
   }
 
-  public MapTest mapOfEnumString(Map<String, InnerEnum> mapOfEnumString) {
+  public MapTest mapOfEnumString(Map<String, Inner> mapOfEnumString) {
     this.mapOfEnumString = mapOfEnumString;
     return this;
   }
 
-  public MapTest putMapOfEnumStringItem(String key, InnerEnum mapOfEnumStringItem) {
+  public MapTest putMapOfEnumStringItem(String key, Inner mapOfEnumStringItem) {
     this.mapOfEnumString.put(key, mapOfEnumStringItem);
     return this;
   }

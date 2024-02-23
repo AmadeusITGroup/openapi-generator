@@ -8,9 +8,9 @@ The class is defined in **[BigCatAllOf.java](../../src/main/java/org/openapitool
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**kind** | [**KindEnum**](#KindEnum) |  |  [optional property]
+**kind** | [**Kind**](#Kind) |  |  [optional property]
 
-## KindEnum
+## Kind
 
 Name | Value
 ---- | -----

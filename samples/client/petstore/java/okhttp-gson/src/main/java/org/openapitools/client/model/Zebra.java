@@ -1,4 +1,8 @@
 /*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:41.838Z[UTC]
+ *
  * OpenAPI Petstore
  * This spec is mainly for testing Petstore server and contains fake endpoints, models. Please do not use this for any other purpose. Special characters: \" \\
  *
@@ -55,8 +59,8 @@ public class Zebra {
   /**
    * Gets or Sets type
    */
-  @JsonAdapter(TypeEnum.Adapter.class)
-  public enum TypeEnum {
+  @JsonAdapter(Type.Adapter.class)
+  public enum Type {
     PLAINS("plains"),
     
     MOUNTAIN("mountain"),
@@ -65,7 +69,7 @@ public class Zebra {
 
     private String value;
 
-    TypeEnum(String value) {
+    Type(String value) {
       this.value = value;
     }
 
@@ -78,8 +82,8 @@ public class Zebra {
       return String.valueOf(value);
     }
 
-    public static TypeEnum fromValue(String value) {
-      for (TypeEnum b : TypeEnum.values()) {
+    public static Type fromValue(String value) {
+      for (Type b : Type.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -87,23 +91,23 @@ public class Zebra {
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
-    public static class Adapter extends TypeAdapter<TypeEnum> {
+    public static class Adapter extends TypeAdapter<Type> {
       @Override
-      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
+      public void write(final JsonWriter jsonWriter, final Type enumeration) throws IOException {
         jsonWriter.value(enumeration.getValue());
       }
 
       @Override
-      public TypeEnum read(final JsonReader jsonReader) throws IOException {
+      public Type read(final JsonReader jsonReader) throws IOException {
         String value =  jsonReader.nextString();
-        return TypeEnum.fromValue(value);
+        return Type.fromValue(value);
       }
     }
   }
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
-  private TypeEnum type;
+  private Type type;
 
   public static final String SERIALIZED_NAME_CLASS_NAME = "className";
   @SerializedName(SERIALIZED_NAME_CLASS_NAME)
@@ -112,7 +116,7 @@ public class Zebra {
   public Zebra() {
   }
 
-  public Zebra type(TypeEnum type) {
+  public Zebra type(Type type) {
     
     this.type = type;
     return this;
@@ -123,12 +127,12 @@ public class Zebra {
    * @return type
   **/
   @javax.annotation.Nullable
-  public TypeEnum getType() {
+  public Type getType() {
     return type;
   }
 
 
-  public void setType(TypeEnum type) {
+  public void setType(Type type) {
     this.type = type;
   }
 

@@ -16,14 +16,14 @@ public class Order   {
     /**
     * Order Status
     */
-    public enum StatusEnum {
+    public enum Status {
         PLACED("placed"),
         APPROVED("approved"),
         DELIVERED("delivered");
 
         private String value;
 
-        StatusEnum(String value) {
+        Status(String value) {
             this.value = value;
         }
 
@@ -39,8 +39,8 @@ public class Order   {
 
 
         @JsonCreator
-        public static StatusEnum fromValue(String text) {
-            for (StatusEnum b : StatusEnum.values()) {
+        public static Status fromValue(String text) {
+            for (Status b : Status.values()) {
                 if (String.valueOf(b.value).equals(text)) {
                     return b;
                 }
@@ -50,7 +50,7 @@ public class Order   {
     }
 
 
-    private StatusEnum status;
+    private Status status;
     private Boolean complete = false;
 
     /**
@@ -75,7 +75,7 @@ public class Order   {
         Long petId, 
         Integer quantity, 
         OffsetDateTime shipDate, 
-        StatusEnum status, 
+        Status status, 
         Boolean complete
     ) {
         this.id = id;
@@ -140,11 +140,11 @@ public class Order   {
      * Order Status
      * @return status
      */
-    public StatusEnum getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(StatusEnum status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 

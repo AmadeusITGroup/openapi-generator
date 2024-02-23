@@ -35,6 +35,7 @@ import org.openapitools.client.model.Order;
 @RegisterRestClient
 @RegisterProvider(ApiExceptionMapper.class)
 @Path("/store")
+
 public interface StoreApi  {
 
     /**

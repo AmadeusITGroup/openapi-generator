@@ -1,4 +1,8 @@
 /*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:39.094Z[UTC]
+ *
  * Echo Server API
  * Echo Server API
  *
@@ -36,8 +40,8 @@ public class Query {
   /**
    * Gets or Sets outcomes
    */
-  @JsonAdapter(OutcomesEnum.Adapter.class)
-  public enum OutcomesEnum {
+  @JsonAdapter(Outcomes.Adapter.class)
+  public enum Outcomes {
     SUCCESS("SUCCESS"),
     
     FAILURE("FAILURE"),
@@ -46,7 +50,7 @@ public class Query {
 
     private String value;
 
-    OutcomesEnum(String value) {
+    Outcomes(String value) {
       this.value = value;
     }
 
@@ -59,8 +63,8 @@ public class Query {
       return String.valueOf(value);
     }
 
-    public static OutcomesEnum fromValue(String value) {
-      for (OutcomesEnum b : OutcomesEnum.values()) {
+    public static Outcomes fromValue(String value) {
+      for (Outcomes b : Outcomes.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -68,23 +72,23 @@ public class Query {
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
-    public static class Adapter extends TypeAdapter<OutcomesEnum> {
+    public static class Adapter extends TypeAdapter<Outcomes> {
       @Override
-      public void write(final JsonWriter jsonWriter, final OutcomesEnum enumeration) throws IOException {
+      public void write(final JsonWriter jsonWriter, final Outcomes enumeration) throws IOException {
         jsonWriter.value(enumeration.getValue());
       }
 
       @Override
-      public OutcomesEnum read(final JsonReader jsonReader) throws IOException {
+      public Outcomes read(final JsonReader jsonReader) throws IOException {
         String value =  jsonReader.nextString();
-        return OutcomesEnum.fromValue(value);
+        return Outcomes.fromValue(value);
       }
     }
   }
 
   public static final String SERIALIZED_NAME_OUTCOMES = "outcomes";
   @SerializedName(SERIALIZED_NAME_OUTCOMES)
-  private List<OutcomesEnum> outcomes = new ArrayList<>(Arrays.asList(OutcomesEnum.SUCCESS, OutcomesEnum.FAILURE));
+  private List<Outcomes> outcomes = new ArrayList<>(Arrays.asList(Outcomes.SUCCESS, Outcomes.FAILURE));
 
   public Query() {
   }
@@ -111,15 +115,15 @@ public class Query {
   }
 
 
-  public Query outcomes(List<OutcomesEnum> outcomes) {
+  public Query outcomes(List<Outcomes> outcomes) {
     
     this.outcomes = outcomes;
     return this;
   }
 
-  public Query addOutcomesItem(OutcomesEnum outcomesItem) {
+  public Query addOutcomesItem(Outcomes outcomesItem) {
     if (this.outcomes == null) {
-      this.outcomes = new ArrayList<>(Arrays.asList(OutcomesEnum.SUCCESS, OutcomesEnum.FAILURE));
+      this.outcomes = new ArrayList<>(Arrays.asList(Outcomes.SUCCESS, Outcomes.FAILURE));
     }
     this.outcomes.add(outcomesItem);
     return this;
@@ -131,12 +135,12 @@ public class Query {
   **/
   @javax.annotation.Nullable
 
-  public List<OutcomesEnum> getOutcomes() {
+  public List<Outcomes> getOutcomes() {
     return outcomes;
   }
 
 
-  public void setOutcomes(List<OutcomesEnum> outcomes) {
+  public void setOutcomes(List<Outcomes> outcomes) {
     this.outcomes = outcomes;
   }
 

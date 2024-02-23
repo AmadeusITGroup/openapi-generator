@@ -1,3 +1,9 @@
+/*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:47.530Z[UTC]
+ */
+
 package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
@@ -19,12 +25,26 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonTypeName("Capitalization")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
 public class Capitalization  implements Serializable {
+  
+  
   private @Valid String smallCamel;
+
+  
   private @Valid String capitalCamel;
+
+  
   private @Valid String smallSnake;
+
+  
   private @Valid String capitalSnake;
+
+  
   private @Valid String scAETHFlowPoints;
+
+  
   private @Valid String ATT_NAME;
+
+  
 
   protected Capitalization(CapitalizationBuilder<?, ?> b) {
     this.smallCamel = b.smallCamel;
@@ -46,6 +66,7 @@ public class Capitalization  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(description = "")
   @JsonProperty("smallCamel")
@@ -65,6 +86,7 @@ public class Capitalization  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(description = "")
@@ -86,6 +108,7 @@ public class Capitalization  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(description = "")
   @JsonProperty("small_Snake")
@@ -105,6 +128,7 @@ public class Capitalization  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(description = "")
@@ -126,6 +150,7 @@ public class Capitalization  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(description = "")
   @JsonProperty("SCA_ETH_Flow_Points")
@@ -146,6 +171,7 @@ public class Capitalization  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "Name of the pet ")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(description = "Name of the pet ")
@@ -262,5 +288,7 @@ public class Capitalization  implements Serializable {
       return self();
     }
   }
+
+  
 }
 

@@ -26,6 +26,7 @@ import jakarta.validation.Valid;
 
 @Path("/user")
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaHelidonServerCodegen")
+
 public interface UserService {
 
     @POST

@@ -32,14 +32,14 @@ public class Pet   {
   private List<Tag> tags;
 
 
-public enum StatusEnum {
+public enum Status {
 
-    @JsonProperty("available") AVAILABLE(String.valueOf("available")), @JsonProperty("pending") PENDING(String.valueOf("pending")), @JsonProperty("sold") SOLD(String.valueOf("sold"));
+    @JsonProperty("AVAILABLE") AVAILABLE(String.valueOf("AVAILABLE")), @JsonProperty("PENDING") PENDING(String.valueOf("PENDING")), @JsonProperty("SOLD") SOLD(String.valueOf("SOLD"));
 
 
     private String value;
 
-    StatusEnum(String v) {
+    Status(String v) {
         value = v;
     }
 
@@ -52,8 +52,8 @@ public enum StatusEnum {
         return String.valueOf(value);
     }
 
-    public static StatusEnum fromValue(String value) {
-        for (StatusEnum b : StatusEnum.values()) {
+    public static Status fromValue(String value) {
+        for (Status b : Status.values()) {
             if (b.value.equals(value)) {
                 return b;
             }
@@ -62,7 +62,7 @@ public enum StatusEnum {
     }
 }
 
-  private StatusEnum status;
+  private Status status;
 
   /**
    **/
@@ -175,7 +175,7 @@ public enum StatusEnum {
   /**
    * pet status in the store
    **/
-  public Pet status(StatusEnum status) {
+  public Pet status(Status status) {
     this.status = status;
     return this;
   }
@@ -183,10 +183,10 @@ public enum StatusEnum {
   
   @ApiModelProperty(value = "pet status in the store")
   @JsonProperty("status")
-  public StatusEnum getStatus() {
+  public Status getStatus() {
     return status;
   }
-  public void setStatus(StatusEnum status) {
+  public void setStatus(Status status) {
     this.status = status;
   }
 

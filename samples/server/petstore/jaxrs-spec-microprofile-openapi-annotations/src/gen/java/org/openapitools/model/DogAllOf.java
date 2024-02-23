@@ -1,3 +1,9 @@
+/*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:47.530Z[UTC]
+ */
+
 package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -20,7 +26,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonTypeName("Dog_allOf")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
 public class DogAllOf  implements Serializable {
+  
+  
   private @Valid String breed;
+
+  
 
   protected DogAllOf(DogAllOfBuilder<?, ?> b) {
     this.breed = b.breed;
@@ -36,6 +46,7 @@ public class DogAllOf  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(description = "")
@@ -117,5 +128,7 @@ public class DogAllOf  implements Serializable {
       return self();
     }
   }
+
+  
 }
 

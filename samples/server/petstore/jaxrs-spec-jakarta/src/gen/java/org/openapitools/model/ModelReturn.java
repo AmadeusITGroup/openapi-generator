@@ -1,3 +1,9 @@
+/*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:47.452Z[UTC]
+ */
+
 package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -21,7 +27,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonTypeName("Return")
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
 public class ModelReturn  implements Serializable {
+  
+  
   private @Valid Integer _return;
+
+  
 
   protected ModelReturn(ModelReturnBuilder<?, ?> b) {
     this._return = b._return;
@@ -37,6 +47,7 @@ public class ModelReturn  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @JsonProperty("return")
@@ -117,5 +128,7 @@ public class ModelReturn  implements Serializable {
       return self();
     }
   }
+
+  
 }
 

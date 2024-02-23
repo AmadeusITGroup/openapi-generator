@@ -34,14 +34,14 @@ public class Order   {
   private Date shipDate;
 
 
-  public enum StatusEnum {
+  public enum Status {
     PLACED("placed"),
     APPROVED("approved"),
     DELIVERED("delivered");
 
     private String value;
 
-    StatusEnum(String value) {
+    Status(String value) {
       this.value = value;
     }
 
@@ -52,7 +52,7 @@ public class Order   {
     }
   }
 
-  private StatusEnum status;
+  private Status status;
   private Boolean complete = false;
 
   /**
@@ -126,7 +126,7 @@ public class Order   {
   /**
    * Order Status
    */
-  public Order status(StatusEnum status) {
+  public Order status(Status status) {
     this.status = status;
     return this;
   }
@@ -134,10 +134,10 @@ public class Order   {
   
   @ApiModelProperty(value = "Order Status")
   @JsonProperty("status")
-  public StatusEnum getStatus() {
+  public Status getStatus() {
     return status;
   }
-  public void setStatus(StatusEnum status) {
+  public void setStatus(Status status) {
     this.status = status;
   }
 

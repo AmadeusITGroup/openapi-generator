@@ -15,7 +15,7 @@ public class BigCat extends Cat  {
   /**
    * Gets or Sets kind
    */
-  public enum KindEnum {
+  public enum Kind {
     LIONS("lions"),
     
     TIGERS("tigers"),
@@ -26,7 +26,7 @@ public class BigCat extends Cat  {
 
     private final String value;
 
-    KindEnum(String value) {
+    Kind(String value) {
       this.value = value;
     }
 
@@ -37,8 +37,8 @@ public class BigCat extends Cat  {
     }
 
     @JsonCreator
-    public static KindEnum fromValue(String value) {
-      for (KindEnum b : KindEnum.values()) {
+    public static Kind fromValue(String value) {
+      for (Kind b : Kind.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -49,9 +49,9 @@ public class BigCat extends Cat  {
 
   @JsonProperty("kind")
   
-  private KindEnum kind;
+  private Kind kind;
 
-  public BigCat kind(KindEnum kind) {
+  public BigCat kind(Kind kind) {
     this.kind = kind;
     return this;
   }
@@ -60,11 +60,11 @@ public class BigCat extends Cat  {
    * Get kind
    * @return kind
   **/
-  public KindEnum getKind() {
+  public Kind getKind() {
     return kind;
   }
 
-  public void setKind(KindEnum kind) {
+  public void setKind(Kind kind) {
     this.kind = kind;
   }
 

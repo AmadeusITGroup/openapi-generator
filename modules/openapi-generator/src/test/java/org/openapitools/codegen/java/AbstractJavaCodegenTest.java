@@ -325,7 +325,29 @@ public class AbstractJavaCodegenTest {
         Assert.assertEquals(sortedCodegenAdditionalModelTypeAnnotations, sortedAdditionalModelTypeAnnotations);
     }
 
-    @Test
+  @Test
+  public void testAdditionalApiTypeAnnotationsSemiColon() throws Exception {
+    OpenAPI openAPI = TestUtils.createOpenAPI();
+
+    final AbstractJavaCodegen codegen = new P_AbstractJavaCodegen();
+    codegen.additionalProperties().put(AbstractJavaCodegen.ADDITIONAL_API_TYPE_ANNOTATIONS, "@Retry;@Fallback");
+
+    codegen.processOpts();
+    codegen.preprocessOpenAPI(openAPI);
+
+    final List<String> additionalApiTypeAnnotations = new ArrayList<String>();
+    additionalApiTypeAnnotations.add("@Retry");
+    additionalApiTypeAnnotations.add("@Fallback");
+
+    final List<String> sortedCodegenAdditionalApiTypeAnnotations = new ArrayList<>(codegen.getAdditionalApiTypeAnnotations());
+    final List<String> sortedAdditionalApiTypeAnnotations = new ArrayList<>(codegen.getAdditionalApiTypeAnnotations());
+
+    Collections.sort(sortedCodegenAdditionalApiTypeAnnotations);
+    Collections.sort(sortedAdditionalApiTypeAnnotations);
+    Assert.assertEquals(sortedCodegenAdditionalApiTypeAnnotations, sortedAdditionalApiTypeAnnotations);
+  }
+
+  @Test
     public void toEnumValue() {
         final AbstractJavaCodegen codegen = new P_AbstractJavaCodegen();
         Assert.assertEquals(codegen.toEnumValue("1", "Integer"), "1");

@@ -30,6 +30,7 @@ import org.springframework.http.ResponseEntity;
 {{#generateClientAsBean}}
 @Component("{{package}}.{{classname}}")
 {{/generateClientAsBean}}
+{{>additionalApiTypeAnnotations}}
 {{#operations}}
 public class {{classname}} {
     private ApiClient apiClient;

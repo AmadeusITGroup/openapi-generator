@@ -46,6 +46,7 @@ import org.openapitools.client.model.User;
 @RegisterRestClient
 @RegisterProvider(ApiExceptionMapper.class)
 @Path("/fake")
+
 public interface FakeApi  {
 
     /**

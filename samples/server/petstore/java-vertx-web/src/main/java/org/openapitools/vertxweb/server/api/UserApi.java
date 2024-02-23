@@ -11,6 +11,7 @@ import io.vertx.core.json.JsonObject;
 import java.util.List;
 import java.util.Map;
 
+
 public interface UserApi  {
     Future<ApiResponse<Void>> createUser(User user);
     Future<ApiResponse<Void>> createUsersWithArrayInput(List<User> user);

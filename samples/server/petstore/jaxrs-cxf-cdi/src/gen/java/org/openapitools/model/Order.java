@@ -26,14 +26,14 @@ public class Order   {
   private java.util.Date shipDate;
 
 
-public enum StatusEnum {
+public enum Status {
 
-    @JsonProperty("placed") PLACED(String.valueOf("placed")), @JsonProperty("approved") APPROVED(String.valueOf("approved")), @JsonProperty("delivered") DELIVERED(String.valueOf("delivered"));
+    @JsonProperty("PLACED") PLACED(String.valueOf("PLACED")), @JsonProperty("APPROVED") APPROVED(String.valueOf("APPROVED")), @JsonProperty("DELIVERED") DELIVERED(String.valueOf("DELIVERED"));
 
 
     private String value;
 
-    StatusEnum(String v) {
+    Status(String v) {
         value = v;
     }
 
@@ -46,8 +46,8 @@ public enum StatusEnum {
         return String.valueOf(value);
     }
 
-    public static StatusEnum fromValue(String value) {
-        for (StatusEnum b : StatusEnum.values()) {
+    public static Status fromValue(String value) {
+        for (Status b : Status.values()) {
             if (b.value.equals(value)) {
                 return b;
             }
@@ -56,7 +56,7 @@ public enum StatusEnum {
     }
 }
 
-  private StatusEnum status;
+  private Status status;
 
   private Boolean complete = false;
 
@@ -135,7 +135,7 @@ public enum StatusEnum {
   /**
    * Order Status
    **/
-  public Order status(StatusEnum status) {
+  public Order status(Status status) {
     this.status = status;
     return this;
   }
@@ -143,10 +143,10 @@ public enum StatusEnum {
   
   @ApiModelProperty(value = "Order Status")
   @JsonProperty("status")
-  public StatusEnum getStatus() {
+  public Status getStatus() {
     return status;
   }
-  public void setStatus(StatusEnum status) {
+  public void setStatus(Status status) {
     this.status = status;
   }
 

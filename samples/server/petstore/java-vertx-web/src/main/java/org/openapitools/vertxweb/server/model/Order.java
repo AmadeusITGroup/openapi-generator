@@ -18,14 +18,14 @@ public class Order   {
   private OffsetDateTime shipDate;
 
 
-  public enum StatusEnum {
+  public enum Status {
     PLACED("placed"),
     APPROVED("approved"),
     DELIVERED("delivered");
 
     private String value;
 
-    StatusEnum(String value) {
+    Status(String value) {
       this.value = value;
     }
 
@@ -36,14 +36,14 @@ public class Order   {
     }
   }
 
-  private StatusEnum status;
+  private Status status;
   private Boolean complete = false;
 
   public Order () {
 
   }
 
-  public Order (Long id, Long petId, Integer quantity, OffsetDateTime shipDate, StatusEnum status, Boolean complete) {
+  public Order (Long id, Long petId, Integer quantity, OffsetDateTime shipDate, Status status, Boolean complete) {
     this.id = id;
     this.petId = petId;
     this.quantity = quantity;
@@ -90,10 +90,10 @@ public class Order   {
 
     
   @JsonProperty("status")
-  public StatusEnum getStatus() {
+  public Status getStatus() {
     return status;
   }
-  public void setStatus(StatusEnum status) {
+  public void setStatus(Status status) {
     this.status = status;
   }
 

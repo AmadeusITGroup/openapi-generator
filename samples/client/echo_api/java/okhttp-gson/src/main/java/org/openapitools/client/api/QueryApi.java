@@ -1,4 +1,8 @@
 /*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:40.991Z[UTC]
+ *
  * Echo Server API
  * Echo Server API
  *
@@ -41,6 +45,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.ws.rs.core.GenericType;
+
 
 public class QueryApi {
     private ApiClient localVarApiClient;

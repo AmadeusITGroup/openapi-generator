@@ -1,3 +1,9 @@
+/*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:47.458Z[UTC]
+ */
+
 package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
@@ -18,7 +24,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonTypeName("ReadOnlyFirst")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
 public class ReadOnlyFirst  implements Serializable {
+  
+  
   private @Valid String bar;
+
+  
   private @Valid String baz;
 
   /**
@@ -28,6 +38,7 @@ public class ReadOnlyFirst  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @JsonProperty("bar")
@@ -47,6 +58,7 @@ public class ReadOnlyFirst  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @JsonProperty("baz")
@@ -101,5 +113,7 @@ public class ReadOnlyFirst  implements Serializable {
   }
 
 
+
+  
 }
 

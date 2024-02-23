@@ -9,6 +9,7 @@ import io.vertx.core.json.JsonObject;
 
 import java.util.*;
 
+
 public interface UserApi {
 
     void createUser(User body, Handler<AsyncResult<Void>> handler);

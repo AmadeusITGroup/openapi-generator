@@ -1,4 +1,8 @@
 /*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:40.653Z[UTC]
+ *
  * Echo Server API
  * Echo Server API
  *
@@ -56,7 +60,7 @@ public class DefaultValue {
   /**
    * Gets or Sets arrayStringEnumDefault
    */
-  public enum ArrayStringEnumDefaultEnum {
+  public enum ArrayStringEnumDefault {
     SUCCESS("success"),
     
     FAILURE("failure"),
@@ -65,7 +69,7 @@ public class DefaultValue {
 
     private String value;
 
-    ArrayStringEnumDefaultEnum(String value) {
+    ArrayStringEnumDefault(String value) {
       this.value = value;
     }
 
@@ -80,8 +84,8 @@ public class DefaultValue {
     }
 
     @JsonCreator
-    public static ArrayStringEnumDefaultEnum fromValue(String value) {
-      for (ArrayStringEnumDefaultEnum b : ArrayStringEnumDefaultEnum.values()) {
+    public static ArrayStringEnumDefault fromValue(String value) {
+      for (ArrayStringEnumDefault b : ArrayStringEnumDefault.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -91,7 +95,7 @@ public class DefaultValue {
   }
 
   public static final String JSON_PROPERTY_ARRAY_STRING_ENUM_DEFAULT = "array_string_enum_default";
-  private List<ArrayStringEnumDefaultEnum> arrayStringEnumDefault = new ArrayList<>(Arrays.asList(ArrayStringEnumDefaultEnum.SUCCESS, ArrayStringEnumDefaultEnum.FAILURE));
+  private List<ArrayStringEnumDefault> arrayStringEnumDefault = new ArrayList<>(Arrays.asList(ArrayStringEnumDefault.SUCCESS, ArrayStringEnumDefault.FAILURE));
 
   public static final String JSON_PROPERTY_ARRAY_STRING_DEFAULT = "array_string_default";
   private List<String> arrayStringDefault = new ArrayList<>(Arrays.asList("failure", "skipped"));
@@ -147,14 +151,14 @@ public class DefaultValue {
   }
 
 
-  public DefaultValue arrayStringEnumDefault(List<ArrayStringEnumDefaultEnum> arrayStringEnumDefault) {
+  public DefaultValue arrayStringEnumDefault(List<ArrayStringEnumDefault> arrayStringEnumDefault) {
     this.arrayStringEnumDefault = arrayStringEnumDefault;
     return this;
   }
 
-  public DefaultValue addArrayStringEnumDefaultItem(ArrayStringEnumDefaultEnum arrayStringEnumDefaultItem) {
+  public DefaultValue addArrayStringEnumDefaultItem(ArrayStringEnumDefault arrayStringEnumDefaultItem) {
     if (this.arrayStringEnumDefault == null) {
-      this.arrayStringEnumDefault = new ArrayList<>(Arrays.asList(ArrayStringEnumDefaultEnum.SUCCESS, ArrayStringEnumDefaultEnum.FAILURE));
+      this.arrayStringEnumDefault = new ArrayList<>(Arrays.asList(ArrayStringEnumDefault.SUCCESS, ArrayStringEnumDefault.FAILURE));
     }
     this.arrayStringEnumDefault.add(arrayStringEnumDefaultItem);
     return this;
@@ -168,14 +172,14 @@ public class DefaultValue {
   @JsonProperty(JSON_PROPERTY_ARRAY_STRING_ENUM_DEFAULT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<ArrayStringEnumDefaultEnum> getArrayStringEnumDefault() {
+  public List<ArrayStringEnumDefault> getArrayStringEnumDefault() {
     return arrayStringEnumDefault;
   }
 
 
   @JsonProperty(JSON_PROPERTY_ARRAY_STRING_ENUM_DEFAULT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setArrayStringEnumDefault(List<ArrayStringEnumDefaultEnum> arrayStringEnumDefault) {
+  public void setArrayStringEnumDefault(List<ArrayStringEnumDefault> arrayStringEnumDefault) {
     this.arrayStringEnumDefault = arrayStringEnumDefault;
   }
 

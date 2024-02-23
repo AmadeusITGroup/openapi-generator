@@ -1,3 +1,9 @@
+/*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:47.458Z[UTC]
+ */
+
 package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
@@ -19,14 +25,16 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonTypeName("BigCat")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
 public class BigCat extends Cat implements Serializable {
-  public enum KindEnum {
+  
 
-    LIONS(String.valueOf("lions")), TIGERS(String.valueOf("tigers")), LEOPARDS(String.valueOf("leopards")), JAGUARS(String.valueOf("jaguars"));
+public enum Kind {
+
+    LIONS(String.valueOf("LIONS")), TIGERS(String.valueOf("TIGERS")), LEOPARDS(String.valueOf("LEOPARDS")), JAGUARS(String.valueOf("JAGUARS"));
 
 
     private String value;
 
-    KindEnum (String v) {
+    Kind (String v) {
         value = v;
     }
 
@@ -44,8 +52,8 @@ public class BigCat extends Cat implements Serializable {
      * Convert a String into String, as specified in the
      * <a href="https://download.oracle.com/otndocs/jcp/jaxrs-2_0-fr-eval-spec/index.html">See JAX RS 2.0 Specification, section 3.2, p. 12</a>
      */
-	public static KindEnum fromString(String s) {
-        for (KindEnum b : KindEnum.values()) {
+	public static Kind fromString(String s) {
+        for (Kind b : Kind.values()) {
             // using Objects.toString() to be safe if value type non-object type
             // because types like 'int' etc. will be auto-boxed
             if (java.util.Objects.toString(b.value).equals(s)) {
@@ -56,8 +64,8 @@ public class BigCat extends Cat implements Serializable {
 	}
 	
     @JsonCreator
-    public static KindEnum fromValue(String value) {
-        for (KindEnum b : KindEnum.values()) {
+    public static Kind fromValue(String value) {
+        for (Kind b : Kind.values()) {
             if (b.value.equals(value)) {
                 return b;
             }
@@ -66,24 +74,26 @@ public class BigCat extends Cat implements Serializable {
     }
 }
 
-  private @Valid KindEnum kind;
+  
+  private @Valid Kind kind;
 
   /**
    **/
-  public BigCat kind(KindEnum kind) {
+  public BigCat kind(Kind kind) {
     this.kind = kind;
     return this;
   }
 
   
+  
   @ApiModelProperty(value = "")
   @JsonProperty("kind")
-  public KindEnum getKind() {
+  public Kind getKind() {
     return kind;
   }
 
   @JsonProperty("kind")
-  public void setKind(KindEnum kind) {
+  public void setKind(Kind kind) {
     this.kind = kind;
   }
 
@@ -128,5 +138,7 @@ public class BigCat extends Cat implements Serializable {
   }
 
 
+
+  
 }
 

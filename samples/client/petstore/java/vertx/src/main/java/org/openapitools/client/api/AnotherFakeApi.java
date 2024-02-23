@@ -8,6 +8,7 @@ import io.vertx.core.json.JsonObject;
 
 import java.util.*;
 
+
 public interface AnotherFakeApi {
 
     void call123testSpecialTags(Client body, Handler<AsyncResult<Client>> handler);

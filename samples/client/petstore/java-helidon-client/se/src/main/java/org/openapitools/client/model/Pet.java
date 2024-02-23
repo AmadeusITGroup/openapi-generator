@@ -40,13 +40,13 @@ public class Pet  {
 
   private List<Tag> tags = null;
 
-public enum StatusEnum {
+public enum Status {
 
     AVAILABLE(String.valueOf("available")), PENDING(String.valueOf("pending")), SOLD(String.valueOf("sold"));
 
     String value;
 
-    StatusEnum (String v) {
+    Status (String v) {
         value = v;
     }
 
@@ -64,7 +64,7 @@ public enum StatusEnum {
  /**
    * pet status in the store
   **/
-  private StatusEnum status;
+  private Status status;
 
  /**
    * Get id
@@ -181,18 +181,18 @@ public enum StatusEnum {
    * pet status in the store
    * @return status
   **/
-  public StatusEnum getStatus() {
+  public Status getStatus() {
     return status;
   }
 
   /**
     * Set status
   **/
-  public void setStatus(StatusEnum status) {
+  public void setStatus(Status status) {
     this.status = status;
   }
 
-  public Pet status(StatusEnum status) {
+  public Pet status(Status status) {
     this.status = status;
     return this;
   }

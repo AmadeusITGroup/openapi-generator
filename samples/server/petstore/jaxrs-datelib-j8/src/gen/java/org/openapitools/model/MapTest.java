@@ -44,14 +44,14 @@ public class MapTest  implements Serializable {
   /**
    * Gets or Sets inner
    */
-  public enum InnerEnum {
+  public enum Inner {
     UPPER("UPPER"),
     
     LOWER("lower");
 
     private String value;
 
-    InnerEnum(String value) {
+    Inner(String value) {
       this.value = value;
     }
 
@@ -62,8 +62,8 @@ public class MapTest  implements Serializable {
     }
 
     @JsonCreator
-    public static InnerEnum fromValue(String value) {
-      for (InnerEnum b : InnerEnum.values()) {
+    public static Inner fromValue(String value) {
+      for (Inner b : Inner.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -74,7 +74,7 @@ public class MapTest  implements Serializable {
 
   public static final String JSON_PROPERTY_MAP_OF_ENUM_STRING = "map_of_enum_string";
   @JsonProperty(JSON_PROPERTY_MAP_OF_ENUM_STRING)
-  private Map<String, InnerEnum> mapOfEnumString = new HashMap<>();
+  private Map<String, Inner> mapOfEnumString = new HashMap<>();
 
   public static final String JSON_PROPERTY_DIRECT_MAP = "direct_map";
   @JsonProperty(JSON_PROPERTY_DIRECT_MAP)
@@ -112,12 +112,12 @@ public class MapTest  implements Serializable {
     this.mapMapOfString = mapMapOfString;
   }
 
-  public MapTest mapOfEnumString(Map<String, InnerEnum> mapOfEnumString) {
+  public MapTest mapOfEnumString(Map<String, Inner> mapOfEnumString) {
     this.mapOfEnumString = mapOfEnumString;
     return this;
   }
 
-  public MapTest putMapOfEnumStringItem(String key, InnerEnum mapOfEnumStringItem) {
+  public MapTest putMapOfEnumStringItem(String key, Inner mapOfEnumStringItem) {
     if (this.mapOfEnumString == null) {
       this.mapOfEnumString = new HashMap<>();
     }
@@ -132,11 +132,11 @@ public class MapTest  implements Serializable {
   @JsonProperty(value = "map_of_enum_string")
   @ApiModelProperty(value = "")
   
-  public Map<String, InnerEnum> getMapOfEnumString() {
+  public Map<String, Inner> getMapOfEnumString() {
     return mapOfEnumString;
   }
 
-  public void setMapOfEnumString(Map<String, InnerEnum> mapOfEnumString) {
+  public void setMapOfEnumString(Map<String, Inner> mapOfEnumString) {
     this.mapOfEnumString = mapOfEnumString;
   }
 

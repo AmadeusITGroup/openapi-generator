@@ -1,3 +1,9 @@
+/*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:47.452Z[UTC]
+ */
+
 package org.openapitools.api;
 
 import java.io.File;
@@ -19,6 +25,7 @@ import jakarta.validation.Valid;
 @Path("/pet")
 @Api(description = "the pet API")
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
+
 public class PetApi {
 
     @POST

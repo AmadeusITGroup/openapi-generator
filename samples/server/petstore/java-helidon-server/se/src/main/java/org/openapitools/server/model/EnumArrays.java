@@ -13,13 +13,13 @@ public class EnumArrays   {
     /**
     * Gets or Sets justSymbol
     */
-    public enum JustSymbolEnum {
+    public enum JustSymbol {
         GREATER_THAN_OR_EQUAL_TO(">="),
         DOLLAR("$");
 
         private String value;
 
-        JustSymbolEnum(String value) {
+        JustSymbol(String value) {
             this.value = value;
         }
 
@@ -35,8 +35,8 @@ public class EnumArrays   {
 
 
         @JsonCreator
-        public static JustSymbolEnum fromValue(String text) {
-            for (JustSymbolEnum b : JustSymbolEnum.values()) {
+        public static JustSymbol fromValue(String text) {
+            for (JustSymbol b : JustSymbol.values()) {
                 if (String.valueOf(b.value).equals(text)) {
                     return b;
                 }
@@ -46,18 +46,18 @@ public class EnumArrays   {
     }
 
 
-    private JustSymbolEnum justSymbol;
+    private JustSymbol justSymbol;
 
     /**
     * Gets or Sets arrayEnum
     */
-    public enum ArrayEnumEnum {
+    public enum ArrayEnum {
         FISH("fish"),
         CRAB("crab");
 
         private String value;
 
-        ArrayEnumEnum(String value) {
+        ArrayEnum(String value) {
             this.value = value;
         }
 
@@ -73,8 +73,8 @@ public class EnumArrays   {
 
 
         @JsonCreator
-        public static ArrayEnumEnum fromValue(String text) {
-            for (ArrayEnumEnum b : ArrayEnumEnum.values()) {
+        public static ArrayEnum fromValue(String text) {
+            for (ArrayEnum b : ArrayEnum.values()) {
                 if (String.valueOf(b.value).equals(text)) {
                     return b;
                 }
@@ -84,7 +84,7 @@ public class EnumArrays   {
     }
 
 
-    private List<ArrayEnumEnum> arrayEnum;
+    private List<ArrayEnum> arrayEnum;
 
     /**
      * Default constructor.
@@ -100,8 +100,8 @@ public class EnumArrays   {
      * @param arrayEnum arrayEnum
      */
     public EnumArrays(
-        JustSymbolEnum justSymbol, 
-        List<ArrayEnumEnum> arrayEnum
+        JustSymbol justSymbol, 
+        List<ArrayEnum> arrayEnum
     ) {
         this.justSymbol = justSymbol;
         this.arrayEnum = arrayEnum;
@@ -113,11 +113,11 @@ public class EnumArrays   {
      * Get justSymbol
      * @return justSymbol
      */
-    public JustSymbolEnum getJustSymbol() {
+    public JustSymbol getJustSymbol() {
         return justSymbol;
     }
 
-    public void setJustSymbol(JustSymbolEnum justSymbol) {
+    public void setJustSymbol(JustSymbol justSymbol) {
         this.justSymbol = justSymbol;
     }
 
@@ -125,11 +125,11 @@ public class EnumArrays   {
      * Get arrayEnum
      * @return arrayEnum
      */
-    public List<ArrayEnumEnum> getArrayEnum() {
+    public List<ArrayEnum> getArrayEnum() {
         return arrayEnum;
     }
 
-    public void setArrayEnum(List<ArrayEnumEnum> arrayEnum) {
+    public void setArrayEnum(List<ArrayEnum> arrayEnum) {
         this.arrayEnum = arrayEnum;
     }
 

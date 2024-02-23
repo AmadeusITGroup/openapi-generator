@@ -1,3 +1,9 @@
+/*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:47.530Z[UTC]
+ */
+
 package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -20,9 +26,17 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonTypeName("ApiResponse")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
 public class ModelApiResponse  implements Serializable {
+  
+  
   private @Valid Integer code;
+
+  
   private @Valid String type;
+
+  
   private @Valid String message;
+
+  
 
   protected ModelApiResponse(ModelApiResponseBuilder<?, ?> b) {
     this.code = b.code;
@@ -40,6 +54,7 @@ public class ModelApiResponse  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(description = "")
@@ -61,6 +76,7 @@ public class ModelApiResponse  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(description = "")
   @JsonProperty("type")
@@ -80,6 +96,7 @@ public class ModelApiResponse  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(description = "")
@@ -175,5 +192,7 @@ public class ModelApiResponse  implements Serializable {
       return self();
     }
   }
+
+  
 }
 

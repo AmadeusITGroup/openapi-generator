@@ -36,6 +36,7 @@ import org.openapitools.client.model.User;
 @RegisterRestClient
 @RegisterProvider(ApiExceptionMapper.class)
 @Path("/user")
+
 public interface UserApi  {
 
     /**

@@ -9,7 +9,7 @@ to test the default value of properties
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**arrayStringEnumRefDefault** | **List&lt;StringEnumRef&gt;** |  |  [optional] |
-|**arrayStringEnumDefault** | [**List&lt;ArrayStringEnumDefaultEnum&gt;**](#List&lt;ArrayStringEnumDefaultEnum&gt;) |  |  [optional] |
+|**arrayStringEnumDefault** | [**List&lt;ArrayStringEnumDefault&gt;**](#List&lt;ArrayStringEnumDefault&gt;) |  |  [optional] |
 |**arrayStringDefault** | **List&lt;String&gt;** |  |  [optional] |
 |**arrayIntegerDefault** | **List&lt;Integer&gt;** |  |  [optional] |
 |**arrayString** | **List&lt;String&gt;** |  |  [optional] |
@@ -19,7 +19,7 @@ to test the default value of properties
 
 
 
-## Enum: List&lt;ArrayStringEnumDefaultEnum&gt;
+## Enum: List&lt;ArrayStringEnumDefault&gt;
 
 | Name | Value |
 |---- | -----|

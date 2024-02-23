@@ -7,11 +7,11 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**kind** | [**KindEnum**](#KindEnum) |  |  [optional] |
+|**kind** | [**Kind**](#Kind) |  |  [optional] |
 
 
 
-## Enum: KindEnum
+## Enum: Kind
 
 | Name | Value |
 |---- | -----|

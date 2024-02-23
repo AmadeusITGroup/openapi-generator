@@ -27,6 +27,7 @@ import javax.validation.Valid;
  */
 @Path("/fake_classname_test")
 @Api(value = "/", description = "")
+
 public interface FakeClassnameTags123Api  {
 
     /**

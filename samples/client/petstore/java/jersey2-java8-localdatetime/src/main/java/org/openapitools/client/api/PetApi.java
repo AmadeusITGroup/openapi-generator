@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class PetApi {
   private ApiClient apiClient;
 

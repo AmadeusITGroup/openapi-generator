@@ -1,4 +1,8 @@
 /*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:43.497Z[UTC]
+ *
  * OpenAPI Petstore
  * This is a sample server Petstore server. For this sample, you can use the api key `special-key` to test the authorization filters.
  *
@@ -55,7 +59,7 @@ public class Order {
   /**
    * Order Status
    */
-  public enum StatusEnum {
+  public enum Status {
     PLACED("placed"),
     
     APPROVED("approved"),
@@ -64,7 +68,7 @@ public class Order {
 
     private String value;
 
-    StatusEnum(String value) {
+    Status(String value) {
       this.value = value;
     }
 
@@ -79,8 +83,8 @@ public class Order {
     }
 
     @JsonCreator
-    public static StatusEnum fromValue(String value) {
-      for (StatusEnum b : StatusEnum.values()) {
+    public static Status fromValue(String value) {
+      for (Status b : Status.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -90,7 +94,7 @@ public class Order {
   }
 
   public static final String JSON_PROPERTY_STATUS = "status";
-  private StatusEnum status;
+  private Status status;
 
   public static final String JSON_PROPERTY_COMPLETE = "complete";
   private Boolean complete = false;
@@ -206,7 +210,7 @@ public class Order {
   }
 
 
-  public Order status(StatusEnum status) {
+  public Order status(Status status) {
     
     this.status = status;
     return this;
@@ -221,14 +225,14 @@ public class Order {
   @JsonProperty(JSON_PROPERTY_STATUS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public StatusEnum getStatus() {
+  public Status getStatus() {
     return status;
   }
 
 
   @JsonProperty(JSON_PROPERTY_STATUS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStatus(StatusEnum status) {
+  public void setStatus(Status status) {
     this.status = status;
   }
 

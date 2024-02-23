@@ -18,6 +18,7 @@ These options may be applied as additional-properties (cli) or configOptions (pl
 
 | Option | Description | Values | Default |
 | ------ | ----------- | ------ | ------- |
+|additionalApiTypeAnnotations|Additional annotations for API (generated client interface type), class level annotations. List separated by semicolon(;) or new line (Linux or Windows)| |null|
 |additionalClientTypeAnnotations|Additional annotations for client type(class level annotations). List separated by semicolon(;) or new line (Linux or Windows)| |null|
 |additionalEnumTypeAnnotations|Additional annotations for enum type(class level annotations)| |null|
 |additionalModelTypeAnnotations|Additional annotations for model type(class level annotations). List separated by semicolon(;) or new line (Linux or Windows)| |null|

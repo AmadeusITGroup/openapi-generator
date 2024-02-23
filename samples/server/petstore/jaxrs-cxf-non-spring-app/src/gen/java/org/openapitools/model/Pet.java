@@ -38,14 +38,14 @@ public class Pet  {
   @Valid
   private List<Tag> tags;
 
-public enum StatusEnum {
+public enum Status {
 
 AVAILABLE(String.valueOf("available")), PENDING(String.valueOf("pending")), SOLD(String.valueOf("sold"));
 
 
     private String value;
 
-    StatusEnum (String v) {
+    Status (String v) {
         value = v;
     }
 
@@ -60,8 +60,8 @@ AVAILABLE(String.valueOf("available")), PENDING(String.valueOf("pending")), SOLD
     }
 
     @JsonCreator
-    public static StatusEnum fromValue(String value) {
-        for (StatusEnum b : StatusEnum.values()) {
+    public static Status fromValue(String value) {
+        for (Status b : Status.values()) {
             if (b.value.equals(value)) {
                 return b;
             }
@@ -74,7 +74,7 @@ AVAILABLE(String.valueOf("available")), PENDING(String.valueOf("pending")), SOLD
  /**
    * pet status in the store
   **/
-  private StatusEnum status;
+  private Status status;
  /**
    * Get id
    * @return id
@@ -189,11 +189,11 @@ AVAILABLE(String.valueOf("available")), PENDING(String.valueOf("pending")), SOLD
     return status.value();
   }
 
-  public void setStatus(StatusEnum status) {
+  public void setStatus(Status status) {
     this.status = status;
   }
 
-  public Pet status(StatusEnum status) {
+  public Pet status(Status status) {
     this.status = status;
     return this;
   }

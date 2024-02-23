@@ -16,7 +16,7 @@ public class EnumTest   {
   /**
    * Gets or Sets enumString
    */
-  public enum EnumStringEnum {
+  public enum EnumString {
     UPPER("UPPER"),
     
     LOWER("lower"),
@@ -25,7 +25,7 @@ public class EnumTest   {
 
     private final String value;
 
-    EnumStringEnum(String value) {
+    EnumString(String value) {
       this.value = value;
     }
 
@@ -36,8 +36,8 @@ public class EnumTest   {
     }
 
     @JsonCreator
-    public static EnumStringEnum fromValue(String value) {
-      for (EnumStringEnum b : EnumStringEnum.values()) {
+    public static EnumString fromValue(String value) {
+      for (EnumString b : EnumString.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -48,12 +48,12 @@ public class EnumTest   {
 
   @JsonProperty("enum_string")
   
-  private EnumStringEnum enumString;
+  private EnumString enumString;
 
   /**
    * Gets or Sets enumStringRequired
    */
-  public enum EnumStringRequiredEnum {
+  public enum EnumStringRequired {
     UPPER("UPPER"),
     
     LOWER("lower"),
@@ -62,7 +62,7 @@ public class EnumTest   {
 
     private final String value;
 
-    EnumStringRequiredEnum(String value) {
+    EnumStringRequired(String value) {
       this.value = value;
     }
 
@@ -73,8 +73,8 @@ public class EnumTest   {
     }
 
     @JsonCreator
-    public static EnumStringRequiredEnum fromValue(String value) {
-      for (EnumStringRequiredEnum b : EnumStringRequiredEnum.values()) {
+    public static EnumStringRequired fromValue(String value) {
+      for (EnumStringRequired b : EnumStringRequired.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -86,19 +86,19 @@ public class EnumTest   {
   @JsonProperty("enum_string_required")
   @NotNull
 
-  private EnumStringRequiredEnum enumStringRequired;
+  private EnumStringRequired enumStringRequired;
 
   /**
    * Gets or Sets enumInteger
    */
-  public enum EnumIntegerEnum {
+  public enum EnumInteger {
     NUMBER_1(1),
     
     NUMBER_MINUS_1(-1);
 
     private final Integer value;
 
-    EnumIntegerEnum(Integer value) {
+    EnumInteger(Integer value) {
       this.value = value;
     }
 
@@ -109,8 +109,8 @@ public class EnumTest   {
     }
 
     @JsonCreator
-    public static EnumIntegerEnum fromValue(Integer value) {
-      for (EnumIntegerEnum b : EnumIntegerEnum.values()) {
+    public static EnumInteger fromValue(Integer value) {
+      for (EnumInteger b : EnumInteger.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -121,19 +121,19 @@ public class EnumTest   {
 
   @JsonProperty("enum_integer")
   
-  private EnumIntegerEnum enumInteger;
+  private EnumInteger enumInteger;
 
   /**
    * Gets or Sets enumNumber
    */
-  public enum EnumNumberEnum {
+  public enum EnumNumber {
     NUMBER_1_DOT_1(1.1),
     
     NUMBER_MINUS_1_DOT_2(-1.2);
 
     private final Double value;
 
-    EnumNumberEnum(Double value) {
+    EnumNumber(Double value) {
       this.value = value;
     }
 
@@ -144,8 +144,8 @@ public class EnumTest   {
     }
 
     @JsonCreator
-    public static EnumNumberEnum fromValue(Double value) {
-      for (EnumNumberEnum b : EnumNumberEnum.values()) {
+    public static EnumNumber fromValue(Double value) {
+      for (EnumNumber b : EnumNumber.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -156,14 +156,14 @@ public class EnumTest   {
 
   @JsonProperty("enum_number")
   
-  private EnumNumberEnum enumNumber;
+  private EnumNumber enumNumber;
 
   @JsonProperty("outerEnum")
   @Valid
 
   private OuterEnum outerEnum;
 
-  public EnumTest enumString(EnumStringEnum enumString) {
+  public EnumTest enumString(EnumString enumString) {
     this.enumString = enumString;
     return this;
   }
@@ -172,15 +172,15 @@ public class EnumTest   {
    * Get enumString
    * @return enumString
   **/
-  public EnumStringEnum getEnumString() {
+  public EnumString getEnumString() {
     return enumString;
   }
 
-  public void setEnumString(EnumStringEnum enumString) {
+  public void setEnumString(EnumString enumString) {
     this.enumString = enumString;
   }
 
-  public EnumTest enumStringRequired(EnumStringRequiredEnum enumStringRequired) {
+  public EnumTest enumStringRequired(EnumStringRequired enumStringRequired) {
     this.enumStringRequired = enumStringRequired;
     return this;
   }
@@ -189,15 +189,15 @@ public class EnumTest   {
    * Get enumStringRequired
    * @return enumStringRequired
   **/
-  public EnumStringRequiredEnum getEnumStringRequired() {
+  public EnumStringRequired getEnumStringRequired() {
     return enumStringRequired;
   }
 
-  public void setEnumStringRequired(EnumStringRequiredEnum enumStringRequired) {
+  public void setEnumStringRequired(EnumStringRequired enumStringRequired) {
     this.enumStringRequired = enumStringRequired;
   }
 
-  public EnumTest enumInteger(EnumIntegerEnum enumInteger) {
+  public EnumTest enumInteger(EnumInteger enumInteger) {
     this.enumInteger = enumInteger;
     return this;
   }
@@ -206,15 +206,15 @@ public class EnumTest   {
    * Get enumInteger
    * @return enumInteger
   **/
-  public EnumIntegerEnum getEnumInteger() {
+  public EnumInteger getEnumInteger() {
     return enumInteger;
   }
 
-  public void setEnumInteger(EnumIntegerEnum enumInteger) {
+  public void setEnumInteger(EnumInteger enumInteger) {
     this.enumInteger = enumInteger;
   }
 
-  public EnumTest enumNumber(EnumNumberEnum enumNumber) {
+  public EnumTest enumNumber(EnumNumber enumNumber) {
     this.enumNumber = enumNumber;
     return this;
   }
@@ -223,11 +223,11 @@ public class EnumTest   {
    * Get enumNumber
    * @return enumNumber
   **/
-  public EnumNumberEnum getEnumNumber() {
+  public EnumNumber getEnumNumber() {
     return enumNumber;
   }
 
-  public void setEnumNumber(EnumNumberEnum enumNumber) {
+  public void setEnumNumber(EnumNumber enumNumber) {
     this.enumNumber = enumNumber;
   }
 

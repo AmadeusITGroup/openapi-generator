@@ -1,4 +1,8 @@
 /*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:43.546Z[UTC]
+ *
  * OpenAPI Petstore
  * This spec is mainly for testing Petstore server and contains fake endpoints, models. Please do not use this for any other purpose. Special characters: \" \\
  *
@@ -42,9 +46,9 @@ public class BigCatAllOf {
   /**
    * Gets or Sets kind
    */
-  @XmlType(name="KindEnum")
+  @XmlType(name="Kind")
   @XmlEnum(String.class)
-  public enum KindEnum {
+  public enum Kind {
     @XmlEnumValue("lions")
     LIONS("lions"),
     
@@ -59,7 +63,7 @@ public class BigCatAllOf {
 
     private String value;
 
-    KindEnum(String value) {
+    Kind(String value) {
       this.value = value;
     }
 
@@ -74,8 +78,8 @@ public class BigCatAllOf {
     }
 
     @JsonCreator
-    public static KindEnum fromValue(String value) {
-      for (KindEnum b : KindEnum.values()) {
+    public static Kind fromValue(String value) {
+      for (Kind b : Kind.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -86,12 +90,12 @@ public class BigCatAllOf {
 
   public static final String JSON_PROPERTY_KIND = "kind";
   @XmlElement(name = "kind")
-  private KindEnum kind;
+  private Kind kind;
 
   public BigCatAllOf() {
   }
 
-  public BigCatAllOf kind(KindEnum kind) {
+  public BigCatAllOf kind(Kind kind) {
     
     this.kind = kind;
     return this;
@@ -106,7 +110,7 @@ public class BigCatAllOf {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   @JacksonXmlProperty(localName = "kind")
 
-  public KindEnum getKind() {
+  public Kind getKind() {
     return kind;
   }
 
@@ -114,7 +118,7 @@ public class BigCatAllOf {
   @JsonProperty(JSON_PROPERTY_KIND)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   @JacksonXmlProperty(localName = "kind")
-  public void setKind(KindEnum kind) {
+  public void setKind(Kind kind) {
     this.kind = kind;
   }
 

@@ -17,14 +17,14 @@ public class EnumTest   {
     /**
     * Gets or Sets enumString
     */
-    public enum EnumStringEnum {
+    public enum EnumString {
         UPPER("UPPER"),
         LOWER("lower"),
         EMPTY("");
 
         private String value;
 
-        EnumStringEnum(String value) {
+        EnumString(String value) {
             this.value = value;
         }
 
@@ -40,8 +40,8 @@ public class EnumTest   {
 
 
         @JsonCreator
-        public static EnumStringEnum fromValue(String text) {
-            for (EnumStringEnum b : EnumStringEnum.values()) {
+        public static EnumString fromValue(String text) {
+            for (EnumString b : EnumString.values()) {
                 if (String.valueOf(b.value).equals(text)) {
                     return b;
                 }
@@ -51,19 +51,19 @@ public class EnumTest   {
     }
 
 
-    private EnumStringEnum enumString;
+    private EnumString enumString;
 
     /**
     * Gets or Sets enumStringRequired
     */
-    public enum EnumStringRequiredEnum {
+    public enum EnumStringRequired {
         UPPER("UPPER"),
         LOWER("lower"),
         EMPTY("");
 
         private String value;
 
-        EnumStringRequiredEnum(String value) {
+        EnumStringRequired(String value) {
             this.value = value;
         }
 
@@ -79,8 +79,8 @@ public class EnumTest   {
 
 
         @JsonCreator
-        public static EnumStringRequiredEnum fromValue(String text) {
-            for (EnumStringRequiredEnum b : EnumStringRequiredEnum.values()) {
+        public static EnumStringRequired fromValue(String text) {
+            for (EnumStringRequired b : EnumStringRequired.values()) {
                 if (String.valueOf(b.value).equals(text)) {
                     return b;
                 }
@@ -90,18 +90,18 @@ public class EnumTest   {
     }
 
 
-    private EnumStringRequiredEnum enumStringRequired;
+    private EnumStringRequired enumStringRequired;
 
     /**
     * Gets or Sets enumInteger
     */
-    public enum EnumIntegerEnum {
+    public enum EnumInteger {
         NUMBER_1(1),
         NUMBER_MINUS_1(-1);
 
         private Integer value;
 
-        EnumIntegerEnum(Integer value) {
+        EnumInteger(Integer value) {
             this.value = value;
         }
 
@@ -117,8 +117,8 @@ public class EnumTest   {
 
 
         @JsonCreator
-        public static EnumIntegerEnum fromValue(String text) {
-            for (EnumIntegerEnum b : EnumIntegerEnum.values()) {
+        public static EnumInteger fromValue(String text) {
+            for (EnumInteger b : EnumInteger.values()) {
                 if (String.valueOf(b.value).equals(text)) {
                     return b;
                 }
@@ -128,18 +128,18 @@ public class EnumTest   {
     }
 
 
-    private EnumIntegerEnum enumInteger;
+    private EnumInteger enumInteger;
 
     /**
     * Gets or Sets enumNumber
     */
-    public enum EnumNumberEnum {
+    public enum EnumNumber {
         NUMBER_1_DOT_1(1.1),
         NUMBER_MINUS_1_DOT_2(-1.2);
 
         private Double value;
 
-        EnumNumberEnum(Double value) {
+        EnumNumber(Double value) {
             this.value = value;
         }
 
@@ -155,8 +155,8 @@ public class EnumTest   {
 
 
         @JsonCreator
-        public static EnumNumberEnum fromValue(String text) {
-            for (EnumNumberEnum b : EnumNumberEnum.values()) {
+        public static EnumNumber fromValue(String text) {
+            for (EnumNumber b : EnumNumber.values()) {
                 if (String.valueOf(b.value).equals(text)) {
                     return b;
                 }
@@ -166,7 +166,7 @@ public class EnumTest   {
     }
 
 
-    private EnumNumberEnum enumNumber;
+    private EnumNumber enumNumber;
     private OuterEnum outerEnum;
     private OuterEnumInteger outerEnumInteger;
     private OuterEnumDefaultValue outerEnumDefaultValue = OuterEnumDefaultValue.PLACED;
@@ -192,10 +192,10 @@ public class EnumTest   {
      * @param outerEnumIntegerDefaultValue outerEnumIntegerDefaultValue
      */
     public EnumTest(
-        EnumStringEnum enumString, 
-        EnumStringRequiredEnum enumStringRequired, 
-        EnumIntegerEnum enumInteger, 
-        EnumNumberEnum enumNumber, 
+        EnumString enumString, 
+        EnumStringRequired enumStringRequired, 
+        EnumInteger enumInteger, 
+        EnumNumber enumNumber, 
         OuterEnum outerEnum, 
         OuterEnumInteger outerEnumInteger, 
         OuterEnumDefaultValue outerEnumDefaultValue, 
@@ -217,11 +217,11 @@ public class EnumTest   {
      * Get enumString
      * @return enumString
      */
-    public EnumStringEnum getEnumString() {
+    public EnumString getEnumString() {
         return enumString;
     }
 
-    public void setEnumString(EnumStringEnum enumString) {
+    public void setEnumString(EnumString enumString) {
         this.enumString = enumString;
     }
 
@@ -229,11 +229,11 @@ public class EnumTest   {
      * Get enumStringRequired
      * @return enumStringRequired
      */
-    public EnumStringRequiredEnum getEnumStringRequired() {
+    public EnumStringRequired getEnumStringRequired() {
         return enumStringRequired;
     }
 
-    public void setEnumStringRequired(EnumStringRequiredEnum enumStringRequired) {
+    public void setEnumStringRequired(EnumStringRequired enumStringRequired) {
         this.enumStringRequired = enumStringRequired;
     }
 
@@ -241,11 +241,11 @@ public class EnumTest   {
      * Get enumInteger
      * @return enumInteger
      */
-    public EnumIntegerEnum getEnumInteger() {
+    public EnumInteger getEnumInteger() {
         return enumInteger;
     }
 
-    public void setEnumInteger(EnumIntegerEnum enumInteger) {
+    public void setEnumInteger(EnumInteger enumInteger) {
         this.enumInteger = enumInteger;
     }
 
@@ -253,11 +253,11 @@ public class EnumTest   {
      * Get enumNumber
      * @return enumNumber
      */
-    public EnumNumberEnum getEnumNumber() {
+    public EnumNumber getEnumNumber() {
         return enumNumber;
     }
 
-    public void setEnumNumber(EnumNumberEnum enumNumber) {
+    public void setEnumNumber(EnumNumber enumNumber) {
         this.enumNumber = enumNumber;
     }
 

@@ -60,6 +60,7 @@ import javax.validation.Valid;
 @Api(description = "the user API")
 @Path("/user")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
+
 public class UserApi {
 
     @POST

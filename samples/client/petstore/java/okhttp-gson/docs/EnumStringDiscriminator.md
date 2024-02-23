@@ -8,11 +8,11 @@ An object to test discriminator of enum string
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**enumStrType** | [**EnumStrTypeEnum**](#EnumStrTypeEnum) | enum string type |  |
+|**enumStrType** | [**EnumStrType**](#EnumStrType) | enum string type |  |
 
 
 
-## Enum: EnumStrTypeEnum
+## Enum: EnumStrType
 
 | Name | Value |
 |---- | -----|

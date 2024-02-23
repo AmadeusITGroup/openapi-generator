@@ -50,6 +50,7 @@ import java.util.concurrent.CompletableFuture;
 {{/asyncNative}}
 
 {{>generatedAnnotation}}
+{{>additionalApiTypeAnnotations}}
 {{#operations}}
 public class {{classname}} {
   private final HttpClient memberVarHttpClient;

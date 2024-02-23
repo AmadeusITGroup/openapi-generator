@@ -12,12 +12,12 @@ An order for a pets from the pet store
 |**petId** | **Long** |  |  [optional] |
 |**quantity** | **Integer** |  |  [optional] |
 |**shipDate** | **OffsetDateTime** |  |  [optional] |
-|**status** | [**StatusEnum**](#StatusEnum) | Order Status |  [optional] |
+|**status** | [**Status**](#Status) | Order Status |  [optional] |
 |**complete** | **Boolean** |  |  [optional] |
 
 
 
-## Enum: StatusEnum
+## Enum: Status
 
 | Name | Value |
 |---- | -----|

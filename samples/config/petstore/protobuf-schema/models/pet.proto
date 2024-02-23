@@ -1,4 +1,8 @@
 /*
+  Generation info:
+    - generator version: 6.6.5-amadeus
+    - datetime: 2024-02-23T13:46:50.460Z[UTC]
+
   OpenAPI Petstore
 
   This is a sample server Petstore server. For this sample, you can use the api key `special-key` to test the authorization filters.
@@ -29,11 +33,12 @@ message Pet {
 
   // pet status in the store
   enum Status {
-    STATUS_AVAILABLE = 0;
-    STATUS_PENDING = 1;
-    STATUS_SOLD = 2;
+    AVAILABLE = 0;
+    PENDING = 1;
+    SOLD = 2;
   }
 
   Status status = 355610639;
+
 
 }

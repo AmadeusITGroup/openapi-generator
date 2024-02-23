@@ -1,3 +1,9 @@
+/*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:47.452Z[UTC]
+ */
+
 package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -19,7 +25,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonTypeName("$special[model.name]")
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
 public class SpecialModelName  implements Serializable {
+  
+  
   private @Valid Long $specialPropertyName;
+
+  
 
   protected SpecialModelName(SpecialModelNameBuilder<?, ?> b) {
     this.$specialPropertyName = b.$specialPropertyName;
@@ -35,6 +45,7 @@ public class SpecialModelName  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @JsonProperty("$special[property.name]")
@@ -115,5 +126,7 @@ public class SpecialModelName  implements Serializable {
       return self();
     }
   }
+
+  
 }
 

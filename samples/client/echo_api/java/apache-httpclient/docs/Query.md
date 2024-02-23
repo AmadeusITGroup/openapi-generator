@@ -8,11 +8,11 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**id** | **Long** | Query |  [optional] |
-|**outcomes** | [**List&lt;OutcomesEnum&gt;**](#List&lt;OutcomesEnum&gt;) |  |  [optional] |
+|**outcomes** | [**List&lt;Outcomes&gt;**](#List&lt;Outcomes&gt;) |  |  [optional] |
 
 
 
-## Enum: List&lt;OutcomesEnum&gt;
+## Enum: List&lt;Outcomes&gt;
 
 | Name | Value |
 |---- | -----|

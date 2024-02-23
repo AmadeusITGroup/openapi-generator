@@ -1,3 +1,9 @@
+/*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:47.458Z[UTC]
+ */
+
 package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
@@ -23,8 +29,14 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonTypeName("MixedPropertiesAndAdditionalPropertiesClass")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
 public class MixedPropertiesAndAdditionalPropertiesClass  implements Serializable {
+  
+  
   private @Valid UUID uuid;
+
+  
   private @Valid Date dateTime;
+
+  
   private @Valid Map<String, Animal> map = new HashMap<>();
 
   /**
@@ -34,6 +46,7 @@ public class MixedPropertiesAndAdditionalPropertiesClass  implements Serializabl
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @JsonProperty("uuid")
@@ -54,6 +67,7 @@ public class MixedPropertiesAndAdditionalPropertiesClass  implements Serializabl
   }
 
   
+  
   @ApiModelProperty(value = "")
   @JsonProperty("dateTime")
   public Date getDateTime() {
@@ -72,6 +86,7 @@ public class MixedPropertiesAndAdditionalPropertiesClass  implements Serializabl
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @JsonProperty("map")
@@ -144,5 +159,7 @@ public class MixedPropertiesAndAdditionalPropertiesClass  implements Serializabl
   }
 
 
+
+  
 }
 

@@ -14,14 +14,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class EnumTest  {
   
-public enum EnumStringEnum {
+public enum EnumString {
 
 UPPER(String.valueOf("UPPER")), LOWER(String.valueOf("lower")), EMPTY(String.valueOf(""));
 
 
     private String value;
 
-    EnumStringEnum (String v) {
+    EnumString (String v) {
         value = v;
     }
 
@@ -36,8 +36,8 @@ UPPER(String.valueOf("UPPER")), LOWER(String.valueOf("lower")), EMPTY(String.val
     }
 
     @JsonCreator
-    public static EnumStringEnum fromValue(String value) {
-        for (EnumStringEnum b : EnumStringEnum.values()) {
+    public static EnumString fromValue(String value) {
+        for (EnumString b : EnumString.values()) {
             if (b.value.equals(value)) {
                 return b;
             }
@@ -47,16 +47,16 @@ UPPER(String.valueOf("UPPER")), LOWER(String.valueOf("lower")), EMPTY(String.val
 }
 
   @ApiModelProperty(value = "")
-  private EnumStringEnum enumString;
+  private EnumString enumString;
 
-public enum EnumStringRequiredEnum {
+public enum EnumStringRequired {
 
 UPPER(String.valueOf("UPPER")), LOWER(String.valueOf("lower")), EMPTY(String.valueOf(""));
 
 
     private String value;
 
-    EnumStringRequiredEnum (String v) {
+    EnumStringRequired (String v) {
         value = v;
     }
 
@@ -71,8 +71,8 @@ UPPER(String.valueOf("UPPER")), LOWER(String.valueOf("lower")), EMPTY(String.val
     }
 
     @JsonCreator
-    public static EnumStringRequiredEnum fromValue(String value) {
-        for (EnumStringRequiredEnum b : EnumStringRequiredEnum.values()) {
+    public static EnumStringRequired fromValue(String value) {
+        for (EnumStringRequired b : EnumStringRequired.values()) {
             if (b.value.equals(value)) {
                 return b;
             }
@@ -82,16 +82,16 @@ UPPER(String.valueOf("UPPER")), LOWER(String.valueOf("lower")), EMPTY(String.val
 }
 
   @ApiModelProperty(required = true, value = "")
-  private EnumStringRequiredEnum enumStringRequired;
+  private EnumStringRequired enumStringRequired;
 
-public enum EnumIntegerEnum {
+public enum EnumInteger {
 
 NUMBER_1(Integer.valueOf(1)), NUMBER_MINUS_1(Integer.valueOf(-1));
 
 
     private Integer value;
 
-    EnumIntegerEnum (Integer v) {
+    EnumInteger (Integer v) {
         value = v;
     }
 
@@ -106,8 +106,8 @@ NUMBER_1(Integer.valueOf(1)), NUMBER_MINUS_1(Integer.valueOf(-1));
     }
 
     @JsonCreator
-    public static EnumIntegerEnum fromValue(Integer value) {
-        for (EnumIntegerEnum b : EnumIntegerEnum.values()) {
+    public static EnumInteger fromValue(Integer value) {
+        for (EnumInteger b : EnumInteger.values()) {
             if (b.value.equals(value)) {
                 return b;
             }
@@ -117,16 +117,16 @@ NUMBER_1(Integer.valueOf(1)), NUMBER_MINUS_1(Integer.valueOf(-1));
 }
 
   @ApiModelProperty(value = "")
-  private EnumIntegerEnum enumInteger;
+  private EnumInteger enumInteger;
 
-public enum EnumNumberEnum {
+public enum EnumNumber {
 
 NUMBER_1_DOT_1(Double.valueOf(1.1)), NUMBER_MINUS_1_DOT_2(Double.valueOf(-1.2));
 
 
     private Double value;
 
-    EnumNumberEnum (Double v) {
+    EnumNumber (Double v) {
         value = v;
     }
 
@@ -141,8 +141,8 @@ NUMBER_1_DOT_1(Double.valueOf(1.1)), NUMBER_MINUS_1_DOT_2(Double.valueOf(-1.2));
     }
 
     @JsonCreator
-    public static EnumNumberEnum fromValue(Double value) {
-        for (EnumNumberEnum b : EnumNumberEnum.values()) {
+    public static EnumNumber fromValue(Double value) {
+        for (EnumNumber b : EnumNumber.values()) {
             if (b.value.equals(value)) {
                 return b;
             }
@@ -152,7 +152,7 @@ NUMBER_1_DOT_1(Double.valueOf(1.1)), NUMBER_MINUS_1_DOT_2(Double.valueOf(-1.2));
 }
 
   @ApiModelProperty(value = "")
-  private EnumNumberEnum enumNumber;
+  private EnumNumber enumNumber;
 
   @ApiModelProperty(value = "")
   @Valid
@@ -169,11 +169,11 @@ NUMBER_1_DOT_1(Double.valueOf(1.1)), NUMBER_MINUS_1_DOT_2(Double.valueOf(-1.2));
     return enumString.value();
   }
 
-  public void setEnumString(EnumStringEnum enumString) {
+  public void setEnumString(EnumString enumString) {
     this.enumString = enumString;
   }
 
-  public EnumTest enumString(EnumStringEnum enumString) {
+  public EnumTest enumString(EnumString enumString) {
     this.enumString = enumString;
     return this;
   }
@@ -191,11 +191,11 @@ NUMBER_1_DOT_1(Double.valueOf(1.1)), NUMBER_MINUS_1_DOT_2(Double.valueOf(-1.2));
     return enumStringRequired.value();
   }
 
-  public void setEnumStringRequired(EnumStringRequiredEnum enumStringRequired) {
+  public void setEnumStringRequired(EnumStringRequired enumStringRequired) {
     this.enumStringRequired = enumStringRequired;
   }
 
-  public EnumTest enumStringRequired(EnumStringRequiredEnum enumStringRequired) {
+  public EnumTest enumStringRequired(EnumStringRequired enumStringRequired) {
     this.enumStringRequired = enumStringRequired;
     return this;
   }
@@ -212,11 +212,11 @@ NUMBER_1_DOT_1(Double.valueOf(1.1)), NUMBER_MINUS_1_DOT_2(Double.valueOf(-1.2));
     return enumInteger.value();
   }
 
-  public void setEnumInteger(EnumIntegerEnum enumInteger) {
+  public void setEnumInteger(EnumInteger enumInteger) {
     this.enumInteger = enumInteger;
   }
 
-  public EnumTest enumInteger(EnumIntegerEnum enumInteger) {
+  public EnumTest enumInteger(EnumInteger enumInteger) {
     this.enumInteger = enumInteger;
     return this;
   }
@@ -233,11 +233,11 @@ NUMBER_1_DOT_1(Double.valueOf(1.1)), NUMBER_MINUS_1_DOT_2(Double.valueOf(-1.2));
     return enumNumber.value();
   }
 
-  public void setEnumNumber(EnumNumberEnum enumNumber) {
+  public void setEnumNumber(EnumNumber enumNumber) {
     this.enumNumber = enumNumber;
   }
 
-  public EnumTest enumNumber(EnumNumberEnum enumNumber) {
+  public EnumTest enumNumber(EnumNumber enumNumber) {
     this.enumNumber = enumNumber;
     return this;
   }

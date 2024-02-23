@@ -57,7 +57,7 @@ public class Order  implements Serializable {
   /**
    * Order Status
    */
-  public enum StatusEnum {
+  public enum Status {
     PLACED("placed"),
     
     APPROVED("approved"),
@@ -66,7 +66,7 @@ public class Order  implements Serializable {
 
     private String value;
 
-    StatusEnum(String value) {
+    Status(String value) {
       this.value = value;
     }
 
@@ -77,8 +77,8 @@ public class Order  implements Serializable {
     }
 
     @JsonCreator
-    public static StatusEnum fromValue(String value) {
-      for (StatusEnum b : StatusEnum.values()) {
+    public static Status fromValue(String value) {
+      for (Status b : Status.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -89,7 +89,7 @@ public class Order  implements Serializable {
 
   public static final String JSON_PROPERTY_STATUS = "status";
   @JsonProperty(JSON_PROPERTY_STATUS)
-  private StatusEnum status;
+  private Status status;
 
   public static final String JSON_PROPERTY_COMPLETE = "complete";
   @JsonProperty(JSON_PROPERTY_COMPLETE)
@@ -175,7 +175,7 @@ public class Order  implements Serializable {
     this.shipDate = shipDate;
   }
 
-  public Order status(StatusEnum status) {
+  public Order status(Status status) {
     this.status = status;
     return this;
   }
@@ -187,11 +187,11 @@ public class Order  implements Serializable {
   @JsonProperty(value = "status")
   @ApiModelProperty(value = "Order Status")
   
-  public StatusEnum getStatus() {
+  public Status getStatus() {
     return status;
   }
 
-  public void setStatus(StatusEnum status) {
+  public void setStatus(Status status) {
     this.status = status;
   }
 

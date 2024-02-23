@@ -27,6 +27,7 @@ import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 
 @io.swagger.annotations.Api(description = "the pet API")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen")
+
 public interface PetApi  {
 
     @POST

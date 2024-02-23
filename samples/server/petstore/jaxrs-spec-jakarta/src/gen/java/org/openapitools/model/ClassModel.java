@@ -1,3 +1,9 @@
+/*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:47.452Z[UTC]
+ */
+
 package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
@@ -20,7 +26,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonTypeName("ClassModel")
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
 public class ClassModel  implements Serializable {
+  
+  
   private @Valid String propertyClass;
+
+  
 
   protected ClassModel(ClassModelBuilder<?, ?> b) {
     this.propertyClass = b.propertyClass;
@@ -36,6 +46,7 @@ public class ClassModel  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @JsonProperty("_class")
@@ -116,5 +127,7 @@ public class ClassModel  implements Serializable {
       return self();
     }
   }
+
+  
 }
 

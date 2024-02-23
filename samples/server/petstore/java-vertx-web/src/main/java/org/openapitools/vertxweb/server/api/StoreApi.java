@@ -10,6 +10,7 @@ import io.vertx.core.json.JsonObject;
 import java.util.List;
 import java.util.Map;
 
+
 public interface StoreApi  {
     Future<ApiResponse<Void>> deleteOrder(String orderId);
     Future<ApiResponse<Map<String, Integer>>> getInventory();

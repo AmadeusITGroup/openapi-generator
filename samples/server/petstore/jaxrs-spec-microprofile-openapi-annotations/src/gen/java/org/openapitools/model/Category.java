@@ -1,3 +1,9 @@
+/*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:47.530Z[UTC]
+ */
+
 package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
@@ -19,8 +25,14 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonTypeName("Category")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
 public class Category  implements Serializable {
+  
+  
   private @Valid Long id;
+
+  
   private @Valid String name = "default-name";
+
+  
 
   protected Category(CategoryBuilder<?, ?> b) {
     this.id = b.id;
@@ -37,6 +49,7 @@ public class Category  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(description = "")
@@ -57,6 +70,7 @@ public class Category  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(required = true, value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(required = true, description = "")
@@ -146,5 +160,7 @@ public class Category  implements Serializable {
       return self();
     }
   }
+
+  
 }
 

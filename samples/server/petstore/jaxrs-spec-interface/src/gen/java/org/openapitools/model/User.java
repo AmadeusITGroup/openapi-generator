@@ -1,3 +1,9 @@
+/*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:47.458Z[UTC]
+ */
+
 package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
@@ -18,13 +24,29 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonTypeName("User")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
 public class User  implements Serializable {
+  
+  
   private @Valid Long id;
+
+  
   private @Valid String username;
+
+  
   private @Valid String firstName;
+
+  
   private @Valid String lastName;
+
+  
   private @Valid String email;
+
+  
   private @Valid String password;
+
+  
   private @Valid String phone;
+
+  
   private @Valid Integer userStatus;
 
   /**
@@ -34,6 +56,7 @@ public class User  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @JsonProperty("id")
@@ -54,6 +77,7 @@ public class User  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(value = "")
   @JsonProperty("username")
   public String getUsername() {
@@ -72,6 +96,7 @@ public class User  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @JsonProperty("firstName")
@@ -92,6 +117,7 @@ public class User  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(value = "")
   @JsonProperty("lastName")
   public String getLastName() {
@@ -110,6 +136,7 @@ public class User  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @JsonProperty("email")
@@ -130,6 +157,7 @@ public class User  implements Serializable {
   }
 
   
+  
   @ApiModelProperty(value = "")
   @JsonProperty("password")
   public String getPassword() {
@@ -148,6 +176,7 @@ public class User  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "")
   @JsonProperty("phone")
@@ -168,6 +197,7 @@ public class User  implements Serializable {
     return this;
   }
 
+  
   
   @ApiModelProperty(value = "User Status")
   @JsonProperty("userStatus")
@@ -234,5 +264,7 @@ public class User  implements Serializable {
   }
 
 
+
+  
 }
 

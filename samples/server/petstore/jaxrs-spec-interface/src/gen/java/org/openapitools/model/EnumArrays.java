@@ -1,3 +1,9 @@
+/*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:47.458Z[UTC]
+ */
+
 package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
@@ -20,14 +26,16 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonTypeName("EnumArrays")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
 public class EnumArrays  implements Serializable {
-  public enum JustSymbolEnum {
+  
 
-    GREATER_THAN_OR_EQUAL_TO(String.valueOf(">=")), DOLLAR(String.valueOf("$"));
+public enum JustSymbol {
+
+    GREATER_THAN_OR_EQUAL_TO(String.valueOf(">=")), __(String.valueOf("__"));
 
 
     private String value;
 
-    JustSymbolEnum (String v) {
+    JustSymbol (String v) {
         value = v;
     }
 
@@ -45,8 +53,8 @@ public class EnumArrays  implements Serializable {
      * Convert a String into String, as specified in the
      * <a href="https://download.oracle.com/otndocs/jcp/jaxrs-2_0-fr-eval-spec/index.html">See JAX RS 2.0 Specification, section 3.2, p. 12</a>
      */
-	public static JustSymbolEnum fromString(String s) {
-        for (JustSymbolEnum b : JustSymbolEnum.values()) {
+	public static JustSymbol fromString(String s) {
+        for (JustSymbol b : JustSymbol.values()) {
             // using Objects.toString() to be safe if value type non-object type
             // because types like 'int' etc. will be auto-boxed
             if (java.util.Objects.toString(b.value).equals(s)) {
@@ -57,8 +65,8 @@ public class EnumArrays  implements Serializable {
 	}
 	
     @JsonCreator
-    public static JustSymbolEnum fromValue(String value) {
-        for (JustSymbolEnum b : JustSymbolEnum.values()) {
+    public static JustSymbol fromValue(String value) {
+        for (JustSymbol b : JustSymbol.values()) {
             if (b.value.equals(value)) {
                 return b;
             }
@@ -67,15 +75,18 @@ public class EnumArrays  implements Serializable {
     }
 }
 
-  private @Valid JustSymbolEnum justSymbol;
-  public enum ArrayEnumEnum {
+  
+  private @Valid JustSymbol justSymbol;
 
-    FISH(String.valueOf("fish")), CRAB(String.valueOf("crab"));
+
+public enum ArrayEnum {
+
+    FISH(String.valueOf("FISH")), CRAB(String.valueOf("CRAB"));
 
 
     private String value;
 
-    ArrayEnumEnum (String v) {
+    ArrayEnum (String v) {
         value = v;
     }
 
@@ -93,8 +104,8 @@ public class EnumArrays  implements Serializable {
      * Convert a String into String, as specified in the
      * <a href="https://download.oracle.com/otndocs/jcp/jaxrs-2_0-fr-eval-spec/index.html">See JAX RS 2.0 Specification, section 3.2, p. 12</a>
      */
-	public static ArrayEnumEnum fromString(String s) {
-        for (ArrayEnumEnum b : ArrayEnumEnum.values()) {
+	public static ArrayEnum fromString(String s) {
+        for (ArrayEnum b : ArrayEnum.values()) {
             // using Objects.toString() to be safe if value type non-object type
             // because types like 'int' etc. will be auto-boxed
             if (java.util.Objects.toString(b.value).equals(s)) {
@@ -105,8 +116,8 @@ public class EnumArrays  implements Serializable {
 	}
 	
     @JsonCreator
-    public static ArrayEnumEnum fromValue(String value) {
-        for (ArrayEnumEnum b : ArrayEnumEnum.values()) {
+    public static ArrayEnum fromValue(String value) {
+        for (ArrayEnum b : ArrayEnum.values()) {
             if (b.value.equals(value)) {
                 return b;
             }
@@ -115,47 +126,50 @@ public class EnumArrays  implements Serializable {
     }
 }
 
-  private @Valid List<ArrayEnumEnum> arrayEnum;
+  
+  private @Valid List<ArrayEnum> arrayEnum;
 
   /**
    **/
-  public EnumArrays justSymbol(JustSymbolEnum justSymbol) {
+  public EnumArrays justSymbol(JustSymbol justSymbol) {
     this.justSymbol = justSymbol;
     return this;
   }
 
   
+  
   @ApiModelProperty(value = "")
   @JsonProperty("just_symbol")
-  public JustSymbolEnum getJustSymbol() {
+  public JustSymbol getJustSymbol() {
     return justSymbol;
   }
 
   @JsonProperty("just_symbol")
-  public void setJustSymbol(JustSymbolEnum justSymbol) {
+  public void setJustSymbol(JustSymbol justSymbol) {
     this.justSymbol = justSymbol;
   }
 
   /**
    **/
-  public EnumArrays arrayEnum(List<ArrayEnumEnum> arrayEnum) {
+  public EnumArrays arrayEnum(List<ArrayEnum> arrayEnum) {
     this.arrayEnum = arrayEnum;
     return this;
   }
 
   
+  
   @ApiModelProperty(value = "")
   @JsonProperty("array_enum")
-  public List<ArrayEnumEnum> getArrayEnum() {
+  public List<ArrayEnum> getArrayEnum() {
     return arrayEnum;
   }
 
   @JsonProperty("array_enum")
-  public void setArrayEnum(List<ArrayEnumEnum> arrayEnum) {
+  public void setArrayEnum(List<ArrayEnum> arrayEnum) {
     this.arrayEnum = arrayEnum;
   }
 
-  public EnumArrays addArrayEnumItem(ArrayEnumEnum arrayEnumItem) {
+  public EnumArrays addArrayEnumItem(ArrayEnum arrayEnumItem) {
     if (this.arrayEnum == null) {
       this.arrayEnum = new ArrayList<>();
     }
@@ -164,7 +178,7 @@ public class EnumArrays  implements Serializable {
     return this;
   }
 
-  public EnumArrays removeArrayEnumItem(ArrayEnumEnum arrayEnumItem) {
+  public EnumArrays removeArrayEnumItem(ArrayEnum arrayEnumItem) {
     if (arrayEnumItem != null && this.arrayEnum != null) {
       this.arrayEnum.remove(arrayEnumItem);
     }
@@ -213,5 +227,7 @@ public class EnumArrays  implements Serializable {
   }
 
 
+
+  
 }
 

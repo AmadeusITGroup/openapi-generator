@@ -38,6 +38,7 @@ import java.util.Set;
 @RegisterRestClient
 @RegisterProvider(ApiExceptionMapper.class)
 @Path("")
+
 public interface PetApi  {
 
     /**

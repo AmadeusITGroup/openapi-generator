@@ -1,4 +1,8 @@
 /*
+ * Generation info:
+ *   - generator version: 6.6.5-amadeus
+ *   - datetime: 2024-02-23T13:46:43.546Z[UTC]
+ *
  * OpenAPI Petstore
  * This spec is mainly for testing Petstore server and contains fake endpoints, models. Please do not use this for any other purpose. Special characters: \" \\
  *
@@ -47,9 +51,9 @@ public class EnumTest {
   /**
    * Gets or Sets enumString
    */
-  @XmlType(name="EnumStringEnum")
+  @XmlType(name="EnumString")
   @XmlEnum(String.class)
-  public enum EnumStringEnum {
+  public enum EnumString {
     @XmlEnumValue("UPPER")
     UPPER("UPPER"),
     
@@ -61,7 +65,7 @@ public class EnumTest {
 
     private String value;
 
-    EnumStringEnum(String value) {
+    EnumString(String value) {
       this.value = value;
     }
 
@@ -76,8 +80,8 @@ public class EnumTest {
     }
 
     @JsonCreator
-    public static EnumStringEnum fromValue(String value) {
-      for (EnumStringEnum b : EnumStringEnum.values()) {
+    public static EnumString fromValue(String value) {
+      for (EnumString b : EnumString.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -88,14 +92,14 @@ public class EnumTest {
 
   public static final String JSON_PROPERTY_ENUM_STRING = "enum_string";
   @XmlElement(name = "enum_string")
-  private EnumStringEnum enumString;
+  private EnumString enumString;
 
   /**
    * Gets or Sets enumStringRequired
    */
-  @XmlType(name="EnumStringRequiredEnum")
+  @XmlType(name="EnumStringRequired")
   @XmlEnum(String.class)
-  public enum EnumStringRequiredEnum {
+  public enum EnumStringRequired {
     @XmlEnumValue("UPPER")
     UPPER("UPPER"),
     
@@ -107,7 +111,7 @@ public class EnumTest {
 
     private String value;
 
-    EnumStringRequiredEnum(String value) {
+    EnumStringRequired(String value) {
       this.value = value;
     }
 
@@ -122,8 +126,8 @@ public class EnumTest {
     }
 
     @JsonCreator
-    public static EnumStringRequiredEnum fromValue(String value) {
-      for (EnumStringRequiredEnum b : EnumStringRequiredEnum.values()) {
+    public static EnumStringRequired fromValue(String value) {
+      for (EnumStringRequired b : EnumStringRequired.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -134,14 +138,14 @@ public class EnumTest {
 
   public static final String JSON_PROPERTY_ENUM_STRING_REQUIRED = "enum_string_required";
   @XmlElement(name = "enum_string_required")
-  private EnumStringRequiredEnum enumStringRequired;
+  private EnumStringRequired enumStringRequired;
 
   /**
    * Gets or Sets enumInteger
    */
-  @XmlType(name="EnumIntegerEnum")
+  @XmlType(name="EnumInteger")
   @XmlEnum(Integer.class)
-  public enum EnumIntegerEnum {
+  public enum EnumInteger {
     @XmlEnumValue("1")
     NUMBER_1(1),
     
@@ -150,7 +154,7 @@ public class EnumTest {
 
     private Integer value;
 
-    EnumIntegerEnum(Integer value) {
+    EnumInteger(Integer value) {
       this.value = value;
     }
 
@@ -165,8 +169,8 @@ public class EnumTest {
     }
 
     @JsonCreator
-    public static EnumIntegerEnum fromValue(Integer value) {
-      for (EnumIntegerEnum b : EnumIntegerEnum.values()) {
+    public static EnumInteger fromValue(Integer value) {
+      for (EnumInteger b : EnumInteger.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -177,14 +181,14 @@ public class EnumTest {
 
   public static final String JSON_PROPERTY_ENUM_INTEGER = "enum_integer";
   @XmlElement(name = "enum_integer")
-  private EnumIntegerEnum enumInteger;
+  private EnumInteger enumInteger;
 
   /**
    * Gets or Sets enumNumber
    */
-  @XmlType(name="EnumNumberEnum")
+  @XmlType(name="EnumNumber")
   @XmlEnum(Double.class)
-  public enum EnumNumberEnum {
+  public enum EnumNumber {
     @XmlEnumValue("1.1")
     NUMBER_1_DOT_1(1.1),
     
@@ -193,7 +197,7 @@ public class EnumTest {
 
     private Double value;
 
-    EnumNumberEnum(Double value) {
+    EnumNumber(Double value) {
       this.value = value;
     }
 
@@ -208,8 +212,8 @@ public class EnumTest {
     }
 
     @JsonCreator
-    public static EnumNumberEnum fromValue(Double value) {
-      for (EnumNumberEnum b : EnumNumberEnum.values()) {
+    public static EnumNumber fromValue(Double value) {
+      for (EnumNumber b : EnumNumber.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -220,7 +224,7 @@ public class EnumTest {
 
   public static final String JSON_PROPERTY_ENUM_NUMBER = "enum_number";
   @XmlElement(name = "enum_number")
-  private EnumNumberEnum enumNumber;
+  private EnumNumber enumNumber;
 
   public static final String JSON_PROPERTY_OUTER_ENUM = "outerEnum";
   @XmlElement(name = "outerEnum")
@@ -229,7 +233,7 @@ public class EnumTest {
   public EnumTest() {
   }
 
-  public EnumTest enumString(EnumStringEnum enumString) {
+  public EnumTest enumString(EnumString enumString) {
     
     this.enumString = enumString;
     return this;
@@ -244,7 +248,7 @@ public class EnumTest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   @JacksonXmlProperty(localName = "enum_string")
 
-  public EnumStringEnum getEnumString() {
+  public EnumString getEnumString() {
     return enumString;
   }
 
@@ -252,12 +256,12 @@ public class EnumTest {
   @JsonProperty(JSON_PROPERTY_ENUM_STRING)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   @JacksonXmlProperty(localName = "enum_string")
-  public void setEnumString(EnumStringEnum enumString) {
+  public void setEnumString(EnumString enumString) {
     this.enumString = enumString;
   }
 
 
-  public EnumTest enumStringRequired(EnumStringRequiredEnum enumStringRequired) {
+  public EnumTest enumStringRequired(EnumStringRequired enumStringRequired) {
     
     this.enumStringRequired = enumStringRequired;
     return this;
@@ -272,7 +276,7 @@ public class EnumTest {
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   @JacksonXmlProperty(localName = "enum_string_required")
 
-  public EnumStringRequiredEnum getEnumStringRequired() {
+  public EnumStringRequired getEnumStringRequired() {
     return enumStringRequired;
   }
 
@@ -280,12 +284,12 @@ public class EnumTest {
   @JsonProperty(JSON_PROPERTY_ENUM_STRING_REQUIRED)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   @JacksonXmlProperty(localName = "enum_string_required")
-  public void setEnumStringRequired(EnumStringRequiredEnum enumStringRequired) {
+  public void setEnumStringRequired(EnumStringRequired enumStringRequired) {
     this.enumStringRequired = enumStringRequired;
   }
 
 
-  public EnumTest enumInteger(EnumIntegerEnum enumInteger) {
+  public EnumTest enumInteger(EnumInteger enumInteger) {
     
     this.enumInteger = enumInteger;
     return this;
@@ -300,7 +304,7 @@ public class EnumTest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   @JacksonXmlProperty(localName = "enum_integer")
 
-  public EnumIntegerEnum getEnumInteger() {
+  public EnumInteger getEnumInteger() {
     return enumInteger;
   }
 
@@ -308,12 +312,12 @@ public class EnumTest {
   @JsonProperty(JSON_PROPERTY_ENUM_INTEGER)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   @JacksonXmlProperty(localName = "enum_integer")
-  public void setEnumInteger(EnumIntegerEnum enumInteger) {
+  public void setEnumInteger(EnumInteger enumInteger) {
     this.enumInteger = enumInteger;
   }
 
 
-  public EnumTest enumNumber(EnumNumberEnum enumNumber) {
+  public EnumTest enumNumber(EnumNumber enumNumber) {
     
     this.enumNumber = enumNumber;
     return this;
@@ -328,7 +332,7 @@ public class EnumTest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   @JacksonXmlProperty(localName = "enum_number")
 
-  public EnumNumberEnum getEnumNumber() {
+  public EnumNumber getEnumNumber() {
     return enumNumber;
   }
 
@@ -336,7 +340,7 @@ public class EnumTest {
   @JsonProperty(JSON_PROPERTY_ENUM_NUMBER)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   @JacksonXmlProperty(localName = "enum_number")
-  public void setEnumNumber(EnumNumberEnum enumNumber) {
+  public void setEnumNumber(EnumNumber enumNumber) {
     this.enumNumber = enumNumber;
   }
 

@@ -8,6 +8,7 @@ import io.vertx.core.json.JsonObject;
 
 import java.util.*;
 
+
 public interface StoreApi {
 
     void deleteOrder(String orderId, Handler<AsyncResult<Void>> handler);

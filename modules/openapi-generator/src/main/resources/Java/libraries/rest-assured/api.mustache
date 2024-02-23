@@ -39,6 +39,7 @@ import static io.restassured.http.Method.*;
 {{#swagger1AnnotationLibrary}}
 @Api(value = "{{{baseName}}}")
 {{/swagger1AnnotationLibrary}}
+{{>additionalApiTypeAnnotations}}
 public class {{classname}} {
 
     private Supplier<RequestSpecBuilder> reqSpecSupplier;
