@@ -1,6 +1,6 @@
 /*
  * Generation info:
- *   - generator version: 6.6.5-amadeus
+ *   - generator version: 7.4.0-amadeus
  *   - datetime: 2023-08-22T08:19:21.786034800Z[UTC]
  */
 
@@ -22,9 +22,12 @@ import java.util.List;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+/**
+* Represents a collection of functions to interact with the API endpoints.
+*/
 @Path("/pet")
 @Api(description = "the pet API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", comments = "Generator version: 7.4.0-amadeus")
 public class PetApi {
 
     @POST

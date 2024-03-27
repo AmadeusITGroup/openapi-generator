@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.FileDto;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -21,7 +22,7 @@ import jakarta.annotation.Generated;
  */
 
 @JsonTypeName("FileSchemaTestClass")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", comments = "Generator version: 7.4.0-amadeus")
 public class FileSchemaTestClassDto {
 
   private FileDto file;

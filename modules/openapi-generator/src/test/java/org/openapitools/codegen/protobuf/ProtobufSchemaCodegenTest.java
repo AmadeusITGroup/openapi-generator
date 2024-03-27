@@ -18,7 +18,9 @@ package org.openapitools.codegen.protobuf;
 
 import org.apache.commons.io.FileUtils;
 import org.mockito.MockedStatic;
+import io.swagger.v3.oas.models.OpenAPI;
 import org.openapitools.codegen.ClientOptInput;
+import org.openapitools.codegen.CodegenModel;
 import org.openapitools.codegen.DefaultGenerator;
 import org.openapitools.codegen.TestUtils;
 import org.openapitools.codegen.config.CodegenConfigurator;
@@ -815,7 +817,19 @@ public class ProtobufSchemaCodegenTest {
 
         final ClientOptInput clientOptInput = configurator.toClientOptInput();
         DefaultGenerator generator = new DefaultGenerator();
-        
+
         return generator.opts(clientOptInput).generate();
+    }
+
+    @Test(description = "convert a model with dollar signs")
+    public void modelTest() {
+        final OpenAPI openAPI = TestUtils.parseFlattenSpec("src/test/resources/3_0/dollar-in-names-pull14359.yaml");
+        final ProtobufSchemaCodegen codegen = new ProtobufSchemaCodegen();
+
+        codegen.setOpenAPI(openAPI);
+        final CodegenModel simpleName = codegen.fromModel("$DollarModel$", openAPI.getComponents().getSchemas().get("$DollarModel$"));
+        Assert.assertEquals(simpleName.name, "$DollarModel$");
+        Assert.assertEquals(simpleName.classname, "DollarModel");
+        Assert.assertEquals(simpleName.classVarName, "$DollarModel$");
     }
 }

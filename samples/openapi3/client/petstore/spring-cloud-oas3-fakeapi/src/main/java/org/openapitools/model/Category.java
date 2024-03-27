@@ -18,7 +18,7 @@ import javax.annotation.Generated;
  * Category
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", comments = "Generator version: 7.4.0-amadeus")
 public class Category {
 
   private Long id;

@@ -4,12 +4,12 @@
 #include "order.h"
 
 
-char* statusorder_ToString(openapi_petstore_order_STATUS_e status) {
+char* order_status_ToString(openapi_petstore_order_STATUS_e status) {
     char* statusArray[] =  { "NULL", "placed", "approved", "delivered" };
-	return statusArray[status];
+    return statusArray[status];
 }
 
-openapi_petstore_order_STATUS_e statusorder_FromString(char* status){
+openapi_petstore_order_STATUS_e order_status_FromString(char* status){
     int stringToReturn = 0;
     char *statusArray[] =  { "NULL", "placed", "approved", "delivered" };
     size_t sizeofArray = sizeof(statusArray) / sizeof(statusArray[0]);
@@ -164,7 +164,7 @@ order_t *order_parseFromJSON(cJSON *orderJSON){
     {
     goto end; //Enum
     }
-    statusVariable = statusorder_FromString(status->valuestring);
+    statusVariable = order_status_FromString(status->valuestring);
     }
 
     // order->complete
@@ -182,7 +182,7 @@ order_t *order_parseFromJSON(cJSON *orderJSON){
         pet_id ? pet_id->valuedouble : 0,
         quantity ? quantity->valuedouble : 0,
         ship_date && !cJSON_IsNull(ship_date) ? strdup(ship_date->valuestring) : NULL,
-        status ? statusVariable : -1,
+        status ? statusVariable : openapi_petstore_order_STATUS_NULL,
         complete ? complete->valueint : 0
         );
 

@@ -1,12 +1,13 @@
 /*
  * Generation info:
- *   - generator version: 6.6.5-amadeus
+ *   - generator version: 7.4.0-amadeus
  *   - datetime: 2023-08-22T08:19:21.786034800Z[UTC]
  */
 
 package org.openapitools.api;
 
 import org.openapitools.model.Client;
+import java.util.UUID;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
@@ -19,9 +20,12 @@ import java.util.List;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+/**
+* Represents a collection of functions to interact with the API endpoints.
+*/
 @Path("/another-fake/dummy")
 @Api(description = "the another-fake API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", comments = "Generator version: 7.4.0-amadeus")
 public class AnotherFakeApi {
 
     @PATCH
@@ -31,7 +35,7 @@ public class AnotherFakeApi {
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Client.class)
     })
-    public Response call123testSpecialTags(@Valid @NotNull Client body) {
+    public Response call123testSpecialTags(@HeaderParam("uuid_test") @NotNull   @ApiParam("to test uuid example value") UUID uuidTest,@Valid @NotNull Client body) {
         return Response.ok().entity("magic!").build();
     }
 }

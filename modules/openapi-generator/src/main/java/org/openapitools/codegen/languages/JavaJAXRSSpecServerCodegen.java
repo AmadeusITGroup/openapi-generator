@@ -23,10 +23,12 @@ import org.openapitools.codegen.*;
 import org.openapitools.codegen.meta.features.DocumentationFeature;
 import org.openapitools.codegen.model.ModelMap;
 import org.openapitools.codegen.model.ModelsMap;
+import org.openapitools.codegen.model.OperationsMap;
+import org.openapitools.codegen.meta.features.SecurityFeature;
 
 import java.io.File;
-import java.util.HashMap;
 import java.util.List;
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
@@ -76,7 +78,13 @@ public class JavaJAXRSSpecServerCodegen extends AbstractJavaJAXRSServerCodegen {
     public JavaJAXRSSpecServerCodegen() {
         super();
 
-        modifyFeatureSet(features -> features.includeDocumentationFeatures(DocumentationFeature.Readme));
+        modifyFeatureSet(features -> features
+                .includeDocumentationFeatures(DocumentationFeature.Readme)
+                .includeSecurityFeatures(SecurityFeature.OpenIDConnect,//quarkus only
+                        SecurityFeature.OAuth2_ClientCredentials,
+                        SecurityFeature.OAuth2_AuthorizationCode,
+                        SecurityFeature.OAuth2_Password)
+        );
 
         invokerPackage = "org.openapitools.api";
         artifactId = "openapi-jaxrs-server";
@@ -214,20 +222,19 @@ public class JavaJAXRSSpecServerCodegen extends AbstractJavaJAXRSServerCodegen {
 
         supportingFiles.clear(); // Don't need extra files provided by AbstractJAX-RS & Java Codegen
         supportingFiles.add(new SupportingFile("README.mustache", "", "README.md")
-            .doNotOverwrite());
+                .doNotOverwrite());
         supportingFiles.add(new SupportingFile("RestResourceRoot.mustache",
                 (sourceFolder + '/' + invokerPackage).replace(".", "/"), "RestResourceRoot.java")
                 .doNotOverwrite());
 
         if (generatePom) {
             supportingFiles.add(new SupportingFile("pom.mustache", "", "pom.xml")
-                .doNotOverwrite());
+                    .doNotOverwrite());
         }
-        if (!interfaceOnly) {
-            supportingFiles.add(new SupportingFile("RestApplication.mustache",
-                    (sourceFolder + '/' + invokerPackage).replace(".", "/"), "RestApplication.java")
+
+        supportingFiles.add(new SupportingFile("RestApplication.mustache",
+                (sourceFolder + '/' + invokerPackage).replace(".", "/"), "RestApplication.java")
                 .doNotOverwrite());
-        }
 
         if(StringUtils.isNotEmpty(openApiSpecFileLocation)) {
             int index = openApiSpecFileLocation.lastIndexOf('/');
@@ -392,6 +399,13 @@ public class JavaJAXRSSpecServerCodegen extends AbstractJavaJAXRSServerCodegen {
         }
     }
 
+    @Override
+    public OperationsMap postProcessOperationsWithModels(OperationsMap objs, List<ModelMap> allModels) {
+        objs = super.postProcessOperationsWithModels(objs, allModels);
+        removeImport(objs, "java.util.List");
+        return objs;
+    }
+
     /**
      * Adds unknown value to the enum allowable values
      *
@@ -435,8 +449,8 @@ public class JavaJAXRSSpecServerCodegen extends AbstractJavaJAXRSServerCodegen {
             model.getVars().stream()
                     .filter(property -> property.isEnum)
                     .forEach(property -> {
-                            addUnknownToAllowableValues(property.allowableValues);
-                            addEnumValuesPrefix(property.allowableValues, property.baseName, property.baseType);
+                        addUnknownToAllowableValues(property.allowableValues);
+                        addEnumValuesPrefix(property.allowableValues, property.baseName, property.baseType);
                     });
         }
 

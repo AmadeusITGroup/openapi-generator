@@ -1,3 +1,4 @@
+Generator version: 7.4.0-amadeus
 
 ## Getting Started
 

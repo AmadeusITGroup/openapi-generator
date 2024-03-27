@@ -18,7 +18,6 @@ import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import java.util.Objects;
-import java.util.Arrays;
 import java.util.Map;
 import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -29,6 +28,7 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.Arrays;
 import org.openapitools.client.model.Quadrilateral;
 import org.openapitools.client.model.Triangle;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -61,7 +61,7 @@ import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 import org.openapitools.client.JSON;
 
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.4.0-amadeus")
 @JsonDeserialize(using = ShapeOrNull.ShapeOrNullDeserializer.class)
 @JsonSerialize(using = ShapeOrNull.ShapeOrNullSerializer.class)
 public class ShapeOrNull extends AbstractOpenApiSchema {

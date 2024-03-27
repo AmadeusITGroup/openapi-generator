@@ -1,7 +1,5 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,7 +9,6 @@ import java.io.Serializable;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
-import io.swagger.annotations.*;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -22,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 @org.eclipse.microprofile.openapi.annotations.media.Schema(description="")
 @JsonTypeName("MixedPropertiesAndAdditionalPropertiesClass")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", comments = "Generator version: 7.4.0-amadeus")
 public class MixedPropertiesAndAdditionalPropertiesClass  implements Serializable {
   private @Valid UUID uuid;
   private @Valid LocalDateTime dateTime;
@@ -45,7 +42,6 @@ public class MixedPropertiesAndAdditionalPropertiesClass  implements Serializabl
   }
 
   
-  @ApiModelProperty(value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(description = "")
   @JsonProperty("uuid")
   public UUID getUuid() {
@@ -65,7 +61,6 @@ public class MixedPropertiesAndAdditionalPropertiesClass  implements Serializabl
   }
 
   
-  @ApiModelProperty(value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(description = "")
   @JsonProperty("dateTime")
   public LocalDateTime getDateTime() {
@@ -85,7 +80,6 @@ public class MixedPropertiesAndAdditionalPropertiesClass  implements Serializabl
   }
 
   
-  @ApiModelProperty(value = "")
   @org.eclipse.microprofile.openapi.annotations.media.Schema(description = "")
   @JsonProperty("map")
   public Map<String, Animal> getMap() {

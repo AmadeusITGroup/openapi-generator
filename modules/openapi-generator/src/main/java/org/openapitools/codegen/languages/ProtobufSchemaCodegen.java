@@ -1177,7 +1177,7 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
             }
         } else if (ModelUtils.isStringSchema(p)) {
             if (p.getDefault() != null) {
-                if (Pattern.compile("\r\n|\r|\n").matcher((String) p.getDefault()).find())
+                if (Pattern.compile("\r\n|\r|\n").matcher(String.valueOf(p.getDefault())).find())
                     return "'''" + p.getDefault() + "'''";
                 else
                     return "'" + p.getDefault() + "'";
@@ -1255,7 +1255,7 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
     public String toModelName(String name) {
         name = sanitizeName(name); // FIXME: a parameter should not be assigned. Also declare the methods parameters as 'final'.
         // remove dollar sign
-        name = name.replaceAll("$", "");
+        name = name.replace("$", "");
 
         // model name cannot use reserved keyword, e.g. return
         if (isReservedWord(name)) {
@@ -1430,7 +1430,7 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
             Schema inner = ap.getItems();
             return getSchemaType(p) + "[" + getTypeDeclaration(inner) + "]";
         } else if (ModelUtils.isMapSchema(p)) {
-            Schema inner = getAdditionalProperties(p);
+            Schema inner = ModelUtils.getAdditionalProperties(p);
             return getSchemaType(p) + "<string, " + getTypeDeclaration(inner) + ">";
         }
         return super.getTypeDeclaration(p);

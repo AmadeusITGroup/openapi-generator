@@ -1,6 +1,6 @@
 /*
  * Generation info:
- *   - generator version: 6.6.5-amadeus
+ *   - generator version: 7.4.0-amadeus
  *   - datetime: 2023-08-22T08:19:21.786034800Z[UTC]
  */
 
@@ -24,7 +24,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("AdditionalPropertiesInteger")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", comments = "Generator version: 7.4.0-amadeus")
 public class AdditionalPropertiesInteger extends HashMap<String, Integer> implements Serializable {
   
   

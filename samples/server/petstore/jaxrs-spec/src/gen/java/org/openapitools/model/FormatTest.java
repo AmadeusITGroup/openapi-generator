@@ -1,6 +1,6 @@
 /*
  * Generation info:
- *   - generator version: 6.6.5-amadeus
+ *   - generator version: 7.4.0-amadeus
  *   - datetime: 2023-08-22T08:19:21.786034800Z[UTC]
  */
 
@@ -34,7 +34,7 @@ import java.util.Map;
 
 
 @JsonTypeName("format_test")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", comments = "Generator version: 7.4.0-amadeus")
 public class FormatTest  implements Serializable {
   
   
@@ -443,7 +443,7 @@ public class FormatTest  implements Serializable {
     sb.append("    date: ").append(toIndentedString(date)).append("\n");
     sb.append("    dateTime: ").append(toIndentedString(dateTime)).append("\n");
     sb.append("    uuid: ").append(toIndentedString(uuid)).append("\n");
-    sb.append("    password: ").append(toIndentedString(password)).append("\n");
+    sb.append("    password: ").append("*").append("\n");
     sb.append("    bigDecimal: ").append(toIndentedString(bigDecimal)).append("\n");
     sb.append("}");
     return sb.toString();
