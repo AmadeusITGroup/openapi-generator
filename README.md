@@ -126,8 +126,8 @@ The OpenAPI Specification has undergone 3 revisions since initial creation in 20
 | OpenAPI Generator Version                                                                                                | Release Date   | Notes                                               |
 |--------------------------------------------------------------------------------------------------------------------------|----------------|-----------------------------------------------------|
 | 7.4.0-amadeus (upcoming major release)                                                                                   | April/May 2024 | Major release with breaking changes (with fallback) |
-| [7.4.0-amadeus](https://github.com/AmadeusITGroup/openapi-generator/releases/tag/v7.4.0-amadeus) (latest stable release) | 22.01.2024     | Minor release with breaking changes (with fallback) |
-| [7.4.0-amadeus](https://github.com/OpenAPITools/openapi-generator/releases/tag/v7.4.0-amadeus)                                           | 11.05.2023     | Minor release with breaking changes (with fallback) |
+| [6.6.5-amadeus](https://github.com/AmadeusITGroup/openapi-generator/releases/tag/v6.6.5-amadeus) (latest stable release) | 22.01.2024     | Minor release with breaking changes (with fallback) |
+| [6.6.0](https://github.com/OpenAPITools/openapi-generator/releases/tag/v6.6.0)                                           | 11.05.2023     | Minor release with breaking changes (with fallback) |
 | [5.4.0](https://github.com/OpenAPITools/openapi-generator/releases/tag/v5.4.0)                                           | 31.01.2022     | Minor release with breaking changes (with fallback) |
 | [4.3.1](https://github.com/OpenAPITools/openapi-generator/releases/tag/v4.3.1)                                           | 06.05.2020     | Patch release (enhancements, bug fixes, etc)        |
 
