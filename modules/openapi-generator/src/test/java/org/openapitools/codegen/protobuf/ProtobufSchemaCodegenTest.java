@@ -303,7 +303,10 @@ public class ProtobufSchemaCodegenTest {
             List<File> files = generate(output, properties, globalProperties, "src/test/resources/3_0/protobuf-schema/extension-non-integer-index.yaml");
             fail("No exception thrown!");
         } catch (RuntimeException e) {
-            assertEquals(e.getCause().getMessage(), "java.lang.String cannot be cast to java.lang.Integer");
+            /*
+            * PPI-2417- Updated the test case to make it compatible with different versions and flavors of Java)
+            * */
+            assertTrue(e.getCause().getMessage().contains("java.lang.String cannot be cast to")  && e.getCause().getMessage().contains("java.lang.Integer"));
         }
         FileUtils.deleteDirectory(output);
     }
@@ -476,7 +479,10 @@ public class ProtobufSchemaCodegenTest {
             fail("No exception thrown!");
         }
         catch (RuntimeException e) {
-            assertEquals(e.getCause().getMessage(), "java.lang.String cannot be cast to java.lang.Integer");
+            /*
+             * PPI-2417- Updated the test case to make it compatible with different versions and flavors of Java)
+             * */
+            assertTrue(e.getCause().getMessage().contains("java.lang.String cannot be cast to")  && e.getCause().getMessage().contains("java.lang.Integer"));
         }
         FileUtils.deleteDirectory(output);
     }
@@ -751,6 +757,12 @@ public class ProtobufSchemaCodegenTest {
         TestUtils.assertFileEquals(path, Paths.get("src/test/resources/3_0/protobuf-schema/google-wrapper-types.proto"));
         FileUtils.deleteDirectory(output);
     }
+
+    /*
+    PPI-2417 - Updated the expected result of the test case(test-ref.proto) as per the changes made in 7.4.0 opensource repository.
+    Models having single "allOf" reference are handled differently. Check isModelNeeded method
+    in InlineModelResolver.
+    * */
 
     @Test
     public void testReferenceFieldFix() throws IOException {

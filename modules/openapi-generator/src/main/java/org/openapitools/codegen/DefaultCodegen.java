@@ -690,7 +690,7 @@ public class DefaultCodegen implements CodegenConfig {
                 }
             }
         }
-
+//        PPI-2417 - Added check for null
         // Forward discriminator knowledge to children
         for (String name : allModels.keySet()) {
             CodegenModel cm = allModels.get(name);
@@ -698,6 +698,9 @@ public class DefaultCodegen implements CodegenConfig {
             if (discriminator != null && discriminator.getMappedModels() != null && !discriminator.getMappedModels().isEmpty()) {
                 for (MappedModel mappedModel : discriminator.getMappedModels()) {
                     CodegenModel model = allModels.get(mappedModel.getModelName());
+                    if(model == null || model.isNull) {
+                        continue;
+                    }
                     model.setHasDiscriminatorUpward(true);
                     model.setUpwardDiscriminatorPropertyBaseName(discriminator.getPropertyBaseName());
                 }

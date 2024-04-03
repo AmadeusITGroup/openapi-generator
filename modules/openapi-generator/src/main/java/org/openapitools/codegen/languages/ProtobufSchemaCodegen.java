@@ -206,6 +206,17 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
         addSwitch(USE_WRAPPER_TYPES, "Use primitive well-known wrappers types.", useWrapperTypes);
         addSwitch(CHECK_PROPERTIES_DUPLICATION, "Check duplication on properties.", checkPropertiesDuplication);
         addSwitch(KEEP_ENUM_NAME_ORIGINAL_CASE, "Keep the original case of enum name.", keepEnumNameOriginalCase);
+
+//        inlineSchemaOption.put("SKIP_SCHEMA_REUSE", "true");
+//        inlineSchemaOption.put("RESOLVE_INLINE_ENUMS", "true");
+//        PPI-2417- Added below line to make it backward compatible
+        inlineSchemaOption.put("REFACTOR_ALLOF_INLINE_SCHEMAS", "true");
+    }
+
+
+    @Override
+    public Map<String, String> inlineSchemaOption() {
+        return super.inlineSchemaOption();
     }
 
     @Override

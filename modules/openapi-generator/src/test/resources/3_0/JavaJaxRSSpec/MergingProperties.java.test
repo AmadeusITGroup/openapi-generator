@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("offerPayload_allOf_offerData_offerSet")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2023-06-19T00:00Z[UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2023-06-19T00:00Z[UTC]", comments = "Generator version: N/A")
 public class OfferPayloadAllOfOfferDataOfferSet   {
 
 

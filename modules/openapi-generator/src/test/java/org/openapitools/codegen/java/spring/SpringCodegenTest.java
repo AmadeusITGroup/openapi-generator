@@ -521,7 +521,7 @@ public class SpringCodegenTest {
                 .collect(Collectors.toMap(File::getName, Function.identity()));
 
         JavaFileAssert.assertThat(files.get("SubType.java"))
-                .assertConstructor("TypeEnum", "SchemaVersion", "UUID", "Boolean", "Boolean", "SomeEnum")
+                .assertConstructor("Type", "SchemaVersion", "UUID", "Boolean", "Boolean", "SomeEnum")
                 .bodyContainsLines("super(someBoolean, someEnum, schemaVersion, id, oneBoolean);",
                         "this.type = type;");
         JavaFileAssert.assertThat(files.get("IntermediateSubType.java"))
