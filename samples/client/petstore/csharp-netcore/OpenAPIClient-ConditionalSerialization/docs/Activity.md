@@ -1,5 +1,5 @@
 # Org.OpenAPITools.Model.Activity
-test map of maps
+test map of maps properly
 
 ## Properties
 
