@@ -1,14 +1,9 @@
-/*
- * Generation info:
- *   - generator version: 6.6.5-amadeus
- *   - datetime: 2023-08-22T08:19:21.786034800Z[UTC]
- */
-
 package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.ModelFile;
 import java.io.Serializable;
@@ -22,24 +17,13 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import java.util.HashMap;
-import java.util.Map;
-
 
 
 @JsonTypeName("FileSchemaTestClass")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", comments = "Generator version: 7.4.0-amadeus")
 public class FileSchemaTestClass  implements Serializable {
-  
-  
   private @Valid ModelFile _file;
-
-  
-  private @Valid List<ModelFile> files;
-
-  
+  private @Valid List<@Valid ModelFile> files;
 
   protected FileSchemaTestClass(FileSchemaTestClassBuilder<?, ?> b) {
     this._file = b._file;
@@ -57,7 +41,6 @@ public class FileSchemaTestClass  implements Serializable {
   }
 
   
-  
   @ApiModelProperty(value = "")
   @JsonProperty("file")
   public ModelFile getFile() {
@@ -71,12 +54,11 @@ public class FileSchemaTestClass  implements Serializable {
 
   /**
    **/
-  public FileSchemaTestClass files(List<ModelFile> files) {
+  public FileSchemaTestClass files(List<@Valid ModelFile> files) {
     this.files = files;
     return this;
   }
 
-  
   
   @ApiModelProperty(value = "")
   @JsonProperty("files")
@@ -85,7 +67,7 @@ public class FileSchemaTestClass  implements Serializable {
   }
 
   @JsonProperty("files")
-  public void setFiles(List<ModelFile> files) {
+  public void setFiles(List<@Valid ModelFile> files) {
     this.files = files;
   }
 
@@ -166,7 +148,7 @@ public class FileSchemaTestClass  implements Serializable {
 
   public static abstract class FileSchemaTestClassBuilder<C extends FileSchemaTestClass, B extends FileSchemaTestClassBuilder<C, B>>  {
     private ModelFile _file;
-    private List<ModelFile> files;
+    private List<@Valid ModelFile> files;
     protected abstract B self();
 
     public abstract C build();
@@ -175,24 +157,10 @@ public class FileSchemaTestClass  implements Serializable {
       this._file = _file;
       return self();
     }
-    public B files(List<ModelFile> files) {
+    public B files(List<@Valid ModelFile> files) {
       this.files = files;
       return self();
     }
   }
-
-  
-  private Map<String, Object> unknown = new HashMap<>();
-
-  @JsonAnyGetter
-  public Map<String, Object> getUnknown() {
-    return unknown;
-  }
-
-  @JsonAnySetter
-  public void addUnknown(String key, Object value) {
-    unknown.put(key, value);
-  }
-  
 }
 

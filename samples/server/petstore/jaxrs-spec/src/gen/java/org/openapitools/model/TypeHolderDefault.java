@@ -1,6 +1,6 @@
 /*
  * Generation info:
- *   - generator version: 6.6.5-amadeus
+ *   - generator version: 7.4.0-amadeus
  *   - datetime: 2023-08-22T08:19:21.786034800Z[UTC]
  */
 
@@ -10,6 +10,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.io.Serializable;
 import javax.validation.constraints.*;
@@ -30,7 +31,7 @@ import java.util.Map;
 
 
 @JsonTypeName("TypeHolderDefault")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", comments = "Generator version: 7.4.0-amadeus")
 public class TypeHolderDefault  implements Serializable {
   
   

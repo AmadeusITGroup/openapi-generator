@@ -4,6 +4,8 @@ OpenAPI Extension x-auth-id-alias
 
 - API version: 1.0.0
 
+- Generator version: 7.4.0-amadeus
+
 This specification shows how to use x-auth-id-alias extension for API keys.
 
 

@@ -16,16 +16,15 @@ syntax = "proto3";
 
 package openapitools;
 
-import "models/var1_another_test.proto";
-import "models/var1_test.proto";
-import "models/var1_working_index.proto";
+import "models/another_test.proto";
+import "models/test.proto";
 
 message Var1 {
 
-  openapitools.Var1Test test = 3;
+  openapitools.Test test = 3;
 
-  openapitools.Var1AnotherTest anotherTest = 2;
+  openapitools.AnotherTest anotherTest = 2;
 
-  openapitools.Var1WorkingIndex workingIndex = 1;
+  openapitools.Test workingIndex = 1;
 
 }

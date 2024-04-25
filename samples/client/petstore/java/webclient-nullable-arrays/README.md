@@ -4,6 +4,8 @@ Minimal Example
 
 - API version: v1
 
+- Generator version: 7.4.0-amadeus
+
 byte Array error in equal method
 
 

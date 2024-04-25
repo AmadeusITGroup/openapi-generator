@@ -206,6 +206,17 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
         addSwitch(USE_WRAPPER_TYPES, "Use primitive well-known wrappers types.", useWrapperTypes);
         addSwitch(CHECK_PROPERTIES_DUPLICATION, "Check duplication on properties.", checkPropertiesDuplication);
         addSwitch(KEEP_ENUM_NAME_ORIGINAL_CASE, "Keep the original case of enum name.", keepEnumNameOriginalCase);
+
+//        inlineSchemaOption.put("SKIP_SCHEMA_REUSE", "true");
+//        inlineSchemaOption.put("RESOLVE_INLINE_ENUMS", "true");
+//        PPI-2417- Added below line to make it backward compatible
+        inlineSchemaOption.put("REFACTOR_ALLOF_INLINE_SCHEMAS", "true");
+    }
+
+
+    @Override
+    public Map<String, String> inlineSchemaOption() {
+        return super.inlineSchemaOption();
     }
 
     @Override
@@ -1177,7 +1188,7 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
             }
         } else if (ModelUtils.isStringSchema(p)) {
             if (p.getDefault() != null) {
-                if (Pattern.compile("\r\n|\r|\n").matcher((String) p.getDefault()).find())
+                if (Pattern.compile("\r\n|\r|\n").matcher(String.valueOf(p.getDefault())).find())
                     return "'''" + p.getDefault() + "'''";
                 else
                     return "'" + p.getDefault() + "'";
@@ -1255,7 +1266,7 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
     public String toModelName(String name) {
         name = sanitizeName(name); // FIXME: a parameter should not be assigned. Also declare the methods parameters as 'final'.
         // remove dollar sign
-        name = name.replaceAll("$", "");
+        name = name.replace("$", "");
 
         // model name cannot use reserved keyword, e.g. return
         if (isReservedWord(name)) {
@@ -1430,7 +1441,7 @@ public class ProtobufSchemaCodegen extends DefaultCodegen implements CodegenConf
             Schema inner = ap.getItems();
             return getSchemaType(p) + "[" + getTypeDeclaration(inner) + "]";
         } else if (ModelUtils.isMapSchema(p)) {
-            Schema inner = getAdditionalProperties(p);
+            Schema inner = ModelUtils.getAdditionalProperties(p);
             return getSchemaType(p) + "<string, " + getTypeDeclaration(inner) + ">";
         }
         return super.getTypeDeclaration(p);

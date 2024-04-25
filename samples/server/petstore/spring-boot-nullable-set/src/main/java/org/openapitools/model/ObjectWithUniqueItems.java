@@ -28,17 +28,17 @@ import javax.annotation.Generated;
  * ObjectWithUniqueItems
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", comments = "Generator version: 7.4.0-amadeus")
 public class ObjectWithUniqueItems {
 
   @Valid
-  private JsonNullable<Set<String>> nullSet = JsonNullable.undefined();
+  private JsonNullable<Set<String>> nullSet = JsonNullable.<Set<String>>undefined();
 
   @Valid
   private Set<String> notNullSet;
 
   @Valid
-  private JsonNullable<List<String>> nullList = JsonNullable.undefined();
+  private JsonNullable<List<String>> nullList = JsonNullable.<List<String>>undefined();
 
   @Valid
   private List<String> notNullList;
